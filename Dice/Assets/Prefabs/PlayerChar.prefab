@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6ed5e57224e05624992ab203c39a6963, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,8 +107,8 @@ GameObject:
   - component: {fileID: 2466866773254974943}
   - component: {fileID: 2466866773254974942}
   - component: {fileID: 2466866773254974941}
-  - component: {fileID: 2466866773254974937}
-  - component: {fileID: 2466866773254974938}
+  - component: {fileID: 3493487340409117391}
+  - component: {fileID: 5784859739146423852}
   m_Layer: 0
   m_Name: PlayerChar
   m_TagString: Untagged
@@ -195,7 +195,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2466866773254974937
+--- !u!114 &3493487340409117391
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -204,12 +204,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2466866773254974940}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc2580e7a22191d43b99fc09a8da2e42, type: 3}
+  m_Script: {fileID: 11500000, guid: c0a24c8e3f4e52d4986d5df03e3bb12f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
+  moveSpeed: 10
   cameraDummy: {fileID: 2466866773416880374}
---- !u!114 &2466866773254974938
+--- !u!114 &5784859739146423852
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -218,10 +218,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2466866773254974940}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d237b1b4e9cbd854f9937bc69ac0951e, type: 3}
+  m_Script: {fileID: 11500000, guid: cb4d0ea777553c94d99ce21fa6b217dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 6344335812988061145, guid: 7bc9f987e4ee4ec44adecb0b0165d5d3,
+  projectile: {fileID: 6344335812988061145, guid: bc2b0085094ad914c806e32d5f1caa11,
     type: 3}
   MaxFireCooldown: 1
   projectileSpeed: 500

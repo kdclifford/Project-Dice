@@ -19,8 +19,7 @@ public class MovementScript : MonoBehaviour
     void Update()
     {
         var angle = Mathf.Atan2(Input.GetAxis("RHorizontal"), Input.GetAxis("RVertical")) * Mathf.Rad2Deg;
-        float horizontalInput = Input.GetAxis("LHorizontal");
-        float verticalInput = Input.GetAxis("LVertical");
+        float horizontalInput = Input.GetAxis("LHorizontal"); float verticalInput = Input.GetAxis("LVertical");
 
         if ( angle > 1 || angle < -1)
         {
