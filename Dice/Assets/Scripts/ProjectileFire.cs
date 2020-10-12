@@ -5,18 +5,23 @@ using UnityEngine;
 public class ProjectileFire : MonoBehaviour
 {
     [SerializeField]
-    private GameObject projectile;
+    private GameObject[] projectile;
     [SerializeField]
     private float MaxFireCooldown = 1;
     [SerializeField]
-    private int projectileSpeed = 500;
+    private int projectileSpeed = 10000;
 
-    private float currFireCooldown = 0;
+    private float currRTFireCooldown = 0;
+    private int currRTProjectile = 1;
+
+    private float currLTFireCooldown = 0;
+    private int currLTProjectile = 1;
 
     // Start is called before the first frame update
     void Start()
     {
-        currFireCooldown = MaxFireCooldown;
+        currRTFireCooldown = MaxFireCooldown;
+        currLTFireCooldown = MaxFireCooldown;
     }
 
     // Update is called once per frame
@@ -24,17 +29,35 @@ public class ProjectileFire : MonoBehaviour
     {
         if (Input.GetAxis("RTrigger") > 0)
         {
-            if (currFireCooldown <= 0)
+            if (currRTFireCooldown <= 0 && currRTProjectile > 0)
             {
                 Quaternion playerRot = Quaternion.identity;
                 playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y, 90);
 
-                GameObject bullet = Instantiate(projectile, transform.position, playerRot) as GameObject;
+                Vector3 RightFirePos = transform.position; RightFirePos.x += 0.4f;
+                GameObject bullet = Instantiate(projectile[currRTProjectile], RightFirePos, playerRot) as GameObject;
                 bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
 
-                currFireCooldown = MaxFireCooldown;
+                currRTFireCooldown = MaxFireCooldown;
             }
         }
-        currFireCooldown -= Time.deltaTime;
+
+        if (Input.GetAxis("LTrigger") > 0)
+        {
+            if (currLTFireCooldown <= 0 && currLTProjectile > 0)
+            {
+                Quaternion playerRot = Quaternion.identity;
+                playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y, 90);
+
+                Vector3 LeftFirePos = transform.position; LeftFirePos.x -= 0.4f;
+                GameObject bullet = Instantiate(projectile[currLTProjectile], LeftFirePos, playerRot) as GameObject;
+                bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
+
+                currLTFireCooldown = MaxFireCooldown;
+            }
+        }
+
+        currRTFireCooldown -= Time.deltaTime;
+        currLTFireCooldown -= Time.deltaTime;
     }
 }
