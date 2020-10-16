@@ -5,17 +5,18 @@ using UnityEngine;
 public class ProjectileFire : MonoBehaviour
 {
     [SerializeField]
-    private GameObject[] projectile;
+    private GameObject projectileLeft;
+    [SerializeField]
+    private GameObject projectileRight;
     [SerializeField]
     private float MaxFireCooldown = 1;
     [SerializeField]
-    private int projectileSpeed = 10000;
+    private int projectileSpeed = 500;
+    [SerializeField]
+    private GameObject PlayerPointer;
 
     private float currRTFireCooldown = 0;
-    private int currRTProjectile = 1;
-
     private float currLTFireCooldown = 0;
-    private int currLTProjectile = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -27,30 +28,30 @@ public class ProjectileFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("RTrigger") > 0)
+        if (Input.GetAxis("RTrigger") > 0 && projectileRight.tag != ("NotEquipped"))
         {
-            if (currRTFireCooldown <= 0 && currRTProjectile > 0)
+            if (currRTFireCooldown <= 0)
             {
                 Quaternion playerRot = Quaternion.identity;
                 playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y, 90);
 
                 Vector3 RightFirePos = transform.position; RightFirePos.x += 0.4f;
-                GameObject bullet = Instantiate(projectile[currRTProjectile], RightFirePos, playerRot) as GameObject;
+                GameObject bullet = Instantiate(projectileRight, RightFirePos, playerRot) as GameObject;
                 bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
 
                 currRTFireCooldown = MaxFireCooldown;
             }
         }
 
-        if (Input.GetAxis("LTrigger") > 0)
+        if (Input.GetAxis("LTrigger") > 0 && projectileLeft.tag != ("NotEquipped"))
         {
-            if (currLTFireCooldown <= 0 && currLTProjectile > 0)
+            if (currLTFireCooldown <= 0)
             {
                 Quaternion playerRot = Quaternion.identity;
                 playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y, 90);
 
                 Vector3 LeftFirePos = transform.position; LeftFirePos.x -= 0.4f;
-                GameObject bullet = Instantiate(projectile[currLTProjectile], LeftFirePos, playerRot) as GameObject;
+                GameObject bullet = Instantiate(projectileLeft, LeftFirePos, playerRot) as GameObject;
                 bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
 
                 currLTFireCooldown = MaxFireCooldown;
@@ -59,5 +60,13 @@ public class ProjectileFire : MonoBehaviour
 
         currRTFireCooldown -= Time.deltaTime;
         currLTFireCooldown -= Time.deltaTime;
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "PowerPickup" && Input.GetKey(KeyCode.JoystickButton0))
+        {
+            
+        }
     }
 }
