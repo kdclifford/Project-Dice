@@ -5,7 +5,7 @@ using UnityEngine;
 public class PickupParticleEffect : MonoBehaviour
 {
     [SerializeField]
-    private GameObject ProjectilePickup;
+    public GameObject ProjectilePickup;
 
     // Start is called before the first frame update
     void Start()

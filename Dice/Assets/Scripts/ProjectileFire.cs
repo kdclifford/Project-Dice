@@ -18,6 +18,10 @@ public class ProjectileFire : MonoBehaviour
     private float currRTFireCooldown = 0;
     private float currLTFireCooldown = 0;
 
+    private GameObject attachedParticle;
+    Collider pickupCollider;
+    private bool pickupColliding;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,13 +64,37 @@ public class ProjectileFire : MonoBehaviour
 
         currRTFireCooldown -= Time.deltaTime;
         currLTFireCooldown -= Time.deltaTime;
+
+        if (Input.GetAxis("HorizontalDpad") < 0 && pickupColliding == true && attachedParticle != null)
+        {
+            projectileLeft = attachedParticle;
+            Destroy(pickupCollider.gameObject);
+            attachedParticle = null;
+            pickupCollider = null;
+        }
+        else if (Input.GetAxis("HorizontalDpad") > 0 && pickupColliding == true)
+        {
+            projectileRight = attachedParticle;
+            Destroy(pickupCollider.gameObject);
+            attachedParticle = null;
+            pickupCollider = null;
+        }
     }
 
-    void OnTriggerStay(Collider other)
+
+    void OnTriggerStay(Collider Collision)
     {
-        if (other.gameObject.tag == "PowerPickup" && Input.GetKey(KeyCode.JoystickButton0))
+        if (Collision.gameObject.tag == "PowerPickup" && Input.GetKey(KeyCode.JoystickButton0))
         {
-            
+            attachedParticle = Collision.GetComponent<PickupParticleEffect>().ProjectilePickup;
+            pickupCollider = Collision;
+            pickupColliding = true;
         }
+    }
+    void OnTriggerExit(Collider other)
+    {
+        pickupColliding = false;
+        attachedParticle = null;
+        pickupCollider = null;
     }
 }
