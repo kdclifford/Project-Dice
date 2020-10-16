@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using AnimationFunctions.Utils;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,11 +9,13 @@ public class MovementScript : MonoBehaviour
     private float moveSpeed = 10;
     [SerializeField]
     private GameObject cameraDummy;
+    [SerializeField]
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -27,6 +30,11 @@ public class MovementScript : MonoBehaviour
             cameraDummy.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
         
+        if(Mathf.Abs( horizontalInput + verticalInput) > 0)
+        {
+            AnimationScript.WalkFoward(animator);
+        }
+
         transform.Translate(new Vector3(horizontalInput, 0, verticalInput) * moveSpeed * Time.deltaTime, Space.World);
     }
 }
