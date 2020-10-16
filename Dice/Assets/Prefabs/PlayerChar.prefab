@@ -106,12 +106,11 @@ GameObject:
   - component: {fileID: 2466866773254974936}
   - component: {fileID: 2466866773254974943}
   - component: {fileID: 2466866773254974942}
-  - component: {fileID: 2466866773254974941}
-  - component: {fileID: 3493487340409117391}
-  - component: {fileID: 5784859739146423852}
+  - component: {fileID: 8140697686816431970}
+  - component: {fileID: 6443446241055874380}
   m_Layer: 0
   m_Name: PlayerChar
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,21 +180,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2466866773254974941
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2466866773254974940}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3493487340409117391
+--- !u!114 &8140697686816431970
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -208,8 +193,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  cameraDummy: {fileID: 2466866773416880374}
---- !u!114 &5784859739146423852
+  cameraDummy: {fileID: 0}
+--- !u!114 &6443446241055874380
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -221,10 +206,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb4d0ea777553c94d99ce21fa6b217dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 6344335812988061145, guid: bc2b0085094ad914c806e32d5f1caa11,
+  projectileLeft: {fileID: 5273658455136379278, guid: 1a96e129f0b1da340bce7ac04956dd32,
+    type: 3}
+  projectileRight: {fileID: 5273658455136379278, guid: 1a96e129f0b1da340bce7ac04956dd32,
     type: 3}
   MaxFireCooldown: 1
   projectileSpeed: 500
+  PlayerPointer: {fileID: 0}
 --- !u!1 &2466866773416880374
 GameObject:
   m_ObjectHideFlags: 0
