@@ -129,26 +129,28 @@ public class ProjectileFire : MonoBehaviour
 
     public void RightFire()
     {
-        soundManager.Play(gameObject);
         Quaternion playerRot = Quaternion.identity;
         playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y, 90);
 
         Vector3 RightFirePos = transform.position; RightFirePos.x += 0.4f;
         GameObject bullet = Instantiate(projectileRight, RightFirePos, playerRot) as GameObject;
         bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
+        soundManager.Play(projectileRight.name, bullet);
 
         currRTFireCooldown = MaxFireCooldown;
     }
 
   public void LeftFire()
     {
-        soundManager.Play(gameObject);
         Quaternion playerRot = Quaternion.identity;
         playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y, 90);
 
         Vector3 LeftFirePos = transform.position; LeftFirePos.x -= 0.4f;
         GameObject bullet = Instantiate(projectileLeft, LeftFirePos, playerRot) as GameObject;
         bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
+
+        
+        soundManager.Play(projectileLeft.name, bullet);
 
         currLTFireCooldown = MaxFireCooldown;
     }

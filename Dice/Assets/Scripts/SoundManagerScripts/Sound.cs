@@ -28,10 +28,18 @@ public class Sound
         {
             loop = true;
         }
+        else
+        {
+            loop = false;
+        }
 
         if (curItemNode["sound3D"].InnerText == "true")
         {
-            loop = true;
+            sound3D = true;
+        }
+        else
+        {
+            sound3D = false;
         }
 
         XmlNode clipNode = curItemNode.SelectSingleNode("clip");

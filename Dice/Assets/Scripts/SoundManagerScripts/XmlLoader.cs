@@ -36,7 +36,7 @@ public class XmlLoader : MonoBehaviour
             FindSoundManager();
         }
 
-        if (soundManager.soundClips == null)
+        if (soundManager.soundClips.Length == 0)
         {
 
 
