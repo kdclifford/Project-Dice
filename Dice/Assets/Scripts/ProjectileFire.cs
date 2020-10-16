@@ -12,8 +12,6 @@ public class ProjectileFire : MonoBehaviour
     private float MaxFireCooldown = 1;
     [SerializeField]
     private int projectileSpeed = 500;
-    [SerializeField]
-    private GameObject PlayerPointer;
 
     private float currRTFireCooldown = 0;
     private float currLTFireCooldown = 0;
@@ -72,7 +70,7 @@ public class ProjectileFire : MonoBehaviour
             attachedParticle = null;
             pickupCollider = null;
         }
-        else if (Input.GetAxis("HorizontalDpad") > 0 && pickupColliding == true)
+        else if (Input.GetAxis("HorizontalDpad") > 0 && pickupColliding == true && attachedParticle != null)
         {
             projectileRight = attachedParticle;
             Destroy(pickupCollider.gameObject);
