@@ -66,7 +66,7 @@ public class ProjectileFire : MonoBehaviour
     {
         if (other.gameObject.tag == "PowerPickup" && Input.GetKey(KeyCode.JoystickButton0))
         {
-            
+            Debug.Log("Working");
         }
     }
 }
