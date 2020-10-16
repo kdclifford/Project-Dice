@@ -206,39 +206,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerChar
       objectReference: {fileID: 0}
-    - target: {fileID: 2466866773254974941, guid: 4fc274e04c8c62647917c24dbc32e30f,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3493487340409117391, guid: 4fc274e04c8c62647917c24dbc32e30f,
-        type: 3}
-      propertyPath: moveSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5784859739146423852, guid: 4fc274e04c8c62647917c24dbc32e30f,
-        type: 3}
-      propertyPath: projectile.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5784859739146423852, guid: 4fc274e04c8c62647917c24dbc32e30f,
-        type: 3}
-      propertyPath: projectile.Array.data[0]
-      value: 
-      objectReference: {fileID: 5273658455136379278, guid: 1a96e129f0b1da340bce7ac04956dd32,
-        type: 3}
-    - target: {fileID: 5784859739146423852, guid: 4fc274e04c8c62647917c24dbc32e30f,
-        type: 3}
-      propertyPath: projectile.Array.data[1]
-      value: 
-      objectReference: {fileID: 6344335812988061145, guid: bc2b0085094ad914c806e32d5f1caa11,
-        type: 3}
-    m_RemovedComponents:
-    - {fileID: 2466866773254974937, guid: 4fc274e04c8c62647917c24dbc32e30f, type: 3}
-    - {fileID: 2466866773254974938, guid: 4fc274e04c8c62647917c24dbc32e30f, type: 3}
-    - {fileID: 3493487340409117391, guid: 4fc274e04c8c62647917c24dbc32e30f, type: 3}
-    - {fileID: 5784859739146423852, guid: 4fc274e04c8c62647917c24dbc32e30f, type: 3}
-    - {fileID: 2466866773254974941, guid: 4fc274e04c8c62647917c24dbc32e30f, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fc274e04c8c62647917c24dbc32e30f, type: 3}
 --- !u!1 &254584562 stripped
 GameObject:
