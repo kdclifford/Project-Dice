@@ -50,7 +50,7 @@ public class MovementScript : MonoBehaviour
 
         Vector2 controller = new Vector2(horizontalInput, verticalInput);
 
-       Debug.Log( Vector2.Distance(xVector, controller));
+        // Debug.Log( Vector2.Distance(xVector, controller));
 
            // Debug.Log((Mathf.Abs(horizontalInput) - Mathf.Abs(facing.x)) - (Mathf.Abs(verticalInput) - Mathf.Abs(facing.y)));
         if (Mathf.Abs(horizontalInput + verticalInput) > 0)

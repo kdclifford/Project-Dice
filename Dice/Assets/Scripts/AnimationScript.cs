@@ -8,10 +8,28 @@ namespace AnimationFunctions.Utils
 {
     public class AnimationScript
     {
-      // public bool rightFire = false;
+        // public bool rightFire = false;
         public static void Idle4(Animator animator)
         {
-            animator.SetInteger("Animation", 0);
+
+
+            int idle = Random.Range(0, 4);
+
+            switch (idle)
+            {
+                case 0:
+                    animator.SetInteger("Animation", 0);
+                    break;
+                case 1:
+                    animator.SetInteger("Animation", 7);
+                    break;
+                case 2:
+                    animator.SetInteger("Animation", 8);
+                    break;
+                case 3:
+                    animator.SetInteger("Animation", 9);
+                    break;
+            }
         }
 
         public static void RightAttack(Animator animator)
