@@ -401,8 +401,12 @@ MonoBehaviour:
   RightUIIcon: {fileID: 1963141972}
   interactPopup: {fileID: 2048611948}
   EquipPopup: {fileID: 1236553223}
+  projectileDistance: 0.4
   animator: {fileID: 0}
   soundManager: {fileID: 0}
+  rightFire: 0
+  leftFire: 0
+  aimDummy: {fileID: 0}
 --- !u!114 &184750081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2839,16 +2843,16 @@ PrefabInstance:
         type: 3}
       propertyPath: addSound.clip
       value: 
-      objectReference: {fileID: 8300000, guid: 11ab7244c73df774f86d5ad02a1bfbc2, type: 3}
+      objectReference: {fileID: 8300000, guid: 4255de3cbec7e1a4895d19833ca76f45, type: 3}
     - target: {fileID: 4597648255728195360, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
         type: 3}
       propertyPath: addSound.name
-      value: Electric
+      value: FireBall
       objectReference: {fileID: 0}
     - target: {fileID: 4597648255728195360, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
         type: 3}
       propertyPath: addSound.loop
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4597648255728195360, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
         type: 3}
@@ -2858,7 +2862,7 @@ PrefabInstance:
     - target: {fileID: 4597648255728195360, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
         type: 3}
       propertyPath: addSound.pitch
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4597648255728195360, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
         type: 3}

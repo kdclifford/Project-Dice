@@ -1,2 +1,25 @@
 <?xml version="1.0"?>
-<ArrayOfSound xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+<ArrayOfSound xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Sound>
+    <name>Electric</name>
+    <clip>
+      <name>383654__deleted-user-7146007__electricity</name>
+      <hideFlags>NotEditable</hideFlags>
+    </clip>
+    <loop>true</loop>
+    <sound3D>true</sound3D>
+    <volume>1</volume>
+    <pitch>1</pitch>
+  </Sound>
+  <Sound>
+    <name>FireBall</name>
+    <clip>
+      <name>flamestrike</name>
+      <hideFlags>NotEditable</hideFlags>
+    </clip>
+    <loop>false</loop>
+    <sound3D>true</sound3D>
+    <volume>1</volume>
+    <pitch>1.5</pitch>
+  </Sound>
+</ArrayOfSound>
