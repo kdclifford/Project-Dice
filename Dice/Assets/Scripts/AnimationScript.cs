@@ -28,5 +28,23 @@ namespace AnimationFunctions.Utils
         {
             animator.SetInteger("Animation", 3);
         }
+
+        public static void WalkBack(Animator animator)
+        {
+           // Debug.Log("Walking Back");
+            animator.SetInteger("Animation", 4);
+        }
+        public static void WalkLeft(Animator animator)
+        {
+            //Debug.Log("Walking Left");
+            animator.SetInteger("Animation", 5);
+        }
+
+        public static void WalkRight(Animator animator)
+        {
+            //Debug.Log("Walking Right");
+            animator.SetInteger("Animation", 6);
+        }
+
     }
 }
