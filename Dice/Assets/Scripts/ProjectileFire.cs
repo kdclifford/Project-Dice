@@ -62,7 +62,6 @@ public class ProjectileFire : MonoBehaviour
         {
             if (currLTFireCooldown <= 0)
             {
-                Debug.Log("Working");
                 if (!leftFire)
                 {
                     leftFire = true;
@@ -101,7 +100,6 @@ public class ProjectileFire : MonoBehaviour
     {
         if (Collision.gameObject.tag == "PowerPickup" && Input.GetKey(KeyCode.JoystickButton0))
         {
-            Debug.Log("Working");
             attachedParticle = Collision.GetComponent<PickupParticleEffect>().ProjectilePickup;
             pickupCollider = Collision;
             pickupColliding = true;
