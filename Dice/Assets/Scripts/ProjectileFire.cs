@@ -17,6 +17,10 @@ public class ProjectileFire : MonoBehaviour
     private float currRTFireCooldown = 0;
     private float currLTFireCooldown = 0;
 
+    //Used to set projectile distance from the player
+    [SerializeField]
+    private float projectileDistance;
+
     private GameObject attachedParticle;
     Collider pickupCollider;
     private bool pickupColliding;
@@ -28,10 +32,12 @@ public class ProjectileFire : MonoBehaviour
     private SoundManager soundManager;
 
     //Bools to chek if the user is firing
-    private bool rightFire = false;
-    private bool leftFire = false;
+    [HideInInspector]
+    public bool rightFire = false;
+    [HideInInspector]
+    public bool leftFire = false;
 
-
+   public GameObject aimDummy;
 
     // Start is called before the first frame update
     void Start()
@@ -124,13 +130,13 @@ public class ProjectileFire : MonoBehaviour
 
         leftFire = false;
     }
-
+    
     public void RightFire()
     {
         Quaternion playerRot = Quaternion.identity;
         playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y, 90);
 
-        Vector3 RightFirePos = transform.position; RightFirePos.x += 0.4f;
+        Vector3 RightFirePos = transform.position + (transform.right * projectileDistance);// RightFirePos.x += 0.4f;
         GameObject bullet = Instantiate(projectileRight, RightFirePos, playerRot) as GameObject;
         bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
         soundManager.Play(projectileRight.name, bullet);
@@ -143,7 +149,7 @@ public class ProjectileFire : MonoBehaviour
         Quaternion playerRot = Quaternion.identity;
         playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y, 90);
 
-        Vector3 LeftFirePos = transform.position; LeftFirePos.x -= 0.4f;
+        Vector3 LeftFirePos = transform.position + (transform.right * -projectileDistance);// LeftFirePos.x -= 0.4f;
         GameObject bullet = Instantiate(projectileLeft, LeftFirePos, playerRot) as GameObject;
         bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
 

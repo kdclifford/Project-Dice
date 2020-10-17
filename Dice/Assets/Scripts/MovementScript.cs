@@ -29,8 +29,11 @@ public class MovementScript : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, angle, 0);
             cameraDummy.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
-        
-        if(Mathf.Abs( horizontalInput + verticalInput) > 0)
+
+        bool leftfire = GetComponent<ProjectileFire>().leftFire;
+        bool rightfire = GetComponent<ProjectileFire>().rightFire;
+
+        if (!rightfire && !leftfire && Mathf.Abs( horizontalInput + verticalInput) > 0)
         {
             AnimationScript.WalkFoward(animator);
         }

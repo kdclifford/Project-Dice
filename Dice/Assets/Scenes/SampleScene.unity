@@ -173,8 +173,12 @@ MonoBehaviour:
     type: 3}
   MaxFireCooldown: 1
   projectileSpeed: 500
+  projectileDistance: 0.4
   animator: {fileID: 0}
   soundManager: {fileID: 0}
+  rightFire: 0
+  leftFire: 0
+  aimDummy: {fileID: 1015386207}
 --- !u!114 &184750081
 MonoBehaviour:
   m_ObjectHideFlags: 0

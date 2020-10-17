@@ -28,7 +28,7 @@ public class SoundManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        BackGroundMusic();
+        //BackGroundMusic();
     }
 
     ////Used to check and change the audio depending on the scene
