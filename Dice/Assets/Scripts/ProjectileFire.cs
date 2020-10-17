@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using AnimationFunctions.Utils;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class ProjectileFire : MonoBehaviour
@@ -13,6 +14,14 @@ public class ProjectileFire : MonoBehaviour
     private float MaxFireCooldown = 1;
     [SerializeField]
     private int projectileSpeed = 500;
+    [SerializeField]
+    private Image LeftUIIcon;
+    [SerializeField]
+    private Image RightUIIcon;
+    [SerializeField]
+    private Image interactPopup;
+    [SerializeField]
+    private Image EquipPopup;
 
     private float currRTFireCooldown = 0;
     private float currLTFireCooldown = 0;
@@ -22,6 +31,7 @@ public class ProjectileFire : MonoBehaviour
     private float projectileDistance;
 
     private GameObject attachedParticle;
+    private Sprite attachedSprite;
     Collider pickupCollider;
     private bool pickupColliding;
 
@@ -46,6 +56,8 @@ public class ProjectileFire : MonoBehaviour
         currLTFireCooldown = MaxFireCooldown;
         animator = GetComponent<Animator>();
         soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
+        interactPopup.enabled = false;
+        EquipPopup.enabled = false;
     }
 
     // Update is called once per frame
@@ -62,7 +74,6 @@ public class ProjectileFire : MonoBehaviour
                 AnimationScript.RightAttack(animator);                
             }
         }
-
         
         if (Input.GetAxis("LTrigger") > 0 && projectileLeft.tag != ("NotEquipped"))
         {
@@ -87,14 +98,20 @@ public class ProjectileFire : MonoBehaviour
         if (Input.GetAxis("HorizontalDpad") < 0 && pickupColliding == true && attachedParticle != null)
         {
             projectileLeft = attachedParticle;
+            LeftUIIcon.sprite = attachedSprite;
             Destroy(pickupCollider.gameObject);
+            interactPopup.enabled = false;
+            EquipPopup.enabled = false;
             attachedParticle = null;
             pickupCollider = null;
         }
         else if (Input.GetAxis("HorizontalDpad") > 0 && pickupColliding == true && attachedParticle != null)
         {
             projectileRight = attachedParticle;
+            RightUIIcon.sprite = attachedSprite;
             Destroy(pickupCollider.gameObject);
+            interactPopup.enabled = false;
+            EquipPopup.enabled = false;
             attachedParticle = null;
             pickupCollider = null;
         }
@@ -104,15 +121,21 @@ public class ProjectileFire : MonoBehaviour
 
     void OnTriggerStay(Collider Collision)
     {
+        interactPopup.enabled = true;
+
         if (Collision.gameObject.tag == "PowerPickup" && Input.GetKey(KeyCode.JoystickButton0))
         {
+            EquipPopup.enabled = true;
             attachedParticle = Collision.GetComponent<PickupParticleEffect>().ProjectilePickup;
+            attachedSprite = Collision.GetComponent<PickupParticleEffect>().ProjectileUIIcon;
             pickupCollider = Collision;
             pickupColliding = true;
         }
     }
     void OnTriggerExit(Collider other)
     {
+        interactPopup.enabled = false;
+        EquipPopup.enabled = false;
         pickupColliding = false;
         attachedParticle = null;
         pickupCollider = null;
