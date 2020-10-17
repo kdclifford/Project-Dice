@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &4422671823207896380
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8680144672558239917}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15.96, y: 94.7, z: 25.3}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2341179500355917172
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -122,5 +135,26 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.minColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6344335812988061147, guid: bc2b0085094ad914c806e32d5f1caa11,
+        type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6344335812988061147, guid: bc2b0085094ad914c806e32d5f1caa11,
+        type: 3}
+      propertyPath: CollisionModule.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6344335812988061147, guid: bc2b0085094ad914c806e32d5f1caa11,
+        type: 3}
+      propertyPath: CollisionModule.radiusScale
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc2b0085094ad914c806e32d5f1caa11, type: 3}
+--- !u!1 &8680144672558239917 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6344335812988061145, guid: bc2b0085094ad914c806e32d5f1caa11,
+    type: 3}
+  m_PrefabInstance: {fileID: 2341179500355917172}
+  m_PrefabAsset: {fileID: 0}
