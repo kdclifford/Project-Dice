@@ -273,6 +273,26 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 36122928}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &103006048 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1082271958561512970, guid: 2dcfcddb63b52384eb3284770cdf01eb,
+    type: 3}
+  m_PrefabInstance: {fileID: 214786323}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &103006050
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103006048}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.36
+  m_Height: 2.83
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: -0.15}
 --- !u!1001 &113585965
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -422,6 +442,10 @@ MonoBehaviour:
   moveSpeed: 10
   cameraDummy: {fileID: 1333834387}
   animator: {fileID: 0}
+  rayDist: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!136 &184750082
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -430,8 +454,8 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 184750077}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
+  m_IsTrigger: 0
+  m_Enabled: 0
   m_Radius: 0.41
   m_Height: 2.83
   m_Direction: 1
@@ -449,7 +473,23 @@ CapsuleCollider:
   m_Radius: 1.6715202
   m_Height: 3.3430405
   m_Direction: 2
-  m_Center: {x: -0.07158947, y: 0, z: 1.0364294}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &184750084
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184750077}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 1
 --- !u!4 &196287664 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3428829505617517362, guid: 01e6ec26c6e16364c898b6a6a0dde34a,
@@ -532,6 +572,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082271958561512970, guid: 2dcfcddb63b52384eb3284770cdf01eb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5465940246521907071, guid: 2dcfcddb63b52384eb3284770cdf01eb,
         type: 3}

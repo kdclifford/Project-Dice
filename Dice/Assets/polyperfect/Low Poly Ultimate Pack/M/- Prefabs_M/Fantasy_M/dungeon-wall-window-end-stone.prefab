@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 4528664672540418}
   - component: {fileID: 33490017922425260}
   - component: {fileID: 23468069244917046}
-  - component: {fileID: 64666927014424104}
+  - component: {fileID: -8257181208740214404}
+  - component: {fileID: 4109123236679347871}
   m_Layer: 0
   m_Name: dungeon-wall-window-end-stone
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,7 +85,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64666927014424104
+--- !u!65 &-8257181208740214404
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820367028062614}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 4.019153, y: 3.0082805, z: 0.27731982}
+  m_Center: {x: -0.0051705837, y: 1.4958597, z: 0.1386597}
+--- !u!64 &4109123236679347871
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

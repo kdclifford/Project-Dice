@@ -106,7 +106,8 @@ GameObject:
   - component: {fileID: 3428829505617517389}
   - component: {fileID: 3428829505617517361}
   - component: {fileID: 3428829505617517360}
-  m_Layer: 0
+  - component: {fileID: 4661908923705987655}
+  m_Layer: 8
   m_Name: FirePickup
   m_TagString: PowerPickup
   m_Icon: {fileID: 0}
@@ -217,7 +218,26 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 1
+  m_Constraints: 122
+  m_CollisionDetection: 3
+--- !u!95 &4661908923705987655
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3428829505617517390}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a09e1edf134dc52479a5c9f229fb6bd9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
