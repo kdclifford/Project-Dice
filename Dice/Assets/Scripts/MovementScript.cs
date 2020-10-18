@@ -94,7 +94,7 @@ public class MovementScript : MonoBehaviour
         //}
         // if (Physics.SphereCast(transform.position, 2, new Vector3(horizontalInput, 1, verticalInput), out hit, rayDist))
 
-        if (Physics.Raycast(transform.position, Vector3.forward, rayDist, ~layerMask))
+        if (Physics.Raycast(transform.position, Vector3.forward, out hit, rayDist, ~layerMask))
         {
             if (verticalInput > 0)
             {
@@ -104,7 +104,7 @@ public class MovementScript : MonoBehaviour
 
 
         if (Physics.Raycast(transform.position, Vector3.back, out hit, rayDist, ~layerMask))
-        {
+        { 
             if (verticalInput < 0)
             {
                 verticalInput = 0;
