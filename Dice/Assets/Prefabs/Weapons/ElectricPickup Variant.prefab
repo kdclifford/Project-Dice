@@ -22,6 +22,21 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0.96027136
       objectReference: {fileID: 0}
+    - target: {fileID: 3428829505617517360, guid: 01e6ec26c6e16364c898b6a6a0dde34a,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 122
+      objectReference: {fileID: 0}
+    - target: {fileID: 3428829505617517360, guid: 01e6ec26c6e16364c898b6a6a0dde34a,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3428829505617517360, guid: 01e6ec26c6e16364c898b6a6a0dde34a,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3428829505617517361, guid: 01e6ec26c6e16364c898b6a6a0dde34a,
         type: 3}
       propertyPath: ProjectilePickup
@@ -93,6 +108,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ElectricPickup Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661908923705987655, guid: 01e6ec26c6e16364c898b6a6a0dde34a,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01e6ec26c6e16364c898b6a6a0dde34a, type: 3}

@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 4718138085910574}
   - component: {fileID: 33934487323461442}
   - component: {fileID: 23682389773582944}
-  - component: {fileID: 64731671634626604}
+  - component: {fileID: -3818862418993713809}
+  - component: {fileID: 1973058103832944649}
   m_Layer: 0
   m_Name: dungeon-wall-window-start-stone
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,7 +85,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64731671634626604
+--- !u!65 &-3818862418993713809
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969381044034554}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 4.000066, y: 3.0085628, z: 0.2671231}
+  m_Center: {x: -0.000023841858, y: 1.5042814, z: 0.13356134}
+--- !u!64 &1973058103832944649
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

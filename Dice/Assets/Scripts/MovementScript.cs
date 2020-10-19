@@ -1,4 +1,5 @@
 ﻿using AnimationFunctions.Utils;
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,10 @@ public class MovementScript : MonoBehaviour
     private GameObject cameraDummy;
     [SerializeField]
     private Animator animator;
-
+    [SerializeField]
+    private float rayDist;
+    [SerializeField]
+    private LayerMask layerMask;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +54,7 @@ public class MovementScript : MonoBehaviour
 
         Vector2 controller = new Vector2(horizontalInput, verticalInput);
 
-       Debug.Log( Vector2.Distance(xVector, controller));
+        // Debug.Log( Vector2.Distance(xVector, controller));
 
            // Debug.Log((Mathf.Abs(horizontalInput) - Mathf.Abs(facing.x)) - (Mathf.Abs(verticalInput) - Mathf.Abs(facing.y)));
         if (Mathf.Abs(horizontalInput + verticalInput) > 0)
@@ -79,6 +83,74 @@ public class MovementScript : MonoBehaviour
 
 
         }
-        transform.Translate(new Vector3(horizontalInput, 0, verticalInput) * moveSpeed * Time.deltaTime, Space.World);
+
+        RaycastHit hit;
+
+        //Vector3 newd = Vector3.Cross(new Vector3(horizontalInput, 1, verticalInput), transform.up).normalized;
+        //     if(Physics.Raycast(transform.position, newd, out hit, rayDist / 2) || Physics.Raycast(transform.position, -newd, out hit, rayDist / 2))
+        //{
+        //    Debug.Log("Working xxxx col");
+        //    GetComponent<Rigidbody>().velocity = Vector3.zero;
+        //}
+        // if (Physics.SphereCast(transform.position, 2, new Vector3(horizontalInput, 1, verticalInput), out hit, rayDist))
+
+        if (Physics.Raycast(transform.position, Vector3.forward, rayDist, ~layerMask))
+        {
+            if (verticalInput > 0)
+            {
+                verticalInput = 0;
+            }
+        }
+
+
+        if (Physics.Raycast(transform.position, Vector3.back, out hit, rayDist, ~layerMask))
+        {
+            if (verticalInput < 0)
+            {
+                verticalInput = 0;
+            }
+        }
+
+
+        if (Physics.Raycast(transform.position, Vector3.right, out hit, rayDist, ~layerMask))
+        {
+            if (horizontalInput > 0)
+            {
+                horizontalInput = 0;
+            }
+        }
+
+
+
+        if (Physics.Raycast(transform.position, Vector3.left, out hit, rayDist, ~layerMask))
+        {
+            //GetComponent<Rigidbody>().velocity = Vector3.zero;
+            ////transform.Translate(new Vector3(horizontalInput, 0, verticalInput) * -moveSpeed * Time.deltaTime, Space.World);
+            //Debug.Log("Working col");
+
+            if(horizontalInput < 0)
+            {
+                horizontalInput = 0;
+            }
+
+
+        }
+        
+
+            transform.Translate(new Vector3(horizontalInput, 0, verticalInput) * moveSpeed * Time.deltaTime, Space.World);
+        
     }
+
+    
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Wall"))
+        {
+           
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
+        }
+    }
+
+
 }

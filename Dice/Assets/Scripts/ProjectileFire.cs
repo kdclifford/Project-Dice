@@ -35,10 +35,7 @@ public class ProjectileFire : MonoBehaviour
     Collider pickupCollider;
     private bool pickupColliding;
 
-    [SerializeField]
-    private Animator animator;
-
-    [SerializeField]
+    private Animator animator;   
     private SoundManager soundManager;
 
     //Bools to chek if the user is firing
@@ -46,9 +43,7 @@ public class ProjectileFire : MonoBehaviour
     public bool rightFire = false;
     [HideInInspector]
     public bool leftFire = false;
-
-   public GameObject aimDummy;
-
+  
     // Start is called before the first frame update
     void Start()
     {
@@ -87,9 +82,9 @@ public class ProjectileFire : MonoBehaviour
             }
         }
 
-        if (!rightFire && !leftFire)
+        if (!rightFire && !leftFire/* && animator.GetCurrentAnimatorStateInfo(0).IsTag("Idle")*/)
         {
-            AnimationScript.Idle4(animator);
+            AnimationScript.Idle(animator);
         }
 
         currRTFireCooldown -= Time.deltaTime;
@@ -181,5 +176,4 @@ public class ProjectileFire : MonoBehaviour
 
         currLTFireCooldown = MaxFireCooldown;
     }
-
 }
