@@ -105,9 +105,8 @@ GameObject:
   - component: {fileID: 6344335812988061144}
   - component: {fileID: 4811113834965867643}
   - component: {fileID: 1991793173940383291}
-  - component: {fileID: 6888857219193360913}
-  - component: {fileID: 745881311698854351}
-  m_Layer: 0
+  - component: {fileID: 8650300934417849260}
+  m_Layer: 8
   m_Name: FireBall
   m_TagString: Equipped
   m_Icon: {fileID: 0}
@@ -4938,28 +4937,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxTimer: 2
---- !u!114 &6888857219193360913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6344335812988061145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba59347f73bcc2d45b6bea96a622e4d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!65 &745881311698854351
-BoxCollider:
+--- !u!135 &8650300934417849260
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6344335812988061145}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 11.4, y: 177.9, z: 26.2}
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}

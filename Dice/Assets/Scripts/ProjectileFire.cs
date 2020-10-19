@@ -43,7 +43,9 @@ public class ProjectileFire : MonoBehaviour
     public bool rightFire = false;
     [HideInInspector]
     public bool leftFire = false;
-  
+    
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,7 +84,10 @@ public class ProjectileFire : MonoBehaviour
             }
         }
 
-        if (!rightFire && !leftFire/* && animator.GetCurrentAnimatorStateInfo(0).IsTag("Idle")*/)
+        
+
+
+        if (!rightFire && !leftFire && !GetComponent<MovementScript>().walking)
         {
             AnimationScript.Idle(animator);
         }
@@ -149,13 +154,16 @@ public class ProjectileFire : MonoBehaviour
 
         leftFire = false;
     }
-    
+    public float yOffset = 1;
+
     public void RightFire()
     {
         Quaternion playerRot = Quaternion.identity;
         playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y, 90);
 
         Vector3 RightFirePos = transform.position + (transform.right * projectileDistance);// RightFirePos.x += 0.4f;
+        RightFirePos.y += yOffset;
+
         GameObject bullet = Instantiate(projectileRight, RightFirePos, playerRot) as GameObject;
         bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
         soundManager.Play(projectileRight.name, bullet);
@@ -169,6 +177,8 @@ public class ProjectileFire : MonoBehaviour
         playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y, 90);
 
         Vector3 LeftFirePos = transform.position + (transform.right * -projectileDistance);// LeftFirePos.x -= 0.4f;
+        LeftFirePos.y += yOffset;
+
         GameObject bullet = Instantiate(projectileLeft, LeftFirePos, playerRot) as GameObject;
         bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
 

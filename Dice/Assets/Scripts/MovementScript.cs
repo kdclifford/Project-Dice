@@ -16,6 +16,11 @@ public class MovementScript : MonoBehaviour
     private float rayDist;
     [SerializeField]
     private LayerMask layerMask;
+   
+    public bool walking = false;
+
+    Vector3 rayOffset = new Vector3(0, 0.5f, 0);
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +64,7 @@ public class MovementScript : MonoBehaviour
            // Debug.Log((Mathf.Abs(horizontalInput) - Mathf.Abs(facing.x)) - (Mathf.Abs(verticalInput) - Mathf.Abs(facing.y)));
         if (Mathf.Abs(horizontalInput + verticalInput) > 0)
         {
+            walking = true;
        // Debug.Log(Mathf.Abs(Mathf.Abs(facing.y) - Mathf.Abs(facing.x)) - Mathf.Abs(Mathf.Abs(verticalInput) - Mathf.Abs(horizontalInput)));
 
             if (!rightfire && !leftfire && Vector2.Distance(facing, controller) <= 0.7f)
@@ -83,6 +89,10 @@ public class MovementScript : MonoBehaviour
 
 
         }
+        else
+        {
+            walking = false;
+        }
 
         RaycastHit hit;
 
@@ -94,7 +104,9 @@ public class MovementScript : MonoBehaviour
         //}
         // if (Physics.SphereCast(transform.position, 2, new Vector3(horizontalInput, 1, verticalInput), out hit, rayDist))
 
-        if (Physics.Raycast(transform.position, Vector3.forward, rayDist, ~layerMask))
+        
+
+        if (Physics.Raycast(transform.position + rayOffset, Vector3.forward, out hit, rayDist, ~layerMask))
         {
             if (verticalInput > 0)
             {
@@ -103,8 +115,8 @@ public class MovementScript : MonoBehaviour
         }
 
 
-        if (Physics.Raycast(transform.position, Vector3.back, out hit, rayDist, ~layerMask))
-        {
+        if (Physics.Raycast(transform.position + rayOffset, Vector3.back, out hit, rayDist, ~layerMask))
+        { 
             if (verticalInput < 0)
             {
                 verticalInput = 0;
@@ -112,7 +124,7 @@ public class MovementScript : MonoBehaviour
         }
 
 
-        if (Physics.Raycast(transform.position, Vector3.right, out hit, rayDist, ~layerMask))
+        if (Physics.Raycast(transform.position + rayOffset, Vector3.right, out hit, rayDist, ~layerMask))
         {
             if (horizontalInput > 0)
             {
@@ -122,7 +134,7 @@ public class MovementScript : MonoBehaviour
 
 
 
-        if (Physics.Raycast(transform.position, Vector3.left, out hit, rayDist, ~layerMask))
+        if (Physics.Raycast(transform.position + rayOffset, Vector3.left, out hit, rayDist, ~layerMask))
         {
             //GetComponent<Rigidbody>().velocity = Vector3.zero;
             ////transform.Translate(new Vector3(horizontalInput, 0, verticalInput) * -moveSpeed * Time.deltaTime, Space.World);
