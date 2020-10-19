@@ -116,6 +116,7 @@ public class ProjectileFire : MonoBehaviour
 
     void OnTriggerStay(Collider Collision)
     {
+        if (Collision.gameObject.tag == "PowerPickup")
         interactPopup.enabled = true;
 
         if (Collision.gameObject.tag == "PowerPickup" && Input.GetKey(KeyCode.JoystickButton0))
