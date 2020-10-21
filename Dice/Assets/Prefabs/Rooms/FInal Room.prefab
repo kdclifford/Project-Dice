@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7638974500389706609}
+  - component: {fileID: 8034035814706208347}
   m_Layer: 0
   m_Name: FInal Room
   m_TagString: Untagged
@@ -57,6 +58,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8034035814706208347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7638974500389706608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef4a88bdc7b640248abd13fe6d9e1654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Size: {x: 4, y: 3}
+  DoorLocations:
+  - {x: 4, y: 3}
+  roomType: 1
 --- !u!1001 &144267368275864605
 PrefabInstance:
   m_ObjectHideFlags: 0
