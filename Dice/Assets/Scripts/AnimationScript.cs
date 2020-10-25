@@ -32,12 +32,20 @@ namespace AnimationFunctions.Utils
 
         public static void RightAttack(Animator animator)
         {
-            animator.SetInteger("Animation", 1);
+            animator.SetInteger("Attack", 1);
+            //animator.SetBool("Shooting", true);
         }
 
         public static void LeftAttack(Animator animator)
         {
-            animator.SetInteger("Animation", 2);
+            animator.SetInteger("Attack", 2);
+            //animator.SetBool("Shooting", true);
+        }
+
+        public static void DoubleAttack(Animator animator)
+        {
+            animator.SetInteger("Attack", 3);
+            //animator.SetBool("Shooting", true);
         }
 
         public static void WalkFoward(Animator animator)

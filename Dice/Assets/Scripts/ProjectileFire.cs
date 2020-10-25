@@ -6,10 +6,10 @@ using UnityEngine;
 
 public class ProjectileFire : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject projectileLeft;
-    [SerializeField]
-    private GameObject projectileRight;
+    //[SerializeField]
+    public GameObject projectileLeft;
+    //[SerializeField]
+    public GameObject projectileRight;
     [SerializeField]
     private float MaxFireCooldown = 1;
     [SerializeField]
@@ -22,6 +22,10 @@ public class ProjectileFire : MonoBehaviour
     private Image interactPopup;
     [SerializeField]
     private Image EquipPopup;
+    [SerializeField]
+    private Material mat1;
+    [SerializeField]
+    private Material mat2;
 
     private float currRTFireCooldown = 0;
     private float currLTFireCooldown = 0;
@@ -43,8 +47,9 @@ public class ProjectileFire : MonoBehaviour
     public bool rightFire = false;
     [HideInInspector]
     public bool leftFire = false;
-    
 
+    private Color leftColour;
+    private Color rightColour;
 
     // Start is called before the first frame update
     void Start()
@@ -60,40 +65,46 @@ public class ProjectileFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("RTrigger") > 0 && projectileRight.tag != ("NotEquipped"))
+       
+
+
+        if (Input.GetAxis("RTrigger") > 0 && projectileRight.tag != ("NotEquipped") && Input.GetAxis("LTrigger") > 0 && projectileLeft.tag != ("NotEquipped"))
         {
-            if (currRTFireCooldown <= 0)
-            {
-                if(!rightFire)
-                {
-                rightFire = true;
-                }
-                AnimationScript.RightAttack(animator);                
-            }
+            AnimationScript.DoubleAttack(animator);
         }
-        
-        if (Input.GetAxis("LTrigger") > 0 && projectileLeft.tag != ("NotEquipped"))
+        else
         {
-            if (currLTFireCooldown <= 0)
+
+            if (Input.GetAxis("RTrigger") > 0 && projectileRight.tag != ("NotEquipped"))
             {
-                if (!leftFire)
+                if (currRTFireCooldown <= 0)
                 {
-                    leftFire = true;
+                    if (!rightFire)
+                    {
+                        rightFire = true;
+                    }
+                    AnimationScript.RightAttack(animator);
                 }
-                AnimationScript.LeftAttack(animator);
             }
-        }
 
-        
-
-
-        if (!rightFire && !leftFire && !GetComponent<MovementScript>().walking)
-        {
-            AnimationScript.Idle(animator);
+            if (Input.GetAxis("LTrigger") > 0 && projectileLeft.tag != ("NotEquipped"))
+            {
+                if (currLTFireCooldown <= 0)
+                {
+                    if (!leftFire)
+                    {
+                        leftFire = true;
+                    }
+                    AnimationScript.LeftAttack(animator);
+                }
+            }
         }
 
         currRTFireCooldown -= Time.deltaTime;
         currLTFireCooldown -= Time.deltaTime;
+            
+            
+            
 
         if (Input.GetAxis("HorizontalDpad") < 0 && pickupColliding == true && attachedParticle != null)
         {
@@ -104,6 +115,11 @@ public class ProjectileFire : MonoBehaviour
             EquipPopup.enabled = false;
             attachedParticle = null;
             pickupCollider = null;
+            leftColour = projectileLeft.GetComponent<ParticleSystem>().main.startColor.color;
+            if (projectileLeft.tag != ("NotEquipped"))
+            {
+                mat2.color = leftColour;
+            }
         }
         else if (Input.GetAxis("HorizontalDpad") > 0 && pickupColliding == true && attachedParticle != null)
         {
@@ -114,6 +130,12 @@ public class ProjectileFire : MonoBehaviour
             EquipPopup.enabled = false;
             attachedParticle = null;
             pickupCollider = null;
+
+            rightColour = projectileRight.GetComponent<ParticleSystem>().main.startColor.color;
+            if (projectileRight.tag != ("NotEquipped"))
+            {
+                mat1.color = rightColour;
+            }
         }
 
     }
@@ -187,4 +209,34 @@ public class ProjectileFire : MonoBehaviour
 
         currLTFireCooldown = MaxFireCooldown;
     }
+
+    public void MiddleFire()
+    {
+        Quaternion playerRot = Quaternion.identity;
+        playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y, 90);
+
+        Vector3 LeftFirePos = transform.position;// LeftFirePos.x -= 0.4f;
+        LeftFirePos.y += yOffset;
+
+        GameObject bullet = Instantiate(projectileLeft, LeftFirePos, playerRot) as GameObject;
+        bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
+
+
+        soundManager.Play(projectileLeft.name, bullet);
+
+        currLTFireCooldown = MaxFireCooldown;
+
+        Vector3 RightFirePos = transform.position;// RightFirePos.x += 0.4f;
+        RightFirePos.y += yOffset;
+
+        bullet = Instantiate(projectileRight, RightFirePos, playerRot) as GameObject;
+        bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
+        soundManager.Play(projectileRight.name, bullet);
+
+        currRTFireCooldown = MaxFireCooldown;
+
+
+    }
+
+
 }
