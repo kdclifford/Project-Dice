@@ -13,16 +13,14 @@ public class MovementScript : MonoBehaviour
     [SerializeField]
     private float rayDist;
     [SerializeField]
-    private LayerMask layerMask;
-   
-    public bool walking = false;
+    private LayerMask layerMask;   
 
     public Vector3 rayOffset = new Vector3(0, 1.5f, 0);
 
-    Vector3 upRight = Vector3.forward + Vector3.right;
-    Vector3 upLeft = Vector3.forward + Vector3.left;
-    Vector3 downRight = Vector3.back + Vector3.right;
-    Vector3 downLeft = Vector3.back + Vector3.left;
+   private Vector3 upRight = Vector3.forward + Vector3.right;
+   private Vector3 upLeft = Vector3.forward + Vector3.left;
+   private Vector3 downRight = Vector3.back + Vector3.right;
+   private Vector3 downLeft = Vector3.back + Vector3.left;
 
     public float diagonalOffset = 0.9f;
     public float collisionForce = 1.0f;
@@ -81,7 +79,6 @@ public class MovementScript : MonoBehaviour
                 GetComponent<Rigidbody>().AddForce(Vector3.back * collisionForce);
             }
         }
-
 
 
 
@@ -144,15 +141,10 @@ public class MovementScript : MonoBehaviour
         else
         {
             Debug.DrawRay(transform.position, Vector3.left * rayDist, Color.green);
-        }
+        }       
 
-        
-
-            transform.Translate(new Vector3(horizontalInput, 0, verticalInput) * moveSpeed * Time.deltaTime, Space.World);
-        
-    }
-
-    
+            transform.Translate(new Vector3(horizontalInput, 0, verticalInput) * moveSpeed * Time.deltaTime, Space.World);        
+    }        
 
     void OnCollisionEnter(Collision collision)
     {
@@ -162,7 +154,6 @@ public class MovementScript : MonoBehaviour
             GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
     }
-
 
     bool UpLeft()
     {

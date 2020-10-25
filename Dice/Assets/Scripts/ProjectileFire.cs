@@ -36,7 +36,7 @@ public class ProjectileFire : MonoBehaviour
 
     private GameObject attachedParticle;
     private Sprite attachedSprite;
-    Collider pickupCollider;
+    private Collider pickupCollider;
     private bool pickupColliding;
 
     private Animator animator;   
@@ -48,8 +48,9 @@ public class ProjectileFire : MonoBehaviour
     [HideInInspector]
     public bool leftFire = false;
 
-    private Color leftColour;
-    private Color rightColour;
+    private Color leftProjectileColour;
+    private Color rightProjectileColour;
+    public float yOffsetProgectile = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -65,9 +66,6 @@ public class ProjectileFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-
-
         if (Input.GetAxis("RTrigger") > 0 && projectileRight.tag != ("NotEquipped") && Input.GetAxis("LTrigger") > 0 && projectileLeft.tag != ("NotEquipped"))
         {
             AnimationScript.DoubleAttack(animator);
@@ -115,10 +113,10 @@ public class ProjectileFire : MonoBehaviour
             EquipPopup.enabled = false;
             attachedParticle = null;
             pickupCollider = null;
-            leftColour = projectileLeft.GetComponent<ParticleSystem>().main.startColor.color;
+            leftProjectileColour = projectileLeft.GetComponent<ParticleSystem>().main.startColor.color;
             if (projectileLeft.tag != ("NotEquipped"))
             {
-                mat2.color = leftColour;
+                mat2.color = leftProjectileColour;
             }
         }
         else if (Input.GetAxis("HorizontalDpad") > 0 && pickupColliding == true && attachedParticle != null)
@@ -131,10 +129,10 @@ public class ProjectileFire : MonoBehaviour
             attachedParticle = null;
             pickupCollider = null;
 
-            rightColour = projectileRight.GetComponent<ParticleSystem>().main.startColor.color;
+            rightProjectileColour = projectileRight.GetComponent<ParticleSystem>().main.startColor.color;
             if (projectileRight.tag != ("NotEquipped"))
             {
-                mat1.color = rightColour;
+                mat1.color = rightProjectileColour;
             }
         }
 
@@ -176,7 +174,6 @@ public class ProjectileFire : MonoBehaviour
 
         leftFire = false;
     }
-    public float yOffset = 1;
 
     public void RightFire()
     {
@@ -184,7 +181,7 @@ public class ProjectileFire : MonoBehaviour
         playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y, 90);
 
         Vector3 RightFirePos = transform.position + (transform.right * projectileDistance);// RightFirePos.x += 0.4f;
-        RightFirePos.y += yOffset;
+        RightFirePos.y += yOffsetProgectile;
 
         GameObject bullet = Instantiate(projectileRight, RightFirePos, playerRot) as GameObject;
         bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
@@ -199,7 +196,7 @@ public class ProjectileFire : MonoBehaviour
         playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y, 90);
 
         Vector3 LeftFirePos = transform.position + (transform.right * -projectileDistance);// LeftFirePos.x -= 0.4f;
-        LeftFirePos.y += yOffset;
+        LeftFirePos.y += yOffsetProgectile;
 
         GameObject bullet = Instantiate(projectileLeft, LeftFirePos, playerRot) as GameObject;
         bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
@@ -216,18 +213,16 @@ public class ProjectileFire : MonoBehaviour
         playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y, 90);
 
         Vector3 LeftFirePos = transform.position;// LeftFirePos.x -= 0.4f;
-        LeftFirePos.y += yOffset;
+        LeftFirePos.y += yOffsetProgectile;
 
         GameObject bullet = Instantiate(projectileLeft, LeftFirePos, playerRot) as GameObject;
         bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
-
-
         soundManager.Play(projectileLeft.name, bullet);
 
         currLTFireCooldown = MaxFireCooldown;
 
         Vector3 RightFirePos = transform.position;// RightFirePos.x += 0.4f;
-        RightFirePos.y += yOffset;
+        RightFirePos.y += yOffsetProgectile;
 
         bullet = Instantiate(projectileRight, RightFirePos, playerRot) as GameObject;
         bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);

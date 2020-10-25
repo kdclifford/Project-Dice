@@ -7,20 +7,14 @@ public class AnimationTest : MonoBehaviour
 {
     private Animator animator;
 
-    // public float xMove = 0;
-    // public float yMove = 0;
-    public float velocity;
-    Vector2 leftStickInputAxis;
+    private float velocity;
+    private Vector2 leftStickInputAxis;
 
-    public Vector2 facingVector;
-    public Vector2 moveVec;
-
-    public int idle = 0;
-    int newIdle;
-    public bool idleAnimation = false;
+    private int idle = 0;
+    private bool idleAnimation = false;
 
     public float health = 10;
-    public Vector2 death;
+    public Vector2 deathDirection;
 
     float triggerPress = 0;
 
@@ -70,7 +64,7 @@ public class AnimationTest : MonoBehaviour
         }
         else
         {
-            death = CurrentDirection(death);
+            deathDirection = CurrentDirection(deathDirection);
             Death();
         }
 
@@ -94,8 +88,8 @@ public class AnimationTest : MonoBehaviour
     private void Death()
     {
 
-        animator.SetFloat("DeathX", death.x);
-        animator.SetFloat("DeathY", death.y);
+        animator.SetFloat("DeathX", deathDirection.x);
+        animator.SetFloat("DeathY", deathDirection.y);
     }
 
     private void IdleAnimationOn()
