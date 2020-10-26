@@ -25,22 +25,61 @@ public class AnimationTest : MonoBehaviour
 
     private void Update()
     {
-        leftStickInputAxis.x = Input.GetAxis("LHorizontal");
-        leftStickInputAxis.y = Input.GetAxis("LVertical");
-
-
         triggerPress = 0;
 
 
-        if (GetComponent<ProjectileFire>().projectileRight.tag != ("NotEquipped") && Input.GetAxis("RTrigger") > 0)
+
+        if (GetComponent<MovementScript>().controller)
         {
-            triggerPress += Input.GetAxis("RTrigger");
+            leftStickInputAxis.x = Input.GetAxis("LHorizontal");
+            leftStickInputAxis.y = Input.GetAxis("LVertical");
+
+            if (GetComponent<ProjectileFire>().projectileRight.tag != ("NotEquipped") && Input.GetAxis("RTrigger") > 0)
+            {
+                triggerPress += Input.GetAxis("RTrigger");
+            }
+
+            if (GetComponent<ProjectileFire>().projectileRight.tag != ("NotEquipped") && Input.GetAxis("LTrigger") > 0)
+            {
+                triggerPress += Input.GetAxis("LTrigger");
+            }
+        }
+        else
+        {
+            float verticalInput = 0;
+            float horizontalInput = 0;
+            if (Input.GetKey(KeyCode.W))
+            {
+                verticalInput = Vector2.up.y;
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                verticalInput = Vector2.down.y;
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                horizontalInput = Vector2.left.x;
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                horizontalInput = Vector2.right.x;
+            }
+
+            leftStickInputAxis.x = horizontalInput;
+            leftStickInputAxis.y = verticalInput;
+
+            if (GetComponent<ProjectileFire>().projectileRight.tag != ("NotEquipped") && Input.GetMouseButton(0))
+            {
+                triggerPress += 1;
+            }
+
+            if (GetComponent<ProjectileFire>().projectileRight.tag != ("NotEquipped") && Input.GetMouseButton(1))
+            {
+                triggerPress += 1;
+            }
         }
 
-        if (GetComponent<ProjectileFire>().projectileRight.tag != ("NotEquipped") && Input.GetAxis("LTrigger") > 0)
-        {
-            triggerPress += Input.GetAxis("LTrigger");
-        }
+
 
         animator.SetFloat("TriggerPress", triggerPress);
 
