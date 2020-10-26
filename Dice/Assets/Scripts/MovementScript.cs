@@ -25,11 +25,6 @@ public class MovementScript : MonoBehaviour
     public float diagonalOffset = 0.9f;
     public float collisionForce = 1.0f;
 
-    public bool controller = false;
-
-    float horizontalInput = 0;
-    float verticalInput = 0;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -38,52 +33,15 @@ public class MovementScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontalInput = 0;
-        verticalInput = 0;
+        var angle = Mathf.Atan2(Input.GetAxis("RHorizontal"), Input.GetAxis("RVertical")) * Mathf.Rad2Deg;
+        float horizontalInput = Input.GetAxis("LHorizontal"); float verticalInput = Input.GetAxis("LVertical");
 
-        if (controller)
+        if ( angle > 1 || angle < -1)
         {
-            var angle = Mathf.Atan2(Input.GetAxis("RHorizontal"), Input.GetAxis("RVertical")) * Mathf.Rad2Deg;
-            horizontalInput = Input.GetAxis("LHorizontal"); verticalInput = Input.GetAxis("LVertical");
-
-            if (angle > 1 || angle < -1)
-            {
-                transform.rotation = Quaternion.Euler(0, angle, 0);
-                cameraDummy.transform.rotation = Quaternion.Euler(0, 0, 0);
-            }
-        }
-        else
-        {
-            if(Input.GetKey(KeyCode.W))
-            {
-                verticalInput = Vector2.up.y;
-            }
-            if (Input.GetKey(KeyCode.S))
-            {
-                verticalInput = Vector2.down.y;
-            }
-            if (Input.GetKey(KeyCode.A))
-            {
-                horizontalInput = Vector2.left.x;
-            }
-            if (Input.GetKey(KeyCode.D))
-            {
-                horizontalInput = Vector2.right.x;
-            }
-
-            float angle;
-            Vector3 object_pos;
-            Vector3 mouse_pos;
-            mouse_pos = Input.mousePosition;
-            //mouse_pos.z = 5.23; //The distance between the camera and object
-            object_pos = Camera.main.WorldToScreenPoint(transform.position);
-            mouse_pos.x = mouse_pos.x - object_pos.x;
-            mouse_pos.y = mouse_pos.y - object_pos.y;
-            angle = Mathf.Atan2(mouse_pos.x, mouse_pos.y) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, angle, 0);
             cameraDummy.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
-
+           
         RaycastHit hit;
 
 
