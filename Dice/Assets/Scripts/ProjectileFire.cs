@@ -66,43 +66,42 @@ public class ProjectileFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("RTrigger") > 0 && projectileRight.tag != ("NotEquipped") && Input.GetAxis("LTrigger") > 0 && projectileLeft.tag != ("NotEquipped"))
-        {
-            AnimationScript.DoubleAttack(animator);
-        }
-        else
+
+        if (GetComponent<MovementScript>().controller)
         {
 
-            if (Input.GetAxis("RTrigger") > 0 && projectileRight.tag != ("NotEquipped"))
+            if (Input.GetAxis("RTrigger") > 0 && projectileRight.tag != ("NotEquipped") && Input.GetAxis("LTrigger") > 0 && projectileLeft.tag != ("NotEquipped"))
             {
-                if (currRTFireCooldown <= 0)
+                AnimationScript.DoubleAttack(animator);
+            }
+            else
+            {
+
+                if (Input.GetAxis("RTrigger") > 0 && projectileRight.tag != ("NotEquipped"))
                 {
-                    if (!rightFire)
+                    if (currRTFireCooldown <= 0)
                     {
-                        rightFire = true;
+                        if (!rightFire)
+                        {
+                            rightFire = true;
+                        }
+                        AnimationScript.RightAttack(animator);
                     }
-                    AnimationScript.RightAttack(animator);
+                }
+
+                if (Input.GetAxis("LTrigger") > 0 && projectileLeft.tag != ("NotEquipped"))
+                {
+                    if (currLTFireCooldown <= 0)
+                    {
+                        if (!leftFire)
+                        {
+                            leftFire = true;
+                        }
+                        AnimationScript.LeftAttack(animator);
+                    }
                 }
             }
-
-            if (Input.GetAxis("LTrigger") > 0 && projectileLeft.tag != ("NotEquipped"))
-            {
-                if (currLTFireCooldown <= 0)
-                {
-                    if (!leftFire)
-                    {
-                        leftFire = true;
-                    }
-                    AnimationScript.LeftAttack(animator);
-                }
-            }
-        }
-
-        currRTFireCooldown -= Time.deltaTime;
-        currLTFireCooldown -= Time.deltaTime;
-            
-            
-            
+        
 
         if (Input.GetAxis("HorizontalDpad") < 0 && pickupColliding == true && attachedParticle != null)
         {
@@ -135,7 +134,81 @@ public class ProjectileFire : MonoBehaviour
                 mat1.color = rightProjectileColour;
             }
         }
+    }
+        else
+        {
+            if (Input.GetMouseButton(0) && projectileRight.tag != ("NotEquipped") && Input.GetMouseButton(1) && projectileLeft.tag != ("NotEquipped"))
+            {
+                AnimationScript.DoubleAttack(animator);
+            }
+            else
+            {
 
+                if (Input.GetMouseButton(1) && projectileRight.tag != ("NotEquipped"))
+                {
+                    if (currRTFireCooldown <= 0)
+                    {
+                        if (!rightFire)
+                        {
+                            rightFire = true;
+                        }
+                        AnimationScript.RightAttack(animator);
+                    }
+                }
+
+                if (Input.GetMouseButton(0) && projectileLeft.tag != ("NotEquipped"))
+                {
+                    if (currLTFireCooldown <= 0)
+                    {
+                        if (!leftFire)
+                        {
+                            leftFire = true;
+                        }
+                        AnimationScript.LeftAttack(animator);
+                    }
+                }
+            }
+
+
+            if (Input.GetKey(KeyCode.Q) && pickupColliding == true && attachedParticle != null)
+            {
+                projectileLeft = attachedParticle;
+                LeftUIIcon.sprite = attachedSprite;
+                Destroy(pickupCollider.gameObject);
+                interactPopup.enabled = false;
+                EquipPopup.enabled = false;
+                attachedParticle = null;
+                pickupCollider = null;
+                leftProjectileColour = projectileLeft.GetComponent<ParticleSystem>().main.startColor.color;
+                if (projectileLeft.tag != ("NotEquipped"))
+                {
+                    mat2.color = leftProjectileColour;
+                }
+            }
+            else if (Input.GetKey(KeyCode.E) && pickupColliding == true && attachedParticle != null)
+            {
+                projectileRight = attachedParticle;
+                RightUIIcon.sprite = attachedSprite;
+                Destroy(pickupCollider.gameObject);
+                interactPopup.enabled = false;
+                EquipPopup.enabled = false;
+                attachedParticle = null;
+                pickupCollider = null;
+
+                rightProjectileColour = projectileRight.GetComponent<ParticleSystem>().main.startColor.color;
+                if (projectileRight.tag != ("NotEquipped"))
+                {
+                    mat1.color = rightProjectileColour;
+                }
+            }
+        }
+
+
+
+
+
+        currRTFireCooldown -= Time.deltaTime;
+        currLTFireCooldown -= Time.deltaTime;
     }
 
 
@@ -144,13 +217,27 @@ public class ProjectileFire : MonoBehaviour
         if (Collision.gameObject.tag == "PowerPickup")
         interactPopup.enabled = true;
 
-        if (Collision.gameObject.tag == "PowerPickup" && Input.GetKey(KeyCode.JoystickButton0))
+        if (GetComponent<MovementScript>().controller)
         {
-            EquipPopup.enabled = true;
-            attachedParticle = Collision.GetComponent<PickupParticleEffect>().ProjectilePickup;
-            attachedSprite = Collision.GetComponent<PickupParticleEffect>().ProjectileUIIcon;
-            pickupCollider = Collision;
-            pickupColliding = true;
+            if (Collision.gameObject.tag == "PowerPickup" && Input.GetKey(KeyCode.JoystickButton0))
+            {
+                EquipPopup.enabled = true;
+                attachedParticle = Collision.GetComponent<PickupParticleEffect>().ProjectilePickup;
+                attachedSprite = Collision.GetComponent<PickupParticleEffect>().ProjectileUIIcon;
+                pickupCollider = Collision;
+                pickupColliding = true;
+            }
+        }
+        else
+        {
+            if (Collision.gameObject.tag == "PowerPickup" && Input.GetKey(KeyCode.Space))
+            {
+                EquipPopup.enabled = true;
+                attachedParticle = Collision.GetComponent<PickupParticleEffect>().ProjectilePickup;
+                attachedSprite = Collision.GetComponent<PickupParticleEffect>().ProjectileUIIcon;
+                pickupCollider = Collision;
+                pickupColliding = true;
+            }
         }
     }
     void OnTriggerExit(Collider other)
