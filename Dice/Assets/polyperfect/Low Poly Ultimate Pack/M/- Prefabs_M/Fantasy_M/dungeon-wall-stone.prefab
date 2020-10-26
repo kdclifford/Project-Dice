@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 23433333540319946}
   - component: {fileID: 1480702108926507262}
   - component: {fileID: 1247548851818299005}
-  - component: {fileID: 4377385630717349727}
   m_Layer: 0
   m_Name: dungeon-wall-stone
   m_TagString: Wall
@@ -113,19 +112,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 540449d18589c4c668a12557264fcb61, type: 3}
---- !u!208 &4377385630717349727
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1135327754445724}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 2.0010002, y: 1.501, z: 0.163}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: -0.001, y: 1.4990001, z: 0.165}
-  m_TimeToStationary: 0.5
