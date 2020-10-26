@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 23399992396103162}
   - component: {fileID: 6342265938714491}
   - component: {fileID: 5200509522403097556}
+  - component: {fileID: -4624436110847157460}
   m_Layer: 0
   m_Name: dungeon-wall-window-middle-stone
   m_TagString: Wall
@@ -112,3 +113,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: f6e633e96c63f425594f737444657ea7, type: 3}
+--- !u!208 &-4624436110847157460
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770391141014090}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2, y: 1.508, z: 0.164}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.5000001, z: 0.164}
+  m_TimeToStationary: 0.5

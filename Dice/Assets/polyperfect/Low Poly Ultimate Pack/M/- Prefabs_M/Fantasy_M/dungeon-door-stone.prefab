@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 23959334469996066}
   - component: {fileID: 2158966825831498994}
   - component: {fileID: 5951972072862855181}
+  - component: {fileID: -7231511548483102625}
   m_Layer: 11
   m_Name: dungeon-door-stone
   m_TagString: Untagged
@@ -111,3 +112,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.433918, y: 3.0026963, z: 0.19161792}
   m_Center: {x: -1.4162886, y: 1.4986519, z: 0.0975484}
+--- !u!208 &-7231511548483102625
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781130428969628}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2.0010002, y: 1.501, z: 0.163}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.001, y: 1.4990001, z: 0.165}
+  m_TimeToStationary: 0.5
