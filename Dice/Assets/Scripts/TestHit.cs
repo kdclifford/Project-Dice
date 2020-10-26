@@ -34,10 +34,10 @@ public class TestHit : MonoBehaviour
 
     void ShowFloatingText()
     {
-        GameObject text = Instantiate(textPrefab, transform.position, textPrefab.transform.rotation, transform) as GameObject;
+        GameObject text = Instantiate(textPrefab, transform.position, textPrefab.transform.rotation) as GameObject;
         text.GetComponent<TextMesh>().text = Random.Range(10, 50).ToString();
         text.GetComponent<TextMesh>().color = textColour;
-        
+        GetComponent<EnemyAi>().health -= int.Parse(text.GetComponent<TextMesh>().text);
     }
 
     

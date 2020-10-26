@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using AnimationFunctions.Utils;
 using UnityEngine;
 
 public class AnimationTest : MonoBehaviour
@@ -39,7 +40,7 @@ public class AnimationTest : MonoBehaviour
                 triggerPress += Input.GetAxis("RTrigger");
             }
 
-            if (GetComponent<ProjectileFire>().projectileRight.tag != ("NotEquipped") && Input.GetAxis("LTrigger") > 0)
+            if (GetComponent<ProjectileFire>().projectileLeft.tag != ("NotEquipped") && Input.GetAxis("LTrigger") > 0)
             {
                 triggerPress += Input.GetAxis("LTrigger");
             }
@@ -73,7 +74,7 @@ public class AnimationTest : MonoBehaviour
                 triggerPress += 1;
             }
 
-            if (GetComponent<ProjectileFire>().projectileRight.tag != ("NotEquipped") && Input.GetMouseButton(1))
+            if (GetComponent<ProjectileFire>().projectileLeft.tag != ("NotEquipped") && Input.GetMouseButton(1))
             {
                 triggerPress += 1;
             }
@@ -87,7 +88,7 @@ public class AnimationTest : MonoBehaviour
         if (health > 0)
         {
             velocity = Mathf.Abs(leftStickInputAxis.x) + Mathf.Abs(leftStickInputAxis.y);
-            leftStickInputAxis = CurrentDirection(leftStickInputAxis);
+            leftStickInputAxis = AnimationScript.CurrentDirection(leftStickInputAxis, gameObject);
 
             leftStickInputAxis.x *= velocity;
             leftStickInputAxis.y *= velocity;
@@ -103,7 +104,7 @@ public class AnimationTest : MonoBehaviour
         }
         else
         {
-            deathDirection = CurrentDirection(deathDirection);
+            deathDirection = AnimationScript.CurrentDirection(deathDirection, gameObject);
             Death();
         }
 
@@ -145,57 +146,7 @@ public class AnimationTest : MonoBehaviour
     }
 
 
-    private Vector2 CurrentDirection(Vector2 input)
-    {
-
-
-        var a = Vector3.SignedAngle(new Vector3(input.x, 0, input.y), transform.forward, transform.up);
-
-
-
-        // Normalize the angle
-        if (a < 0)
-        {
-            a *= -1;
-        }
-        else
-        {
-            a = 360 - a;
-        }
-
-        // Take into consideration the angle of the camera
-        //a += Camera.main.transform.eulerAngles.y;
-
-        var aRad = Mathf.Deg2Rad * a; // degrees to radians
-        //Debug.Log(leftStickInputAxis);
-        // If there is some form of input, calculate the new axis relative to the rotation of the model
-        if (input.x != 0 || input.y != 0)
-        {
-            input = new Vector2(Mathf.Sin(aRad), Mathf.Cos(aRad));
-        }
-
-
-        if (input.x < -1)
-        {
-            input.x = -1;
-        }
-        else if (input.x > 1.6f)
-        {
-            input.x = 1.6f;
-        }
-
-
-        if (input.y < -1)
-        {
-            input.y = -1;
-        }
-        else if (input.y > 1.6f)
-        {
-            input.y = 1.6f;
-        }
-
-        return input;
-    }
+  
 
 
 
