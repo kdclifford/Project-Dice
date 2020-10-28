@@ -6,10 +6,10 @@ using UnityEngine;
 
 public class ProjectileFire : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject projectileLeft;
-    [SerializeField]
-    private GameObject projectileRight;
+    //[SerializeField]
+    public GameObject projectileLeft;
+    //[SerializeField]
+    public GameObject projectileRight;
     [SerializeField]
     private float MaxFireCooldown = 1;
     [SerializeField]
@@ -22,6 +22,10 @@ public class ProjectileFire : MonoBehaviour
     private Image interactPopup;
     [SerializeField]
     private Image EquipPopup;
+    [SerializeField]
+    private Material mat1;
+    [SerializeField]
+    private Material mat2;
 
     private float currRTFireCooldown = 0;
     private float currLTFireCooldown = 0;
@@ -32,7 +36,7 @@ public class ProjectileFire : MonoBehaviour
 
     private GameObject attachedParticle;
     private Sprite attachedSprite;
-    Collider pickupCollider;
+    private Collider pickupCollider;
     private bool pickupColliding;
 
     private Animator animator;   
@@ -43,8 +47,10 @@ public class ProjectileFire : MonoBehaviour
     public bool rightFire = false;
     [HideInInspector]
     public bool leftFire = false;
-    
 
+    private Color leftProjectileColour;
+    private Color rightProjectileColour;
+    public float yOffsetProgectile = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -60,40 +66,42 @@ public class ProjectileFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("RTrigger") > 0 && projectileRight.tag != ("NotEquipped"))
+
+        if (GetComponent<MovementScript>().controller)
         {
-            if (currRTFireCooldown <= 0)
+
+            if (Input.GetAxis("RTrigger") > 0 && projectileRight.tag != ("NotEquipped") && Input.GetAxis("LTrigger") > 0 && projectileLeft.tag != ("NotEquipped"))
             {
-                if(!rightFire)
-                {
-                rightFire = true;
-                }
-                AnimationScript.RightAttack(animator);                
+                AnimationScript.DoubleAttack(animator);
             }
-        }
-        
-        if (Input.GetAxis("LTrigger") > 0 && projectileLeft.tag != ("NotEquipped"))
-        {
-            if (currLTFireCooldown <= 0)
+            else
             {
-                if (!leftFire)
+
+                if (Input.GetAxis("RTrigger") > 0 && projectileRight.tag != ("NotEquipped"))
                 {
-                    leftFire = true;
+                    if (currRTFireCooldown <= 0)
+                    {
+                        if (!rightFire)
+                        {
+                            rightFire = true;
+                        }
+                        AnimationScript.RightAttack(animator);
+                    }
                 }
-                AnimationScript.LeftAttack(animator);
+
+                if (Input.GetAxis("LTrigger") > 0 && projectileLeft.tag != ("NotEquipped"))
+                {
+                    if (currLTFireCooldown <= 0)
+                    {
+                        if (!leftFire)
+                        {
+                            leftFire = true;
+                        }
+                        AnimationScript.LeftAttack(animator);
+                    }
+                }
             }
-        }
-
         
-
-
-        if (!rightFire && !leftFire && !GetComponent<MovementScript>().walking)
-        {
-            AnimationScript.Idle(animator);
-        }
-
-        currRTFireCooldown -= Time.deltaTime;
-        currLTFireCooldown -= Time.deltaTime;
 
         if (Input.GetAxis("HorizontalDpad") < 0 && pickupColliding == true && attachedParticle != null)
         {
@@ -104,6 +112,11 @@ public class ProjectileFire : MonoBehaviour
             EquipPopup.enabled = false;
             attachedParticle = null;
             pickupCollider = null;
+            leftProjectileColour = projectileLeft.GetComponent<ParticleSystem>().main.startColor.color;
+            if (projectileLeft.tag != ("NotEquipped"))
+            {
+                mat2.color = leftProjectileColour;
+            }
         }
         else if (Input.GetAxis("HorizontalDpad") > 0 && pickupColliding == true && attachedParticle != null)
         {
@@ -114,8 +127,88 @@ public class ProjectileFire : MonoBehaviour
             EquipPopup.enabled = false;
             attachedParticle = null;
             pickupCollider = null;
+
+            rightProjectileColour = projectileRight.GetComponent<ParticleSystem>().main.startColor.color;
+            if (projectileRight.tag != ("NotEquipped"))
+            {
+                mat1.color = rightProjectileColour;
+            }
+        }
+    }
+        else
+        {
+            if (Input.GetMouseButton(0) && projectileRight.tag != ("NotEquipped") && Input.GetMouseButton(1) && projectileLeft.tag != ("NotEquipped"))
+            {
+                AnimationScript.DoubleAttack(animator);
+            }
+            else
+            {
+
+                if (Input.GetMouseButton(1) && projectileRight.tag != ("NotEquipped"))
+                {
+                    if (currRTFireCooldown <= 0)
+                    {
+                        if (!rightFire)
+                        {
+                            rightFire = true;
+                        }
+                        AnimationScript.RightAttack(animator);
+                    }
+                }
+
+                if (Input.GetMouseButton(0) && projectileLeft.tag != ("NotEquipped"))
+                {
+                    if (currLTFireCooldown <= 0)
+                    {
+                        if (!leftFire)
+                        {
+                            leftFire = true;
+                        }
+                        AnimationScript.LeftAttack(animator);
+                    }
+                }
+            }
+
+
+            if (Input.GetKey(KeyCode.Q) && pickupColliding == true && attachedParticle != null)
+            {
+                projectileLeft = attachedParticle;
+                LeftUIIcon.sprite = attachedSprite;
+                Destroy(pickupCollider.gameObject);
+                interactPopup.enabled = false;
+                EquipPopup.enabled = false;
+                attachedParticle = null;
+                pickupCollider = null;
+                leftProjectileColour = projectileLeft.GetComponent<ParticleSystem>().main.startColor.color;
+                if (projectileLeft.tag != ("NotEquipped"))
+                {
+                    mat2.color = leftProjectileColour;
+                }
+            }
+            else if (Input.GetKey(KeyCode.E) && pickupColliding == true && attachedParticle != null)
+            {
+                projectileRight = attachedParticle;
+                RightUIIcon.sprite = attachedSprite;
+                Destroy(pickupCollider.gameObject);
+                interactPopup.enabled = false;
+                EquipPopup.enabled = false;
+                attachedParticle = null;
+                pickupCollider = null;
+
+                rightProjectileColour = projectileRight.GetComponent<ParticleSystem>().main.startColor.color;
+                if (projectileRight.tag != ("NotEquipped"))
+                {
+                    mat1.color = rightProjectileColour;
+                }
+            }
         }
 
+
+
+
+
+        currRTFireCooldown -= Time.deltaTime;
+        currLTFireCooldown -= Time.deltaTime;
     }
 
 
@@ -124,13 +217,27 @@ public class ProjectileFire : MonoBehaviour
         if (Collision.gameObject.tag == "PowerPickup")
         interactPopup.enabled = true;
 
-        if (Collision.gameObject.tag == "PowerPickup" && Input.GetKey(KeyCode.JoystickButton0))
+        if (GetComponent<MovementScript>().controller)
         {
-            EquipPopup.enabled = true;
-            attachedParticle = Collision.GetComponent<PickupParticleEffect>().ProjectilePickup;
-            attachedSprite = Collision.GetComponent<PickupParticleEffect>().ProjectileUIIcon;
-            pickupCollider = Collision;
-            pickupColliding = true;
+            if (Collision.gameObject.tag == "PowerPickup" && Input.GetKey(KeyCode.JoystickButton0))
+            {
+                EquipPopup.enabled = true;
+                attachedParticle = Collision.GetComponent<PickupParticleEffect>().ProjectilePickup;
+                attachedSprite = Collision.GetComponent<PickupParticleEffect>().ProjectileUIIcon;
+                pickupCollider = Collision;
+                pickupColliding = true;
+            }
+        }
+        else
+        {
+            if (Collision.gameObject.tag == "PowerPickup" && Input.GetKey(KeyCode.Space))
+            {
+                EquipPopup.enabled = true;
+                attachedParticle = Collision.GetComponent<PickupParticleEffect>().ProjectilePickup;
+                attachedSprite = Collision.GetComponent<PickupParticleEffect>().ProjectileUIIcon;
+                pickupCollider = Collision;
+                pickupColliding = true;
+            }
         }
     }
     void OnTriggerExit(Collider other)
@@ -154,7 +261,6 @@ public class ProjectileFire : MonoBehaviour
 
         leftFire = false;
     }
-    public float yOffset = 1;
 
     public void RightFire()
     {
@@ -162,7 +268,7 @@ public class ProjectileFire : MonoBehaviour
         playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y, 90);
 
         Vector3 RightFirePos = transform.position + (transform.right * projectileDistance);// RightFirePos.x += 0.4f;
-        RightFirePos.y += yOffset;
+        RightFirePos.y += yOffsetProgectile;
 
         GameObject bullet = Instantiate(projectileRight, RightFirePos, playerRot) as GameObject;
         bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
@@ -177,7 +283,7 @@ public class ProjectileFire : MonoBehaviour
         playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y, 90);
 
         Vector3 LeftFirePos = transform.position + (transform.right * -projectileDistance);// LeftFirePos.x -= 0.4f;
-        LeftFirePos.y += yOffset;
+        LeftFirePos.y += yOffsetProgectile;
 
         GameObject bullet = Instantiate(projectileLeft, LeftFirePos, playerRot) as GameObject;
         bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
@@ -187,4 +293,32 @@ public class ProjectileFire : MonoBehaviour
 
         currLTFireCooldown = MaxFireCooldown;
     }
+
+    public void MiddleFire()
+    {
+        Quaternion playerRot = Quaternion.identity;
+        playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y, 90);
+
+        Vector3 LeftFirePos = transform.position;// LeftFirePos.x -= 0.4f;
+        LeftFirePos.y += yOffsetProgectile;
+
+        GameObject bullet = Instantiate(projectileLeft, LeftFirePos, playerRot) as GameObject;
+        bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
+        soundManager.Play(projectileLeft.name, bullet);
+
+        currLTFireCooldown = MaxFireCooldown;
+
+        Vector3 RightFirePos = transform.position;// RightFirePos.x += 0.4f;
+        RightFirePos.y += yOffsetProgectile;
+
+        bullet = Instantiate(projectileRight, RightFirePos, playerRot) as GameObject;
+        bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
+        soundManager.Play(projectileRight.name, bullet);
+
+        currRTFireCooldown = MaxFireCooldown;
+
+
+    }
+
+
 }

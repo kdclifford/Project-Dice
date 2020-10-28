@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 33972253529276030}
   - component: {fileID: 23221479673685956}
   - component: {fileID: 65505028724976518}
+  - component: {fileID: 7929283260214669717}
   m_Layer: 0
   m_Name: dungeon-wall-dirt
   m_TagString: Untagged
@@ -96,3 +97,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4, y: 3, z: 0.2880081}
   m_Center: {x: 0, y: 1.5, z: -0.055995174}
+--- !u!208 &7929283260214669717
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376083748082614}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2, y: 1.5000001, z: 0.15200001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.5000001, z: -0.048}
+  m_TimeToStationary: 0.5

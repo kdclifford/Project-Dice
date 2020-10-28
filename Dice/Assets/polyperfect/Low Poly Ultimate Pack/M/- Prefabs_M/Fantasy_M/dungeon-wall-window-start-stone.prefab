@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 23682389773582944}
   - component: {fileID: -3818862418993713809}
   - component: {fileID: 1973058103832944649}
+  - component: {fileID: -4699223859552391069}
   m_Layer: 0
   m_Name: dungeon-wall-window-start-stone
   m_TagString: Wall
@@ -112,3 +113,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: d1bcda69820ca4542ba241a887d0e0ac, type: 3}
+--- !u!208 &-4699223859552391069
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969381044034554}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2, y: 1.5040001, z: 0.164}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.5040001, z: 0.164}
+  m_TimeToStationary: 0.5
