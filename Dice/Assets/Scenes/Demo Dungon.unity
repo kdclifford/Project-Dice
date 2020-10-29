@@ -4547,6 +4547,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4597648255728195360, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
         type: 3}
+      propertyPath: addSound.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597648255728195360, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
+        type: 3}
       propertyPath: addSound.clip
       value: 
       objectReference: {fileID: 8300000, guid: 4255de3cbec7e1a4895d19833ca76f45, type: 3}
@@ -4573,6 +4578,81 @@ PrefabInstance:
     - target: {fileID: 4597648255728195360, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
         type: 3}
       propertyPath: addSound.sound3D
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597648255728195360, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
+        type: 3}
+      propertyPath: addSound.Array.data[0].name
+      value: flamestrike
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597648255728195360, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
+        type: 3}
+      propertyPath: addSound.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 11ab7244c73df774f86d5ad02a1bfbc2, type: 3}
+    - target: {fileID: 4597648255728195360, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
+        type: 3}
+      propertyPath: addSound.Array.data[0].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597648255728195360, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
+        type: 3}
+      propertyPath: addSound.Array.data[0].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597648255728195360, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
+        type: 3}
+      propertyPath: addSound.Array.data[1].name
+      value: flamestrike
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597648255728195360, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
+        type: 3}
+      propertyPath: addSound.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4255de3cbec7e1a4895d19833ca76f45, type: 3}
+    - target: {fileID: 4597648255728195360, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
+        type: 3}
+      propertyPath: addSound.Array.data[1].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597648255728195360, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
+        type: 3}
+      propertyPath: addSound.Array.data[1].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597648255728195360, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
+        type: 3}
+      propertyPath: addSound.Array.data[2].name
+      value: 383654__deleted-user-7146007__electricity
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597648255728195360, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
+        type: 3}
+      propertyPath: addSound.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: d57c6aa1bb482ad4ba7cc3a999ef97ac, type: 3}
+    - target: {fileID: 4597648255728195360, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
+        type: 3}
+      propertyPath: addSound.Array.data[2].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597648255728195360, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
+        type: 3}
+      propertyPath: addSound.Array.data[2].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597648255728195360, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
+        type: 3}
+      propertyPath: addSound.Array.data[3].name
+      value: 383654__deleted-user-7146007__electricity
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597648255728195360, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
+        type: 3}
+      propertyPath: addSound.Array.data[3].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597648255728195360, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
+        type: 3}
+      propertyPath: addSound.Array.data[3].pitch
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4597648255728195361, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
