@@ -1674,6 +1674,7 @@ GameObject:
   - component: {fileID: 5812377792357169488}
   - component: {fileID: 5812377792357169495}
   - component: {fileID: 5812377792357164714}
+  - component: {fileID: 4200978888511108852}
   - component: {fileID: 5812377792357169492}
   - component: {fileID: 5812377792357169493}
   - component: {fileID: 5812377792357169489}
@@ -1752,6 +1753,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4200978888511108852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6658817375150945558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b7fc281ad17a0f44b4a67a076831c3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HPUIIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &5812377792357169492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1801,6 +1823,7 @@ MonoBehaviour:
   rayOffset: {x: 0, y: 1.5, z: 0}
   diagonalOffset: 0.9
   collisionForce: 1
+  controller: 0
 --- !u!114 &5812377792357169489
 MonoBehaviour:
   m_ObjectHideFlags: 0
