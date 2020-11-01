@@ -442,6 +442,7 @@ GameObject:
   - component: {fileID: 4296254226410299826}
   - component: {fileID: 4296254226410299827}
   - component: {fileID: 5973378110549826189}
+  - component: {fileID: -100604782830477291}
   m_Layer: 0
   m_Name: Polygonal Metalon Purple
   m_TagString: Enemy
@@ -573,7 +574,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 400
-  m_StoppingDistance: 10
+  m_StoppingDistance: 15
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -595,6 +596,24 @@ CapsuleCollider:
   m_Height: 2.4739318
   m_Direction: 2
   m_Center: {x: 0, y: 1.1, z: 0.08431244}
+--- !u!114 &-100604782830477291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4294866290777827207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d150fe06680a9114cb29ac907b5bfa06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 6344335812988061145, guid: bc2b0085094ad914c806e32d5f1caa11,
+    type: 3}
+  MaxFireCooldown: 1
+  projectileSpeed: 500
+  projectileDistance: 0
+  yOffsetProgectile: 1
 --- !u!1 &4294876737841107241
 GameObject:
   m_ObjectHideFlags: 0

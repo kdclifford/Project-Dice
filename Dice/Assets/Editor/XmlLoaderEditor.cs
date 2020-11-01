@@ -6,6 +6,8 @@ using UnityEditor;
 public class XmlLoaderEditor : Editor
 {
     private SerializedObject obj;
+    float offset = 20;
+
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
@@ -17,28 +19,34 @@ public class XmlLoaderEditor : Editor
         //GUILayout.BeginHorizontal(
 
         // Starts a horizontal group
-        GUILayout.BeginHorizontal("box");
+        GUILayout.BeginHorizontal("box", GUILayout.ExpandWidth(true));
 
-        if (GUILayout.Button("Add Sound to List", GUILayout.Height(50)))
+        if (GUILayout.Button("Add Sound to List", GUILayout.Height(50), GUILayout.Width((EditorGUIUtility.currentViewWidth * 0.5f) - offset)))
         {
 
             myScript.AddSoundToList();
         }
 
-        if (GUILayout.Button("Load XML File", GUILayout.Height(50)))
+        if (GUILayout.Button("Load XML File", GUILayout.Height(50), GUILayout.Width((EditorGUIUtility.currentViewWidth * 0.5f) - offset)))
         {
             myScript.LoadXml();
         }
 
         GUILayout.EndHorizontal();
 
-        if (GUILayout.Button("Save all Changes to XML", GUILayout.Height(50)))
+        GUILayout.BeginHorizontal("box", GUILayout.Width((Screen.width) - offset * 2));
+        
+        if (GUILayout.Button("Save all Changes to XML", GUILayout.Height(50), GUILayout.Width((Screen.width * 0.5f) - offset)))
         {
             myScript.SaveXML();
         }
 
-     
+        if (GUILayout.Button("Clear all", GUILayout.Height(50), GUILayout.Width((Screen.width * 0.5f) - offset)))
+        {
+            myScript.ClearAll();
+        }
 
+        GUILayout.EndHorizontal();
     }
 
 

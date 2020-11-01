@@ -52,21 +52,24 @@ public class EnemyAi : MonoBehaviour
             animator.SetFloat("XMove", targetDirection.x);
             animator.SetFloat("YMove", targetDirection.y);
 
+
+
+            if (Vector3.Distance(target.transform.position, transform.position) < 20)
+            {
+                Vector3 targetDir = target.transform.position - transform.position;
+                targetDir.y = transform.position.y;
+                Quaternion rotation;
+
+                //transform.rotation = Quaternion.Euler( Vector3.RotateTowards(transform.position, targetDir, removeSpeed * Time.deltaTime, 0f));
+                rotation = Quaternion.LookRotation(targetDir);
+                // transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 100 * Time.deltaTime);
+                transform.LookAt(target.transform);
+
+                GetComponent<EnemyFire>().EnemyShoot();
+
+
+            }
         }
-
-        if (Vector3.Distance(target.transform.position, transform.position) < 20)
-        {
-            Vector3 targetDir = target.transform.position - transform.position;
-            targetDir.y = transform.position.y;
-            Quaternion rotation;
-
-            //transform.rotation = Quaternion.Euler( Vector3.RotateTowards(transform.position, targetDir, removeSpeed * Time.deltaTime, 0f));
-            rotation = Quaternion.LookRotation(targetDir);
-            // transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 100 * Time.deltaTime);
-            transform.LookAt(target.transform);
-
-        }
-
 
         if (removeBody)
         {

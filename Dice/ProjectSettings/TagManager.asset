@@ -10,6 +10,7 @@ TagManager:
   - SoundManager
   - Wall
   - Enemy
+  - EnemyProjectile
   layers:
   - Default
   - TransparentFX
@@ -20,8 +21,8 @@ TagManager:
   - 
   - 
   - Ignore Collision
-  - 
-  - 
+  - Player
+  - PlayerHitBox
   - 
   - 
   - 

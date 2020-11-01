@@ -106,8 +106,7 @@ public class XmlLoader : MonoBehaviour
 
     public void SaveXML()
     {
-        if (addSound != null)
-        {
+       
             if (soundManager == null)
             {
                 FindSoundManager();
@@ -124,7 +123,7 @@ public class XmlLoader : MonoBehaviour
             stream.Close();
 
             // Array.Clear(soundManager.soundClips, 0, soundManager.soundClips.Length);
-        }
+        
     }
 
     public void AddSoundToList()
@@ -170,8 +169,17 @@ public class XmlLoader : MonoBehaviour
             i++;
         }
         soundManager.soundClips = temp;
-        addSound = null;
+        addSound = new Sound[0];
     }
+
+
+    public void ClearAll()
+    {
+        FindSoundManager();
+        soundManager.soundClips = new Sound[0];
+        addSound = new Sound[0];
+    }
+
 
 
     public void AddXML(AudioClip audio)

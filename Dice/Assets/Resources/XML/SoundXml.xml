@@ -3,7 +3,7 @@
   <Sound>
     <name>Electric</name>
     <clip>
-      <name>383654__deleted-user-7146007__electricity</name>
+      <name>Electric</name>
       <hideFlags>NotEditable</hideFlags>
     </clip>
     <loop>true</loop>
@@ -19,6 +19,28 @@
     </clip>
     <loop>false</loop>
     <sound3D>true</sound3D>
+    <volume>1</volume>
+    <pitch>1.72</pitch>
+  </Sound>
+  <Sound>
+    <name>Player Hit</name>
+    <clip>
+      <name>Player Hit</name>
+      <hideFlags>NotEditable</hideFlags>
+    </clip>
+    <loop>false</loop>
+    <sound3D>false</sound3D>
+    <volume>1</volume>
+    <pitch>1</pitch>
+  </Sound>
+  <Sound>
+    <name>Player Death</name>
+    <clip>
+      <name>Player Death</name>
+      <hideFlags>NotEditable</hideFlags>
+    </clip>
+    <loop>false</loop>
+    <sound3D>false</sound3D>
     <volume>1</volume>
     <pitch>1.3</pitch>
   </Sound>
