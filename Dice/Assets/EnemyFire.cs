@@ -72,16 +72,46 @@ public class EnemyFire : MonoBehaviour
 
     public void Fire()
     {
+        Vector3 forward = transform.forward;
+        forward.y = 0;
+
+        Vector3 sideVector = new Vector3(Random.Range(0.5f, 1), 0, Random.Range(0.5f, 1));
+        sideVector.Normalize();
         Quaternion playerRot = Quaternion.identity;
+        playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y, 90);
+
+        Vector3 MiddleFirePos = transform.position;// LeftFirePos.x -= 0.4f;
+        MiddleFirePos.y += yOffsetProgectile;
+
+        GameObject bullet = Instantiate(projectile, MiddleFirePos, playerRot) as GameObject;
+        bullet.GetComponent<Rigidbody>().AddForce((forward + sideVector) * projectileSpeed);
+        bullet.tag = "EnemyProjectile";
+        soundManager.Play(projectile.name, bullet);
+
+        playerRot = Quaternion.identity;
         playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y, 90);
 
         Vector3 LeftFirePos = transform.position;// LeftFirePos.x -= 0.4f;
         LeftFirePos.y += yOffsetProgectile;
+        sideVector.x = -sideVector.x;
 
-        GameObject bullet = Instantiate(projectile, LeftFirePos, playerRot) as GameObject;
-        bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
-        bullet.tag = "EnemyProjectile";
-        soundManager.Play(projectile.name, bullet);
+        GameObject bullet2 = Instantiate(projectile, LeftFirePos, playerRot) as GameObject;
+        bullet2.GetComponent<Rigidbody>().AddForce((forward + sideVector) * projectileSpeed);
+        bullet2.tag = "EnemyProjectile";
+        soundManager.Play(projectile.name, bullet2);
+
+        playerRot = Quaternion.identity;
+        playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y, 90);
+
+        Vector3 RightFirePos = transform.position;// LeftFirePos.x -= 0.4f;
+        MiddleFirePos.y += yOffsetProgectile;
+
+        GameObject bullet3 = Instantiate(projectile, MiddleFirePos, playerRot) as GameObject;
+        bullet3.GetComponent<Rigidbody>().AddForce(forward * projectileSpeed);
+        bullet3.tag = "EnemyProjectile";
+        soundManager.Play(projectile.name, bullet3);
+
+
 
         fireCooldown = MaxFireCooldown;
     }

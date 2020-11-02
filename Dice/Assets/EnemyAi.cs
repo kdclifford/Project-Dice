@@ -54,7 +54,7 @@ public class EnemyAi : MonoBehaviour
 
 
 
-            if (Vector3.Distance(target.transform.position, transform.position) < 20)
+            if (Vector3.Distance(target.transform.position, transform.position) <= 30)
             {
                 Vector3 targetDir = target.transform.position - transform.position;
                 targetDir.y = transform.position.y;
