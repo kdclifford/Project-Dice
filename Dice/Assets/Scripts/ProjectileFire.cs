@@ -203,10 +203,6 @@ public class ProjectileFire : MonoBehaviour
             }
         }
 
-
-
-
-
         currRTFireCooldown -= Time.deltaTime;
         currLTFireCooldown -= Time.deltaTime;
     }
