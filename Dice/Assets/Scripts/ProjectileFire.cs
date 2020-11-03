@@ -225,6 +225,10 @@ public class ProjectileFire : MonoBehaviour
     {
         if (Collision.gameObject.tag == "PowerPickup")
         interactPopup.enabled = true;
+        if (Collision.gameObject.tag == "HealthPickup")
+            interactPopup.enabled = true;
+        if (Collision.gameObject.tag == "ShieldPickup")
+            interactPopup.enabled = true;
 
         if (GetComponent<MovementScript>().controller)
         {
@@ -235,6 +239,28 @@ public class ProjectileFire : MonoBehaviour
                 attachedSprite = Collision.GetComponent<PickupParticleEffect>().ProjectileUIIcon;
                 pickupCollider = Collision;
                 pickupColliding = true;
+            }
+            else if (Collision.gameObject.tag == "HealthPickup" && Input.GetKey(KeyCode.JoystickButton0))
+            {
+                PlayerHealth sn = gameObject.GetComponent<PlayerHealth>();
+
+                if(sn.CurrentHearts < 7)
+                {
+                    sn.addHealth();
+                    Destroy(Collision.gameObject);
+                    interactPopup.enabled = false;
+                }
+            }
+            else if (Collision.gameObject.tag == "ShieldPickup" && Input.GetKey(KeyCode.JoystickButton0))
+            {
+                PlayerHealth sn = gameObject.GetComponent<PlayerHealth>();
+
+                if (sn.CurrentShield < 2)
+                {
+                    sn.addShield();
+                    Destroy(Collision.gameObject);
+                    interactPopup.enabled = false;
+                }
             }
         }
         else

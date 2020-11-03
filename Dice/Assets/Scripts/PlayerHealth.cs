@@ -5,9 +5,15 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int CurrentHearts = 7;
+    public static int maxHearts = 7;
+    public int CurrentHearts = maxHearts;
+    public static int maxShield = 2;
+    public int CurrentShield = 0;
     [SerializeField]
     public GameObject[] HPUIIcons;
+    [SerializeField]
+    public GameObject[] ShieldUIIcons;
+
 
     private Animator animator;
 
@@ -29,6 +35,11 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+
+        for(int i = 0; i < ShieldUIIcons.Length; i++)
+        {
+            ShieldUIIcons[i].gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -140,10 +151,35 @@ public class PlayerHealth : MonoBehaviour
 
     public void playerHit()
     {
+        if(CurrentShield > 0)
+        {
+            ShieldUIIcons[CurrentShield].gameObject.SetActive(false);
+            CurrentShield--;
+            return;
+        }
+        
         if (CurrentHearts > -1)
         {
             HPUIIcons[CurrentHearts].gameObject.SetActive(false);
             CurrentHearts--;
+        }
+    }
+
+    public void addHealth()
+    {
+        if (CurrentHearts > -1 && CurrentHearts < maxHearts)
+        {
+            CurrentHearts++;
+            HPUIIcons[CurrentHearts].gameObject.SetActive(true);
+        }
+    }
+
+    public void addShield()
+    {
+        if (CurrentShield < maxShield)
+        {
+            CurrentShield++;
+            ShieldUIIcons[CurrentShield].gameObject.SetActive(true);
         }
     }
 
