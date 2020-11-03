@@ -11,8 +11,7 @@ using UnityEngine;
 
 public class XmlLoader : MonoBehaviour
 {
-    public Sound addSound;
-
+    public Sound[] addSound;
 
     XmlDocument xmlDoc;
 
@@ -94,7 +93,7 @@ public class XmlLoader : MonoBehaviour
             }
             else
             {
-               // throw new Exception("No xml File created");
+                // throw new Exception("No xml File created");
             }
         }
     }
@@ -107,8 +106,7 @@ public class XmlLoader : MonoBehaviour
 
     public void SaveXML()
     {
-        if (addSound != null)
-        {
+       
             if (soundManager == null)
             {
                 FindSoundManager();
@@ -125,7 +123,7 @@ public class XmlLoader : MonoBehaviour
             stream.Close();
 
             // Array.Clear(soundManager.soundClips, 0, soundManager.soundClips.Length);
-        }
+        
     }
 
     public void AddSoundToList()
@@ -154,40 +152,85 @@ public class XmlLoader : MonoBehaviour
         Sound[] temp;
         if (soundManager.soundClips != null)
         {
-            temp = new Sound[soundManager.soundClips.Length + 1];
+            temp = new Sound[soundManager.soundClips.Length + addSound.Length];
             soundManager.soundClips.CopyTo(temp, 0);
 
         }
         else
         {
-            temp = new Sound[1];
+            temp = new Sound[addSound.Length];
         }
-        temp[temp.Length - 1] = addSound;
+
+        int i = 0;
+        foreach (Sound s in addSound)
+        {
+
+            temp[temp.Length - (addSound.Length - i)] = s;
+            i++;
+        }
         soundManager.soundClips = temp;
-
-        addSound = null;
-
+        addSound = new Sound[0];
     }
 
 
+    public void ClearAll()
+    {
+        FindSoundManager();
+        soundManager.soundClips = new Sound[0];
+        addSound = new Sound[0];
+    }
+
+
+
+    public void AddXML(AudioClip audio)
+    {
+       // Debug.Log(AssetDatabase.GetAssetPath(obj));        
+
+        Sound sound = new Sound(audio);       
+
+        Sound[] temp;
+        if (addSound != null)
+        {
+            
+            temp = new Sound[addSound.Length + 1];
+            addSound.CopyTo(temp, 0);
+            temp[temp.Length - 1] = sound;
+        }
+        else
+        {
+            temp = new Sound[1];
+            temp[0] = sound;
+        }
+        
+
+        
+        addSound = temp;
+
+
+
+    }
 
 
 
     //Check the same name hasent been added
     bool CheckForDupes()
     {
-        if (addSound.name == "")
+        foreach (Sound s in addSound)
         {
-            return true;
-        }
-
-        if (soundManager.soundClips != null)
-        {
-            for (int i = 0; i < soundManager.soundClips.Length; i++)
+            if (s.name == "")
             {
-                if (soundManager.soundClips[i].name == addSound.name)
+                return true;
+            }
+
+
+            if (soundManager.soundClips != null)
+            {
+                for (int i = 0; i < soundManager.soundClips.Length; i++)
                 {
-                    return true;
+                    if (soundManager.soundClips[i].name == s.name)
+                    {
+                        return true;
+                    }
                 }
             }
         }
@@ -196,12 +239,16 @@ public class XmlLoader : MonoBehaviour
 
     bool CheckForClip()
     {
-        if (addSound.clip != null)
+        foreach (Sound s in addSound)
         {
-            return true;
+            if (s.clip != null)
+            {
+                return true;
+            }
         }
         return false;
     }
+
 
 
 }

@@ -26,6 +26,13 @@ namespace AnimationFunctions.Utils
             //animator.SetBool("Shooting", true);
         }
 
+
+        public static void SpiderAttack(Animator animator)
+        {
+            animator.SetInteger("Attack", 1);
+        }
+
+
         public static Vector2 CurrentDirection(Vector2 input, GameObject agent)
         {
             var a = Vector3.SignedAngle(new Vector3(input.x, 0, input.y), agent.transform.forward, agent.transform.up);

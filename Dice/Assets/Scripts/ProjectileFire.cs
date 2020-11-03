@@ -207,6 +207,19 @@ public class ProjectileFire : MonoBehaviour
         currLTFireCooldown -= Time.deltaTime;
     }
 
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.tag == "EnemyProjectile")
+    //    {
+    //        Vector2 death = new Vector2(
+    //            collision.gameObject.GetComponent<Rigidbody>().velocity.x, collision.gameObject.GetComponent<Rigidbody>().velocity.z);
+    //        death.Normalize();
+    //        GetComponent<AnimationTest>().deathDirection = death;
+    //        GetComponent<PlayerHealth>().playerHit();
+    //        Destroy(collision.gameObject);
+    //    }
+    //}
+
 
     void OnTriggerStay(Collider Collision)
     {
@@ -235,6 +248,7 @@ public class ProjectileFire : MonoBehaviour
                 pickupColliding = true;
             }
         }
+
     }
     void OnTriggerExit(Collider other)
     {
