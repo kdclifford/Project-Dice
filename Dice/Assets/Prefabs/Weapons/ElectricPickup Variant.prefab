@@ -1,5 +1,87 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2695263021192252133
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2303649130008436416}
+  - component: {fileID: 3407020837024576072}
+  m_Layer: 0
+  m_Name: New Sprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2303649130008436416
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2695263021192252133}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.505, z: 0}
+  m_LocalScale: {x: 2.6679125, y: 2.6679125, z: 2.6679125}
+  m_Children: []
+  m_Father: {fileID: 8593311548915352862}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!212 &3407020837024576072
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2695263021192252133}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 63783fc998c301948991c11a9b13a24d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1001 &6400799346671574572
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -119,6 +201,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3428829505617517362, guid: 01e6ec26c6e16364c898b6a6a0dde34a,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.38415
+      objectReference: {fileID: 0}
+    - target: {fileID: 3428829505617517362, guid: 01e6ec26c6e16364c898b6a6a0dde34a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.38415
+      objectReference: {fileID: 0}
+    - target: {fileID: 3428829505617517362, guid: 01e6ec26c6e16364c898b6a6a0dde34a,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.38415
+      objectReference: {fileID: 0}
     - target: {fileID: 3428829505617517389, guid: 01e6ec26c6e16364c898b6a6a0dde34a,
         type: 3}
       propertyPath: m_IsTrigger
@@ -136,3 +233,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01e6ec26c6e16364c898b6a6a0dde34a, type: 3}
+--- !u!4 &8593311548915352862 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3428829505617517362, guid: 01e6ec26c6e16364c898b6a6a0dde34a,
+    type: 3}
+  m_PrefabInstance: {fileID: 6400799346671574572}
+  m_PrefabAsset: {fileID: 0}
