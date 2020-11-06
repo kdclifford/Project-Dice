@@ -8,7 +8,8 @@ public class Room : MonoBehaviour
     public Vector2 Size;
     public List<Vector2> DoorLocations;
     public RoomType roomType;
-    public Vector2 location;
+    public Vector2 location; 
+    public int preFabNumber;
     // Start is called before the first frame update
     void Start()
     {

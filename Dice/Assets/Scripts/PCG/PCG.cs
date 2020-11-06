@@ -3,57 +3,85 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class PCG : MonoBehaviour
+public class DunguonSpawner : MonoBehaviour
 {
     [SerializeField] private int numberOfRooms;
     public List<GameObject> RoomPrefabs;
     public Vector2 WorldSize;
 
-    private List<GameObject> rooms;
+    [SerializeField]
+   // private List<GameObject> rooms = new List<GameObject>();
+
+    public List<Room> roomsData = new List<Room>();
     // Start is called before the first frame update
-    void GenerateFloor()
-    {
-        PlaceRooms();   
+
+    private void Start()          
+    {                             
+        GenerateFloor();          
+    }                             
+    void GenerateFloor()          
+    { 
+        GenerateRooms();
+        SetSceneLocation();
 
     }
-    void PlaceRooms()
+    void GenerateRooms()
     {
-        for(int i = 0; i < numberOfRooms;i++)
+        while(roomsData.Count<numberOfRooms)
         {
-            GameObject tempRoom = RoomPrefabs[Random.Range(0, RoomPrefabs.Count)];
+            Room tempRoom = new Room() ;
+            tempRoom.preFabNumber= Random.Range(0, RoomPrefabs.Count);
 
-            tempRoom.GetComponent<Room>().location = new Vector2(Random.Range(0, WorldSize.x), Random.Range(0, WorldSize.y));
+            tempRoom.location = new Vector2((int)Random.Range(0, WorldSize.x), (int)Random.Range(0, WorldSize.y));
 
-            if (i == 0)
+            if (roomsData.Count == 0)
             {
-                rooms.Add(tempRoom);
+                roomsData.Add(tempRoom);
             }
-            ValidRoomLocation(tempRoom, rooms);
+            else
+            {
+                //while(ValidRoomLocation(tempRoom, rooms))
+                //{
+                //    tempRoom.GetComponent<Room>().location = new Vector2((int)Random.Range(0, WorldSize.x), (int)Random.Range(0, WorldSize.y));
+                //}
+                roomsData.Add(tempRoom);
 
-
+            }
 
         }
     }
 
     void SetSceneLocation()
     {
-
-    }
-    bool ValidRoomLocation(GameObject RoomLocation, List<GameObject> Rooms)
-    {
-        for(int i = 0; i < rooms.Count;i++)
+        for(int i=0; i< numberOfRooms;i++)
         {
-            var rect1 = { x: 5, y: 5, width: 50, height: 50}
-            var rect2 = { x: 20, y: 10, width: 10, height: 10}
+            Instantiate(RoomPrefabs[roomsData[i].preFabNumber],new Vector3(4 * roomsData[i].location.x, 0, 4 * roomsData[i].location.y),Quaternion.identity);
 
-            if (rect1.x<rect2.x + rect2.width && rect1.x + rect1.width> rect2.x && rect1.y<rect2.y + rect2.height && rect1.y + rect1.height> rect2.y)
-    {
-        // collision detected!
+        }
     }
+    bool ValidRoomLocation(Room RoomLocation, List<Room> Rooms)
+    {
+        var newRoom = RoomLocation;
+        for (int i = 0; i < roomsData.Count; i++)
+        {
+            Room currentRoom = Rooms[i];
+
+            if (newRoom.location.x < currentRoom.location.x + currentRoom.Size.x &&
+                newRoom.location.x + newRoom.Size.x > currentRoom.location.x &&
+                newRoom.location.y < currentRoom.location.y + currentRoom.Size.y &&
+                newRoom.location.y + newRoom.Size.y > currentRoom.Size.y)
+            {
+                return false;
+            }
+        }
+        return true;   
+    //        if (rect1.x<rect2.x + rect2.width && rect1.x + rect1.width> rect2.x && rect1.y<rect2.y + rect2.height && 
+    //        rect1.y + rect1.height> rect2.y)
+    //{
+    //    // collision detected!
+    //}
 
 }
-        return true;
-    }
     
     void GenerateCorriodors()
     {
