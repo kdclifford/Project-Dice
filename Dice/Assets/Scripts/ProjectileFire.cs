@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using AnimationFunctions.Utils;
 using UnityEngine.UI;
+using XInputDotNetPure;
 using UnityEngine;
 
 public class ProjectileFire : MonoBehaviour
@@ -52,6 +53,9 @@ public class ProjectileFire : MonoBehaviour
     private Color rightProjectileColour;
     public float yOffsetProgectile = 1;
 
+    bool playerIndexSet = false;
+    PlayerIndex playerIndex = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,7 +70,7 @@ public class ProjectileFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         if (GetComponent<MovementScript>().controller)
         {
 
@@ -101,9 +105,9 @@ public class ProjectileFire : MonoBehaviour
                     }
                 }
             }
-        
 
-        if (Input.GetAxis("HorizontalDpad") < 0 && pickupColliding == true && attachedParticle != null)
+
+            if (Input.GetAxis("HorizontalDpad") < 0 && pickupColliding == true && attachedParticle != null)
         {
             projectileLeft = attachedParticle;
             LeftUIIcon.sprite = attachedSprite;
@@ -382,4 +386,18 @@ public class ProjectileFire : MonoBehaviour
     }
 
 
+    public void RightControllerVibration()
+    {
+        GamePad.SetVibration(playerIndex, 0, 0.2f);
+    }
+
+    public void LeftControllerVibration()
+    {
+        GamePad.SetVibration(playerIndex, 0.5f, 0);
+    }
+
+    public void VibrationOff()
+    {
+        GamePad.SetVibration(playerIndex, 0, 0);
+    }
 }

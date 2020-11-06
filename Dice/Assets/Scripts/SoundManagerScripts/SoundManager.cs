@@ -28,7 +28,7 @@ public class SoundManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        //BackGroundMusic();
+       // BackGroundMusic();
     }
 
     ////Used to check and change the audio depending on the scene
@@ -43,9 +43,9 @@ public class SoundManager : MonoBehaviour
     //}
 
     //Called when the scene changes
-    void BackGroundMusic()
+    public void BackGroundMusic()
     {
-        Play(gameObject);
+        Play("Castle Music", gameObject);
     }
 
     //Plays Sound if sound exists

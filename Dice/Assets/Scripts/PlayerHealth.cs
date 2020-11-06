@@ -107,10 +107,9 @@ public class PlayerHealth : MonoBehaviour
             }
 
 
-            if (triggerPress > 0)
-            {
+            
                 animator.SetFloat("TriggerPress", triggerPress);
-            }
+            
 
 
             velocity = Mathf.Abs(leftStickInputAxis.x) + Mathf.Abs(leftStickInputAxis.y);
@@ -164,10 +163,13 @@ public class PlayerHealth : MonoBehaviour
         
         if (CurrentHearts > -1)
         {
-            HPUIIcons[CurrentHearts].gameObject.SetActive(false);
+            HPUIIcons[CurrentHearts].gameObject.GetComponent<Animator>().SetInteger("LoseHeart", 1);
             CurrentHearts--;
         }
     }
+
+   
+
 
     public void addHealth()
     {
@@ -175,6 +177,7 @@ public class PlayerHealth : MonoBehaviour
         {
             CurrentHearts++;
             HPUIIcons[CurrentHearts].gameObject.SetActive(true);
+            HPUIIcons[CurrentHearts].gameObject.GetComponent<Animator>().SetInteger("LoseHeart", 0);
         }
     }
 

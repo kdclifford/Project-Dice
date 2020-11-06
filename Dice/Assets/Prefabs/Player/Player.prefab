@@ -1678,7 +1678,6 @@ GameObject:
   - component: {fileID: 5812377792357169492}
   - component: {fileID: 5812377792357169493}
   - component: {fileID: 5812377792357169489}
-  - component: {fileID: 877312504}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1765,6 +1764,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b7fc281ad17a0f44b4a67a076831c3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentHearts: 7
+  CurrentShield: 0
   HPUIIcons:
   - {fileID: 0}
   - {fileID: 0}
@@ -1774,6 +1775,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  ShieldUIIcons: []
+  health: 10
+  deathDirection: {x: 0, y: 0}
 --- !u!114 &5812377792357169492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1840,20 +1844,6 @@ MonoBehaviour:
     type: 3}
   ballPosistion: {fileID: 5812377792668631168}
   ballSpeed: 400
---- !u!114 &877312504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6658817375150945558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ad62d415c3bb1745ab0dc8dad58f41a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 2.3
-  deathDirection: {x: 0, y: 0}
 --- !u!1 &6829665091209077042
 GameObject:
   m_ObjectHideFlags: 0
