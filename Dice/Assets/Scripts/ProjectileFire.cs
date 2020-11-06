@@ -144,7 +144,7 @@ public class ProjectileFire : MonoBehaviour
             else
             {
 
-                if (Input.GetMouseButton(1) && projectileRight.tag != ("NotEquipped"))
+                if (Input.GetMouseButton(0) && projectileRight.tag != ("NotEquipped"))
                 {
                     Debug.Log("Right click");
 
@@ -158,7 +158,7 @@ public class ProjectileFire : MonoBehaviour
                     }
                 }
 
-                if (Input.GetMouseButton(0) && projectileLeft.tag != ("NotEquipped"))
+                if (Input.GetMouseButton(1) && projectileLeft.tag != ("NotEquipped"))
                 {
                     Debug.Log("Left click");
                     if (currLTFireCooldown <= 0)
@@ -206,10 +206,6 @@ public class ProjectileFire : MonoBehaviour
             }
         }
 
-
-
-
-
         currRTFireCooldown -= Time.deltaTime;
         currLTFireCooldown -= Time.deltaTime;
     }
@@ -232,6 +228,10 @@ public class ProjectileFire : MonoBehaviour
     {
         if (Collision.gameObject.tag == "PowerPickup")
         interactPopup.enabled = true;
+        if (Collision.gameObject.tag == "HealthPickup")
+        interactPopup.enabled = true;
+        if (Collision.gameObject.tag == "ShieldPickup")
+        interactPopup.enabled = true;
 
         if (GetComponent<MovementScript>().controller)
         {
@@ -243,6 +243,28 @@ public class ProjectileFire : MonoBehaviour
                 pickupCollider = Collision;
                 pickupColliding = true;
             }
+            else if (Collision.gameObject.tag == "HealthPickup" && Input.GetKey(KeyCode.JoystickButton0))
+            {
+                PlayerHealth sn = gameObject.GetComponent<PlayerHealth>();
+
+                if(sn.CurrentHearts < 7)
+                {
+                    sn.addHealth();
+                    Destroy(Collision.gameObject);
+                    interactPopup.enabled = false;
+                }
+            }
+            else if (Collision.gameObject.tag == "ShieldPickup" && Input.GetKey(KeyCode.JoystickButton0))
+            {
+                PlayerHealth sn = gameObject.GetComponent<PlayerHealth>();
+
+                if (sn.CurrentShield < 2)
+                {
+                    sn.addShield();
+                    Destroy(Collision.gameObject);
+                    interactPopup.enabled = false;
+                }
+            }
         }
         else
         {
@@ -253,6 +275,28 @@ public class ProjectileFire : MonoBehaviour
                 attachedSprite = Collision.GetComponent<PickupParticleEffect>().ProjectileUIIcon;
                 pickupCollider = Collision;
                 pickupColliding = true;
+            }
+            else if (Collision.gameObject.tag == "HealthPickup" && Input.GetKey(KeyCode.Space))
+            {
+                PlayerHealth sn = gameObject.GetComponent<PlayerHealth>();
+
+                if (sn.CurrentHearts < 7)
+                {
+                    sn.addHealth();
+                    Destroy(Collision.gameObject);
+                    interactPopup.enabled = false;
+                }
+            }
+            else if (Collision.gameObject.tag == "ShieldPickup" && Input.GetKey(KeyCode.Space))
+            {
+                PlayerHealth sn = gameObject.GetComponent<PlayerHealth>();
+
+                if (sn.CurrentShield < 2)
+                {
+                    sn.addShield();
+                    Destroy(Collision.gameObject);
+                    interactPopup.enabled = false;
+                }
             }
         }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using AnimationFunctions.Utils;
 using UnityEngine.UI;
 using UnityEngine;
+using System.Threading;
 
 public class EnemyFire : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class EnemyFire : MonoBehaviour
     [SerializeField]
     private float MaxFireCooldown = 1;
     [SerializeField]
-    private int projectileSpeed = 500;
+    private float projectileSpeed = 10;
 
 
     private float fireCooldown = 0;
