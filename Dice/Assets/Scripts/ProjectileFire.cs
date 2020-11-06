@@ -396,6 +396,11 @@ public class ProjectileFire : MonoBehaviour
         GamePad.SetVibration(playerIndex, 0.5f, 0);
     }
 
+    public void BothControllerVibration()
+    {
+        GamePad.SetVibration(playerIndex, 0.5f, 0.5f);
+    }
+
     public void VibrationOff()
     {
         GamePad.SetVibration(playerIndex, 0, 0);

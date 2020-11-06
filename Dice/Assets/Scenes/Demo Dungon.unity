@@ -5345,6 +5345,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -100604782830477291, guid: 132e0d794b11d2c4da8980a80d499c54,
+        type: 3}
+      propertyPath: yOffsetProgectile
+      value: 0.36
+      objectReference: {fileID: 0}
+    - target: {fileID: -100604782830477291, guid: 132e0d794b11d2c4da8980a80d499c54,
+        type: 3}
+      propertyPath: zOffsetProgectile
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4236657485011424815, guid: 132e0d794b11d2c4da8980a80d499c54,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4291376250628423855, guid: 132e0d794b11d2c4da8980a80d499c54,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5623,7 +5638,7 @@ PrefabInstance:
     - target: {fileID: 4291866756551349177, guid: 132e0d794b11d2c4da8980a80d499c54,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.7316759
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4291866756551349177, guid: 132e0d794b11d2c4da8980a80d499c54,
         type: 3}
@@ -5999,6 +6014,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StoppingDistance
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4296254226410299827, guid: 132e0d794b11d2c4da8980a80d499c54,
+        type: 3}
+      propertyPath: m_Height
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4296254226410299827, guid: 132e0d794b11d2c4da8980a80d499c54,
+        type: 3}
+      propertyPath: m_BaseOffset
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4296254226410299829, guid: 132e0d794b11d2c4da8980a80d499c54,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 84
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 132e0d794b11d2c4da8980a80d499c54, type: 3}
@@ -6441,7 +6471,7 @@ PrefabInstance:
     - target: {fileID: 5812377792357164714, guid: 047ad09605d6c554f965221fd2329984,
         type: 3}
       propertyPath: m_ApplyRootMotion
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5812377792357169492, guid: 047ad09605d6c554f965221fd2329984,
         type: 3}
@@ -6471,7 +6501,7 @@ PrefabInstance:
     - target: {fileID: 5812377792357169493, guid: 047ad09605d6c554f965221fd2329984,
         type: 3}
       propertyPath: controller
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6278879571062452140, guid: 047ad09605d6c554f965221fd2329984,
         type: 3}

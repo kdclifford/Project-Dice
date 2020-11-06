@@ -32,6 +32,10 @@ namespace AnimationFunctions.Utils
             animator.SetInteger("Attack", 1);
         }
 
+        public static void StopAttack(Animator animator)
+        {
+            animator.SetInteger("Attack", 0);
+        }
 
         public static Vector2 CurrentDirection(Vector2 input, GameObject agent)
         {
