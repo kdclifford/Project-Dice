@@ -84,21 +84,22 @@ public class PlayerHealth : MonoBehaviour
                 leftStickInputAxis.x = horizontalInput;
                 leftStickInputAxis.y = verticalInput;
 
-                if (GetComponent<ProjectileFire>().projectileRight.tag != ("NotEquipped") && Input.GetMouseButton(0))
+                if (GetComponent<ProjectileFire>().projectileRight.tag != ("NotEquipped") && Input.GetMouseButton(1))
                 {
                     triggerPress += 1;
                 }
 
-                if (GetComponent<ProjectileFire>().projectileLeft.tag != ("NotEquipped") && Input.GetMouseButton(1))
+                if (GetComponent<ProjectileFire>().projectileLeft.tag != ("NotEquipped") && Input.GetMouseButton(0))
                 {
                     triggerPress += 1;
                 }
             }
 
 
-
-            animator.SetFloat("TriggerPress", triggerPress);
-
+            if (triggerPress > 0)
+            {
+                animator.SetFloat("TriggerPress", triggerPress);
+            }
 
 
             velocity = Mathf.Abs(leftStickInputAxis.x) + Mathf.Abs(leftStickInputAxis.y);
@@ -120,6 +121,9 @@ public class PlayerHealth : MonoBehaviour
         {
             if (!isDead)
             {
+                Destroy(GetComponent<MovementScript>());
+                Destroy(GetComponent<ProjectileFire>());
+
                 if (deathDirection.y >= 0 && deathDirection.y < 0.1)
                 {
                     deathDirection.y = 0.1f;
