@@ -8,12 +8,13 @@ public class PlayerHit : MonoBehaviour
     private SoundManager soundManager;
     public GameObject textPrefab;
     private Color textColour;
+    private TextManager textManager;
 
-    public Font[] fonts;
 
     private void Start()
     {
         soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
+        textManager = soundManager.GetComponent<TextManager>();
     }
 
 
@@ -50,25 +51,10 @@ public class PlayerHit : MonoBehaviour
     void ShowFloatingText()
     {
         GameObject text = Instantiate(textPrefab, transform.position, textPrefab.transform.rotation) as GameObject;
-        int i = SelectFont();
-        text.GetComponent<TextMesh>().font = fonts[i];
-        text.GetComponent<MeshRenderer>().material = fonts[i].material;
-        text.GetComponent<TextMesh>().text = SelectText();
+        int i = textManager.SelectFont();
+        text.GetComponent<TextMesh>().font = textManager.GetFont(i);
+        text.GetComponent<MeshRenderer>().material = textManager.GetFont(i).material;
+        text.GetComponent<TextMesh>().text = textManager.SelectText();
         text.GetComponent<TextMesh>().color = textColour;
-    }
-
-    string SelectText()
-    {
-        string[] text = new string[] { "WHAAM", "PING", "KTANG", "BOP", "SOCK", "BAM!!!", "BOOM", "OOF" };
-        int i = Random.Range(0, text.Length);
-
-        return text[i];
-    }
-
-    int SelectFont()
-    {       
-        int i = Random.Range(0, fonts.Length);
-
-        return i;
-    }
+    }  
 }
