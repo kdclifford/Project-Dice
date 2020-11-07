@@ -84,6 +84,10 @@ public class EnemyFire : MonoBehaviour
         SpawnBullet(-10, -45);
     }
 
+    public void WizardFire()
+    {
+        SpawnBullet(0, 0);
+    }
 
     void SpawnBullet(float angleMin, float angleMAx)
     {

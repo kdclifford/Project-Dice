@@ -133,6 +133,7 @@ public class PlayerHealth : MonoBehaviour
             {
                 Destroy(GetComponent<MovementScript>());
                 Destroy(GetComponent<ProjectileFire>());
+                Destroy(this);
 
                 if (deathDirection.y >= 0 && deathDirection.y < 0.1)
                 {
@@ -209,6 +210,7 @@ public class PlayerHealth : MonoBehaviour
         isDead = true;
         animator.SetFloat("DeathX", newDeathDirection.x);
         animator.SetFloat("DeathY", newDeathDirection.y);
+        animator.SetTrigger("Dead");
     }
 
     private void IdleAnimationOn()
