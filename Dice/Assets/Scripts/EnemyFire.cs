@@ -10,7 +10,7 @@ public class EnemyFire : MonoBehaviour
 {
     //[SerializeField]
     public GameObject projectile;
-
+    public GameObject meshRenderer;
 
     [SerializeField]
     private float MaxFireCooldown = 1;
@@ -110,5 +110,8 @@ public class EnemyFire : MonoBehaviour
         fireCooldown = MaxFireCooldown;
     }
 
-
+    public void StaffAttack()
+    {
+        meshRenderer.GetComponent<RandomColour>().lerpOn = true;
+    }
 }
