@@ -24,7 +24,7 @@ public class XmlLoader : MonoBehaviour
 
         //Load XML
         LoadXml();
-        soundManager.BackGroundMusic();
+        soundManager.SoundOn();
     }
 
 

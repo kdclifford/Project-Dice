@@ -9,13 +9,14 @@ public class SoundManager : MonoBehaviour
     public Sound[] soundClips;
 
     //Checks the current scene used to change the music depending on the scene
-    private string currentScene;
+    private string currentScene = "Null";
 
     //Makes sure there is only one instace of the audio manager
     public static SoundManager instance;
+
+    bool soundLoad = false;
     void Awake()
-    {
-        currentScene = SceneManager.GetActiveScene().name;
+    {       
         if (instance == null)
         {
             instance = this;
@@ -31,21 +32,29 @@ public class SoundManager : MonoBehaviour
        // BackGroundMusic();
     }
 
-    ////Used to check and change the audio depending on the scene
-    //private void Update()
-    //{
-    //    if(currentScene != SceneManager.GetActiveScene().name)
-    //    {
-    //        BackGroundMusic();
-    //        currentScene = SceneManager.GetActiveScene().name;
-    //    }
+    //Used to check and change the audio depending on the scene
+    private void Update()
+    {      
+        if(currentScene != SceneManager.GetActiveScene().name)
+        {
+            currentScene = SceneManager.GetActiveScene().name;
+            BackGroundMusic();
+        }
+    }
 
-    //}
 
     //Called when the scene changes
     public void BackGroundMusic()
     {
-        Play("Castle Music", gameObject);
+        if (currentScene == "Menu")
+        {
+            Play("Menu Music 2", gameObject);
+           
+        }
+        else
+        {
+            Play("Castle Music", gameObject);
+        }
     }
 
     //Plays Sound if sound exists
@@ -62,7 +71,10 @@ public class SoundManager : MonoBehaviour
         }
 
         Sound s = Array.Find(soundClips, Sound => Sound.name == name);
-
+        if(s == null)
+        {
+           s = Array.Find(soundClips, Sound => Sound.name == "FireBall");
+        }
 
         agentAudio.clip = s.clip;
         agentAudio.loop = s.loop;
@@ -86,6 +98,9 @@ public class SoundManager : MonoBehaviour
         Play("PlaceHolder", agent);
     }
 
-
+    public void SoundOn()
+    {
+        soundLoad = true;
+    }
 
 }

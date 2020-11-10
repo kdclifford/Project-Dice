@@ -1170,8 +1170,13 @@ PrefabInstance:
     - target: {fileID: 4200978888511108852, guid: 047ad09605d6c554f965221fd2329984,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5812377792357164714, guid: 047ad09605d6c554f965221fd2329984,
+        type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: af2cce65f2948794f96d81ee9e10eb37, type: 2}
     - target: {fileID: 5812377792357169492, guid: 047ad09605d6c554f965221fd2329984,
         type: 3}
       propertyPath: m_Enabled
@@ -2119,7 +2124,7 @@ PrefabInstance:
     - target: {fileID: 4597648255728195367, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
         type: 3}
       propertyPath: soundClips.Array.size
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4597648255728195367, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
         type: 3}
@@ -2246,34 +2251,58 @@ PrefabInstance:
       propertyPath: soundClips.Array.data[4].pitch
       value: 0.35
       objectReference: {fileID: 0}
+    - target: {fileID: 4597648255728195367, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
+        type: 3}
+      propertyPath: soundClips.Array.data[5].name
+      value: Menu Music 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597648255728195367, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
+        type: 3}
+      propertyPath: soundClips.Array.data[5].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 79e1db1a9b12dc547b7738ff9093901f, type: 3}
+    - target: {fileID: 4597648255728195367, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
+        type: 3}
+      propertyPath: soundClips.Array.data[5].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597648255728195367, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
+        type: 3}
+      propertyPath: soundClips.Array.data[5].volume
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597648255728195367, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
+        type: 3}
+      propertyPath: soundClips.Array.data[5].pitch
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597648255728195367, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
+        type: 3}
+      propertyPath: soundClips.Array.data[6].name
+      value: Menu Music
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597648255728195367, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
+        type: 3}
+      propertyPath: soundClips.Array.data[6].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 591166de54b653149b5d8d2ee05e894a, type: 3}
+    - target: {fileID: 4597648255728195367, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
+        type: 3}
+      propertyPath: soundClips.Array.data[6].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597648255728195367, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
+        type: 3}
+      propertyPath: soundClips.Array.data[6].volume
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597648255728195367, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
+        type: 3}
+      propertyPath: soundClips.Array.data[6].pitch
+      value: 1.58
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04c77e0ad8bbdb74a94c5bda9c02f409, type: 3}
---- !u!1 &875342924 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4597648255728195361, guid: 04c77e0ad8bbdb74a94c5bda9c02f409,
-    type: 3}
-  m_PrefabInstance: {fileID: 875342923}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &875342925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 875342924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eccbd774b848436479a766e3bf26342c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fonts:
-  - {fileID: 12800000, guid: 29678b680f93aa44297c74d4c6e93699, type: 3}
-  - {fileID: 12800000, guid: a7dd40ab3c7b31e4f85ecaae74e84d9b, type: 3}
-  - {fileID: 12800000, guid: 6dfd00324a434104facf917153c06e07, type: 3}
-  - {fileID: 12800000, guid: c376d20c33a7c9845bccb1d6c86fcee3, type: 3}
-  - {fileID: 12800000, guid: 9c26a6d13effef74a89d40be6646278e, type: 3}
-  - {fileID: 12800000, guid: 3f37c718c10c925459763d054bfa156a, type: 3}
-  - {fileID: 12800000, guid: 89ebe1ab2827dcc40a1a4b6ca32e6a95, type: 3}
 --- !u!1001 &892182919
 PrefabInstance:
   m_ObjectHideFlags: 0
