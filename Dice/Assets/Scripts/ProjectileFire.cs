@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using AnimationFunctions.Utils;
 using UnityEngine.UI;
 using XInputDotNetPure;
@@ -236,6 +237,10 @@ public class ProjectileFire : MonoBehaviour
         interactPopup.enabled = true;
         if (Collision.gameObject.tag == "ShieldPickup")
         interactPopup.enabled = true;
+        if (Collision.gameObject.tag == "Door")
+        interactPopup.enabled = true;
+        if (Collision.gameObject.tag == "Portal")
+        interactPopup.enabled = true;
 
         if (GetComponent<MovementScript>().controller)
         {
@@ -267,6 +272,23 @@ public class ProjectileFire : MonoBehaviour
                     sn.addShield();
                     Destroy(Collision.gameObject);
                     interactPopup.enabled = false;
+                }
+            }
+            else if (Collision.gameObject.tag == "Door" && Input.GetKey(KeyCode.JoystickButton0))
+            {
+                openDoor sn = Collision.gameObject.GetComponent<openDoor>();
+                sn.openTheDoor();
+            }
+            else if (Collision.gameObject.tag == "Portal" && Input.GetKey(KeyCode.JoystickButton0))
+            {
+                if(Collision.gameObject.name == "QuitPortal")
+                {
+                    UnityEditor.EditorApplication.isPlaying = false;
+                    Application.Quit();
+                }
+                else if (Collision.gameObject.name == "PlayPortal")
+                {
+                    SceneManager.LoadScene("DemoDungeon");
                 }
             }
         }
