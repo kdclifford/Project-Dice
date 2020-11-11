@@ -327,12 +327,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7000db0ec93480d4c8b4da9522f220b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfRooms: 10
+  numberOfRooms: 5
   RoomPrefabs:
   - {fileID: 3506580042367869591, guid: accb85e1beb2714498461559c4ca8cdb, type: 3}
   - {fileID: 2653583267993819834, guid: 7156dcd1848a01b41b54aded87d7699c, type: 3}
-  WorldSize: {x: 50, y: 50}
+  WorldSize: {x: 25, y: 25}
+  finalRoomPrefab: {fileID: 7638974500389706608, guid: 1e18172acd01fab49a703831f3d82667,
+    type: 3}
+  roomsPrefabData: []
   roomsData: []
+  DoorPostions: []
 --- !u!4 &1953116057
 Transform:
   m_ObjectHideFlags: 0

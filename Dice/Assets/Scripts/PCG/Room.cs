@@ -6,7 +6,7 @@ public class Room : MonoBehaviour
 {
 
     public Vector2 Size;
-    public List<Vector2> DoorLocations;
+    public List<Vector2> DoorLocations = new List<Vector2>();
     public RoomType roomType;
     public Vector2 location; 
     public int preFabNumber;
@@ -15,6 +15,10 @@ public class Room : MonoBehaviour
     {
         
     }
+
+    void WorldDoorLocationUpdate()
+    {
+    }    
 
     // Update is called once per frame
     void Update()
