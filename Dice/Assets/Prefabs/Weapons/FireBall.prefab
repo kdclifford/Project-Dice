@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2633893493887509713}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 9.93}
+  m_LocalPosition: {x: 0, y: 0, z: 1.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6344335812988061146}
@@ -105,7 +105,8 @@ GameObject:
   - component: {fileID: 6344335812988061144}
   - component: {fileID: 4811113834965867643}
   - component: {fileID: 1991793173940383291}
-  m_Layer: 0
+  - component: {fileID: 8650300934417849260}
+  m_Layer: 8
   m_Name: FireBall
   m_TagString: Equipped
   m_Icon: {fileID: 0}
@@ -121,7 +122,7 @@ Transform:
   m_GameObject: {fileID: 6344335812988061145}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 0.032279085, y: 0.005676167, z: 0.061007477}
+  m_LocalScale: {x: 0.032279085, y: 0.005676167, z: 0.03227909}
   m_Children:
   - {fileID: 5425880597615590115}
   m_Father: {fileID: 0}
@@ -696,7 +697,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     maxNumParticles: 1000
-    size3D: 0
+    size3D: 1
     rotation3D: 1
     gravityModifier:
       serializedVersion: 2
@@ -4936,3 +4937,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxTimer: 2
+--- !u!135 &8650300934417849260
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6344335812988061145}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}

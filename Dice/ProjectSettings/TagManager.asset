@@ -8,6 +8,13 @@ TagManager:
   - NotEquipped
   - Equipped
   - SoundManager
+  - Wall
+  - Enemy
+  - EnemyProjectile
+  - HealthPickup
+  - ShieldPickup
+  - Door
+  - Portal
   layers:
   - Default
   - TransparentFX
@@ -17,9 +24,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Ignore Collision
+  - Player
+  - PlayerHitBox
   - 
   - 
   - 

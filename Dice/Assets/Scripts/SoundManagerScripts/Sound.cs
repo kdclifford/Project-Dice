@@ -20,6 +20,15 @@ public class Sound
     {
     }
 
+    public Sound(AudioClip audio)
+    {
+        //sound.clip = (AudioClip)Resources.Load("Sounds/" + obj.name);
+        clip = audio;
+        name = audio.name;
+        volume = 1;
+        pitch = 1;
+    }
+
     public Sound(XmlNode curItemNode)
     {
         name = curItemNode["name"].InnerText;

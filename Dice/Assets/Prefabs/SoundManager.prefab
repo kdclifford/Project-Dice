@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4597648255728195366}
   - component: {fileID: 4597648255728195367}
   - component: {fileID: 4597648255728195360}
+  - component: {fileID: 6638095116009729962}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: SoundManager
@@ -64,9 +65,59 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   addSound:
-    name: 
+  - name: 
     clip: {fileID: 0}
     loop: 0
-    sound3D: 1
+    sound3D: 0
     volume: 0
     pitch: 0
+  - name: 
+    clip: {fileID: 0}
+    loop: 0
+    sound3D: 0
+    volume: 0
+    pitch: 0
+  - name: 
+    clip: {fileID: 0}
+    loop: 0
+    sound3D: 0
+    volume: 0
+    pitch: 0
+  - name: 
+    clip: {fileID: 0}
+    loop: 0
+    sound3D: 0
+    volume: 0
+    pitch: 0
+  - name: 
+    clip: {fileID: 0}
+    loop: 0
+    sound3D: 0
+    volume: 0
+    pitch: 0
+  - name: 
+    clip: {fileID: 0}
+    loop: 0
+    sound3D: 0
+    volume: 0
+    pitch: 0
+--- !u!114 &6638095116009729962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4597648255728195361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eccbd774b848436479a766e3bf26342c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fonts:
+  - {fileID: 12800000, guid: 29678b680f93aa44297c74d4c6e93699, type: 3}
+  - {fileID: 12800000, guid: a7dd40ab3c7b31e4f85ecaae74e84d9b, type: 3}
+  - {fileID: 12800000, guid: 6dfd00324a434104facf917153c06e07, type: 3}
+  - {fileID: 12800000, guid: c376d20c33a7c9845bccb1d6c86fcee3, type: 3}
+  - {fileID: 12800000, guid: 9c26a6d13effef74a89d40be6646278e, type: 3}
+  - {fileID: 12800000, guid: 3f37c718c10c925459763d054bfa156a, type: 3}
+  - {fileID: 12800000, guid: 89ebe1ab2827dcc40a1a4b6ca32e6a95, type: 3}

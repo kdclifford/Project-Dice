@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 4740353612503842}
   - component: {fileID: 33798536694203572}
   - component: {fileID: 23959334469996066}
-  - component: {fileID: 64298171510093400}
+  - component: {fileID: 2158966825831498994}
+  - component: {fileID: 5951972072862855181}
+  - component: {fileID: -7231511548483102625}
   m_Layer: 11
   m_Name: dungeon-door-stone
   m_TagString: Untagged
@@ -84,8 +86,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64298171510093400
-MeshCollider:
+--- !u!65 &2158966825831498994
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +96,35 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 1a5de400178194a2389e9166e9bcd641, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 1.4555538, y: 3.0026963, z: 0.20801531}
+  m_Center: {x: 1.4210287, y: 1.4986519, z: 0.105747096}
+--- !u!65 &5951972072862855181
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781130428969628}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.433918, y: 3.0026963, z: 0.19161792}
+  m_Center: {x: -1.4162886, y: 1.4986519, z: 0.0975484}
+--- !u!208 &-7231511548483102625
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781130428969628}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2.0010002, y: 1.501, z: 0.163}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.001, y: 1.4990001, z: 0.165}
+  m_TimeToStationary: 0.5
