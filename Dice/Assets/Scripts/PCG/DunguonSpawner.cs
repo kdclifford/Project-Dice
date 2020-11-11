@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class DunguonSpawner : MonoBehaviour
@@ -19,7 +18,7 @@ public class DunguonSpawner : MonoBehaviour
     private List<Room> roomsData = new List<Room>();
     // Start is called before the first frame update
     [SerializeField]
-    private List<Vector2> DoorPostions = new List<Vector2>();
+    private List<Door> Doors = new List<Door>();
 
     private void Start()          
     {
@@ -27,13 +26,23 @@ public class DunguonSpawner : MonoBehaviour
             roomsPrefabData.Add(RoomPrefabs[0].GetComponent<Room>());
 
         GenerateFloor();          
-    }                             
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown("space"))
+        {
+            GenerateCorridor();
+
+        } 
+    }
     void GenerateFloor()          
     { 
         GenerateRooms();
         SetSceneLocation();
-        //GenerateListOfDoors();
     }
+
+
     void GenerateRooms()
     {
         while(roomsData.Count<numberOfRooms)
@@ -45,10 +54,15 @@ public class DunguonSpawner : MonoBehaviour
                 tempRoom.Size = finalRoomPrefab.GetComponent<Room>().Size;
                 tempRoom.roomType = RoomType.Exit;
                 roomsData.Add(tempRoom);
+               
+                Vector2 newDoorPosistion = finalRoomPrefab.GetComponent<Room>().DoorLocations[0];
+                newDoorPosistion += tempRoom.location;
+                Door tempDoor = new Door(newDoorPosistion,0);
+                Doors.Add(tempDoor);
+                
             }
             else
             { 
-                
                 tempRoom.preFabNumber= Random.Range(0, RoomPrefabs.Count);
                 tempRoom.location = new Vector2((int)Random.Range(0, WorldSize.x), (int)Random.Range(0, WorldSize.y));
                 tempRoom.Size = roomsPrefabData[tempRoom.preFabNumber].Size;
@@ -59,7 +73,8 @@ public class DunguonSpawner : MonoBehaviour
                     {
                         Vector2 newDoorPosistion = roomsPrefabData[tempRoom.preFabNumber].DoorLocations[i];
                         newDoorPosistion += tempRoom.location;
-                        DoorPostions.Add(newDoorPosistion);
+                        Door tempDoor = new Door(newDoorPosistion, roomsData.Count-1);
+                        Doors.Add(tempDoor);
                     }
                 }
             }
@@ -97,19 +112,65 @@ public class DunguonSpawner : MonoBehaviour
             }
         }
         return true;   
-
-
-}
+    }
     
-    void GenerateListOfDoors()
-    { 
-        for(int i = 0; i<roomsData.Count;i++)
-        {
-            for(int j = 0; j<roomsData[i].DoorLocations.Count;j++)
-            DoorPostions.Add(roomsData[i].DoorLocations[j]);
-        }    
+    void GenerateCorridor()
+    {
+        //while(!AllDoorsConnected())
+        //{
+            int currentDoor = PickDoor();
+            int targetDoor =NearestDoor(currentDoor);
+            GeneratePath(currentDoor, targetDoor);
+        //}
+        //Generate Path Bewteen Avoiding Rooms
+    }
 
+    void GeneratePath(int startingDoor,int targetDoor)
+    {
+        PathFinding pathFinding = new PathFinding((int)WorldSize.x, (int)WorldSize.y,roomsData);
+        List<PathNode> path = pathFinding.FindPath(Doors[startingDoor].doorLocation, Doors[targetDoor].doorLocation, (int)WorldSize.x, (int)WorldSize.y);
+        int g = 5;
 
     }
-  
+     int NearestDoor(int currentDoor)
+     {
+        int nearestDoor=-1;
+        float distance = 1000;
+        for (int i = 0; i < Doors.Count; i++)
+        {
+            if (i != currentDoor && Doors[i].roomNumber != Doors[currentDoor].roomNumber)
+            {
+                if (distance > Vector2.Distance(Doors[i].doorLocation, Doors[currentDoor].doorLocation))
+                {
+                    distance = Vector2.Distance(Doors[i].doorLocation, Doors[currentDoor].doorLocation);
+                    nearestDoor = i;
+                }
+            }
+        }
+        return nearestDoor;
+    }
+
+    int PickDoor()
+    {
+        for (int i = 0; i < Doors.Count; i++)
+        {
+            if (!Doors[i].connected)
+            {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+    bool AllDoorsConnected()
+    {
+        for(int i =0; i<Doors.Count;i++)
+        {
+            if(!Doors[i].connected)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 }
