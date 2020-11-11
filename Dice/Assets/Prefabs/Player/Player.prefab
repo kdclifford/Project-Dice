@@ -1541,7 +1541,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5812377793355504583}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 6.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5812377793509821201}
@@ -1742,11 +1742,11 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6658817375150945558}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: af2cce65f2948794f96d81ee9e10eb37, type: 2}
   m_Controller: {fileID: 9100000, guid: 4fb52ae11e199de449131496c0bd5915, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -1827,7 +1827,7 @@ MonoBehaviour:
   rayOffset: {x: 0, y: 1.5, z: 0}
   diagonalOffset: 0.9
   collisionForce: 1
-  controller: 0
+  controller: 1
 --- !u!114 &5812377792357169489
 MonoBehaviour:
   m_ObjectHideFlags: 0
