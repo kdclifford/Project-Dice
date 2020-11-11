@@ -5,5 +5,6 @@ using UnityEngine;
 public enum LevelEnum
 {
     MainMenu = 0,
-    Level1 = 1,
+    Options = 1,
+    Level1 = 2,
 }

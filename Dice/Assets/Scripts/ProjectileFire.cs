@@ -294,6 +294,10 @@ public class ProjectileFire : MonoBehaviour
                 {
                     levelManager.LoadLevel((int)LevelEnum.MainMenu);
                 }
+                else if (Collision.gameObject.name == "OptionsPortal")
+                {
+                    levelManager.LoadLevel((int)LevelEnum.Options);
+                }
             }
         }
         else

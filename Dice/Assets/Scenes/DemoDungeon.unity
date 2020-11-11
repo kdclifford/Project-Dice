@@ -1557,6 +1557,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 47689039}
+    - target: {fileID: 35213364, guid: cc2904f8420d54e45b80616562ff859c, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 35213366, guid: cc2904f8420d54e45b80616562ff859c, type: 3}
       propertyPath: m_IsKinematic
       value: 1
@@ -2832,7 +2836,7 @@ GameObject:
   - component: {fileID: 1364226360}
   m_Layer: 5
   m_Name: SceneFade
-  m_TagString: Untagged
+  m_TagString: SceneFade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

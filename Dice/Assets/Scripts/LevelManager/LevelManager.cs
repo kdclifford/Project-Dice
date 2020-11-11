@@ -7,7 +7,7 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
     private SoundManager soundManager;
-    public Animator fade;
+    private Animator fade;
     public float sceneChangeDelay;
     void Awake()
     {
@@ -33,10 +33,23 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
+        fade = GameObject.FindGameObjectWithTag("SceneFade").GetComponent<Animator>();
     }
 
-   public void LoadLevel(int levelIndex)
+
+    private void Update()
     {
+        if (fade == null)
+        {
+            fade = GameObject.FindGameObjectWithTag("SceneFade").GetComponent<Animator>();
+        }
+    }
+
+
+
+
+    public void LoadLevel(int levelIndex)
+    {      
         StartCoroutine(ChangeScene(levelIndex));
     }
     
@@ -50,6 +63,7 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(sceneChangeDelay);
         SceneManager.LoadScene(levelIndex);
         soundManager.GetComponent<Animator>().SetInteger("Fade", 0);
+        fade = GameObject.FindGameObjectWithTag("SceneFade").GetComponent<Animator>();
     }
 
 
