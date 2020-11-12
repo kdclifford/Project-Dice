@@ -120,16 +120,16 @@ public class DunguonSpawner : MonoBehaviour
         //{
             int currentDoor = PickDoor();
             int targetDoor =NearestDoor(currentDoor);
-            GeneratePath(currentDoor, targetDoor);
+            List<PathNode> path = GeneratePath(currentDoor, targetDoor);
         //}
         //Generate Path Bewteen Avoiding Rooms
     }
 
-    void GeneratePath(int startingDoor,int targetDoor)
+    private List<PathNode> GeneratePath(int startingDoor,int targetDoor)
     {
-        PathFinding pathFinding = new PathFinding((int)WorldSize.x, (int)WorldSize.y,roomsData);
+        PathFinding pathFinding = new PathFinding((int)WorldSize.x, (int)WorldSize.y);
         List<PathNode> path = pathFinding.FindPath(Doors[startingDoor].doorLocation, Doors[targetDoor].doorLocation, (int)WorldSize.x, (int)WorldSize.y);
-        int g = 5;
+        return path;
 
     }
      int NearestDoor(int currentDoor)

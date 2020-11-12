@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PathNode : MonoBehaviour
 {
+    private Grid<PathNode> grid;
     public int x;
     public int y;
 
@@ -11,12 +12,16 @@ public class PathNode : MonoBehaviour
     public int hCost;
     public int fCost;
 
+
+    public bool isWalkable;
     public PathNode cameFromNode;
 
-    public PathNode(int x, int y)
+    public PathNode(Grid<PathNode> g,int x, int y)
     {
+        this.grid = g;
         this.x = x;
         this.y = y;
+        isWalkable = true;
     }
 
     public void CalculateFCost()
