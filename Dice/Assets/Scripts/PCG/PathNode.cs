@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PathNode : MonoBehaviour
+public class PathNode 
 {
-    private Grid<PathNode> grid;
+    private Grid grid;
     public int x;
     public int y;
 
@@ -14,9 +14,9 @@ public class PathNode : MonoBehaviour
 
 
     public bool isWalkable;
-    public PathNode cameFromNode;
+    public Vector2Int cameFromNode;
 
-    public PathNode(Grid<PathNode> g,int x, int y)
+    public PathNode(Grid g,int x, int y)
     {
         this.grid = g;
         this.x = x;

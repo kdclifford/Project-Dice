@@ -2,27 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Room : MonoBehaviour
+public class Room:MonoBehaviour 
 {
 
     public Vector2 Size;
-    public List<Vector2> DoorLocations = new List<Vector2>();
+    public List<Vector2Int> DoorLocations = new List<Vector2Int>();
+    public List<FacingDirection> DoorFacingDirections = new List<FacingDirection>();
     public RoomType roomType;
-    public Vector2 location; 
+    public Vector2Int location; 
     public int preFabNumber;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    void WorldDoorLocationUpdate()
-    {
-    }    
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
