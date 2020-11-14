@@ -6,21 +6,23 @@ using UnityEngine.AI;
 
 public class EnemyAi : MonoBehaviour
 {
-
-    private NavMeshAgent agent;
-    private Animator animator;
+    //Public
     public GameObject target;
-    public float health = 100;
+    public float health = 4;
     public bool isDead = false;
+
+    //Private
     private bool removeBody = false;
     private float removeSpeed = 5;
+    private NavMeshAgent agent;
+    private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         agent.avoidancePriority = 0;
-
     }
 
     // Update is called once per frame
@@ -47,12 +49,9 @@ public class EnemyAi : MonoBehaviour
             targetDirection = AnimationScript.CurrentDirection(targetDirection, gameObject);
             targetDirection.Normalize();
 
-
             animator.SetFloat("Velocity", velocity);
             animator.SetFloat("XMove", targetDirection.x);
             animator.SetFloat("YMove", targetDirection.y);
-
-
 
             if (target.GetComponent<PlayerHealth>() != null &&  Vector3.Distance(target.transform.position, transform.position) <= 30)
             {

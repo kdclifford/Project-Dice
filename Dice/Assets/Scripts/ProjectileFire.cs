@@ -7,15 +7,20 @@ using UnityEngine;
 
 public class ProjectileFire : MonoBehaviour
 {
-    //[SerializeField]
+    [HideInInspector]
     public GameObject projectileLeft;
-    //[SerializeField]
+    [HideInInspector]
     public GameObject projectileRight;
+    //Used to set projectile distance from the player
+    [SerializeField, Header("Projectile Settings")]
+    private float projectileDistance;
+    [SerializeField]
+    private float yOffsetProgectile = 1;
     [SerializeField]
     private float MaxFireCooldown = 1;
     [SerializeField]
     private int projectileSpeed = 500;
-    [SerializeField]
+    [SerializeField, Header("UI Refereneces")]
     private Image LeftUIIcon;
     [SerializeField]
     private Image RightUIIcon;
@@ -23,17 +28,15 @@ public class ProjectileFire : MonoBehaviour
     private Image interactPopup;
     [SerializeField]
     private Image EquipPopup;
-    [SerializeField]
+
+    //Hand charge colours
     private Material mat1;
-    [SerializeField]
     private Material mat2;
 
     private float currRTFireCooldown = 0;
     private float currLTFireCooldown = 0;
 
-    //Used to set projectile distance from the player
-    [SerializeField]
-    private float projectileDistance;
+
 
     private GameObject attachedParticle;
     private Sprite attachedSprite;
@@ -41,6 +44,8 @@ public class ProjectileFire : MonoBehaviour
     private bool pickupColliding;
 
     private Animator animator;   
+
+    //Managers
     private SoundManager soundManager;
     private LevelManager levelManager;
 
@@ -52,7 +57,6 @@ public class ProjectileFire : MonoBehaviour
 
     private Color leftProjectileColour;
     private Color rightProjectileColour;
-    public float yOffsetProgectile = 1;
 
     bool playerIndexSet = false;
     PlayerIndex playerIndex = 0;
@@ -67,6 +71,10 @@ public class ProjectileFire : MonoBehaviour
         levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
         interactPopup.enabled = false;
         EquipPopup.enabled = false;
+        projectileLeft = (GameObject)Resources.Load("Player/NoProjectile Variant Resource");
+        projectileRight = (GameObject)Resources.Load("Player/NoProjectile Variant Resource");        
+        mat1 = (Material)Resources.Load("Player/Weapon 1");
+        mat2 = (Material)Resources.Load("Player/Weapon 2");
     }
 
     // Update is called once per frame

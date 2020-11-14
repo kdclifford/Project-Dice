@@ -7,7 +7,7 @@ using UnityEngine;
 namespace AnimationFunctions.Utils
 {
     public class AnimationScript
-    {      
+    {   
         public static void RightAttack(Animator animator)
         {
             animator.SetInteger("Attack", 1);
@@ -84,7 +84,5 @@ namespace AnimationFunctions.Utils
 
             return input;
         }
-
-
     }
 }

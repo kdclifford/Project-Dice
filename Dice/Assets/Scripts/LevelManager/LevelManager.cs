@@ -6,9 +6,12 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
+    public float sceneChangeDelay; //Scene delay
+
     private SoundManager soundManager;
     private Animator fade;
-    public float sceneChangeDelay;
+
+    //Checks for an instance of LevelManager in current scene
     void Awake()
     {
         if (instance == null)
@@ -24,11 +27,6 @@ public class LevelManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-
-
-
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +34,7 @@ public class LevelManager : MonoBehaviour
         fade = GameObject.FindGameObjectWithTag("SceneFade").GetComponent<Animator>();
     }
 
-
+  
     private void Update()
     {
         if (fade == null)
@@ -45,16 +43,11 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-
-
-
+    //Loads level with a delay
     public void LoadLevel(int levelIndex)
     {      
         StartCoroutine(ChangeScene(levelIndex));
     }
-    
-    
-
 
     IEnumerator ChangeScene( int levelIndex)
     {
@@ -65,6 +58,4 @@ public class LevelManager : MonoBehaviour
         soundManager.GetComponent<Animator>().SetInteger("Fade", 0);
         fade = GameObject.FindGameObjectWithTag("SceneFade").GetComponent<Animator>();
     }
-
-
 }

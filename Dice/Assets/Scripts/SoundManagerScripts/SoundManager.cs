@@ -5,18 +5,19 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    //Stores all the sound clips
+    //Stores all the sound clips   
+    [Header("Loaded Sounds"), Tooltip("Remember to save all your changes")]
     public Sound[] soundClips;
-
-    //Checks the current scene used to change the music depending on the scene
-    private string currentScene = "Null";
 
     //Makes sure there is only one instace of the audio manager
     public static SoundManager instance;
 
-    bool soundLoad = false;
+    //Checks the current scene used to change the music depending on the scene
+    private string currentScene = "Null";
+
+    //Checks for an instance of SoundManager in current scene
     void Awake()
-    {       
+    {
         if (instance == null)
         {
             instance = this;
@@ -28,14 +29,12 @@ public class SoundManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
-
-       // BackGroundMusic();
     }
 
     //Used to check and change the audio depending on the scene
     private void Update()
-    {      
-        if(currentScene != SceneManager.GetActiveScene().name)
+    {
+        if (currentScene != SceneManager.GetActiveScene().name)
         {
             currentScene = SceneManager.GetActiveScene().name;
             BackGroundMusic();
@@ -49,7 +48,7 @@ public class SoundManager : MonoBehaviour
         if (currentScene == "Menu")
         {
             Play("Menu Music 2", gameObject);
-           
+
         }
         else
         {
@@ -71,9 +70,9 @@ public class SoundManager : MonoBehaviour
         }
 
         Sound s = Array.Find(soundClips, Sound => Sound.name == name);
-        if(s == null)
+        if (s == null)
         {
-           s = Array.Find(soundClips, Sound => Sound.name == "FireBall");
+            s = soundClips[0];
         }
 
         agentAudio.clip = s.clip;
@@ -95,16 +94,7 @@ public class SoundManager : MonoBehaviour
     //Will play a place holder sound for testing purposes
     public void Play(GameObject agent)
     {
-        Play("PlaceHolder", agent);
+        Play(soundClips[0].name, agent);
+        Debug.Log("Place Holder sound being used");
     }
-
-    public void SoundOn()
-    {
-        soundLoad = true;
-    }
-
-    
-
-
-
 }

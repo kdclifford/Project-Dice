@@ -8,46 +8,40 @@ using UnityEngine.SocialPlatforms;
 
 public class EnemyFire : MonoBehaviour
 {
-    //[SerializeField]
-    public GameObject projectile;
-    public GameObject meshRenderer;
-
+    [SerializeField, Header("Object Referneces")]
+    private GameObject projectile;
     [SerializeField]
-    private float MaxFireCooldown = 1;
+    private RandomColour meshRenderer;
+    [SerializeField, Header("Projectile offsets"), Tooltip("Controls how high the projectile spawns")]
+    private float yOffsetProgectile = 1;
+    [SerializeField, Tooltip("Controls how far forward the projectile spawns")]
+    private float zOffsetProgectile = 1;
+    [SerializeField, Header("Projectile Settings")]
+    private float fireRate = 1;
     [SerializeField]
     private float projectileSpeed = 10;
 
-
     private float fireCooldown = 0;
-
-    //Used to set projectile distance from the player
-    [SerializeField]
-    private float projectileDistance;
-
     private int playerHealth;
-
     private Animator animator;
     private SoundManager soundManager;
 
-    public float yOffsetProgectile = 1;
-    public float zOffsetProgectile = 1;
 
     // Start is called before the first frame update
     void Start()
     {
-        fireCooldown = MaxFireCooldown;
+        fireCooldown = fireRate;
         animator = GetComponent<Animator>();
-        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
-        
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();        
     }
 
     // Update is called once per frame
     void Update()
     {
         fireCooldown -= Time.deltaTime;
-        //playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().CurrentHearts;
     }
 
+    //Universal call to make enemies
     public void EnemyShoot()
     {
         if (projectile.tag != ("NotEquipped"))
@@ -63,20 +57,7 @@ public class EnemyFire : MonoBehaviour
         }
     }
 
-
-
-
-
-
-    void OnTriggerStay(Collider Collision)
-    {    
-       
-    }
-    void OnTriggerExit(Collider other)
-    {
-
-    }
-
+    //Spider Attack
     public void Fire()
     {
         if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>() != null)
@@ -87,6 +68,7 @@ public class EnemyFire : MonoBehaviour
         }
     }
 
+    //Wisard attacks
     public void WizardFire()
     {
         if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>() != null)
@@ -95,6 +77,13 @@ public class EnemyFire : MonoBehaviour
         }
     }
 
+    //Changes the staff colour while shooting
+    public void StaffAttack()
+    {
+        meshRenderer.lerpOn = true;
+    }
+
+    //Spawns projectiles
     void SpawnBullet(float angleMin, float angleMAx)
     {
         Vector3 forward = transform.forward;
@@ -103,21 +92,15 @@ public class EnemyFire : MonoBehaviour
         Quaternion playerRot = Quaternion.identity;
         playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y + Random.Range(angleMin, angleMAx), 90);
 
-        Vector3 firePos = transform.position;// LeftFirePos.x -= 0.4f;
+        Vector3 firePos = transform.position;
         firePos.y += yOffsetProgectile;
         firePos += transform.forward * zOffsetProgectile;
 
         //playerRot.eulerAngles += 45;
-
         GameObject bullet = Instantiate(projectile, firePos, playerRot) as GameObject;
         bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * projectileSpeed);
         bullet.tag = "EnemyProjectile";
         soundManager.Play(projectile.name, bullet);
-        fireCooldown = MaxFireCooldown;
-    }
-
-    public void StaffAttack()
-    {
-        meshRenderer.GetComponent<RandomColour>().lerpOn = true;
+        fireCooldown = fireRate;
     }
 }
