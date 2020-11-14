@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using AnimationFunctions.Utils;
 using UnityEngine.UI;
 using XInputDotNetPure;
@@ -43,6 +42,7 @@ public class ProjectileFire : MonoBehaviour
 
     private Animator animator;   
     private SoundManager soundManager;
+    private LevelManager levelManager;
 
     //Bools to chek if the user is firing
     [HideInInspector]
@@ -64,14 +64,14 @@ public class ProjectileFire : MonoBehaviour
         currLTFireCooldown = MaxFireCooldown;
         animator = GetComponent<Animator>();
         soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
+        levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
         interactPopup.enabled = false;
         EquipPopup.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
-    {
-        
+    {        
         if (GetComponent<MovementScript>().controller)
         {
 
@@ -288,7 +288,15 @@ public class ProjectileFire : MonoBehaviour
                 }
                 else if (Collision.gameObject.name == "PlayPortal")
                 {
-                    SceneManager.LoadScene("DemoDungeon");
+                    levelManager.LoadLevel((int)LevelEnum.Level1);
+                }
+                else if (Collision.gameObject.name == "MenuPortal")
+                {
+                    levelManager.LoadLevel((int)LevelEnum.MainMenu);
+                }
+                else if (Collision.gameObject.name == "OptionsPortal")
+                {
+                    levelManager.LoadLevel((int)LevelEnum.Options);
                 }
             }
         }
@@ -427,4 +435,9 @@ public class ProjectileFire : MonoBehaviour
     {
         GamePad.SetVibration(playerIndex, 0, 0);
     }
+
+
+  
+
+
 }

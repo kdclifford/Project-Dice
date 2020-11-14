@@ -54,7 +54,7 @@ public class EnemyAi : MonoBehaviour
 
 
 
-            if (target.GetComponent<PlayerHealth>().CurrentHearts >= 0 &&  Vector3.Distance(target.transform.position, transform.position) <= 30)
+            if (target.GetComponent<PlayerHealth>() != null &&  Vector3.Distance(target.transform.position, transform.position) <= 30)
             {
                 Vector3 targetDir = target.transform.position - transform.position;
                 targetDir.y = transform.position.y;

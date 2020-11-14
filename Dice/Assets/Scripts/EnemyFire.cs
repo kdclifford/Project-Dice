@@ -45,7 +45,7 @@ public class EnemyFire : MonoBehaviour
     void Update()
     {
         fireCooldown -= Time.deltaTime;
-        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().CurrentHearts;
+        //playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().CurrentHearts;
     }
 
     public void EnemyShoot()
@@ -79,14 +79,20 @@ public class EnemyFire : MonoBehaviour
 
     public void Fire()
     {
-        SpawnBullet(0, 0);
-        SpawnBullet(10, 45);
-        SpawnBullet(-10, -45);
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>() != null)
+        {
+            SpawnBullet(0, 0);
+            SpawnBullet(10, 45);
+            SpawnBullet(-10, -45);
+        }
     }
 
     public void WizardFire()
     {
-        SpawnBullet(0, 0);
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>() != null)
+        {
+            SpawnBullet(0, 0);
+        }
     }
 
     void SpawnBullet(float angleMin, float angleMAx)
