@@ -11,11 +11,12 @@ using UnityEngine;
 
 public class XmlLoader : MonoBehaviour
 {
-    public Sound[] addSound;
+    [Tooltip("Sounds that will be added to the Sound Manager component")]
+    public Sound[] addedSounds;
 
-    XmlDocument xmlDoc;
+   private XmlDocument xmlDoc;
 
-    SoundManager soundManager;
+    private SoundManager soundManager;
 
     private void Awake()
     {
@@ -24,10 +25,7 @@ public class XmlLoader : MonoBehaviour
 
         //Load XML
         LoadXml();
-        soundManager.SoundOn();
     }
-
-
 
     public void LoadXml()
     {
@@ -153,24 +151,24 @@ public class XmlLoader : MonoBehaviour
         Sound[] temp;
         if (soundManager.soundClips != null)
         {
-            temp = new Sound[soundManager.soundClips.Length + addSound.Length];
+            temp = new Sound[soundManager.soundClips.Length + addedSounds.Length];
             soundManager.soundClips.CopyTo(temp, 0);
 
         }
         else
         {
-            temp = new Sound[addSound.Length];
+            temp = new Sound[addedSounds.Length];
         }
 
         int i = 0;
-        foreach (Sound s in addSound)
+        foreach (Sound s in addedSounds)
         {
 
-            temp[temp.Length - (addSound.Length - i)] = s;
+            temp[temp.Length - (addedSounds.Length - i)] = s;
             i++;
         }
         soundManager.soundClips = temp;
-        addSound = new Sound[0];
+        addedSounds = new Sound[0];
     }
 
 
@@ -178,7 +176,7 @@ public class XmlLoader : MonoBehaviour
     {
         FindSoundManager();
         soundManager.soundClips = new Sound[0];
-        addSound = new Sound[0];
+        addedSounds = new Sound[0];
     }
 
 
@@ -190,11 +188,11 @@ public class XmlLoader : MonoBehaviour
         Sound sound = new Sound(audio);       
 
         Sound[] temp;
-        if (addSound != null)
+        if (addedSounds != null)
         {
             
-            temp = new Sound[addSound.Length + 1];
-            addSound.CopyTo(temp, 0);
+            temp = new Sound[addedSounds.Length + 1];
+            addedSounds.CopyTo(temp, 0);
             temp[temp.Length - 1] = sound;
         }
         else
@@ -205,7 +203,7 @@ public class XmlLoader : MonoBehaviour
         
 
         
-        addSound = temp;
+        addedSounds = temp;
 
 
 
@@ -216,7 +214,7 @@ public class XmlLoader : MonoBehaviour
     //Check the same name hasent been added
     bool CheckForDupes()
     {
-        foreach (Sound s in addSound)
+        foreach (Sound s in addedSounds)
         {
             if (s.name == "")
             {
@@ -240,7 +238,7 @@ public class XmlLoader : MonoBehaviour
 
     bool CheckForClip()
     {
-        foreach (Sound s in addSound)
+        foreach (Sound s in addedSounds)
         {
             if (s.clip != null)
             {
