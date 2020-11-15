@@ -34,6 +34,6 @@ public class EnemyHit : MonoBehaviour
         text.GetComponent<MeshRenderer>().material = textManager.GetFont(i).material;
         text.GetComponent<TextMesh>().text = textManager.SelectText();
         text.GetComponent<TextMesh>().color = textColour;
-        GetComponent<EnemyAi>().health -= 25;
+        GetComponent<EnemyAi>().health -= 1;
     }
 }

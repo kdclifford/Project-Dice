@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEditor;
+using System.Reflection;
 
 [CustomEditor(typeof(XmlLoader)), CanEditMultipleObjects]
 public class XmlLoaderEditor : Editor
@@ -82,7 +83,8 @@ public class XmlLoaderEditor : Editor
             myScript.ClearAll();
         }
 
-        GUILayout.EndHorizontal();
+
+        GUILayout.EndHorizontal();      
     }
 }
 
