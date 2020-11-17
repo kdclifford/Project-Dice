@@ -166,7 +166,7 @@ public class ProjectileFire : MonoBehaviour
             else
             {
 
-                if (Input.GetMouseButton(0) && projectileRight.tag != ("NotEquipped"))
+                if (Input.GetMouseButton(1) && projectileRight.tag != ("NotEquipped"))
                 {
                     Debug.Log("Right click");
 
@@ -180,7 +180,7 @@ public class ProjectileFire : MonoBehaviour
                     }
                 }
 
-                if (Input.GetMouseButton(1) && projectileLeft.tag != ("NotEquipped"))
+                if (Input.GetMouseButton(0) && projectileLeft.tag != ("NotEquipped"))
                 {
                     Debug.Log("Left click");
                     if (currLTFireCooldown <= 0)

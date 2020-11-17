@@ -29,6 +29,7 @@ public class MovementScript : MonoBehaviour
 
     float horizontalInput = 0;
     float verticalInput = 0;
+    Vector3 oldpos;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +39,7 @@ public class MovementScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        oldpos = transform.position;
         horizontalInput = 0;
         verticalInput = 0;
 
@@ -86,7 +88,7 @@ public class MovementScript : MonoBehaviour
 
         RaycastHit hit;
 
-
+        bool clearVelocity = false;
         if (UpRight() && DownRight())
         {
             if (Physics.Raycast(transform.position + rayOffset, Vector3.right, out hit, rayDist, ~layerMask))
@@ -94,7 +96,8 @@ public class MovementScript : MonoBehaviour
                 //Vector3 newPos = new Vector3(transform.position.x - (rayDist - hit.distance), transform.position.y, transform.position.z);
                 //transform.position = newPos;
 
-                GetComponent<Rigidbody>().AddForce(Vector3.left * collisionForce);                
+                GetComponent<Rigidbody>().AddForce(Vector3.left * collisionForce);
+                clearVelocity = true;
             }
         }
 
@@ -103,6 +106,7 @@ public class MovementScript : MonoBehaviour
             if (Physics.Raycast(transform.position + rayOffset, Vector3.left, out hit, rayDist, ~layerMask))
             {
                 GetComponent<Rigidbody>().AddForce(Vector3.right * collisionForce);
+                clearVelocity = true;
             }
         }
 
@@ -111,6 +115,7 @@ public class MovementScript : MonoBehaviour
             if (Physics.Raycast(transform.position + rayOffset, Vector3.down, out hit, rayDist, ~layerMask))
             {
                 GetComponent<Rigidbody>().AddForce(Vector3.forward * collisionForce);
+                clearVelocity = true;
             }
         }
 
@@ -119,9 +124,15 @@ public class MovementScript : MonoBehaviour
             if (Physics.Raycast(transform.position + rayOffset, Vector3.forward, out hit, rayDist, ~layerMask))
             {
                 GetComponent<Rigidbody>().AddForce(Vector3.back * collisionForce);
+                clearVelocity = true;
             }
         }
 
+
+        if(!clearVelocity)
+        {
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
+        }
 
 
         if (Physics.Raycast(transform.position + rayOffset, Vector3.forward, out hit, rayDist, ~layerMask))
@@ -130,6 +141,7 @@ public class MovementScript : MonoBehaviour
             {
                 verticalInput = 0;
             }
+            transform.position = oldpos;
             Debug.DrawRay(transform.position, Vector3.forward * rayDist, Color.red);
         }
         else
@@ -139,11 +151,12 @@ public class MovementScript : MonoBehaviour
 
 
         if (Physics.Raycast(transform.position + rayOffset, Vector3.back, out hit, rayDist, ~layerMask))
-        { 
+        {
             if (verticalInput < 0)
             {
                 verticalInput = 0;
             }
+            transform.position = oldpos;
             Debug.DrawRay(transform.position, Vector3.back * rayDist, Color.red);
         }
         else
@@ -158,6 +171,7 @@ public class MovementScript : MonoBehaviour
             {
                 horizontalInput = 0;
             }
+            transform.position = oldpos;
             Debug.DrawRay(transform.position, Vector3.right * rayDist, Color.red);
         }
         else
@@ -173,19 +187,19 @@ public class MovementScript : MonoBehaviour
             ////transform.Translate(new Vector3(horizontalInput, 0, verticalInput) * -moveSpeed * Time.deltaTime, Space.World);
             //Debug.Log("Working col");
 
-            if(horizontalInput < 0)
+            if (horizontalInput < 0)
             {
                 horizontalInput = 0;
             }
-
+            transform.position = oldpos;
             Debug.DrawRay(transform.position, Vector3.left * rayDist, Color.red);
         }
         else
         {
             Debug.DrawRay(transform.position, Vector3.left * rayDist, Color.green);
-        }       
+        }
 
-            transform.Translate(new Vector3(horizontalInput, 0, verticalInput) * moveSpeed * Time.deltaTime, Space.World);        
+        transform.Translate(new Vector3(horizontalInput, 0, verticalInput) * moveSpeed * Time.deltaTime, Space.World);        
     }        
 
     void OnCollisionEnter(Collision collision)

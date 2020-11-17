@@ -1794,18 +1794,17 @@ MonoBehaviour:
     type: 3}
   projectileRight: {fileID: 5273658455136379278, guid: 1a96e129f0b1da340bce7ac04956dd32,
     type: 3}
+  projectileDistance: 0.4
+  yOffsetProgectile: 1
   MaxFireCooldown: 1
   projectileSpeed: 500
   LeftUIIcon: {fileID: 0}
   RightUIIcon: {fileID: 0}
   interactPopup: {fileID: 0}
   EquipPopup: {fileID: 0}
-  mat1: {fileID: 2100000, guid: 014031f7407e2f94eb835d6fe4bec5bc, type: 2}
-  mat2: {fileID: 2100000, guid: cddeaa210222cee4caf473dd3f4243d6, type: 2}
-  projectileDistance: 0.4
+  volume: {fileID: 0}
   rightFire: 0
   leftFire: 0
-  yOffsetProgectile: 1
 --- !u!114 &5812377792357169493
 MonoBehaviour:
   m_ObjectHideFlags: 0
