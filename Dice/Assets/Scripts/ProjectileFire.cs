@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using AnimationFunctions.Utils;
-using UnityEngine.SceneManagement;
-using TMPro;
 using UnityEngine.UI;
 using XInputDotNetPure;
 using UnityEngine;
@@ -21,7 +19,7 @@ public class ProjectileFire : MonoBehaviour
     [SerializeField]
     private float MaxFireCooldown = 1;
     [SerializeField]
-    private int projectileSpeed = 700;
+    private int projectileSpeed = 500;
     [SerializeField, Header("UI Refereneces")]
     private Image LeftUIIcon;
     [SerializeField]
@@ -30,9 +28,6 @@ public class ProjectileFire : MonoBehaviour
     private Image interactPopup;
     [SerializeField]
     private Image EquipPopup;
-    [SerializeField]
-    private TextMeshPro volume;
-    private float currentVolume = 10.0f;
 
     //Hand charge colours
     private Material mat1;
@@ -80,10 +75,6 @@ public class ProjectileFire : MonoBehaviour
         projectileRight = (GameObject)Resources.Load("Player/NoProjectile Variant Resource");        
         mat1 = (Material)Resources.Load("Player/Weapon 1");
         mat2 = (Material)Resources.Load("Player/Weapon 2");
-
-        if(PlayerPrefs.HasKey("Volume")) currentVolume = PlayerPrefs.GetFloat("Volume");
-        if(SceneManager.GetActiveScene().name == "Options") volume.text = currentVolume.ToString();
-        AudioListener.volume = currentVolume;
     }
 
     // Update is called once per frame
@@ -258,8 +249,6 @@ public class ProjectileFire : MonoBehaviour
         interactPopup.enabled = true;
         if (Collision.gameObject.tag == "Portal")
         interactPopup.enabled = true;
-        if (Collision.gameObject.tag == "VolumeOption")
-            interactPopup.enabled = true;
 
         if (GetComponent<MovementScript>().controller)
         {
@@ -317,27 +306,6 @@ public class ProjectileFire : MonoBehaviour
                 {
                     levelManager.LoadLevel((int)LevelEnum.Options);
                 }
-            }
-            else if(Collision.gameObject.tag == "VolumeOption" && Input.GetKeyDown(KeyCode.JoystickButton0))
-            {
-                if (Collision.gameObject.name == "VolumeUp")
-                {
-                    if(currentVolume < 10)
-                    {
-                        currentVolume++;
-                    }
-                }
-                else if (Collision.gameObject.name == "VolumeDown")
-                {
-                    if (currentVolume > 0)
-                    {
-                        currentVolume--;
-                    }
-                }
-
-                PlayerPrefs.SetFloat("Volume", currentVolume);
-                volume.text = currentVolume.ToString();
-                AudioListener.volume = currentVolume;
             }
         }
         else
