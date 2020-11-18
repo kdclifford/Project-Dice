@@ -32,25 +32,11 @@ public class RandomColour : MonoBehaviour
 
             if (timer > 1)
             {
-                //timer = 0;
+                timer = 0;
                 lerpOn = false;
                 LerpStaffColour();
             }
         }
-        else
-        {
-            LerpStaffColour();
-            timer -= Time.deltaTime / duration;
-
-            if (timer <= 0)
-            {
-                timer = 0;                
-                LerpStaffColour();
-            }
-        }
-
-
-
     }
 
     void LerpStaffColour()
