@@ -8,11 +8,11 @@ public class TextManager : MonoBehaviour
     [Tooltip("Fonts used for the Player/Emeny Projectile Collisions")]
     [Header("Hit Text Fonts")]
     public Font[] fonts;
-    public string[] text = new string[] { "WHAAM", "PING", "KTANG", "BOP", "SOCK", "BAM!!!", "BOOM", "OOF" };
-
+   
     //Gets the text that is going to be used
     public string SelectText()
-    {        
+    {
+        string[] text = new string[] { "WHAAM", "PING", "KTANG", "BOP", "SOCK", "BAM!!!", "BOOM", "OOF" };
         int i = Random.Range(0, text.Length);
         return text[i];
     }
@@ -37,4 +37,6 @@ public class TextManager : MonoBehaviour
         }
         return fonts[index];
     }
+
+
 }
