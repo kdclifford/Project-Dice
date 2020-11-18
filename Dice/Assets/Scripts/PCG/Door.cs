@@ -16,6 +16,27 @@ public class Door : MonoBehaviour
         roomNumber = RoomNumber;
 
     }
+    public Vector2Int doorPoisitoin()
+    {
+        if (facingDirection == FacingDirection.Down)
+        {
+            return (doorLocation + new Vector2Int(0, 1));
+        }
+        else if (facingDirection == FacingDirection.Up)
+        {
+            return (doorLocation + new Vector2Int(0, -1));
+        }
+        else if (facingDirection == FacingDirection.Left)
+        {
+            return (doorLocation + new Vector2Int(1, 0));
+        }
+        else if (facingDirection == FacingDirection.Right)
+        {
+            return (doorLocation + new Vector2Int(-1, 0));
+        }
+        return new Vector2Int();
+    }
+
     public void UpdatePathStartingLocation()
     {
         if(facingDirection == FacingDirection.Down)
@@ -37,9 +58,10 @@ public class Door : MonoBehaviour
         else if (facingDirection == FacingDirection.Right)
         {
 
-            doorLocation +=new Vector2Int(-1, 0);
+            doorLocation +=new Vector2Int(1, 0);
 
         }
+
  
     }
 }
