@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Door 
 {
     // Start is called before the first frame update
     public  Vector2Int doorLocation;
@@ -10,6 +10,10 @@ public class Door : MonoBehaviour
     public bool connected= false;
     public FacingDirection facingDirection;
 
+    public Door()
+    {
+
+    }
     public Door(Vector2Int location ,int RoomNumber)
     {
         doorLocation = location;

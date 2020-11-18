@@ -11,6 +11,7 @@ public class Room :MonoBehaviour
     public RoomType roomType;
     public Vector2Int location; 
     public int preFabNumber;
+    public int roomNumber;
     // Start is called before the first frame update
 
 }

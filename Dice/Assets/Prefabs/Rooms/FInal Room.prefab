@@ -70,13 +70,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef4a88bdc7b640248abd13fe6d9e1654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  connectedRooms: 
   Size: {x: 4, y: 3}
   DoorLocations:
-  - {x: 5, y: 2}
+  - {x: 3, y: 2}
   DoorFacingDirections: 03000000
   roomType: 1
   location: {x: 0, y: 0}
   preFabNumber: 0
+  roomNumber: 0
 --- !u!1001 &144267368275864605
 PrefabInstance:
   m_ObjectHideFlags: 0
