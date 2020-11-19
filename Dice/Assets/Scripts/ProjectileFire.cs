@@ -317,6 +317,10 @@ public class ProjectileFire : MonoBehaviour
                 {
                     levelManager.LoadLevel((int)LevelEnum.Options);
                 }
+                else if (Collision.gameObject.name == "PCG Portal")
+                {
+                    levelManager.LoadLevel((int)LevelEnum.TestPCG);
+                }
             }
             else if(Collision.gameObject.tag == "VolumeOption" && Input.GetKeyDown(KeyCode.JoystickButton0))
             {
