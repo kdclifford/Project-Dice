@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TextDestroy : MonoBehaviour
+public class TextTimer : MonoBehaviour
 {
     public Vector3 textOffset = new Vector3(0, 0.2f, 0);
     public Vector3 randomOffset = new Vector3(0.5f, 0, 0);

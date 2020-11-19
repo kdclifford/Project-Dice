@@ -13,7 +13,7 @@ public class PlayerHealth : MonoBehaviour
     public GameObject[] HPUIIcons;
     [SerializeField]
     public GameObject[] ShieldUIIcons;
-
+    private Health health; 
 
     private Animator animator;
 
@@ -33,8 +33,9 @@ public class PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        health = GetComponent<Health>();
         animator = GetComponent<Animator>();
-        maxHearts = (int)GetComponent<Health>().maxHealth;
+        maxHearts = (int)health.maxHealth;
         for(int i = 0; i < ShieldUIIcons.Length; i++)
         {
             ShieldUIIcons[i].gameObject.SetActive(false);
@@ -44,7 +45,7 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentHearts = (int)GetComponent<Health>().currentHealth;
+        currentHearts = (int)health.currentHealth;
 
         if(Input.GetKeyDown(KeyCode.X))
         {
@@ -165,11 +166,17 @@ public class PlayerHealth : MonoBehaviour
         
         if (currentHearts > -1)
         {
-            HPUIIcons[currentHearts].gameObject.GetComponent<Animator>().SetInteger("LoseHeart", 1);
-            currentHearts--;
+            HPUIIcons[currentHearts].gameObject.GetComponent<Animator>().SetInteger("Health", 1);
+           /// health.currentHealth--;
         }
     }
     
+    public void AddUIHeart()
+    {
+        HPUIIcons[currentHearts + 1].gameObject.GetComponent<Animator>().SetInteger("Health", 0);
+    }
+
+
     private void Move()
     {
         animator.SetFloat("XMove", leftStickInputAxis.x);

@@ -277,9 +277,10 @@ public class ProjectileFire : MonoBehaviour
 
                 if (sn.currentHealth < sn.maxHealth - 1)
                 {
-                    sn.AddHealth();
+                    sn.AddHealth();                    
                     Destroy(Collision.gameObject);
                     interactPopup.enabled = false;
+                    GetComponent<PlayerHealth>().AddUIHeart();
                 }
             }
             else if (Collision.gameObject.tag == "ShieldPickup" && Input.GetKey(KeyCode.JoystickButton0))

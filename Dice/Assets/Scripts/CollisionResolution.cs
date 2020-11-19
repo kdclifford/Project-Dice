@@ -33,7 +33,8 @@ public class CollisionResolution : MonoBehaviour
         else if(transform.tag == "Player")
         {
             if (other.gameObject.tag == "EnemyProjectile")
-            {               
+            {
+                playerHealth.playerHit();
                 Vector2 death = new Vector2(
                   other.gameObject.GetComponent<Rigidbody>().velocity.x, other.gameObject.GetComponent<Rigidbody>().velocity.z);
                 death.Normalize();

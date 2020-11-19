@@ -336,7 +336,8 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3372188546651959616, guid: 87ac54bfd1464544b94b4752e21dfd40, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 87ac54bfd1464544b94b4752e21dfd40, type: 3}
 --- !u!1001 &36122928
 PrefabInstance:
@@ -698,7 +699,8 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3372188546651959616, guid: 87ac54bfd1464544b94b4752e21dfd40, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 87ac54bfd1464544b94b4752e21dfd40, type: 3}
 --- !u!1 &168761074 stripped
 GameObject:
@@ -1248,7 +1250,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeartLeftUI2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -252058828226619760, guid: 4eec37f0f08b7ac4290e8433978176bd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4eec37f0f08b7ac4290e8433978176bd, type: 3}
 --- !u!1001 &362533047
 PrefabInstance:
@@ -1451,7 +1454,8 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3372188546651959616, guid: 87ac54bfd1464544b94b4752e21dfd40, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 87ac54bfd1464544b94b4752e21dfd40, type: 3}
 --- !u!1 &442305873
 GameObject:
@@ -1659,7 +1663,7 @@ PrefabInstance:
     - target: {fileID: 35213364, guid: cc2904f8420d54e45b80616562ff859c, type: 3}
       propertyPath: projectile
       value: 
-      objectReference: {fileID: 8680144672558239917, guid: d6a4df03f05b914449fb2fc84f7a12ec,
+      objectReference: {fileID: 6344335812988061145, guid: c1149ac06ebbd8a478ee27c10f011330,
         type: 3}
     - target: {fileID: 35213366, guid: cc2904f8420d54e45b80616562ff859c, type: 3}
       propertyPath: m_IsKinematic
@@ -2660,7 +2664,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeartLeftUI3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -252058828226619760, guid: 4eec37f0f08b7ac4290e8433978176bd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4eec37f0f08b7ac4290e8433978176bd, type: 3}
 --- !u!1 &1236553221
 GameObject:
@@ -3954,7 +3959,8 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -252058828226619760, guid: 4eec37f0f08b7ac4290e8433978176bd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4eec37f0f08b7ac4290e8433978176bd, type: 3}
 --- !u!1 &1889268765
 GameObject:
@@ -5150,7 +5156,8 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3372188546651959616, guid: 87ac54bfd1464544b94b4752e21dfd40, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 87ac54bfd1464544b94b4752e21dfd40, type: 3}
 --- !u!1001 &2657289036400516562
 PrefabInstance:
@@ -5338,7 +5345,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeartLeftUI4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -252058828226619760, guid: 4eec37f0f08b7ac4290e8433978176bd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4eec37f0f08b7ac4290e8433978176bd, type: 3}
 --- !u!1001 &4252311445664282050
 PrefabInstance:
@@ -6081,6 +6089,17 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 47689039}
+    - target: {fileID: 4296254226410299826, guid: 132e0d794b11d2c4da8980a80d499c54,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 6344335812988061145, guid: bc2b0085094ad914c806e32d5f1caa11,
+        type: 3}
+    - target: {fileID: 4296254226410299826, guid: 132e0d794b11d2c4da8980a80d499c54,
+        type: 3}
+      propertyPath: projectileSpeed
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4296254226410299827, guid: 132e0d794b11d2c4da8980a80d499c54,
         type: 3}
       propertyPath: m_StoppingDistance
@@ -6184,6 +6203,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 47689040, guid: 047ad09605d6c554f965221fd2329984, type: 3}
+      propertyPath: maxHealth
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1801815937, guid: 047ad09605d6c554f965221fd2329984, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4200978888511108852, guid: 047ad09605d6c554f965221fd2329984,
         type: 3}
       propertyPath: HPUIIcons.Array.data[0]
