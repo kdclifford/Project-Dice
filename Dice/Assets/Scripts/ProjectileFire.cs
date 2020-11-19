@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class ProjectileFire : MonoBehaviour
 {
-   // [HideInInspector]
+    // [HideInInspector]
     public GameObject projectileLeft;
     [HideInInspector]
     public GameObject projectileRight;
@@ -48,7 +48,7 @@ public class ProjectileFire : MonoBehaviour
     private Collider pickupCollider;
     private bool pickupColliding;
 
-    private Animator animator;   
+    private Animator animator;
 
     //Managers
     private SoundManager soundManager;
@@ -77,18 +77,18 @@ public class ProjectileFire : MonoBehaviour
         interactPopup.enabled = false;
         EquipPopup.enabled = false;
         projectileLeft = (GameObject)Resources.Load("Player/NoProjectile Variant Resource");
-        projectileRight = (GameObject)Resources.Load("Player/NoProjectile Variant Resource");        
+        projectileRight = (GameObject)Resources.Load("Player/NoProjectile Variant Resource");
         mat1 = (Material)Resources.Load("Player/Weapon 1");
         mat2 = (Material)Resources.Load("Player/Weapon 2");
 
-        if(PlayerPrefs.HasKey("Volume")) currentVolume = PlayerPrefs.GetFloat("Volume");
-        if(SceneManager.GetActiveScene().name == "Options") volume.text = currentVolume.ToString();
+        if (PlayerPrefs.HasKey("Volume")) currentVolume = PlayerPrefs.GetFloat("Volume");
+        if (SceneManager.GetActiveScene().name == "Options") volume.text = currentVolume.ToString();
         AudioListener.volume = currentVolume;
     }
 
     // Update is called once per frame
     void Update()
-    {        
+    {
         if (GetComponent<MovementScript>().controller)
         {
 
@@ -126,37 +126,37 @@ public class ProjectileFire : MonoBehaviour
 
 
             if (Input.GetAxis("HorizontalDpad") < 0 && pickupColliding == true && attachedParticle != null)
-        {
-            projectileLeft = attachedParticle;
-            LeftUIIcon.sprite = attachedSprite;
-            Destroy(pickupCollider.gameObject);
-            interactPopup.enabled = false;
-            EquipPopup.enabled = false;
-            attachedParticle = null;
-            pickupCollider = null;
-            leftProjectileColour = projectileLeft.GetComponent<ParticleSystem>().main.startColor.color;
-            if (projectileLeft.tag != ("NotEquipped"))
             {
-                mat2.color = leftProjectileColour;
+                projectileLeft = attachedParticle;
+                LeftUIIcon.sprite = attachedSprite;
+                Destroy(pickupCollider.gameObject);
+                interactPopup.enabled = false;
+                EquipPopup.enabled = false;
+                attachedParticle = null;
+                pickupCollider = null;
+                leftProjectileColour = projectileLeft.GetComponent<ParticleSystem>().main.startColor.color;
+                if (projectileLeft.tag != ("NotEquipped"))
+                {
+                    mat2.color = leftProjectileColour;
+                }
             }
-        }
-        else if (Input.GetAxis("HorizontalDpad") > 0 && pickupColliding == true && attachedParticle != null)
-        {
-            projectileRight = attachedParticle;
-            RightUIIcon.sprite = attachedSprite;
-            Destroy(pickupCollider.gameObject);
-            interactPopup.enabled = false;
-            EquipPopup.enabled = false;
-            attachedParticle = null;
-            pickupCollider = null;
+            else if (Input.GetAxis("HorizontalDpad") > 0 && pickupColliding == true && attachedParticle != null)
+            {
+                projectileRight = attachedParticle;
+                RightUIIcon.sprite = attachedSprite;
+                Destroy(pickupCollider.gameObject);
+                interactPopup.enabled = false;
+                EquipPopup.enabled = false;
+                attachedParticle = null;
+                pickupCollider = null;
 
-            rightProjectileColour = projectileRight.GetComponent<ParticleSystem>().main.startColor.color;
-            if (projectileRight.tag != ("NotEquipped"))
-            {
-                mat1.color = rightProjectileColour;
+                rightProjectileColour = projectileRight.GetComponent<ParticleSystem>().main.startColor.color;
+                if (projectileRight.tag != ("NotEquipped"))
+                {
+                    mat1.color = rightProjectileColour;
+                }
             }
         }
-    }
         else
         {
             if (Input.GetMouseButton(1) && projectileRight.tag != ("NotEquipped") && Input.GetMouseButton(0) && projectileLeft.tag != ("NotEquipped"))
@@ -249,15 +249,15 @@ public class ProjectileFire : MonoBehaviour
     void OnTriggerStay(Collider Collision)
     {
         if (Collision.gameObject.tag == "PowerPickup")
-        interactPopup.enabled = true;
+            interactPopup.enabled = true;
         if (Collision.gameObject.tag == "HealthPickup")
-        interactPopup.enabled = true;
+            interactPopup.enabled = true;
         if (Collision.gameObject.tag == "ShieldPickup")
-        interactPopup.enabled = true;
+            interactPopup.enabled = true;
         if (Collision.gameObject.tag == "Door")
-        interactPopup.enabled = true;
+            interactPopup.enabled = true;
         if (Collision.gameObject.tag == "Portal")
-        interactPopup.enabled = true;
+            interactPopup.enabled = true;
         if (Collision.gameObject.tag == "VolumeOption")
             interactPopup.enabled = true;
 
@@ -273,11 +273,11 @@ public class ProjectileFire : MonoBehaviour
             }
             else if (Collision.gameObject.tag == "HealthPickup" && Input.GetKey(KeyCode.JoystickButton0))
             {
-                PlayerHealth sn = gameObject.GetComponent<PlayerHealth>();
+                Health sn = gameObject.GetComponent<Health>();
 
-                if(sn.CurrentHearts < 7)
+                if (sn.currentHealth < sn.maxHealth - 1)
                 {
-                    sn.addHealth();
+                    sn.AddHealth();
                     Destroy(Collision.gameObject);
                     interactPopup.enabled = false;
                 }
@@ -286,9 +286,9 @@ public class ProjectileFire : MonoBehaviour
             {
                 PlayerHealth sn = gameObject.GetComponent<PlayerHealth>();
 
-                if (sn.CurrentShield < 2)
+                if (sn.currentShield < 2)
                 {
-                    sn.addShield();
+                    //  sn.addShield();
                     Destroy(Collision.gameObject);
                     interactPopup.enabled = false;
                 }
@@ -300,7 +300,7 @@ public class ProjectileFire : MonoBehaviour
             }
             else if (Collision.gameObject.tag == "Portal" && Input.GetKey(KeyCode.JoystickButton0))
             {
-                if(Collision.gameObject.name == "QuitPortal")
+                if (Collision.gameObject.name == "QuitPortal")
                 {
                     UnityEditor.EditorApplication.isPlaying = false;
                     Application.Quit();
@@ -318,11 +318,11 @@ public class ProjectileFire : MonoBehaviour
                     levelManager.LoadLevel((int)LevelEnum.Options);
                 }
             }
-            else if(Collision.gameObject.tag == "VolumeOption" && Input.GetKeyDown(KeyCode.JoystickButton0))
+            else if (Collision.gameObject.tag == "VolumeOption" && Input.GetKeyDown(KeyCode.JoystickButton0))
             {
                 if (Collision.gameObject.name == "VolumeUp")
                 {
-                    if(currentVolume < 10)
+                    if (currentVolume < 10)
                     {
                         currentVolume++;
                     }
@@ -352,11 +352,11 @@ public class ProjectileFire : MonoBehaviour
             }
             else if (Collision.gameObject.tag == "HealthPickup" && Input.GetKey(KeyCode.Space))
             {
-                PlayerHealth sn = gameObject.GetComponent<PlayerHealth>();
+                Health sn = gameObject.GetComponent<Health>();
 
-                if (sn.CurrentHearts < 7)
+                if (sn.currentHealth < 7)
                 {
-                    sn.addHealth();
+                    sn.AddHealth();
                     Destroy(Collision.gameObject);
                     interactPopup.enabled = false;
                 }
@@ -365,9 +365,9 @@ public class ProjectileFire : MonoBehaviour
             {
                 PlayerHealth sn = gameObject.GetComponent<PlayerHealth>();
 
-                if (sn.CurrentShield < 2)
+                if (sn.currentShield < 2)
                 {
-                    sn.addShield();
+                    //sn.addShield();
                     Destroy(Collision.gameObject);
                     interactPopup.enabled = false;
                 }
@@ -412,7 +412,7 @@ public class ProjectileFire : MonoBehaviour
         currRTFireCooldown = MaxFireCooldown;
     }
 
-  public void LeftFire()
+    public void LeftFire()
     {
         Quaternion playerRot = Quaternion.identity;
         playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y, 90);
@@ -423,7 +423,7 @@ public class ProjectileFire : MonoBehaviour
         GameObject bullet = Instantiate(projectileLeft, LeftFirePos, playerRot) as GameObject;
         bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
 
-        
+
         soundManager.Play(projectileLeft.name, bullet);
 
         currLTFireCooldown = MaxFireCooldown;
@@ -477,7 +477,7 @@ public class ProjectileFire : MonoBehaviour
     }
 
 
-  
+
 
 
 }

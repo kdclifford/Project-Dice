@@ -37,17 +37,11 @@ public class DunguonSpawner : MonoBehaviour
 
         GenerateFloor();
         pathFinder = new Pathfinding((int)WorldSize.x, (int)WorldSize.y, roomsData);
+        GenerateCorridors();
 
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown("space"))
-        {
-            GenerateCorridors();
 
-        }
-    }
     void GenerateFloor()
     {
         GenerateRooms();

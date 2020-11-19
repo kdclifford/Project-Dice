@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public static int maxHearts = 7;
-    public int CurrentHearts = maxHearts;
+    private int currentHearts;
+    private int maxHearts;
     public static int maxShield = 2;
-    public int CurrentShield = 0;
+    public int currentShield = 0;
     [SerializeField]
     public GameObject[] HPUIIcons;
     [SerializeField]
@@ -23,7 +23,6 @@ public class PlayerHealth : MonoBehaviour
     private int idle = 0;
     private bool idleAnimation = false;
 
-    public int health = 10;
     public Vector2 deathDirection;
     private Vector2 newDeathDirection;
 
@@ -35,7 +34,7 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-
+        maxHearts = (int)GetComponent<Health>().maxHealth;
         for(int i = 0; i < ShieldUIIcons.Length; i++)
         {
             ShieldUIIcons[i].gameObject.SetActive(false);
@@ -45,15 +44,17 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        currentHearts = (int)GetComponent<Health>().currentHealth;
+
         if(Input.GetKeyDown(KeyCode.X))
         {
             playerHit();
         }        
    
-        health = GetComponent<PlayerHealth>().CurrentHearts;
+        
         triggerPress = 0;
 
-        if (health >= 0)
+        if (currentHearts >= 0)
         {
 
             if (GetComponent<MovementScript>().controller)
@@ -149,49 +150,26 @@ public class PlayerHealth : MonoBehaviour
             }
         }
 
-        animator.SetFloat("Health", health);
+        animator.SetFloat("Health", currentHearts);
 
     }
 
     public void playerHit()
     {
-        if(CurrentShield > 0)
+        if(currentShield > 0)
         {
-            ShieldUIIcons[CurrentShield].gameObject.SetActive(false);
-            CurrentShield--;
+            ShieldUIIcons[currentShield].gameObject.SetActive(false);
+            currentShield--;
             return;
         }
         
-        if (CurrentHearts > -1)
+        if (currentHearts > -1)
         {
-            HPUIIcons[CurrentHearts].gameObject.GetComponent<Animator>().SetInteger("LoseHeart", 1);
-            CurrentHearts--;
+            HPUIIcons[currentHearts].gameObject.GetComponent<Animator>().SetInteger("LoseHeart", 1);
+            currentHearts--;
         }
     }
-
-   
-
-
-    public void addHealth()
-    {
-        if (CurrentHearts > -1 && CurrentHearts < maxHearts)
-        {
-            CurrentHearts++;
-            HPUIIcons[CurrentHearts].gameObject.SetActive(true);
-            HPUIIcons[CurrentHearts].gameObject.GetComponent<Animator>().SetInteger("LoseHeart", 0);
-        }
-    }
-
-    public void addShield()
-    {
-        if (CurrentShield < maxShield)
-        {
-            CurrentShield++;
-            ShieldUIIcons[CurrentShield].gameObject.SetActive(true);
-        }
-    }
-
-
+    
     private void Move()
     {
         animator.SetFloat("XMove", leftStickInputAxis.x);
@@ -225,8 +203,4 @@ public class PlayerHealth : MonoBehaviour
 
         idleAnimation = false;
     }
-
-
-
-
 }

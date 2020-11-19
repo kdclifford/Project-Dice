@@ -7,10 +7,9 @@ using UnityEngine.AI;
 public class EnemyAi : MonoBehaviour
 {
     //Public
-    public GameObject target;
-    public float health = 4;
+    public GameObject target;   
     public bool isDead = false;
-
+    private float health;
     //Private
     private bool removeBody = false;
     private float removeSpeed = 5;
@@ -28,6 +27,7 @@ public class EnemyAi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        health = GetComponent<Health>().currentHealth;
         if (!isDead && health < 0)
         {
             agent.ResetPath();
