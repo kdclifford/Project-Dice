@@ -1652,6 +1652,15 @@ PrefabInstance:
       propertyPath: health
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 35213364, guid: cc2904f8420d54e45b80616562ff859c, type: 3}
+      propertyPath: meshRenderer
+      value: 
+      objectReference: {fileID: 2074466438}
+    - target: {fileID: 35213364, guid: cc2904f8420d54e45b80616562ff859c, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 8680144672558239917, guid: d6a4df03f05b914449fb2fc84f7a12ec,
+        type: 3}
     - target: {fileID: 35213366, guid: cc2904f8420d54e45b80616562ff859c, type: 3}
       propertyPath: m_IsKinematic
       value: 1
@@ -1741,7 +1750,8 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.0000002
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 35213362, guid: cc2904f8420d54e45b80616562ff859c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cc2904f8420d54e45b80616562ff859c, type: 3}
 --- !u!1 &577949581
 GameObject:

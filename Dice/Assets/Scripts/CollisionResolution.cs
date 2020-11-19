@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hit : MonoBehaviour
+public class CollisionResolution : MonoBehaviour
 {
     private GameObject textPrefab;
     private SoundManager soundManager;
