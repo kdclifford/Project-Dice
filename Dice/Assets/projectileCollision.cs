@@ -23,4 +23,13 @@ public class projectileCollision : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Wall")
+        {
+            Destroy(gameObject);
+        }
+    }
+
 }

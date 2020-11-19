@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class ProjectileFire : MonoBehaviour
 {
-    [HideInInspector]
+   // [HideInInspector]
     public GameObject projectileLeft;
     [HideInInspector]
     public GameObject projectileRight;
