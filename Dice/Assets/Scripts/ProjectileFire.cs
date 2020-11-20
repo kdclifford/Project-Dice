@@ -53,7 +53,7 @@ public class ProjectileFire : MonoBehaviour
 
     //Managers
     private SoundManager soundManager;
-    private LevelManager levelManager;
+    //private LevelManager levelManager;
 
     //Bools to chek if the user is firing
     [HideInInspector]
@@ -77,7 +77,7 @@ public class ProjectileFire : MonoBehaviour
         currLTFireCooldown = MaxFireCooldown;
         animator = GetComponent<Animator>();
         soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
-        levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
+        //levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
         interactPopup.enabled = false;
         EquipPopup.enabled = false;
         projectileLeft = (GameObject)Resources.Load("Player/NoProjectile Variant Resource");
@@ -201,63 +201,66 @@ public class ProjectileFire : MonoBehaviour
         if (Collision.gameObject.tag == "VolumeOption")
             interactPopup.enabled = true;
 
-       
-            if (Collision.gameObject.tag == "PowerPickup" && ButtonMapping.GetButton(controllerType, EButtonActions.Interact))
-            {
-                EquipPopup.enabled = true;
-                attachedParticle = Collision.GetComponent<PickupParticleEffect>().ProjectilePickup;
-                attachedSprite = Collision.GetComponent<PickupParticleEffect>().ProjectileUIIcon;
-                pickupCollider = Collision;
-                pickupColliding = true;
-            }
-            else if (Collision.gameObject.tag == "HealthPickup" && ButtonMapping.GetButton(controllerType, EButtonActions.Interact))
-            {
-                Health sn = gameObject.GetComponent<Health>();
 
-                if (sn.currentHealth < sn.maxHealth - 1)
-                {
-                    sn.AddHealth();                    
-                    Destroy(Collision.gameObject);
-                    interactPopup.enabled = false;
-                    GetComponent<PlayerAnimations>().AddUIHeart();
-                }
-            }
-            else if (Collision.gameObject.tag == "ShieldPickup" && ButtonMapping.GetButton(controllerType, EButtonActions.Interact))
-            {
-                PlayerAnimations sn = gameObject.GetComponent<PlayerAnimations>();
+        if (Collision.gameObject.tag == "PowerPickup" && ButtonMapping.GetButton(controllerType, EButtonActions.Interact))
+        {
+            EquipPopup.enabled = true;
+            attachedParticle = Collision.GetComponent<PickupParticleEffect>().ProjectilePickup;
+            attachedSprite = Collision.GetComponent<PickupParticleEffect>().ProjectileUIIcon;
+            pickupCollider = Collision;
+            pickupColliding = true;
+        }
+        else if (Collision.gameObject.tag == "HealthPickup" && ButtonMapping.GetButton(controllerType, EButtonActions.Interact))
+        {
+            Health sn = gameObject.GetComponent<Health>();
 
-                if (sn.currentShield < 2)
-                {
-                    //  sn.addShield();
-                    Destroy(Collision.gameObject);
-                    interactPopup.enabled = false;
-                }
-            }
-            else if (Collision.gameObject.tag == "Door" && ButtonMapping.GetButton(controllerType, EButtonActions.Interact))
+            if (sn.currentHealth < sn.maxHealth - 1)
             {
-                openDoor sn = Collision.gameObject.GetComponent<openDoor>();
-                sn.openTheDoor();
+                sn.AddHealth();
+                Destroy(Collision.gameObject);
+                interactPopup.enabled = false;
+                GetComponent<PlayerAnimations>().AddUIHeart();
             }
-            else if (Collision.gameObject.tag == "Portal" && ButtonMapping.GetButton(controllerType, EButtonActions.Interact))
+        }
+        else if (Collision.gameObject.tag == "ShieldPickup" && ButtonMapping.GetButton(controllerType, EButtonActions.Interact))
+        {
+            PlayerAnimations sn = gameObject.GetComponent<PlayerAnimations>();
+
+            if (sn.currentShield < 2)
             {
-                if (Collision.gameObject.name == "QuitPortal")
-                {
-                    UnityEditor.EditorApplication.isPlaying = false;
-                    Application.Quit();
-                }
-                else if (Collision.gameObject.name == "PlayPortal")
-                {
-                    levelManager.LoadLevel((int)LevelEnum.Level1);
-                }
-                else if (Collision.gameObject.name == "MenuPortal")
-                {
-                    levelManager.LoadLevel((int)LevelEnum.MainMenu);
-                }
-                else if (Collision.gameObject.name == "OptionsPortal")
-                {
-                    levelManager.LoadLevel((int)LevelEnum.Options);
-                }
+                //  sn.addShield();
+                Destroy(Collision.gameObject);
+                interactPopup.enabled = false;
             }
+        }
+        else if (Collision.gameObject.tag == "Door" && ButtonMapping.GetButton(controllerType, EButtonActions.Interact))
+        {
+            openDoor sn = Collision.gameObject.GetComponent<openDoor>();
+            sn.openTheDoor();
+        }
+        else if (Collision.gameObject.tag == "Portal" && ButtonMapping.GetButton(controllerType, EButtonActions.Interact))
+        {
+            ScenePortal sn = Collision.gameObject.GetComponent<ScenePortal>();
+            sn.TeleportToScene();
+        }
+            //if (Collision.gameObject.name == "QuitPortal")
+            //{
+            //    UnityEditor.EditorApplication.isPlaying = false;
+            //    Application.Quit();
+            //}
+            //else if (Collision.gameObject.name == "PlayPortal")
+            //{
+            //    levelManager.LoadLevel((int)LevelEnum.Level1);
+            //}
+            //else if (Collision.gameObject.name == "MenuPortal")
+            //{
+            //    levelManager.LoadLevel((int)LevelEnum.MainMenu);
+            //}
+            //else if (Collision.gameObject.name == "OptionsPortal")
+            //{
+            //    levelManager.LoadLevel((int)LevelEnum.Options);
+            //}
+        //}
             else if (Collision.gameObject.tag == "VolumeOption" && ButtonMapping.GetButton(controllerType, EButtonActions.Interact))
             {
                 if (Collision.gameObject.name == "VolumeUp")

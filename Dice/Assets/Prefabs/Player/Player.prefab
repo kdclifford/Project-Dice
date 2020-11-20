@@ -1756,7 +1756,7 @@ GameObject:
   - component: {fileID: 5812377792357169488}
   - component: {fileID: 5812377792357169495}
   - component: {fileID: 5812377792357164714}
-  - component: {fileID: 4200978888511108852}
+  - component: {fileID: 6982485295917779668}
   - component: {fileID: 5812377792357169492}
   - component: {fileID: 5812377792357169493}
   - component: {fileID: 5812377792357169489}
@@ -1838,7 +1838,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4200978888511108852
+--- !u!114 &6982485295917779668
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1847,23 +1847,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 6658817375150945558}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b7fc281ad17a0f44b4a67a076831c3d, type: 3}
+  m_Script: {fileID: 11500000, guid: d24e621b919c1b64ea160dc99bf4f3e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentShield: 0
-  HPUIIcons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  ShieldUIIcons:
-  - {fileID: 0}
-  - {fileID: 0}
+  HPUIIcons: []
+  ShieldUIIcons: []
   deathDirection: {x: 0, y: 0}
+  controllerType: 0
 --- !u!114 &5812377792357169492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1890,6 +1881,8 @@ MonoBehaviour:
   volume: {fileID: 0}
   rightFire: 0
   leftFire: 0
+  controllerType: 0
+  doubleAttack: 0
 --- !u!114 &5812377792357169493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1904,7 +1897,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   cameraDummy: {fileID: 5812377793355504583}
-  rayDist: 2.6
+  rayDist: 1
   layerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -1912,6 +1905,7 @@ MonoBehaviour:
   diagonalOffset: 0.9
   collisionForce: 1
   controller: 1
+  controllerType: 0
 --- !u!114 &5812377792357169489
 MonoBehaviour:
   m_ObjectHideFlags: 0
