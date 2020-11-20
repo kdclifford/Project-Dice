@@ -40,6 +40,20 @@ public class Health : MonoBehaviour
             currentHealth--;       
     }
 
+    public void RemoveHealth(Vector2 projectileDirection)
+    {
+        RemoveHealth();
+        //if (currentHealth <= 0)
+        //{
+        //    playerHealth.deathDirection = projectileDirection;
+        //    soundManager.Play("Player Death", gameObject);
+        //}
+        //else
+        //{
+        //    soundManager.Play("Player Hit", gameObject);
+        //}
+    }
+
     //public void addShield()
     //{
     //    if (currentShield < maxShield)

@@ -1,12 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using AnimationFunctions.Utils;
+using Button.Utils;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerAnimations : MonoBehaviour
 {
-    private int currentHearts;
-    private int maxHearts;
     public static int maxShield = 2;
     public int currentShield = 0;
     [SerializeField]
@@ -29,84 +28,44 @@ public class PlayerHealth : MonoBehaviour
     float triggerPress = 0;
 
     bool isDead = false;
+    ProjectileFire projectileFire;
+    public EControllerType controllerType;
 
     // Start is called before the first frame update
     void Start()
     {
         health = GetComponent<Health>();
         animator = GetComponent<Animator>();
-        maxHearts = (int)health.maxHealth;
-        for(int i = 0; i < ShieldUIIcons.Length; i++)
-        {
-            ShieldUIIcons[i].gameObject.SetActive(false);
-        }
+        projectileFire = GetComponent<ProjectileFire>();
     }
 
     // Update is called once per frame
     void Update()
-    {
-        currentHearts = (int)health.currentHealth;
-
-        if(Input.GetKeyDown(KeyCode.X))
-        {
-            playerHit();
-        }        
+    {     
    
         
         triggerPress = 0;
 
-        if (currentHearts >= 0)
+        if (health.currentHealth  > 0)
         {
 
-            if (GetComponent<MovementScript>().controller)
-            {
-                leftStickInputAxis.x = Input.GetAxis("LHorizontal");
-                leftStickInputAxis.y = Input.GetAxis("LVertical");
+            
+                leftStickInputAxis.x = Input.GetAxis(ButtonMapping.GetButton(controllerType, EButtonActions.HorizontalMovement));
+                leftStickInputAxis.y = Input.GetAxis(ButtonMapping.GetButton(controllerType, EButtonActions.VerticalMovement));
 
-                if (GetComponent<ProjectileFire>().projectileRight.tag != ("NotEquipped") && Input.GetAxis("RTrigger") > 0)
-                {
-                    triggerPress += Input.GetAxis("RTrigger");
-                }
+                string ss = ButtonMapping.GetButton(EControllerType.Controller, EButtonActions.RightAttack);
 
-                if (GetComponent<ProjectileFire>().projectileLeft.tag != ("NotEquipped") && Input.GetAxis("LTrigger") > 0)
+                if (projectileFire.projectileRight.tag != ("NotEquipped") && Input.GetAxis(ButtonMapping.GetButton(controllerType, EButtonActions.RightAttack)) > 0)
                 {
-                    triggerPress += Input.GetAxis("LTrigger");
-                }
-            }
-            else
-            {
-                float verticalInput = 0;
-                float horizontalInput = 0;
-                if (Input.GetKey(KeyCode.W))
-                {
-                    verticalInput = Vector2.up.y;
-                }
-                if (Input.GetKey(KeyCode.S))
-                {
-                    verticalInput = Vector2.down.y;
-                }
-                if (Input.GetKey(KeyCode.A))
-                {
-                    horizontalInput = Vector2.left.x;
-                }
-                if (Input.GetKey(KeyCode.D))
-                {
-                    horizontalInput = Vector2.right.x;
+                    triggerPress = 1;
                 }
 
-                leftStickInputAxis.x = horizontalInput;
-                leftStickInputAxis.y = verticalInput;
-
-                if (GetComponent<ProjectileFire>().projectileRight.tag != ("NotEquipped") && Input.GetMouseButton(1))
+                if (projectileFire.projectileLeft.tag != ("NotEquipped") && Input.GetAxis(ButtonMapping.GetButton(controllerType, EButtonActions.LeftAttack)) > 0)
                 {
-                    triggerPress += 1;
+                    triggerPress = 1;
                 }
-
-                if (GetComponent<ProjectileFire>().projectileLeft.tag != ("NotEquipped") && Input.GetMouseButton(0))
-                {
-                    triggerPress += 1;
-                }
-            }
+            
+           
 
 
             
@@ -123,7 +82,7 @@ public class PlayerHealth : MonoBehaviour
 
             Move();
 
-            if (!idleAnimation && !GetComponent<ProjectileFire>().rightFire && !GetComponent<ProjectileFire>().leftFire)
+            if (!idleAnimation && !projectileFire.rightFire && !projectileFire.leftFire)
             {
 
                 Idle();
@@ -151,7 +110,7 @@ public class PlayerHealth : MonoBehaviour
             }
         }
 
-        animator.SetFloat("Health", currentHearts);
+        animator.SetFloat("Health", (int) health.currentHealth);
 
     }
 
@@ -164,16 +123,16 @@ public class PlayerHealth : MonoBehaviour
             return;
         }
         
-        if (currentHearts > -1)
+        if ((int) health.currentHealth  > 0)
         {
-            HPUIIcons[currentHearts].gameObject.GetComponent<Animator>().SetInteger("Health", 1);
+            HPUIIcons[(int) health.currentHealth].gameObject.GetComponent<Animator>().SetInteger("Health", 1);
            /// health.currentHealth--;
         }
     }
     
     public void AddUIHeart()
     {
-        HPUIIcons[currentHearts + 1].gameObject.GetComponent<Animator>().SetInteger("Health", 0);
+        HPUIIcons[(int) health.currentHealth + 1].gameObject.GetComponent<Animator>().SetInteger("Health", 0);
     }
 
 

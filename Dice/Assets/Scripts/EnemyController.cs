@@ -73,7 +73,7 @@ public class EnemyController : MonoBehaviour
             animator.SetFloat("XMove", targetDirection.x);
             animator.SetFloat("YMove", targetDirection.y);
 
-            if (target.GetComponent<PlayerHealth>() != null &&  Vector3.Distance(target.transform.position, transform.position) <= 30)
+            if (target.GetComponent<PlayerAnimations>() != null &&  Vector3.Distance(target.transform.position, transform.position) <= 30)
             {
                 Vector3 targetDir = target.transform.position - transform.position;
                 targetDir.y = transform.position.y;
@@ -121,7 +121,7 @@ public class EnemyController : MonoBehaviour
     //Spider Attack
     public void Fire()
     {
-        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>() != null)
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAnimations>() != null)
         {
             SpawnBullet(0, 0);
             SpawnBullet(10, 45);
@@ -132,7 +132,7 @@ public class EnemyController : MonoBehaviour
     //Wisard attacks
     public void WizardFire()
     {
-        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>() != null)
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAnimations>() != null)
         {
             SpawnBullet(0, 0);
         }

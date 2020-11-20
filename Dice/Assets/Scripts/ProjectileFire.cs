@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
 using XInputDotNetPure;
+using Button.Utils;
 using UnityEngine;
 
 public class ProjectileFire : MonoBehaviour
@@ -65,6 +66,7 @@ public class ProjectileFire : MonoBehaviour
 
     bool playerIndexSet = false;
     PlayerIndex playerIndex = 0;
+    public EControllerType controllerType;
 
     // Start is called before the first frame update
     void Start()
@@ -89,17 +91,19 @@ public class ProjectileFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GetComponent<MovementScript>().controller)
-        {
+       
 
-            if (Input.GetAxis("RTrigger") > 0 && projectileRight.tag != ("NotEquipped") && Input.GetAxis("LTrigger") > 0 && projectileLeft.tag != ("NotEquipped"))
+            if (Input.GetAxis(ButtonMapping.GetButton(controllerType, EButtonActions.RightAttack)) > 0 && 
+            projectileRight.tag != ("NotEquipped") &&
+            Input.GetAxis(ButtonMapping.GetButton(controllerType, EButtonActions.LeftAttack)) > 0 && 
+            projectileLeft.tag != ("NotEquipped"))
             {
                 AnimationScript.DoubleAttack(animator);
             }
             else
             {
 
-                if (Input.GetAxis("RTrigger") > 0 && projectileRight.tag != ("NotEquipped"))
+                if (Input.GetAxis(ButtonMapping.GetButton(controllerType, EButtonActions.RightAttack)) > 0 && projectileRight.tag != ("NotEquipped"))
                 {
                     if (currRTFireCooldown <= 0)
                     {
@@ -111,7 +115,7 @@ public class ProjectileFire : MonoBehaviour
                     }
                 }
 
-                else if (Input.GetAxis("LTrigger") > 0 && projectileLeft.tag != ("NotEquipped"))
+                else if (Input.GetAxis(ButtonMapping.GetButton(controllerType, EButtonActions.LeftAttack)) > 0 && projectileLeft.tag != ("NotEquipped"))
                 {
                     if (currLTFireCooldown <= 0)
                     {
@@ -125,7 +129,7 @@ public class ProjectileFire : MonoBehaviour
             }
 
 
-            if (Input.GetAxis("HorizontalDpad") < 0 && pickupColliding == true && attachedParticle != null)
+            if (Input.GetAxis(ButtonMapping.GetButton(controllerType, EButtonActions.LeftEquipt)) < 0 && pickupColliding == true && attachedParticle != null)
             {
                 projectileLeft = attachedParticle;
                 LeftUIIcon.sprite = attachedSprite;
@@ -140,7 +144,7 @@ public class ProjectileFire : MonoBehaviour
                     mat2.color = leftProjectileColour;
                 }
             }
-            else if (Input.GetAxis("HorizontalDpad") > 0 && pickupColliding == true && attachedParticle != null)
+            else if (Input.GetAxis(ButtonMapping.GetButton(controllerType, EButtonActions.RightEquipt)) > 0 && pickupColliding == true && attachedParticle != null)
             {
                 projectileRight = attachedParticle;
                 RightUIIcon.sprite = attachedSprite;
@@ -156,77 +160,10 @@ public class ProjectileFire : MonoBehaviour
                     mat1.color = rightProjectileColour;
                 }
             }
-        }
-        else
-        {
-            if (Input.GetMouseButton(1) && projectileRight.tag != ("NotEquipped") && Input.GetMouseButton(0) && projectileLeft.tag != ("NotEquipped"))
-            {
-                AnimationScript.DoubleAttack(animator);
-            }
-            else
-            {
-
-                if (Input.GetMouseButton(1) && projectileRight.tag != ("NotEquipped"))
-                {
-                    Debug.Log("Right click");
-
-                    if (currRTFireCooldown <= 0)
-                    {
-                        if (!rightFire)
-                        {
-                            rightFire = true;
-                        }
-                        AnimationScript.RightAttack(animator);
-                    }
-                }
-
-                if (Input.GetMouseButton(0) && projectileLeft.tag != ("NotEquipped"))
-                {
-                    Debug.Log("Left click");
-                    if (currLTFireCooldown <= 0)
-                    {
-                        if (!leftFire)
-                        {
-                            leftFire = true;
-                        }
-                        AnimationScript.LeftAttack(animator);
-                    }
-                }
-            }
+        
+        
 
 
-            if (Input.GetKey(KeyCode.Q) && pickupColliding == true && attachedParticle != null)
-            {
-                projectileLeft = attachedParticle;
-                LeftUIIcon.sprite = attachedSprite;
-                Destroy(pickupCollider.gameObject);
-                interactPopup.enabled = false;
-                EquipPopup.enabled = false;
-                attachedParticle = null;
-                pickupCollider = null;
-                leftProjectileColour = projectileLeft.GetComponent<ParticleSystem>().main.startColor.color;
-                if (projectileLeft.tag != ("NotEquipped"))
-                {
-                    mat2.color = leftProjectileColour;
-                }
-            }
-            else if (Input.GetKey(KeyCode.E) && pickupColliding == true && attachedParticle != null)
-            {
-                projectileRight = attachedParticle;
-                RightUIIcon.sprite = attachedSprite;
-                Destroy(pickupCollider.gameObject);
-                interactPopup.enabled = false;
-                EquipPopup.enabled = false;
-                attachedParticle = null;
-                pickupCollider = null;
-
-                rightProjectileColour = projectileRight.GetComponent<ParticleSystem>().main.startColor.color;
-                if (projectileRight.tag != ("NotEquipped"))
-                {
-                    mat1.color = rightProjectileColour;
-                }
-            }
-        }
 
         currRTFireCooldown -= Time.deltaTime;
         currLTFireCooldown -= Time.deltaTime;
@@ -261,9 +198,8 @@ public class ProjectileFire : MonoBehaviour
         if (Collision.gameObject.tag == "VolumeOption")
             interactPopup.enabled = true;
 
-        if (GetComponent<MovementScript>().controller)
-        {
-            if (Collision.gameObject.tag == "PowerPickup" && Input.GetKey(KeyCode.JoystickButton0))
+       
+            if (Collision.gameObject.tag == "PowerPickup" && Input.GetKey(ButtonMapping.GetButton(controllerType, EButtonActions.Interact)))
             {
                 EquipPopup.enabled = true;
                 attachedParticle = Collision.GetComponent<PickupParticleEffect>().ProjectilePickup;
@@ -271,7 +207,7 @@ public class ProjectileFire : MonoBehaviour
                 pickupCollider = Collision;
                 pickupColliding = true;
             }
-            else if (Collision.gameObject.tag == "HealthPickup" && Input.GetKey(KeyCode.JoystickButton0))
+            else if (Collision.gameObject.tag == "HealthPickup" && Input.GetKey(ButtonMapping.GetButton(controllerType, EButtonActions.Interact)))
             {
                 Health sn = gameObject.GetComponent<Health>();
 
@@ -280,12 +216,12 @@ public class ProjectileFire : MonoBehaviour
                     sn.AddHealth();                    
                     Destroy(Collision.gameObject);
                     interactPopup.enabled = false;
-                    GetComponent<PlayerHealth>().AddUIHeart();
+                    GetComponent<PlayerAnimations>().AddUIHeart();
                 }
             }
-            else if (Collision.gameObject.tag == "ShieldPickup" && Input.GetKey(KeyCode.JoystickButton0))
+            else if (Collision.gameObject.tag == "ShieldPickup" && Input.GetKey(ButtonMapping.GetButton(controllerType, EButtonActions.Interact)))
             {
-                PlayerHealth sn = gameObject.GetComponent<PlayerHealth>();
+                PlayerAnimations sn = gameObject.GetComponent<PlayerAnimations>();
 
                 if (sn.currentShield < 2)
                 {
@@ -294,12 +230,12 @@ public class ProjectileFire : MonoBehaviour
                     interactPopup.enabled = false;
                 }
             }
-            else if (Collision.gameObject.tag == "Door" && Input.GetKey(KeyCode.JoystickButton0))
+            else if (Collision.gameObject.tag == "Door" && Input.GetKey(ButtonMapping.GetButton(controllerType, EButtonActions.Interact)))
             {
                 openDoor sn = Collision.gameObject.GetComponent<openDoor>();
                 sn.openTheDoor();
             }
-            else if (Collision.gameObject.tag == "Portal" && Input.GetKey(KeyCode.JoystickButton0))
+            else if (Collision.gameObject.tag == "Portal" && Input.GetKey(ButtonMapping.GetButton(controllerType, EButtonActions.Interact)))
             {
                 if (Collision.gameObject.name == "QuitPortal")
                 {
@@ -319,7 +255,7 @@ public class ProjectileFire : MonoBehaviour
                     levelManager.LoadLevel((int)LevelEnum.Options);
                 }
             }
-            else if (Collision.gameObject.tag == "VolumeOption" && Input.GetKeyDown(KeyCode.JoystickButton0))
+            else if (Collision.gameObject.tag == "VolumeOption" && Input.GetKey(ButtonMapping.GetButton(controllerType, EButtonActions.Interact)))
             {
                 if (Collision.gameObject.name == "VolumeUp")
                 {
@@ -340,40 +276,8 @@ public class ProjectileFire : MonoBehaviour
                 volume.text = currentVolume.ToString();
                 AudioListener.volume = currentVolume;
             }
-        }
-        else
-        {
-            if (Collision.gameObject.tag == "PowerPickup" && Input.GetKey(KeyCode.Space))
-            {
-                EquipPopup.enabled = true;
-                attachedParticle = Collision.GetComponent<PickupParticleEffect>().ProjectilePickup;
-                attachedSprite = Collision.GetComponent<PickupParticleEffect>().ProjectileUIIcon;
-                pickupCollider = Collision;
-                pickupColliding = true;
-            }
-            else if (Collision.gameObject.tag == "HealthPickup" && Input.GetKey(KeyCode.Space))
-            {
-                Health sn = gameObject.GetComponent<Health>();
-
-                if (sn.currentHealth < 7)
-                {
-                    sn.AddHealth();
-                    Destroy(Collision.gameObject);
-                    interactPopup.enabled = false;
-                }
-            }
-            else if (Collision.gameObject.tag == "ShieldPickup" && Input.GetKey(KeyCode.Space))
-            {
-                PlayerHealth sn = gameObject.GetComponent<PlayerHealth>();
-
-                if (sn.currentShield < 2)
-                {
-                    //sn.addShield();
-                    Destroy(Collision.gameObject);
-                    interactPopup.enabled = false;
-                }
-            }
-        }
+        
+        
 
     }
     void OnTriggerExit(Collider other)

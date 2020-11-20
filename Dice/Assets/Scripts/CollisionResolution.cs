@@ -9,14 +9,16 @@ public class CollisionResolution : MonoBehaviour
     private TextManager textManager;
     private Color textColour;
 
-    private PlayerHealth playerHealth;
+    private PlayerAnimations playerHealth;
+    private Health agentHealth;
 
     private void Start()
     {
         soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
         textManager = soundManager.GetComponent<TextManager>();
         textPrefab = (GameObject)Resources.Load("Fonts/Text");
-        playerHealth = GetComponent<PlayerHealth>();
+        playerHealth = GetComponent<PlayerAnimations>();
+        agentHealth = GetComponent<Health>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -25,9 +27,10 @@ public class CollisionResolution : MonoBehaviour
         {
             if (other.gameObject.tag == "Equipped")
             {
+                //Destory object and show text with 
                 Destroy(other.gameObject);
                 textColour = other.gameObject.GetComponent<ParticleSystem>().main.startColor.color;
-                ShowFloatingText();
+                ShowFloatingText(other.gameObject);
             }
         }
         else if(transform.tag == "Player")
@@ -35,35 +38,30 @@ public class CollisionResolution : MonoBehaviour
             if (other.gameObject.tag == "EnemyProjectile")
             {
                 playerHealth.playerHit();
-                Vector2 death = new Vector2(
-                  other.gameObject.GetComponent<Rigidbody>().velocity.x, other.gameObject.GetComponent<Rigidbody>().velocity.z);
+
+                //Work out the direction the projectile came from
+                //Vector2 death = new Vector2(
+                //  other.gameObject.GetComponent<Rigidbody>().velocity.x, other.gameObject.GetComponent<Rigidbody>().velocity.z);
+                Vector2 death = new Vector2( other.gameObject.transform.forward.x, other.gameObject.transform.forward.y);
                 death.Normalize();
                 
                 Destroy(other.gameObject);
                 textColour = other.gameObject.GetComponent<ParticleSystem>().main.startColor.color;
-                ShowFloatingText();
-                if (GetComponent<Health>().currentHealth <= 0)
-                {
-                    playerHealth.deathDirection = death;
-                    soundManager.Play("Player Death", gameObject);
-                }
-                else
-                {
-                    soundManager.Play("Player Hit", gameObject);
-                }
+                ShowFloatingText(other.gameObject);
+               
 
             }
         }        
     }
 
-    void ShowFloatingText()
+    void ShowFloatingText(GameObject projectile)
     {
         GameObject text = Instantiate(textPrefab, transform.position, textPrefab.transform.rotation) as GameObject;
         int i = textManager.SelectFont();
         text.GetComponent<TextMesh>().font = textManager.GetFont(i);
         text.GetComponent<MeshRenderer>().material = textManager.GetFont(i).material;
         text.GetComponent<TextMesh>().text = textManager.SelectText();
-        text.GetComponent<TextMesh>().color = textColour;
+        text.GetComponent<TextMesh>().color = projectile.GetComponent<ParticleSystem>().main.startColor.color;        
         GetComponent<Health>().RemoveHealth();
     }
 }

@@ -2,6 +2,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using Button.Utils;
 using UnityEngine;
 
 public class MovementScript : MonoBehaviour
@@ -13,14 +14,14 @@ public class MovementScript : MonoBehaviour
     [SerializeField]
     private float rayDist;
     [SerializeField]
-    private LayerMask layerMask;   
+    private LayerMask layerMask;
 
     public Vector3 rayOffset = new Vector3(0, 1.5f, 0);
 
-   private Vector3 upRight = Vector3.forward + Vector3.right;
-   private Vector3 upLeft = Vector3.forward + Vector3.left;
-   private Vector3 downRight = Vector3.back + Vector3.right;
-   private Vector3 downLeft = Vector3.back + Vector3.left;
+    private Vector3 upRight = Vector3.forward + Vector3.right;
+    private Vector3 upLeft = Vector3.forward + Vector3.left;
+    private Vector3 downRight = Vector3.back + Vector3.right;
+    private Vector3 downLeft = Vector3.back + Vector3.left;
 
     public float diagonalOffset = 0.9f;
     public float collisionForce = 1.0f;
@@ -30,7 +31,7 @@ public class MovementScript : MonoBehaviour
     float horizontalInput = 0;
     float verticalInput = 0;
     Vector3 oldpos;
-
+    public EControllerType controllerType;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,48 +44,18 @@ public class MovementScript : MonoBehaviour
         horizontalInput = 0;
         verticalInput = 0;
 
-        if (controller)
-        {
-            var angle = Mathf.Atan2(Input.GetAxis("RHorizontal"), Input.GetAxis("RVertical")) * Mathf.Rad2Deg;
-            horizontalInput = Input.GetAxis("LHorizontal"); verticalInput = Input.GetAxis("LVertical");
+        var angle = Mathf.Atan2(ButtonMapping.GetButton(controllerType, EButtonActions.HorizontalFacing),
+            ButtonMapping.GetButton(controllerType, EButtonActions.VerticalFacing)) * Mathf.Rad2Deg;
 
-            if (angle > 1 || angle < -1)
-            {
-                transform.rotation = Quaternion.Euler(0, angle, 0);
-                cameraDummy.transform.rotation = Quaternion.Euler(0, 0, 0);
-            }
-        }
-        else
-        {
-            if(Input.GetKey(KeyCode.W))
-            {
-                verticalInput = Vector2.up.y;
-            }
-            if (Input.GetKey(KeyCode.S))
-            {
-                verticalInput = Vector2.down.y;
-            }
-            if (Input.GetKey(KeyCode.A))
-            {
-                horizontalInput = Vector2.left.x;
-            }
-            if (Input.GetKey(KeyCode.D))
-            {
-                horizontalInput = Vector2.right.x;
-            }
+        horizontalInput = Input.GetAxis(ButtonMapping.GetButton(controllerType, EButtonActions.HorizontalMovement));
+        verticalInput = Input.GetAxis(ButtonMapping.GetButton(controllerType, EButtonActions.VerticalMovement));
 
-            float angle;
-            Vector3 object_pos;
-            Vector3 mouse_pos;
-            mouse_pos = Input.mousePosition;
-            //mouse_pos.z = 5.23; //The distance between the camera and object
-            object_pos = Camera.main.WorldToScreenPoint(transform.position);
-            mouse_pos.x = mouse_pos.x - object_pos.x;
-            mouse_pos.y = mouse_pos.y - object_pos.y;
-            angle = Mathf.Atan2(mouse_pos.x, mouse_pos.y) * Mathf.Rad2Deg;
+        if (angle > 1 || angle < -1)
+        {
             transform.rotation = Quaternion.Euler(0, angle, 0);
             cameraDummy.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
+
 
         RaycastHit hit;
 
@@ -129,7 +100,7 @@ public class MovementScript : MonoBehaviour
         }
 
 
-        if(!clearVelocity)
+        if (!clearVelocity)
         {
             GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
@@ -199,14 +170,14 @@ public class MovementScript : MonoBehaviour
             Debug.DrawRay(transform.position, Vector3.left * rayDist, Color.green);
         }
 
-        transform.Translate(new Vector3(horizontalInput, 0, verticalInput) * moveSpeed * Time.deltaTime, Space.World);        
-    }        
+        transform.Translate(new Vector3(horizontalInput, 0, verticalInput) * moveSpeed * Time.deltaTime, Space.World);
+    }
 
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Wall"))
+        if (collision.gameObject.CompareTag("Wall"))
         {
-           
+
             GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
     }
@@ -241,7 +212,7 @@ public class MovementScript : MonoBehaviour
     bool UpRight()
     {
         if (Physics.Raycast(transform.position + rayOffset, upRight, rayDist * diagonalOffset, ~layerMask))
-        {            
+        {
             Debug.DrawRay(transform.position, upRight * (rayDist * diagonalOffset), Color.red);
             return true;
         }
