@@ -57,8 +57,8 @@ namespace Button.Utils
                             
                             mouse_pos = Input.mousePosition;
                             //mouse_pos.z = 5.23; //The distance between the camera and object
-                            //object_pos = Camera.main.WorldToScreenPoint(GameObject.FindGameObjectWithTag("Player").transform.position);
-                            object_pos = new Vector3(320.5f, 160.2f, 21.0f);
+                            object_pos = Camera.main.WorldToScreenPoint(GameObject.FindGameObjectWithTag("Player").transform.position);
+                            //object_pos = new Vector3(320.5f, 160.2f, 21.0f);
 
                             mouse_pos.x = mouse_pos.x - object_pos.x;
                             mouse_pos.y = mouse_pos.y - object_pos.y;
@@ -66,8 +66,8 @@ namespace Button.Utils
                         case EButtonActions.HorizontalFacing:                            
                             mouse_pos = Input.mousePosition;
                             //mouse_pos.z = 5.23; //The distance between the camera and object
-                            //object_pos = Camera.main.WorldToScreenPoint(GameObject.FindGameObjectWithTag("Player").transform.position);
-                            object_pos = new Vector3(320.5f, 160.2f, 21.0f);
+                            object_pos = Camera.main.WorldToScreenPoint(GameObject.FindGameObjectWithTag("Player").transform.position);
+                            //object_pos = new Vector3(320.5f, 160.2f, 21.0f);
                             mouse_pos.x = mouse_pos.x - object_pos.x;
                             mouse_pos.y = mouse_pos.y - object_pos.y;
                             return mouse_pos.x;
