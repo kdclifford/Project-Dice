@@ -68,6 +68,8 @@ public class ProjectileFire : MonoBehaviour
     PlayerIndex playerIndex = 0;
     public EControllerType controllerType;
 
+    public bool doubleAttack = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -93,9 +95,9 @@ public class ProjectileFire : MonoBehaviour
     {
        
 
-            if (Input.GetAxis(ButtonMapping.GetButton(controllerType, EButtonActions.RightAttack)) > 0 && 
+            if (!doubleAttack && ButtonMapping.GetButton(controllerType, EButtonActions.RightAttack) && 
             projectileRight.tag != ("NotEquipped") &&
-            Input.GetAxis(ButtonMapping.GetButton(controllerType, EButtonActions.LeftAttack)) > 0 && 
+            ButtonMapping.GetButton(controllerType, EButtonActions.LeftAttack) && 
             projectileLeft.tag != ("NotEquipped"))
             {
                 AnimationScript.DoubleAttack(animator);
@@ -103,7 +105,7 @@ public class ProjectileFire : MonoBehaviour
             else
             {
 
-                if (Input.GetAxis(ButtonMapping.GetButton(controllerType, EButtonActions.RightAttack)) > 0 && projectileRight.tag != ("NotEquipped"))
+                if (ButtonMapping.GetButton(controllerType, EButtonActions.RightAttack) && projectileRight.tag != ("NotEquipped"))
                 {
                     if (currRTFireCooldown <= 0)
                     {
@@ -115,7 +117,7 @@ public class ProjectileFire : MonoBehaviour
                     }
                 }
 
-                else if (Input.GetAxis(ButtonMapping.GetButton(controllerType, EButtonActions.LeftAttack)) > 0 && projectileLeft.tag != ("NotEquipped"))
+                else if (ButtonMapping.GetButton(controllerType, EButtonActions.LeftAttack) && projectileLeft.tag != ("NotEquipped"))
                 {
                     if (currLTFireCooldown <= 0)
                     {
@@ -126,10 +128,11 @@ public class ProjectileFire : MonoBehaviour
                         AnimationScript.LeftAttack(animator);
                     }
                 }
+           
             }
 
 
-            if (Input.GetAxis(ButtonMapping.GetButton(controllerType, EButtonActions.LeftEquipt)) < 0 && pickupColliding == true && attachedParticle != null)
+            if (ButtonMapping.GetButton(controllerType, EButtonActions.LeftEquipt) && pickupColliding == true && attachedParticle != null)
             {
                 projectileLeft = attachedParticle;
                 LeftUIIcon.sprite = attachedSprite;
@@ -144,7 +147,7 @@ public class ProjectileFire : MonoBehaviour
                     mat2.color = leftProjectileColour;
                 }
             }
-            else if (Input.GetAxis(ButtonMapping.GetButton(controllerType, EButtonActions.RightEquipt)) > 0 && pickupColliding == true && attachedParticle != null)
+            else if (ButtonMapping.GetButton(controllerType, EButtonActions.RightEquipt) && pickupColliding == true && attachedParticle != null)
             {
                 projectileRight = attachedParticle;
                 RightUIIcon.sprite = attachedSprite;
@@ -199,7 +202,7 @@ public class ProjectileFire : MonoBehaviour
             interactPopup.enabled = true;
 
        
-            if (Collision.gameObject.tag == "PowerPickup" && Input.GetKey(ButtonMapping.GetButton(controllerType, EButtonActions.Interact)))
+            if (Collision.gameObject.tag == "PowerPickup" && ButtonMapping.GetButton(controllerType, EButtonActions.Interact))
             {
                 EquipPopup.enabled = true;
                 attachedParticle = Collision.GetComponent<PickupParticleEffect>().ProjectilePickup;
@@ -207,7 +210,7 @@ public class ProjectileFire : MonoBehaviour
                 pickupCollider = Collision;
                 pickupColliding = true;
             }
-            else if (Collision.gameObject.tag == "HealthPickup" && Input.GetKey(ButtonMapping.GetButton(controllerType, EButtonActions.Interact)))
+            else if (Collision.gameObject.tag == "HealthPickup" && ButtonMapping.GetButton(controllerType, EButtonActions.Interact))
             {
                 Health sn = gameObject.GetComponent<Health>();
 
@@ -219,7 +222,7 @@ public class ProjectileFire : MonoBehaviour
                     GetComponent<PlayerAnimations>().AddUIHeart();
                 }
             }
-            else if (Collision.gameObject.tag == "ShieldPickup" && Input.GetKey(ButtonMapping.GetButton(controllerType, EButtonActions.Interact)))
+            else if (Collision.gameObject.tag == "ShieldPickup" && ButtonMapping.GetButton(controllerType, EButtonActions.Interact))
             {
                 PlayerAnimations sn = gameObject.GetComponent<PlayerAnimations>();
 
@@ -230,12 +233,12 @@ public class ProjectileFire : MonoBehaviour
                     interactPopup.enabled = false;
                 }
             }
-            else if (Collision.gameObject.tag == "Door" && Input.GetKey(ButtonMapping.GetButton(controllerType, EButtonActions.Interact)))
+            else if (Collision.gameObject.tag == "Door" && ButtonMapping.GetButton(controllerType, EButtonActions.Interact))
             {
                 openDoor sn = Collision.gameObject.GetComponent<openDoor>();
                 sn.openTheDoor();
             }
-            else if (Collision.gameObject.tag == "Portal" && Input.GetKey(ButtonMapping.GetButton(controllerType, EButtonActions.Interact)))
+            else if (Collision.gameObject.tag == "Portal" && ButtonMapping.GetButton(controllerType, EButtonActions.Interact))
             {
                 if (Collision.gameObject.name == "QuitPortal")
                 {
@@ -255,7 +258,7 @@ public class ProjectileFire : MonoBehaviour
                     levelManager.LoadLevel((int)LevelEnum.Options);
                 }
             }
-            else if (Collision.gameObject.tag == "VolumeOption" && Input.GetKey(ButtonMapping.GetButton(controllerType, EButtonActions.Interact)))
+            else if (Collision.gameObject.tag == "VolumeOption" && ButtonMapping.GetButton(controllerType, EButtonActions.Interact))
             {
                 if (Collision.gameObject.name == "VolumeUp")
                 {
@@ -383,6 +386,14 @@ public class ProjectileFire : MonoBehaviour
 
 
 
+    public void DoubleAttackOn()
+    {
+        doubleAttack = false;
+    }
 
+    public void DoubleAttackOff()
+    {
+        doubleAttack = true;
+    }
 
 }

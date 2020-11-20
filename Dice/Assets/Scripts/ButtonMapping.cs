@@ -7,97 +7,127 @@ namespace Button.Utils
 {
     public class ButtonMapping
     {
-        public static dynamic GetButton(EControllerType controllerType, EButtonActions buttonAction)
+        public static bool GetButton(EControllerType controllerType, EButtonActions buttonAction)
         {
-            Vector3 object_pos;
-            Vector3 mouse_pos;
             switch (controllerType)
             {
                 case EControllerType.Controller:
                     switch (buttonAction)
                     {
                         case EButtonActions.RightAttack:
-                            return "RTrigger";
+                            return Input.GetAxis("RTrigger") > 0;
                         case EButtonActions.LeftAttack:
-                            return "LTrigger";
+                            return Input.GetAxis("LTrigger") > 0;
                         case EButtonActions.Interact:
-                            return KeyCode.JoystickButton0;
+                            return Input.GetKey(KeyCode.JoystickButton0);
                         case EButtonActions.LeftEquipt:
-                            return "HorizontalDpad";
+                            return Input.GetAxis("HorizontalDpad") < 0;
                         case EButtonActions.RightEquipt:
-                            return "HorizontalDpad";
-                        case EButtonActions.VerticalMovement:
-                            return "LVertical";
-                        case EButtonActions.HorizontalMovement:
-                            return "LHorizontal";
-                        case EButtonActions.VerticalFacing:
-                            return Input.GetAxis("RVertical");
-                        case EButtonActions.HorizontalFacing:
-                            return Input.GetAxis("RHorizontal");
+                            return Input.GetAxis("HorizontalDpad") > 0;
+
                     }
                     break;
                 case EControllerType.Computer:
                     switch (buttonAction)
                     {
                         case EButtonActions.RightAttack:
-                            return "Mouse Fire 1";
+                            return Input.GetMouseButton(1);
                         case EButtonActions.LeftAttack:
-                            return "Mouse Fire 2";
+                            return Input.GetMouseButton(0);
                         case EButtonActions.Interact:
-                            return KeyCode.Space;
+                            return Input.GetKey(KeyCode.Space);
                         case EButtonActions.LeftEquipt:
-                            return "PickUpKeyBoard";
+                            return Input.GetAxis("PickUpKeyBoard") > 0;
                         case EButtonActions.RightEquipt:
-                            return "PickUpKeyBoard";
-                        case EButtonActions.VerticalMovement:
-                            return "Vertical";
-                        case EButtonActions.HorizontalMovement:
-                            return "Horizontal";
-                        case EButtonActions.VerticalFacing:
-                            
+                            return Input.GetAxis("PickUpKeyBoard") < 0;
+
+
+                    }
+                    break;
+            }
+
+
+            return false;
+        }
+
+        public static float GetStick(EControllerType controllerType, EStickMovement stickMovement, Vector3 playerPosition)
+        {
+            Vector3 object_pos;
+            Vector3 mouse_pos;
+            switch (controllerType)
+            {
+                case EControllerType.Controller:
+                    switch (stickMovement)
+                    {
+
+                        case EStickMovement.VerticalMovement:
+                            return Input.GetAxis("LVertical");
+                        case EStickMovement.HorizontalMovement:
+                            return Input.GetAxis("LHorizontal");
+                        case EStickMovement.VerticalFacing:
+
+
+                            return Input.GetAxis("RVertical");
+                        case EStickMovement.HorizontalFacing:
+                            return Input.GetAxis("RHorizontal");
+                    }
+                    break;
+                case EControllerType.Computer:
+                    switch (stickMovement)
+                    {
+
+                        case EStickMovement.VerticalMovement:
+                            return Input.GetAxis("Vertical");
+                        case EStickMovement.HorizontalMovement:
+                            return Input.GetAxis("Horizontal");
+                        case EStickMovement.VerticalFacing:
+
                             mouse_pos = Input.mousePosition;
                             //mouse_pos.z = 5.23; //The distance between the camera and object
-                            object_pos = Camera.main.WorldToScreenPoint(GameObject.FindGameObjectWithTag("Player").transform.position);
+                            object_pos = Camera.main.WorldToScreenPoint(playerPosition);
                             //object_pos = new Vector3(320.5f, 160.2f, 21.0f);
 
                             mouse_pos.x = mouse_pos.x - object_pos.x;
                             mouse_pos.y = mouse_pos.y - object_pos.y;
                             return mouse_pos.y;
-                        case EButtonActions.HorizontalFacing:                            
+                        case EStickMovement.HorizontalFacing:
                             mouse_pos = Input.mousePosition;
                             //mouse_pos.z = 5.23; //The distance between the camera and object
-                            object_pos = Camera.main.WorldToScreenPoint(GameObject.FindGameObjectWithTag("Player").transform.position);
+                            object_pos = Camera.main.WorldToScreenPoint(playerPosition);
                             //object_pos = new Vector3(320.5f, 160.2f, 21.0f);
                             mouse_pos.x = mouse_pos.x - object_pos.x;
                             mouse_pos.y = mouse_pos.y - object_pos.y;
                             return mouse_pos.x;
                     }
                     break;
+
             }
-
-
             return 0;
         }
 
     }
-}
 
-public enum EControllerType
-{
-    Controller,
-    Computer,
 }
+        public enum EControllerType
+        {
+            Controller,
+            Computer,
+        }
 
-public enum EButtonActions
-{
-    RightAttack,
-    LeftAttack,
-    Interact,
-    LeftEquipt,
-    RightEquipt,
-    VerticalMovement,
-    HorizontalMovement,
-    VerticalFacing,
-    HorizontalFacing,
-    Teleport,
-}
+        public enum EButtonActions
+        {
+            RightAttack,
+            LeftAttack,
+            Interact,
+            LeftEquipt,
+            RightEquipt,        
+            Teleport,
+        }
+
+        public enum EStickMovement
+        {         
+            VerticalMovement,
+            HorizontalMovement,
+            VerticalFacing,
+            HorizontalFacing,
+        }

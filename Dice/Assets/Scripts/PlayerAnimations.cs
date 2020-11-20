@@ -31,6 +31,7 @@ public class PlayerAnimations : MonoBehaviour
     ProjectileFire projectileFire;
     public EControllerType controllerType;
 
+    private bool doubleAttack = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,19 +51,19 @@ public class PlayerAnimations : MonoBehaviour
         {
 
             
-                leftStickInputAxis.x = Input.GetAxis(ButtonMapping.GetButton(controllerType, EButtonActions.HorizontalMovement));
-                leftStickInputAxis.y = Input.GetAxis(ButtonMapping.GetButton(controllerType, EButtonActions.VerticalMovement));
+                leftStickInputAxis.x = ButtonMapping.GetStick(controllerType, EStickMovement.HorizontalMovement, transform.position);
+                leftStickInputAxis.y = ButtonMapping.GetStick(controllerType, EStickMovement.VerticalMovement, transform.position);
 
-                string ss = ButtonMapping.GetButton(EControllerType.Controller, EButtonActions.RightAttack);
+                
 
-                if (projectileFire.projectileRight.tag != ("NotEquipped") && Input.GetAxis(ButtonMapping.GetButton(controllerType, EButtonActions.RightAttack)) > 0)
+                if (projectileFire.projectileRight.tag != ("NotEquipped") && ButtonMapping.GetButton(controllerType, EButtonActions.RightAttack))
                 {
-                    triggerPress = 1;
+                    triggerPress += 1;
                 }
 
-                if (projectileFire.projectileLeft.tag != ("NotEquipped") && Input.GetAxis(ButtonMapping.GetButton(controllerType, EButtonActions.LeftAttack)) > 0)
+                if (projectileFire.projectileLeft.tag != ("NotEquipped") && ButtonMapping.GetButton(controllerType, EButtonActions.LeftAttack))
                 {
-                    triggerPress = 1;
+                    triggerPress += 1;
                 }
             
            
@@ -169,4 +170,11 @@ public class PlayerAnimations : MonoBehaviour
 
         idleAnimation = false;
     }
+
+    public void AttackOff()
+    {
+        AnimationScript.StopAttack(animator);
+    }
+   
+
 }

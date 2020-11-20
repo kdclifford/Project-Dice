@@ -44,11 +44,11 @@ public class MovementScript : MonoBehaviour
         horizontalInput = 0;
         verticalInput = 0;
 
-        var angle = Mathf.Atan2(ButtonMapping.GetButton(controllerType, EButtonActions.HorizontalFacing),
-            ButtonMapping.GetButton(controllerType, EButtonActions.VerticalFacing)) * Mathf.Rad2Deg;
+        var angle = Mathf.Atan2(ButtonMapping.GetStick(controllerType, EStickMovement.HorizontalFacing, transform.position),
+            ButtonMapping.GetStick(controllerType, EStickMovement.VerticalFacing, transform.position)) * Mathf.Rad2Deg;
 
-        horizontalInput = Input.GetAxis(ButtonMapping.GetButton(controllerType, EButtonActions.HorizontalMovement));
-        verticalInput = Input.GetAxis(ButtonMapping.GetButton(controllerType, EButtonActions.VerticalMovement));
+        horizontalInput = ButtonMapping.GetStick(controllerType, EStickMovement.HorizontalMovement, transform.position);
+        verticalInput = ButtonMapping.GetStick(controllerType, EStickMovement.VerticalMovement, transform.position);
 
         if (angle > 1 || angle < -1)
         {
