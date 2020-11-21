@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using AnimationFunctions.Utils;
 using Button.Utils;
+using XInputDotNetPure;
 using UnityEngine;
 
 public class PlayerAnimations : MonoBehaviour
@@ -10,8 +11,7 @@ public class PlayerAnimations : MonoBehaviour
 
     private Animator animator;
 
-    private float velocity;
-    private Vector2 leftStickInputAxis;
+  
 
     private int idle = 0;
     private bool idleAnimation = false;
@@ -19,87 +19,45 @@ public class PlayerAnimations : MonoBehaviour
     public Vector2 deathDirection;
     private Vector2 newDeathDirection;
 
-    float triggerPress = 0;
+    bool playerIndexSet = false;
 
     bool isDead = false;
-    ProjectileFire projectileFire;
-    public EControllerType controllerType;
+    PlayerController playerController;
+    GameSettings gameSettings;
+
+    PlayerIndex playerIndex = 0;
 
     private bool doubleAttack = false;
     // Start is called before the first frame update
     void Start()
     {
+        gameSettings = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameSettings>();
         health = GetComponent<Health>();
         animator = GetComponent<Animator>();
-        projectileFire = GetComponent<ProjectileFire>();
+        playerController = GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
-    {     
-   
-        
-        triggerPress = 0;
-
+    {  
         if (health.GetHealth()  > 0)
         {
-
-            
-                leftStickInputAxis.x = ButtonMapping.GetStick(controllerType, EStickMovement.HorizontalMovement, transform.position);
-                leftStickInputAxis.y = ButtonMapping.GetStick(controllerType, EStickMovement.VerticalMovement, transform.position);
-
-                
-
-                if (projectileFire.projectileRight.tag != ("NotEquipped") && ButtonMapping.GetButton(controllerType, EButtonActions.RightAttack))
-                {
-                    triggerPress += 1;
-                }
-
-                if (projectileFire.projectileLeft.tag != ("NotEquipped") && ButtonMapping.GetButton(controllerType, EButtonActions.LeftAttack))
-                {
-                    triggerPress += 1;
-                }
-            
-           
-
-
-            
-                animator.SetFloat("TriggerPress", triggerPress);
-            
-
-
-            velocity = Mathf.Abs(leftStickInputAxis.x) + Mathf.Abs(leftStickInputAxis.y);
-            leftStickInputAxis = AnimationScript.CurrentDirection(leftStickInputAxis, gameObject);
-
-            leftStickInputAxis.x *= velocity;
-            leftStickInputAxis.y *= velocity;
-
-
             Move();
 
-            if (!idleAnimation && !projectileFire.rightFire && !projectileFire.leftFire)
+            if (!idleAnimation && !playerController.rightFire && !playerController.leftFire)
             {
 
                 Idle();
             }
-        }       
-
+        }    
     }
 
-
-    //public void UpdateHeartUI()
-    //{
-    //    animator.SetFloat("Health", health.GetHealth());
-    //}
-
-
     public void DeathAnimation()
-    {
-
-        
+    {        
             Destroy(GetComponent<MovementScript>());
-            Destroy(GetComponent<ProjectileFire>());
-            Destroy(this);
+            Destroy(GetComponent<PlayerController>());
+        
+        //Destroy(this);
 
             if (deathDirection.y >= 0 && deathDirection.y < 0.1)
             {
@@ -117,9 +75,9 @@ public class PlayerAnimations : MonoBehaviour
 
     private void Move()
     {
-        animator.SetFloat("XMove", leftStickInputAxis.x);
-        animator.SetFloat("YMove", leftStickInputAxis.y);
-        animator.SetFloat("Velocity", velocity);
+        animator.SetFloat("XMove", playerController.leftStickInputAxis.x);
+        animator.SetFloat("YMove", playerController.leftStickInputAxis.y);
+        animator.SetFloat("Velocity", playerController.velocity);
     }
 
     private void Idle()
@@ -153,6 +111,39 @@ public class PlayerAnimations : MonoBehaviour
     {
         AnimationScript.StopAttack(animator);
     }
-   
 
+
+    //Vibrations
+
+    public void RightControllerVibration()
+    {
+        GamePad.SetVibration(playerIndex, 0, 0.2f);
+    }
+
+    public void LeftControllerVibration()
+    {
+        GamePad.SetVibration(playerIndex, 0.5f, 0);
+    }
+
+    public void BothControllerVibration()
+    {
+        GamePad.SetVibration(playerIndex, 0.5f, 0.5f);
+    }
+
+    public void VibrationOff()
+    {
+        GamePad.SetVibration(playerIndex, 0, 0);
+    }
+
+
+
+    public void DoubleAttackOn()
+    {
+        doubleAttack = false;
+    }
+
+    public void DoubleAttackOff()
+    {
+        doubleAttack = true;
+    }
 }

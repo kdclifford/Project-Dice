@@ -77,7 +77,9 @@ public class CollisionResolution : MonoBehaviour
         text.GetComponent<TextMesh>().font = textManager.GetFont(i);
         text.GetComponent<MeshRenderer>().material = textManager.GetFont(i).material;
         text.GetComponent<TextMesh>().text = textManager.SelectText();
-        text.GetComponent<TextMesh>().color = projectile.GetComponent<ParticleSystem>().main.startColor.color;
+        //text.GetComponent<TextMesh>().color = projectile.GetComponent<ParticleSystem>().main.startColor.color;
+        text.GetComponent<TextMesh>().color = Color.white;
+
         GetComponent<Health>().RemoveHealth();
     }
 }

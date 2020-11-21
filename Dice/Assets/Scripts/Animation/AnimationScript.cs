@@ -12,11 +12,14 @@ namespace AnimationFunctions.Utils
         {
             animator.SetInteger("Attack", 1);
             //animator.SetBool("Shooting", true);
+            
         }
 
         public static void LeftAttack(Animator animator)
         {
             animator.SetInteger("Attack", 2);
+            
+
             //animator.SetBool("Shooting", true);
         }
 

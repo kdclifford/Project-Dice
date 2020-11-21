@@ -10,7 +10,7 @@ public class Health : MonoBehaviour
     private float currentHealth;
 
     public float maxShields;
-    private float currentShields;
+    public float currentShields;
     GameObject agentRoot;    
 
     // Start is called before the first frame update
@@ -42,7 +42,14 @@ public class Health : MonoBehaviour
 
     public void RemoveHealth()
     {        
-            currentHealth--;          
+        if(currentShields > 0)
+        {
+            currentShields--;
+        }
+        else
+        {
+            currentHealth--;   
+        }
     }
 
     public int GetHealth()
