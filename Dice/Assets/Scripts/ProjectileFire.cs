@@ -54,6 +54,7 @@ public class ProjectileFire : MonoBehaviour
     //Managers
     private SoundManager soundManager;
     //private LevelManager levelManager;
+    private UIManager uIManager;
 
     //Bools to chek if the user is firing
     [HideInInspector]
@@ -84,7 +85,7 @@ public class ProjectileFire : MonoBehaviour
         projectileRight = (GameObject)Resources.Load("Player/NoProjectile Variant Resource");
         mat1 = (Material)Resources.Load("Player/Weapon 1");
         mat2 = (Material)Resources.Load("Player/Weapon 2");
-
+        uIManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<UIManager>();
         //if (PlayerPrefs.HasKey("Volume")) currentVolume = PlayerPrefs.GetFloat("Volume");
         //if (SceneManager.GetActiveScene().name == "Options") volume.text = currentVolume.ToString();
         //AudioListener.volume = currentVolume;
@@ -206,19 +207,20 @@ public class ProjectileFire : MonoBehaviour
                     sn.AddHealth();                    
                     Destroy(Collision.gameObject);
                     interactPopup.enabled = false;
-                   // GetComponent<PlayerAnimations>().AddUIHeart();
+                uIManager.AddUIHeart();
                 }
             }
             else if (Collision.gameObject.tag == "ShieldPickup" && ButtonMapping.GetButton(controllerType, EButtonActions.Interact))
             {
             Health sn = gameObject.GetComponent<Health>();
 
-                if (sn.GetHealth() < 2)
+                if (sn.GetShield() < 2)
                 {
-                    //  sn.addShield();
+                      sn.AddShield();
                     Destroy(Collision.gameObject);
                     interactPopup.enabled = false;
-                }
+                uIManager.AddUIShield();
+            }
             }
             else if (Collision.gameObject.tag == "Door" && ButtonMapping.GetButton(controllerType, EButtonActions.Interact))
         {

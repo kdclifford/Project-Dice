@@ -6,6 +6,7 @@ public class Health : MonoBehaviour
 {    
     public float maxHealth = 0;
     //[HideInInspector]
+    [SerializeField]
     private float currentHealth;
 
     public float maxShields;
@@ -16,7 +17,7 @@ public class Health : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        currentShields = maxShields;
+        currentShields = 0;
         agentRoot = transform.GetChild(0).gameObject;
         
     }
@@ -41,8 +42,7 @@ public class Health : MonoBehaviour
 
     public void RemoveHealth()
     {        
-            currentHealth--;   
-        
+            currentHealth--;          
     }
 
     public int GetHealth()
@@ -76,8 +76,8 @@ public class Health : MonoBehaviour
 
     private void DestroyComponents()
     {
-        Destroy(agentRoot.GetComponent<Rigidbody>());
-        Destroy(agentRoot.GetComponent<Collider>());
+        Destroy(GetComponent<Rigidbody>());
+        Destroy(GetComponent<Collider>());
     }
 
 }

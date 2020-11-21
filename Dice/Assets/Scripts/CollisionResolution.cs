@@ -44,13 +44,15 @@ public class CollisionResolution : MonoBehaviour
                 //Work out the direction the projectile came from
                 //Vector2 death = new Vector2(
                 //  other.gameObject.GetComponent<Rigidbody>().velocity.x, other.gameObject.GetComponent<Rigidbody>().velocity.z);
-                agentHealth.RemoveHealth();
+
                 // playerAnimations.UpdateHeartUI();
+                textColour = other.gameObject.GetComponent<ParticleSystem>().main.startColor.color;
                 uIManager.RemoveHeart();
+                ShowFloatingText(other.gameObject);
 
                 if (agentHealth.GetHealth() <= 0)
                 {
-                    Vector2 death = new Vector2(other.gameObject.transform.forward.x, other.gameObject.transform.forward.y);
+                    Vector2 death = new Vector2(other.gameObject.transform.forward.x, other.gameObject.transform.forward.z);
                     death.Normalize();
                     playerAnimations.deathDirection = death;
                     playerAnimations.DeathAnimation();
@@ -63,8 +65,6 @@ public class CollisionResolution : MonoBehaviour
                 
 
                 Destroy(other.gameObject);
-                textColour = other.gameObject.GetComponent<ParticleSystem>().main.startColor.color;
-                ShowFloatingText(other.gameObject);
 
             }
         }
