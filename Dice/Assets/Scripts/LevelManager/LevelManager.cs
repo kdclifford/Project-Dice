@@ -44,17 +44,17 @@ public class LevelManager : MonoBehaviour
     }
 
     //Loads level with a delay
-    public void LoadLevel(int levelIndex)
+    public void LoadLevel(string LevelToLoad)
     {      
-        StartCoroutine(ChangeScene(levelIndex));
+        StartCoroutine(ChangeScene(LevelToLoad));
     }
 
-    IEnumerator ChangeScene( int levelIndex)
+    IEnumerator ChangeScene(string LevelToLoad)
     {
         soundManager.GetComponent<Animator>().SetInteger("Fade", 1);
         fade.SetTrigger("Fade");
         yield return new WaitForSeconds(sceneChangeDelay);
-        SceneManager.LoadScene(levelIndex);
+        SceneManager.LoadScene(LevelToLoad);
         soundManager.GetComponent<Animator>().SetInteger("Fade", 0);
         fade = GameObject.FindGameObjectWithTag("SceneFade").GetComponent<Animator>();
     }

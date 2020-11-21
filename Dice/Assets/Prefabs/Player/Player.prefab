@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1801815938
 Transform:
   m_ObjectHideFlags: 0
@@ -1756,13 +1756,13 @@ GameObject:
   - component: {fileID: 5812377792357169488}
   - component: {fileID: 5812377792357169495}
   - component: {fileID: 5812377792357164714}
+  - component: {fileID: 6982485295917779668}
   - component: {fileID: 5812377792357169492}
   - component: {fileID: 5812377792357169493}
   - component: {fileID: 5812377792357169489}
   - component: {fileID: 47689040}
   - component: {fileID: 47689048}
   - component: {fileID: 47689050}
-  - component: {fileID: 47689046}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -1838,6 +1838,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6982485295917779668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6658817375150945558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d24e621b919c1b64ea160dc99bf4f3e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentShield: 0
+  HPUIIcons: []
+  ShieldUIIcons: []
+  deathDirection: {x: 0, y: 0}
+  controllerType: 0
 --- !u!114 &5812377792357169492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1880,14 +1897,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   cameraDummy: {fileID: 5812377793355504583}
-  rayDist: 2.6
+  rayDist: 1
   layerMask:
     serializedVersion: 2
     m_Bits: 256
   rayOffset: {x: 0, y: 1.5, z: 0}
   diagonalOffset: 0.9
   collisionForce: 1
-  controller: 0
+  controller: 1
   controllerType: 0
 --- !u!114 &5812377792357169489
 MonoBehaviour:
@@ -1917,7 +1934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe6c5a82517f66c45bba981fa27968d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 7
+  maxHealth: 4
   currentHealth: 0
 --- !u!114 &47689048
 MonoBehaviour:
@@ -1952,31 +1969,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2347e5539975344cb401d946b33b736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &47689046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6658817375150945558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d24e621b919c1b64ea160dc99bf4f3e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentShield: 0
-  HPUIIcons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  ShieldUIIcons: []
-  deathDirection: {x: 0, y: 0}
-  controllerType: 0
 --- !u!1 &6829665091209077042
 GameObject:
   m_ObjectHideFlags: 0

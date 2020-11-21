@@ -31,9 +31,9 @@ public class ProjectileFire : MonoBehaviour
     private Image interactPopup;
     [SerializeField]
     private Image EquipPopup;
-    [SerializeField]
-    private TextMeshPro volume;
-    private float currentVolume = 10.0f;
+    //[SerializeField]
+    //private TextMeshPro volume;
+    //private float currentVolume = 10.0f;
 
     //Hand charge colours
     private Material mat1;
@@ -53,7 +53,7 @@ public class ProjectileFire : MonoBehaviour
 
     //Managers
     private SoundManager soundManager;
-    private LevelManager levelManager;
+    //private LevelManager levelManager;
 
     //Bools to chek if the user is firing
     [HideInInspector]
@@ -77,7 +77,7 @@ public class ProjectileFire : MonoBehaviour
         currLTFireCooldown = MaxFireCooldown;
         animator = GetComponent<Animator>();
         soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
-        levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
+        //levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
         interactPopup.enabled = false;
         EquipPopup.enabled = false;
         projectileLeft = (GameObject)Resources.Load("Player/NoProjectile Variant Resource");
@@ -85,9 +85,9 @@ public class ProjectileFire : MonoBehaviour
         mat1 = (Material)Resources.Load("Player/Weapon 1");
         mat2 = (Material)Resources.Load("Player/Weapon 2");
 
-        if (PlayerPrefs.HasKey("Volume")) currentVolume = PlayerPrefs.GetFloat("Volume");
-        if (SceneManager.GetActiveScene().name == "Options") volume.text = currentVolume.ToString();
-        AudioListener.volume = currentVolume;
+        //if (PlayerPrefs.HasKey("Volume")) currentVolume = PlayerPrefs.GetFloat("Volume");
+        //if (SceneManager.GetActiveScene().name == "Options") volume.text = currentVolume.ToString();
+        //AudioListener.volume = currentVolume;
     }
 
     // Update is called once per frame
@@ -172,20 +172,6 @@ public class ProjectileFire : MonoBehaviour
         currLTFireCooldown -= Time.deltaTime;
     }
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.tag == "EnemyProjectile")
-    //    {
-    //        Vector2 death = new Vector2(
-    //            collision.gameObject.GetComponent<Rigidbody>().velocity.x, collision.gameObject.GetComponent<Rigidbody>().velocity.z);
-    //        death.Normalize();
-    //        GetComponent<AnimationTest>().deathDirection = death;
-    //        GetComponent<PlayerHealth>().playerHit();
-    //        Destroy(collision.gameObject);
-    //    }
-    //}
-
-
     void OnTriggerStay(Collider Collision)
     {
         if (Collision.gameObject.tag == "PowerPickup")
@@ -201,20 +187,21 @@ public class ProjectileFire : MonoBehaviour
         if (Collision.gameObject.tag == "VolumeOption")
             interactPopup.enabled = true;
 
-       
-            if (Collision.gameObject.tag == "PowerPickup" && ButtonMapping.GetButton(controllerType, EButtonActions.Interact))
-            {
-                EquipPopup.enabled = true;
-                attachedParticle = Collision.GetComponent<PickupParticleEffect>().ProjectilePickup;
-                attachedSprite = Collision.GetComponent<PickupParticleEffect>().ProjectileUIIcon;
-                pickupCollider = Collision;
-                pickupColliding = true;
-            }
-            else if (Collision.gameObject.tag == "HealthPickup" && ButtonMapping.GetButton(controllerType, EButtonActions.Interact))
-            {
-                Health sn = gameObject.GetComponent<Health>();
 
-                if (sn.GetHealth() < sn.maxHealth - 1)
+
+        if (Collision.gameObject.tag == "PowerPickup" && ButtonMapping.GetButton(controllerType, EButtonActions.Interact))
+        {
+            EquipPopup.enabled = true;
+            attachedParticle = Collision.GetComponent<PickupParticleEffect>().ProjectilePickup;
+            attachedSprite = Collision.GetComponent<PickupParticleEffect>().ProjectileUIIcon;
+            pickupCollider = Collision;
+            pickupColliding = true;
+        }
+        else if (Collision.gameObject.tag == "HealthPickup" && ButtonMapping.GetButton(controllerType, EButtonActions.Interact))
+        {
+            Health sn = gameObject.GetComponent<Health>();
+
+               if (sn.GetHealth() < sn.maxHealth - 1)
                 {
                     sn.AddHealth();                    
                     Destroy(Collision.gameObject);
@@ -234,51 +221,36 @@ public class ProjectileFire : MonoBehaviour
                 }
             }
             else if (Collision.gameObject.tag == "Door" && ButtonMapping.GetButton(controllerType, EButtonActions.Interact))
-            {
-                openDoor sn = Collision.gameObject.GetComponent<openDoor>();
-                sn.openTheDoor();
-            }
-            else if (Collision.gameObject.tag == "Portal" && ButtonMapping.GetButton(controllerType, EButtonActions.Interact))
-            {
-                if (Collision.gameObject.name == "QuitPortal")
-                {
-                    UnityEditor.EditorApplication.isPlaying = false;
-                    Application.Quit();
-                }
-                else if (Collision.gameObject.name == "PlayPortal")
-                {
-                    levelManager.LoadLevel((int)LevelEnum.Level1);
-                }
-                else if (Collision.gameObject.name == "MenuPortal")
-                {
-                    levelManager.LoadLevel((int)LevelEnum.MainMenu);
-                }
-                else if (Collision.gameObject.name == "OptionsPortal")
-                {
-                    levelManager.LoadLevel((int)LevelEnum.Options);
-                }
-            }
-            else if (Collision.gameObject.tag == "VolumeOption" && ButtonMapping.GetButton(controllerType, EButtonActions.Interact))
-            {
-                if (Collision.gameObject.name == "VolumeUp")
-                {
-                    if (currentVolume < 10)
-                    {
-                        currentVolume++;
-                    }
-                }
-                else if (Collision.gameObject.name == "VolumeDown")
-                {
-                    if (currentVolume > 0)
-                    {
-                        currentVolume--;
-                    }
-                }
-
-                PlayerPrefs.SetFloat("Volume", currentVolume);
-                volume.text = currentVolume.ToString();
-                AudioListener.volume = currentVolume;
-            }
+        {
+            openDoor sn = Collision.gameObject.GetComponent<openDoor>();
+            sn.openTheDoor();
+        }
+        else if (Collision.gameObject.tag == "Portal" && ButtonMapping.GetButton(controllerType, EButtonActions.Interact))
+        {
+            ScenePortal sn = Collision.gameObject.GetComponent<ScenePortal>();
+            sn.TeleportToScene();
+        }
+        //else if (Collision.gameObject.tag == "VolumeOption" && ButtonMapping.GetButton(controllerType, EButtonActions.Interact))
+        //{
+        //     if (Collision.gameObject.name == "VolumeUp")
+        //     {
+        //         if (currentVolume < 10)
+        //         {
+        //             currentVolume++;
+        //         }
+        //     }
+        //     else if (Collision.gameObject.name == "VolumeDown")
+        //     {
+        //         if (currentVolume > 0)
+        //         {
+        //             currentVolume--;
+        //         }
+        //     }
+        //
+        //     PlayerPrefs.SetFloat("Volume", currentVolume);
+        //     volume.text = currentVolume.ToString();
+        //     AudioListener.volume = currentVolume;
+        //}
         
         
 
