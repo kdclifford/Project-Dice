@@ -319,6 +319,15 @@ MonoBehaviour:
   leftFire: 0
   velocity: 0
   leftStickInputAxis: {x: 0, y: 0}
+  cameraDummy: {fileID: 1328601164}
+  moveSpeed: 10
+  rayDist: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  rayOffset: {x: 0, y: 1.5, z: 0}
+  diagonalOffset: 0.9
+  collisionForce: 1
 --- !u!1001 &113585965
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1144,6 +1153,7 @@ MonoBehaviour:
   maxHealth: 4
   currentHealth: 0
   maxShields: 0
+  currentShields: 0
 --- !u!1001 &540827971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2005,6 +2015,7 @@ MonoBehaviour:
   maxHealth: 4
   currentHealth: 0
   maxShields: 0
+  currentShields: 0
 --- !u!1 &852814795
 GameObject:
   m_ObjectHideFlags: 0
@@ -2122,6 +2133,8 @@ MonoBehaviour:
     type: 3}
   boarder: {fileID: 577949581}
   canvas: {fileID: 579138367}
+  hearts: []
+  shield: []
 --- !u!4 &1048911760
 Transform:
   m_ObjectHideFlags: 0
@@ -2148,7 +2161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f52d37c75667044fb56d218fae811c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllerType: 0
+  controllerType: 1
 --- !u!1 &1236553221
 GameObject:
   m_ObjectHideFlags: 0
@@ -2224,6 +2237,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1236553221}
   m_CullTransparentMesh: 0
+--- !u!1 &1328601164 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5812377793355504583, guid: 047ad09605d6c554f965221fd2329984,
+    type: 3}
+  m_PrefabInstance: {fileID: 5812377792239790420}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1364226358
 GameObject:
   m_ObjectHideFlags: 0
@@ -5279,6 +5298,11 @@ PrefabInstance:
       propertyPath: EquipPopup
       value: 
       objectReference: {fileID: 1236553223}
+    - target: {fileID: 5812377792357169493, guid: 047ad09605d6c554f965221fd2329984,
+        type: 3}
+      propertyPath: controllerType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6278879571062452140, guid: 047ad09605d6c554f965221fd2329984,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5341,6 +5365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5812377792357169492, guid: 047ad09605d6c554f965221fd2329984, type: 3}
+    - {fileID: 5812377792357169493, guid: 047ad09605d6c554f965221fd2329984, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 047ad09605d6c554f965221fd2329984, type: 3}
 --- !u!1001 &8330395464351570199
 PrefabInstance:

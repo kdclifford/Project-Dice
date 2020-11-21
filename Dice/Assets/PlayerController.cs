@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Button.Utils;
 using AnimationFunctions.Utils;
+using PlayerCollisionCheck.Utils;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -40,6 +41,21 @@ public class PlayerController : MonoBehaviour
     public float velocity;
     public Vector2 leftStickInputAxis;
 
+    [SerializeField]
+    private GameObject cameraDummy;
+
+    [SerializeField]
+    private float moveSpeed = 10;
+
+    [SerializeField]
+    private float rayDist;
+    [SerializeField]
+    private LayerMask layerMask;
+
+    public Vector3 rayOffset = new Vector3(0, 1.5f, 0);
+    public float diagonalOffset = 0.9f;
+    public float collisionForce = 1.0f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -59,9 +75,28 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         triggerPress = 0;
+      
 
         leftStickInputAxis.x = ButtonMapping.GetStick(gameSettings.controllerType, EStickMovement.HorizontalMovement, transform.position);
         leftStickInputAxis.y = ButtonMapping.GetStick(gameSettings.controllerType, EStickMovement.VerticalMovement, transform.position);
+
+
+        var angle = Mathf.Atan2(ButtonMapping.GetStick(gameSettings.controllerType, EStickMovement.HorizontalFacing, transform.position),
+            ButtonMapping.GetStick(gameSettings.controllerType, EStickMovement.VerticalFacing, transform.position)) * Mathf.Rad2Deg;
+
+       // horizontalInput = ButtonMapping.GetStick(gameSettings.controllerType, EStickMovement.HorizontalMovement, transform.position);
+       // verticalInput = ButtonMapping.GetStick(gameSettings.controllerType, EStickMovement.VerticalMovement, transform.position);
+
+
+        //rigidbody.AddRelativeForce(move);
+
+        if (angle > 1 || angle < -1)
+        {
+            transform.rotation = Quaternion.Euler(0, angle, 0);
+            cameraDummy.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+
+
 
         if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightAttack) &&
            projectileRight != null &&
@@ -107,17 +142,19 @@ public class PlayerController : MonoBehaviour
         }
 
 
-
-
-        
+        leftStickInputAxis = CollisionCheck.RayCastCollisions(leftStickInputAxis, rayOffset, rayDist, layerMask, collisionForce, transform);
 
 
 
-        velocity = Mathf.Abs(leftStickInputAxis.x) + Mathf.Abs(leftStickInputAxis.y);
+        Vector3 move = new Vector3(leftStickInputAxis.x, 0f, leftStickInputAxis.y);
+        move = move.normalized * Time.deltaTime * moveSpeed;
+        transform.Translate(move, Space.World);
+
+        //velocity = Mathf.Abs(leftStickInputAxis.x) + Mathf.Abs(leftStickInputAxis.y);
         leftStickInputAxis = AnimationScript.CurrentDirection(leftStickInputAxis, gameObject);
 
-        leftStickInputAxis.x *= velocity;
-        leftStickInputAxis.y *= velocity;
+        //leftStickInputAxis.x *= velocity;
+        //leftStickInputAxis.y *= velocity;
 
 
 
@@ -207,7 +244,14 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
 
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
+        }
+    }
     public void RightFire()
     {
         Quaternion playerRot = Quaternion.identity;

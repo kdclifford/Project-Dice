@@ -5,256 +5,125 @@ using System.Collections.Generic;
 using Button.Utils;
 using UnityEngine;
 
-public class MovementScript : MonoBehaviour
+namespace PlayerCollisionCheck.Utils
 {
-    [SerializeField]
-    private float moveSpeed = 10;
-    [SerializeField]
-    private GameObject cameraDummy;
-    [SerializeField]
-    private float rayDist;
-    [SerializeField]
-    private LayerMask layerMask;
-
-    public Vector3 rayOffset = new Vector3(0, 1.5f, 0);
-
-    private Vector3 upRight = Vector3.forward + Vector3.right;
-    private Vector3 upLeft = Vector3.forward + Vector3.left;
-    private Vector3 downRight = Vector3.back + Vector3.right;
-    private Vector3 downLeft = Vector3.back + Vector3.left;
-
-    public float diagonalOffset = 0.9f;
-    public float collisionForce = 1.0f;
-
-    public bool controller = false;
-
-    float horizontalInput = 0;
-    float verticalInput = 0;
-    Vector3 oldpos;
-    public EControllerType controllerType;
-    // Start is called before the first frame update
-    void Start()
+    public class CollisionCheck
     {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        oldpos = transform.position;
-        horizontalInput = 0;
-        verticalInput = 0;
-
-        var angle = Mathf.Atan2(ButtonMapping.GetStick(controllerType, EStickMovement.HorizontalFacing, transform.position),
-            ButtonMapping.GetStick(controllerType, EStickMovement.VerticalFacing, transform.position)) * Mathf.Rad2Deg;
-
-        horizontalInput = ButtonMapping.GetStick(controllerType, EStickMovement.HorizontalMovement, transform.position);
-        verticalInput = ButtonMapping.GetStick(controllerType, EStickMovement.VerticalMovement, transform.position);
-
-        
-        //rigidbody.AddRelativeForce(move);
-
-        if (angle > 1 || angle < -1)
+        // Update is called once per frame
+        public static Vector2 RayCastCollisions(Vector2 velocity, Vector3 rayOffset, float rayDist, LayerMask layerMask, float collisionForce, Transform playerPos)
         {
-            transform.rotation = Quaternion.Euler(0, angle, 0);
-            cameraDummy.transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
-
-
-        RaycastHit hit;
+        Vector3 upRight = Vector3.forward + Vector3.right;
+        Vector3 upLeft = Vector3.forward + Vector3.left;
+        Vector3 downRight = Vector3.back + Vector3.right;
+        Vector3 downLeft = Vector3.back + Vector3.left;
 
         bool clearVelocity = false;
-        if (UpRight() && DownRight())
-        {
-            if (Physics.Raycast(transform.position + rayOffset, Vector3.right, out hit, rayDist, ~layerMask))
-            {
-                //Vector3 newPos = new Vector3(transform.position.x - (rayDist - hit.distance), transform.position.y, transform.position.z);
-                //transform.position = newPos;
+        Vector3 oldpos;
+            oldpos = playerPos.position;
 
-                GetComponent<Rigidbody>().AddForce(Vector3.left * collisionForce);
+            if(CheckRay(rayOffset, rayDist, layerMask, playerPos, Vector3.left, collisionForce, downLeft, upLeft))
+            {
                 clearVelocity = true;
             }
-        }
 
-        if (DownLeft() && UpLeft())
-        {
-            if (Physics.Raycast(transform.position + rayOffset, Vector3.left, out hit, rayDist, ~layerMask))
+            if (CheckRay(rayOffset, rayDist, layerMask, playerPos, Vector3.right, collisionForce, upRight, downRight))
             {
-                GetComponent<Rigidbody>().AddForce(Vector3.right * collisionForce);
                 clearVelocity = true;
             }
-        }
 
-        if (DownRight() && DownLeft())
-        {
-            if (Physics.Raycast(transform.position + rayOffset, Vector3.down, out hit, rayDist, ~layerMask))
+            if (CheckRay(rayOffset, rayDist, layerMask, playerPos, Vector3.forward, collisionForce, upLeft, upRight))
             {
-                GetComponent<Rigidbody>().AddForce(Vector3.forward * collisionForce);
                 clearVelocity = true;
             }
-        }
 
-        if (UpLeft() && UpRight())
-        {
-            if (Physics.Raycast(transform.position + rayOffset, Vector3.forward, out hit, rayDist, ~layerMask))
+            if (CheckRay(rayOffset, rayDist, layerMask, playerPos, Vector3.back, collisionForce, downRight, downLeft))
             {
-                GetComponent<Rigidbody>().AddForce(Vector3.back * collisionForce);
                 clearVelocity = true;
             }
-        }
+
+            
+            
 
 
-        if (!clearVelocity)
-        {
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
-        }
-
-
-        if (Physics.Raycast(transform.position + rayOffset, Vector3.forward, out hit, rayDist, ~layerMask))
-        {
-            if (verticalInput > 0)
+            if (!clearVelocity)
             {
-                verticalInput = 0;
+                playerPos.GetComponent<Rigidbody>().velocity = Vector3.zero;
             }
-            transform.position = oldpos;
-            Debug.DrawRay(transform.position, Vector3.forward * rayDist, Color.red);
-        }
-        else
-        {
-            Debug.DrawRay(transform.position, Vector3.forward * rayDist, Color.green);
+
+            DrawRay(rayOffset, rayDist, layerMask, playerPos, ref velocity.y, Vector3.forward);
+            DrawRay(rayOffset, rayDist, layerMask, playerPos, ref velocity.y, Vector3.back);
+            DrawRay(rayOffset, rayDist, layerMask, playerPos, ref velocity.x, Vector3.left);
+            DrawRay(rayOffset, rayDist, layerMask, playerPos, ref velocity.x, Vector3.right);
+
+            return velocity;
         }
 
 
-        if (Physics.Raycast(transform.position + rayOffset, Vector3.back, out hit, rayDist, ~layerMask))
+
+        static bool DrawDiagonals(Vector3 rayOffset, float rayDist, LayerMask layerMask, Transform playerPos, Vector3 direction)
         {
-            if (verticalInput < 0)
+            if (Physics.Raycast(playerPos.position + rayOffset, direction, rayDist * 0.9f, ~layerMask))
             {
-                verticalInput = 0;
+                Debug.DrawRay(playerPos.position, direction * (rayDist * 0.9f), Color.red);
+                return true;
             }
-            transform.position = oldpos;
-            Debug.DrawRay(transform.position, Vector3.back * rayDist, Color.red);
-        }
-        else
-        {
-            Debug.DrawRay(transform.position, Vector3.back * rayDist, Color.green);
-        }
-
-
-        if (Physics.Raycast(transform.position + rayOffset, Vector3.right, out hit, rayDist, ~layerMask))
-        {
-            if (horizontalInput > 0)
+            else
             {
-                horizontalInput = 0;
+                Debug.DrawRay(playerPos.position, direction * (rayDist * 0.9f), Color.green);
+                return false;
             }
-            transform.position = oldpos;
-            Debug.DrawRay(transform.position, Vector3.right * rayDist, Color.red);
-        }
-        else
-        {
-            Debug.DrawRay(transform.position, Vector3.right * rayDist, Color.green);
         }
 
-
-
-        if (Physics.Raycast(transform.position + rayOffset, Vector3.left, out hit, rayDist, ~layerMask))
+        static void DrawRay(Vector3 rayOffset, float rayDist, LayerMask layerMask, Transform playerPos, ref float velocity, Vector3 direction)
         {
-            //GetComponent<Rigidbody>().velocity = Vector3.zero;
-            ////transform.Translate(new Vector3(horizontalInput, 0, verticalInput) * -moveSpeed * Time.deltaTime, Space.World);
-            //Debug.Log("Working col");
-
-            if (horizontalInput < 0)
+            RaycastHit hit;
+            if (Physics.Raycast(playerPos.position + rayOffset, direction, out hit, rayDist, ~layerMask))
             {
-                horizontalInput = 0;
+                float tempVelocity = velocity;
+
+                if(tempVelocity > 0)
+                {
+                    tempVelocity = 1;
+                }
+
+                if(tempVelocity < 0)
+                {
+                    tempVelocity = -1;
+                }
+
+                if (tempVelocity -(direction.x + direction.z ) == 0)
+                {
+                    velocity = 0;
+                }
+                //playerPos.position = oldpos;
+                Debug.DrawRay(playerPos.position, direction * rayDist, Color.red);
             }
-            transform.position = oldpos;
-            Debug.DrawRay(transform.position, Vector3.left * rayDist, Color.red);
+            else
+            {
+                Debug.DrawRay(playerPos.position, direction * rayDist, Color.green);
+            }
         }
-        else
+
+
+        static bool CheckRay(Vector3 rayOffset, float rayDist, LayerMask layerMask, Transform playerPos, Vector3 direction, float collisionForce, Vector3 checkDir1, Vector3 checkDir2)
         {
-            Debug.DrawRay(transform.position, Vector3.left * rayDist, Color.green);
-        }
-        Vector3 move = new Vector3(horizontalInput, 0f, verticalInput);
-        move = move.normalized * Time.deltaTime * moveSpeed;
-        transform.Translate(move, Space.World);
-    }
+            RaycastHit hit;
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Wall"))
-        {
+            if (DrawDiagonals(rayOffset, rayDist, layerMask, playerPos, checkDir1) && DrawDiagonals(rayOffset, rayDist, layerMask, playerPos, checkDir2))
+            {
+                if (Physics.Raycast(playerPos.position + rayOffset, direction, out hit, rayDist, ~layerMask))
+                {
+                    //Vector3 newPos = new Vector3(transform.position.x - (rayDist - hit.distance), transform.position.y, transform.position.z);
+                    //transform.position = newPos;
 
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
-        }
-    }
-
-    bool UpLeft()
-    {
-        if (Physics.Raycast(transform.position + rayOffset, upLeft, rayDist * diagonalOffset, ~layerMask))
-        {
-
-            //horizontalInput = -horizontalInput;
-            //verticalInput = -verticalInput;
-
-            //if (Mathf.Abs(verticalInput) > Mathf.Abs(horizontalInput))
-            //{
-            //    verticalInput = 0;
-            //}
-            //else if (Mathf.Abs(verticalInput) < Mathf.Abs(horizontalInput))
-            //{
-            //    horizontalInput = 0;
-            //}
-            Debug.DrawRay(transform.position, upLeft * (rayDist * diagonalOffset), Color.red);
-            return true;
-        }
-        else
-        {
-            Debug.DrawRay(transform.position, upLeft * (rayDist * diagonalOffset), Color.green);
+                    playerPos.GetComponent<Rigidbody>().AddForce(-direction * collisionForce);
+                    return true;
+                }
+            }
             return false;
         }
+
+
+
     }
-
-
-    bool UpRight()
-    {
-        if (Physics.Raycast(transform.position + rayOffset, upRight, rayDist * diagonalOffset, ~layerMask))
-        {
-            Debug.DrawRay(transform.position, upRight * (rayDist * diagonalOffset), Color.red);
-            return true;
-        }
-        else
-        {
-            Debug.DrawRay(transform.position, upRight * (rayDist * diagonalOffset), Color.green);
-            return false;
-        }
-    }
-
-    bool DownRight()
-    {
-        if (Physics.Raycast(transform.position + rayOffset, downRight, rayDist * diagonalOffset, ~layerMask))
-        {
-            Debug.DrawRay(transform.position, downRight * (rayDist * diagonalOffset), Color.red);
-            return true;
-        }
-        else
-        {
-            Debug.DrawRay(transform.position, downRight * (rayDist * diagonalOffset), Color.green);
-            return false;
-        }
-    }
-
-    bool DownLeft()
-    {
-        if (Physics.Raycast(transform.position + rayOffset, downLeft, rayDist * diagonalOffset, ~layerMask))
-        {
-            Debug.DrawRay(transform.position, downLeft * (rayDist * diagonalOffset), Color.red);
-            return true;
-        }
-        else
-        {
-            Debug.DrawRay(transform.position, downLeft * (rayDist * diagonalOffset), Color.green);
-            return false;
-        }
-    }
-
-
-
 }

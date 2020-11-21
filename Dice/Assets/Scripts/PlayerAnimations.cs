@@ -53,8 +53,7 @@ public class PlayerAnimations : MonoBehaviour
     }
 
     public void DeathAnimation()
-    {        
-            Destroy(GetComponent<MovementScript>());
+    {                    
             Destroy(GetComponent<PlayerController>());
         
         //Destroy(this);

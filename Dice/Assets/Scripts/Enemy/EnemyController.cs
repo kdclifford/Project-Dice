@@ -48,7 +48,7 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         
-        if (!isDead && health.GetHealth() < 0)
+        if (!isDead && health.GetHealth() <= 0)
         {
             agent.ResetPath();
             isDead = true;
