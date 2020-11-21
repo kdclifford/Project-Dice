@@ -6,15 +6,19 @@ public class Health : MonoBehaviour
 {    
     public float maxHealth = 0;
     //[HideInInspector]
-    public float currentHealth;
+    private float currentHealth;
 
-    GameObject agentRoot;
+    public float maxShields;
+    private float currentShields;
+    GameObject agentRoot;    
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
+        currentShields = maxShields;
         agentRoot = transform.GetChild(0).gameObject;
+        
     }
 
     // Update is called once per frame
@@ -37,32 +41,37 @@ public class Health : MonoBehaviour
 
     public void RemoveHealth()
     {        
-            currentHealth--;       
+            currentHealth--;   
+        
     }
 
-    public void RemoveHealth(Vector2 projectileDirection)
+    public int GetHealth()
     {
-        RemoveHealth();
-        //if (currentHealth <= 0)
-        //{
-        //    playerHealth.deathDirection = projectileDirection;
-        //    soundManager.Play("Player Death", gameObject);
-        //}
-        //else
-        //{
-        //    soundManager.Play("Player Hit", gameObject);
-        //}
+        return (int)currentHealth;
     }
 
-    //public void addShield()
-    //{
-    //    if (currentShield < maxShield)
-    //    {
-    //        currentShield++;
-    //        ShieldUIIcons[currentShield].gameObject.SetActive(true);
-    //    }
-    //}
+    public void SetHealth(int health)
+    {
+        currentHealth = health;
+    }
 
+    public void AddShield()
+    {
+        if (currentShields < maxShields)
+        {
+            currentShields++;           
+        }
+    }
+
+    public int GetShield()
+    {
+        return (int)currentShields;
+    }
+
+    public void SetShield(int shield)
+    {
+        currentShields = shield;
+    }
 
 
     private void DestroyComponents()

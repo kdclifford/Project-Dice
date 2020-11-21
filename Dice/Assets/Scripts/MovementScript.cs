@@ -50,6 +50,9 @@ public class MovementScript : MonoBehaviour
         horizontalInput = ButtonMapping.GetStick(controllerType, EStickMovement.HorizontalMovement, transform.position);
         verticalInput = ButtonMapping.GetStick(controllerType, EStickMovement.VerticalMovement, transform.position);
 
+        
+        //rigidbody.AddRelativeForce(move);
+
         if (angle > 1 || angle < -1)
         {
             transform.rotation = Quaternion.Euler(0, angle, 0);
@@ -169,8 +172,9 @@ public class MovementScript : MonoBehaviour
         {
             Debug.DrawRay(transform.position, Vector3.left * rayDist, Color.green);
         }
-
-        transform.Translate(new Vector3(horizontalInput, 0, verticalInput) * moveSpeed * Time.deltaTime, Space.World);
+        Vector3 move = new Vector3(horizontalInput, 0f, verticalInput);
+        move = move.normalized * Time.deltaTime * moveSpeed;
+        transform.Translate(move, Space.World);
     }
 
     void OnCollisionEnter(Collision collision)

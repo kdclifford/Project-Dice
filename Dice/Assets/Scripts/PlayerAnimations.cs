@@ -6,12 +6,6 @@ using UnityEngine;
 
 public class PlayerAnimations : MonoBehaviour
 {
-    public static int maxShield = 2;
-    public int currentShield = 0;
-    [SerializeField]
-    public GameObject[] HPUIIcons;
-    [SerializeField]
-    public GameObject[] ShieldUIIcons;
     private Health health; 
 
     private Animator animator;
@@ -47,7 +41,7 @@ public class PlayerAnimations : MonoBehaviour
         
         triggerPress = 0;
 
-        if (health.currentHealth  > 0)
+        if (health.GetHealth()  > 0)
         {
 
             
@@ -88,54 +82,38 @@ public class PlayerAnimations : MonoBehaviour
 
                 Idle();
             }
-        }
-        else
-        {
-            if (!isDead)
-            {
-                Destroy(GetComponent<MovementScript>());
-                Destroy(GetComponent<ProjectileFire>());
-                Destroy(this);
-
-                if (deathDirection.y >= 0 && deathDirection.y < 0.1)
-                {
-                    deathDirection.y = 0.1f;
-                }
-                else if (deathDirection.y <= 0 && deathDirection.y > -0.1)
-                {
-                    deathDirection.y = -0.1f;
-                }
-
-                newDeathDirection = AnimationScript.CurrentDirection(deathDirection, gameObject);
-                Death();
-            }
-        }
-
-        animator.SetFloat("Health", (int) health.currentHealth);
+        }       
 
     }
 
-    public void playerHit()
+
+    //public void UpdateHeartUI()
+    //{
+    //    animator.SetFloat("Health", health.GetHealth());
+    //}
+
+
+    public void DeathAnimation()
     {
-        if(currentShield > 0)
-        {
-            ShieldUIIcons[currentShield].gameObject.SetActive(false);
-            currentShield--;
-            return;
-        }
+
         
-        if ((int) health.currentHealth  > 0)
-        {
-            HPUIIcons[(int) health.currentHealth].gameObject.GetComponent<Animator>().SetInteger("Health", 1);
-           /// health.currentHealth--;
-        }
-    }
-    
-    public void AddUIHeart()
-    {
-        HPUIIcons[(int) health.currentHealth + 1].gameObject.GetComponent<Animator>().SetInteger("Health", 0);
-    }
+            Destroy(GetComponent<MovementScript>());
+            Destroy(GetComponent<ProjectileFire>());
+            Destroy(this);
 
+            if (deathDirection.y >= 0 && deathDirection.y < 0.1)
+            {
+                deathDirection.y = 0.1f;
+            }
+            else if (deathDirection.y <= 0 && deathDirection.y > -0.1)
+            {
+                deathDirection.y = -0.1f;
+            }
+
+            newDeathDirection = AnimationScript.CurrentDirection(deathDirection, gameObject);
+            Death();
+        }
+    
 
     private void Move()
     {

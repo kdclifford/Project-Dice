@@ -13,7 +13,6 @@ public class EnemyController : MonoBehaviour
     private RandomColour meshRenderer;
     public GameObject target;   
     public bool isDead = false;
-    private float health;
     //Private
     private bool removeBody = false;
     private float removeSpeed = 5;
@@ -32,7 +31,7 @@ public class EnemyController : MonoBehaviour
     private float fireCooldown = 0;
     private int playerHealth;
     private SoundManager soundManager;
-
+    private Health health;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,13 +41,14 @@ public class EnemyController : MonoBehaviour
         fireCooldown = fireRate;
         animator = GetComponent<Animator>();
         soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
+        health = GetComponent<Health>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        health = GetComponent<Health>().currentHealth;
-        if (!isDead && health < 0)
+        
+        if (!isDead && health.GetHealth() < 0)
         {
             agent.ResetPath();
             isDead = true;

@@ -214,19 +214,19 @@ public class ProjectileFire : MonoBehaviour
             {
                 Health sn = gameObject.GetComponent<Health>();
 
-                if (sn.currentHealth < sn.maxHealth - 1)
+                if (sn.GetHealth() < sn.maxHealth - 1)
                 {
                     sn.AddHealth();                    
                     Destroy(Collision.gameObject);
                     interactPopup.enabled = false;
-                    GetComponent<PlayerAnimations>().AddUIHeart();
+                   // GetComponent<PlayerAnimations>().AddUIHeart();
                 }
             }
             else if (Collision.gameObject.tag == "ShieldPickup" && ButtonMapping.GetButton(controllerType, EButtonActions.Interact))
             {
-                PlayerAnimations sn = gameObject.GetComponent<PlayerAnimations>();
+            Health sn = gameObject.GetComponent<Health>();
 
-                if (sn.currentShield < 2)
+                if (sn.GetHealth() < 2)
                 {
                     //  sn.addShield();
                     Destroy(Collision.gameObject);
