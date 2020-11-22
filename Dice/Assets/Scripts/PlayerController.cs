@@ -7,13 +7,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    UIManager uIManager;
-    GameSettings gameSettings;
+    private UIManager uIManager;
+    private GameSettings gameSettings;
     private Animator animator;
     private SoundManager soundManager;
-  //  [HideInInspector]
+    private PlayerAnimations playerAnimations;
+
+   [HideInInspector]
     public GameObject projectileLeft;
-  //  [HideInInspector]
+    [HideInInspector]
     public GameObject projectileRight;
     private Material leftColour;
     private Material rightColour;
@@ -66,6 +68,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         rightColour = (Material)Resources.Load("Player/Weapon 1");
         leftColour = (Material)Resources.Load("Player/Weapon 2");
+        playerAnimations = GetComponent<PlayerAnimations>();
 
         currRTFireCooldown = MaxFireCooldown;
         currLTFireCooldown = MaxFireCooldown;
@@ -113,10 +116,10 @@ public class PlayerController : MonoBehaviour
             {
                 if (currRTFireCooldown <= 0)
                 {
-                    if (!rightFire)
-                    {
-                        rightFire = true;
-                    }
+                    //if (!rightFire)
+                    //{
+                    //    rightFire = true;
+                    //}
                    
                     AnimationScript.RightAttack(animator);
                 }
@@ -125,11 +128,7 @@ public class PlayerController : MonoBehaviour
             else if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftAttack) && projectileLeft != null)
             {
                 if (currLTFireCooldown <= 0)
-                {
-                    if (!leftFire)
-                    {
-                        leftFire = true;
-                    }
+                {                  
                     
                     AnimationScript.LeftAttack(animator);
                 }
@@ -145,17 +144,23 @@ public class PlayerController : MonoBehaviour
         leftStickInputAxis = CollisionCheck.RayCastCollisions(leftStickInputAxis, rayOffset, rayDist, layerMask, collisionForce, transform);
 
 
+        velocity = Mathf.Abs(leftStickInputAxis.x) + Mathf.Abs(leftStickInputAxis.y);
 
         Vector3 move = new Vector3(leftStickInputAxis.x, 0f, leftStickInputAxis.y);
         move = move.normalized * Time.deltaTime * moveSpeed;
         transform.Translate(move, Space.World);
 
-        //velocity = Mathf.Abs(leftStickInputAxis.x) + Mathf.Abs(leftStickInputAxis.y);
         leftStickInputAxis = AnimationScript.CurrentDirection(leftStickInputAxis, gameObject);
+        playerAnimations.Move(leftStickInputAxis, velocity);
 
         //leftStickInputAxis.x *= velocity;
         //leftStickInputAxis.y *= velocity;
 
+        if (velocity <= 0)
+        {
+
+            playerAnimations.Idle();
+        }
 
 
         currRTFireCooldown -= Time.deltaTime;
@@ -179,7 +184,7 @@ public class PlayerController : MonoBehaviour
             if(ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftEquipt))
             {
                 uIManager.ShowLeftSpell(Collision.GetComponent<SpriteRenderer>().sprite);
-                projectileLeft = (GameObject)Resources.Load("Player/" + Collision.name);
+                projectileLeft = (GameObject)Resources.Load("Player/" + FindSpell(Collision.GetComponent<ProjectileType>().projectileName));
                 Destroy(Collision.gameObject);
                 if (projectileLeft != null)
                 {
@@ -189,7 +194,7 @@ public class PlayerController : MonoBehaviour
             else if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightEquipt))
             {
                 uIManager.ShowRightSpell(Collision.GetComponent<SpriteRenderer>().sprite);
-                projectileRight = (GameObject)Resources.Load("Player/" + Collision.name);
+                projectileRight = (GameObject)Resources.Load("Player/" + FindSpell(Collision.GetComponent<ProjectileType>().projectileName));
                 Destroy(Collision.gameObject);
                 uIManager.HideEquipPopUp();
                 if (projectileRight != null)
@@ -252,6 +257,11 @@ public class PlayerController : MonoBehaviour
             GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
     }
+
+
+    //*******************
+    //Animation Functions
+    //*******************
     public void RightFire()
     {
         Quaternion playerRot = Quaternion.identity;
@@ -324,7 +334,21 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    string FindSpell(Projectile number)
+    {
 
 
-  
+        switch (number)
+        {
+            case Projectile.Bubble:
+                return "Bubble";
+            case Projectile.FireBall:
+                return "FireBall";
+            case Projectile.Electric:
+                return "Electric";
+
+
+        }
+       throw new System.Exception("No Spell Found");
+    }
 }

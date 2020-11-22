@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 3381655597277578864}
   - component: {fileID: 3381655597277560784}
   - component: {fileID: 7341140322022902002}
-  - component: {fileID: -5931953990669563221}
   - component: {fileID: 9175302205679929718}
-  - component: {fileID: 4820518655983621623}
+  - component: {fileID: 3227544418695698933}
   m_Layer: 8
   m_Name: BubblePickup
   m_TagString: Equipped
@@ -4843,19 +4842,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-5931953990669563221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3381655597293149968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6b0c6a7dca5c3f4796b48f6e9830322, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxTimer: 4
 --- !u!135 &9175302205679929718
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4869,7 +4855,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4820518655983621623
+--- !u!114 &3227544418695698933
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4878,9 +4864,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3381655597293149968}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7601d0c2d88d937408d774ed49c911a3, type: 3}
+  m_Script: {fileID: 11500000, guid: f2337fe4a4df52145912b8bb96a327eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxTimer: 4
 --- !u!1 &3381655597293149970
 GameObject:
   m_ObjectHideFlags: 0
@@ -9708,7 +9695,6 @@ GameObject:
   - component: {fileID: 2335479669197012416}
   - component: {fileID: 9214107362511996593}
   - component: {fileID: 182039075246021246}
-  - component: {fileID: 626395935463496481}
   m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
@@ -9779,19 +9765,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &626395935463496481
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5667189834285357787}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.5000003
-  m_Center: {x: -0.000000022351752, y: 8.482104e-14, z: -0.000000029802322}
 --- !u!1 &7053121146556140152
 GameObject:
   m_ObjectHideFlags: 0
@@ -9802,7 +9775,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5893779110629467156}
   - component: {fileID: 1000049023934360839}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

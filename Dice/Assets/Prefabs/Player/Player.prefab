@@ -1757,13 +1757,12 @@ GameObject:
   - component: {fileID: 5812377792357169495}
   - component: {fileID: 5812377792357164714}
   - component: {fileID: 6982485295917779668}
-  - component: {fileID: 5812377792357169492}
-  - component: {fileID: 5812377792357169493}
   - component: {fileID: 5812377792357169489}
   - component: {fileID: 47689040}
   - component: {fileID: 47689048}
   - component: {fileID: 47689050}
   - component: {fileID: 47689046}
+  - component: {fileID: 3293104534415156161}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -1852,57 +1851,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathDirection: {x: 0, y: 0}
-  controllerType: 1
---- !u!114 &5812377792357169492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6658817375150945558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb4d0ea777553c94d99ce21fa6b217dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectileLeft: {fileID: 0}
-  projectileRight: {fileID: 5273658455136379278, guid: 1a96e129f0b1da340bce7ac04956dd32,
-    type: 3}
-  projectileDistance: 0.4
-  yOffsetProgectile: 0.5
-  MaxFireCooldown: 1
-  projectileSpeed: 700
-  LeftUIIcon: {fileID: 0}
-  RightUIIcon: {fileID: 0}
-  interactPopup: {fileID: 0}
-  EquipPopup: {fileID: 0}
-  rightFire: 0
-  leftFire: 0
-  controllerType: 0
-  doubleAttack: 0
---- !u!114 &5812377792357169493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6658817375150945558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0a24c8e3f4e52d4986d5df03e3bb12f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 10
-  cameraDummy: {fileID: 5812377793355504583}
-  rayDist: 1
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 256
-  rayOffset: {x: 0, y: 1.5, z: 0}
-  diagonalOffset: 0.9
-  collisionForce: 1
-  controller: 0
-  controllerType: 0
 --- !u!114 &5812377792357169489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1934,6 +1882,7 @@ MonoBehaviour:
   maxHealth: 8
   currentHealth: 0
   maxShields: 2
+  currentShields: 0
 --- !u!114 &47689048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1980,7 +1929,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathDirection: {x: 0, y: 0}
-  controllerType: 0
+--- !u!114 &3293104534415156161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6658817375150945558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dac2320f4671364bafcd903bdb4447b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileLeft: {fileID: 0}
+  projectileRight: {fileID: 0}
+  MaxFireCooldown: 1
+  projectileDistance: 0
+  yOffsetProgectile: 1
+  projectileSpeed: 700
+  rightFire: 0
+  leftFire: 0
+  velocity: 0
+  leftStickInputAxis: {x: 0, y: 0}
+  cameraDummy: {fileID: 5812377793355504583}
+  moveSpeed: 10
+  rayDist: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  rayOffset: {x: 0, y: 1.5, z: 0}
+  diagonalOffset: 0.9
+  collisionForce: 1
 --- !u!1 &6829665091209077042
 GameObject:
   m_ObjectHideFlags: 0
@@ -2602,17 +2581,17 @@ PrefabInstance:
     - target: {fileID: 7980589924516875773, guid: 6d888058ee017f64eb7d65c0df89ace3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.3832104
+      value: 0.04287918
       objectReference: {fileID: 0}
     - target: {fileID: 7980589924516875773, guid: 6d888058ee017f64eb7d65c0df89ace3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.8353419
+      value: -0.8578413
       objectReference: {fileID: 0}
     - target: {fileID: 7980589924516875773, guid: 6d888058ee017f64eb7d65c0df89ace3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.4538876
+      value: 0.4538881
       objectReference: {fileID: 0}
     - target: {fileID: 7980589924516875773, guid: 6d888058ee017f64eb7d65c0df89ace3,
         type: 3}
@@ -3168,6 +3147,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980589924516875773, guid: 6d888058ee017f64eb7d65c0df89ace3,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.100000024
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d888058ee017f64eb7d65c0df89ace3, type: 3}

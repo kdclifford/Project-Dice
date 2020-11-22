@@ -22,8 +22,8 @@ public class UIManager : MonoBehaviour
 
 
     private Health playerHealth;
-    public GameObject[] hearts;
-    public GameObject[] shield;
+    private GameObject[] hearts;
+    private GameObject[] shield;
     private int maxHearts;
     private int maxShields;
 
@@ -84,7 +84,7 @@ public class UIManager : MonoBehaviour
 
         for (int i = 0; i < maxShields; i++)
         {
-            shieldPosLeft = new Vector3(0, 50);
+            shieldPosLeft = new Vector3(127 - (95 * i), -100);
             shield[i] = Instantiate(shieldPrefab, boarder.transform.position, Quaternion.identity, canvas.transform) as GameObject;
             shield[i].GetComponent<RectTransform>().localPosition += shieldPosLeft;
             shield[i].SetActive(false);
