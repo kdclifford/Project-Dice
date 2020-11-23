@@ -58,6 +58,8 @@ public class PlayerController : MonoBehaviour
     public float diagonalOffset = 0.9f;
     public float collisionForce = 1.0f;
 
+    private int globalVolume = 10;
+
 
     // Start is called before the first frame update
     void Start()
@@ -72,6 +74,8 @@ public class PlayerController : MonoBehaviour
 
         currRTFireCooldown = MaxFireCooldown;
         currLTFireCooldown = MaxFireCooldown;
+
+        if (PlayerPrefs.HasKey("Volume")) { globalVolume = PlayerPrefs.GetInt("Volume"); }
     }
 
     // Update is called once per frame
@@ -235,7 +239,11 @@ public class PlayerController : MonoBehaviour
             ScenePortal sn = Collision.gameObject.GetComponent<ScenePortal>();
             sn.TeleportToScene();
         }
-        
+        else if (Collision.gameObject.tag == "VolumeOption" && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
+        {
+            VolumeChange Vol = Collision.gameObject.GetComponent<VolumeChange>();
+            Vol.ChangeVolume(globalVolume);
+        }
     
 
 
