@@ -104,8 +104,9 @@ GameObject:
   - component: {fileID: 6344335812988061147}
   - component: {fileID: 6344335812988061144}
   - component: {fileID: 4811113834965867643}
-  - component: {fileID: 1991793173940383291}
   - component: {fileID: 8650300934417849260}
+  - component: {fileID: 2564647966446954944}
+  - component: {fileID: 2556445083509555636}
   m_Layer: 8
   m_Name: FireBall
   m_TagString: Equipped
@@ -4924,19 +4925,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1991793173940383291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6344335812988061145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6b0c6a7dca5c3f4796b48f6e9830322, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxTimer: 2
 --- !u!135 &8650300934417849260
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4950,3 +4938,29 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2564647966446954944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6344335812988061145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98325543741fa9b4a9850144427622dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedRange: {x: 20, y: 25}
+--- !u!114 &2556445083509555636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6344335812988061145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2337fe4a4df52145912b8bb96a327eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxTimer: 4

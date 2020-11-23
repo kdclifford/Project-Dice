@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <ArrayOfSound xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Sound>
-    <name>Electric</name>
+    <name>ElectricPickup</name>
     <clip>
       <name>Electric</name>
       <hideFlags>NotEditable</hideFlags>
@@ -12,7 +12,7 @@
     <pitch>1.7</pitch>
   </Sound>
   <Sound>
-    <name>FireBall</name>
+    <name>FirePickup</name>
     <clip>
       <name>flamestrike</name>
       <hideFlags>NotEditable</hideFlags>
@@ -56,25 +56,14 @@
     <pitch>0.35</pitch>
   </Sound>
   <Sound>
-    <name>Menu Music</name>
+    <name>WaterPickup</name>
     <clip>
-      <name>Menu Music</name>
+      <name>Bubble Blowing</name>
       <hideFlags>NotEditable</hideFlags>
     </clip>
-    <loop>true</loop>
-    <sound3D>false</sound3D>
-    <volume>0.349</volume>
-    <pitch>0.8</pitch>
-  </Sound>
-  <Sound>
-    <name>Menu Music 2</name>
-    <clip>
-      <name>Menu Music 2</name>
-      <hideFlags>NotEditable</hideFlags>
-    </clip>
-    <loop>true</loop>
-    <sound3D>false</sound3D>
+    <loop>false</loop>
+    <sound3D>true</sound3D>
     <volume>1</volume>
-    <pitch>1</pitch>
+    <pitch>1.18</pitch>
   </Sound>
 </ArrayOfSound>

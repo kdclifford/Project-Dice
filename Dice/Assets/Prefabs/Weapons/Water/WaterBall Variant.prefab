@@ -10,17 +10,17 @@ PrefabInstance:
     - target: {fileID: 6344335812988061145, guid: bc2b0085094ad914c806e32d5f1caa11,
         type: 3}
       propertyPath: m_Name
-      value: WaterBall
+      value: WaterBall Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6344335812988061146, guid: bc2b0085094ad914c806e32d5f1caa11,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.536833
+      value: -24.1
       objectReference: {fileID: 0}
     - target: {fileID: 6344335812988061146, guid: bc2b0085094ad914c806e32d5f1caa11,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.6546803
+      value: -2.7
       objectReference: {fileID: 0}
     - target: {fileID: 6344335812988061146, guid: bc2b0085094ad914c806e32d5f1caa11,
         type: 3}
@@ -66,6 +66,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8650300934417849260, guid: bc2b0085094ad914c806e32d5f1caa11,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc2b0085094ad914c806e32d5f1caa11, type: 3}
