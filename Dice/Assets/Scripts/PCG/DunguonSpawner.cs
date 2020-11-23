@@ -6,7 +6,7 @@ public class DunguonSpawner : MonoBehaviour
 {
     [SerializeField] private int numberOfRooms;
     public List<GameObject> RoomPrefabs;
-    public Vector2 WorldSize;
+    public Vector2Int WorldSize;
 
     [SerializeField]
     private GameObject floorPRefab;
@@ -16,6 +16,9 @@ public class DunguonSpawner : MonoBehaviour
     private GameObject wallPrefab;
     [SerializeField]
     private GameObject startingRoom;
+    [SerializeField]
+    private GameObject doorPrefab;
+
 
     [SerializeField]
     private List<Room> roomsPrefabData = new List<Room>();
@@ -24,8 +27,9 @@ public class DunguonSpawner : MonoBehaviour
     private List<Room> roomsData = new List<Room>();
     // Start is called before the first frame update
     [SerializeField]
-    private List<Door> Doors = new List<Door>();
+    private List<CDoor> Doors = new List<CDoor>();
 
+    public List<Vector2Int> pathPoints = new List<Vector2Int>();
 
     public Pathfinding pathFinder;
 
@@ -36,22 +40,63 @@ public class DunguonSpawner : MonoBehaviour
             roomsPrefabData.Add(RoomPrefabs[i].GetComponent<Room>());
 
         GenerateFloor();
-        pathFinder = new Pathfinding((int)WorldSize.x, (int)WorldSize.y, roomsData);
-        GenerateCorridors();
+
+        while (!AcceptableFloortCheck())
+        {
+            GenerateFloor();
+        }
+        SetSceneLocation();
+        
+        SetPathModels(GenerateWalls(pathPoints, Doors));
 
     }
-
+   
 
     void GenerateFloor()
     {
         GenerateRooms();
-        SetSceneLocation();
+        pathFinder = new Pathfinding((int)WorldSize.x, (int)WorldSize.y, roomsData);
+        GenerateCorridors();
     }
 
+    public bool AcceptableFloortCheck()
+    {
+        //Start at the start room
+        List<int> connectedRooms = new List<int>();
+        List<int> searchedRooms = new List<int>();
+        List<int> roomsToSearch = new List<int>();
 
+        connectedRooms.Add(roomsData[0].roomNumber);
+        roomsToSearch.Add(roomsData[0].connectedRooms[0]);
+        searchedRooms.Add(roomsData[0].roomNumber);
+
+        while(roomsToSearch.Count>0)
+        {
+            connectedRooms.Add(roomsToSearch[0]);
+            foreach (int connectedRoom in roomsData[roomsToSearch[0]].connectedRooms)
+            {
+                if(!connectedRooms.Contains(connectedRoom) && !searchedRooms.Contains(connectedRoom) && !roomsToSearch.Contains(connectedRoom))
+                {
+                    roomsToSearch.Add(connectedRoom);
+                }
+            }
+            searchedRooms.Add(roomsToSearch[0]);
+            roomsToSearch.RemoveAt(0);
+        }
+
+        if(searchedRooms.Count < roomsData.Count)
+        {
+            return false;
+        }
+
+        return true;
+    }
     void GenerateRooms()
     {
         Room tempRoom = new Room();
+        roomsData = new List<Room>();
+        Doors = new List<CDoor>();
+
         int numberOfAttempts = 50;
 
         //Place the Start and final Room Both of these only have a single door way
@@ -62,6 +107,7 @@ public class DunguonSpawner : MonoBehaviour
         tempRoom.DoorLocations = finalRoomPrefab.GetComponent<Room>().DoorLocations;
         tempRoom.DoorFacingDirections = finalRoomPrefab.GetComponent<Room>().DoorFacingDirections;
         tempRoom.roomNumber = 0;
+        tempRoom.connectedRooms = new List<int>();
         roomsData.Add(tempRoom);
 
 
@@ -75,6 +121,7 @@ public class DunguonSpawner : MonoBehaviour
             tempRoom.DoorLocations = startingRoom.GetComponent<Room>().DoorLocations;
             tempRoom.DoorFacingDirections = startingRoom.GetComponent<Room>().DoorFacingDirections;
             tempRoom.roomNumber = 1;
+            tempRoom.connectedRooms = new List<int>();
 
             validStart = ValidRoomLocation(tempRoom, roomsData);
         }
@@ -91,6 +138,7 @@ public class DunguonSpawner : MonoBehaviour
             tempRoom.DoorLocations = roomsPrefabData[tempRoom.preFabNumber].DoorLocations;
             tempRoom.DoorFacingDirections = roomsPrefabData[tempRoom.preFabNumber].DoorFacingDirections;
             tempRoom.roomNumber = roomsData.Count ;
+            tempRoom.connectedRooms = new List<int>();
 
             if (ValidRoomLocation(tempRoom, roomsData))
             {
@@ -102,15 +150,15 @@ public class DunguonSpawner : MonoBehaviour
 
         //Add Doors
         Vector2Int newDoorPosistion;
-        Door tempDoor;
+        CDoor tempDoor;
         foreach (Room room in roomsData)
         {
             for(int i = 0; i < room.DoorLocations.Count;i++)
             {
-                tempDoor = new Door();
+                tempDoor = new CDoor();
                 newDoorPosistion = room.DoorLocations[i];
                 newDoorPosistion += room.location;
-                tempDoor = new Door(newDoorPosistion, room.roomNumber);
+                tempDoor = new CDoor(newDoorPosistion, room.roomNumber);
                 tempDoor.facingDirection = room.DoorFacingDirections[i];
                 tempDoor.UpdatePathStartingLocation();
                 tempDoor.connected = false;
@@ -118,7 +166,6 @@ public class DunguonSpawner : MonoBehaviour
             }
         }
     }
-
     void SetPathModels(List<CTile> PathNodes)
     {
         if (PathNodes != null)
@@ -182,10 +229,9 @@ public class DunguonSpawner : MonoBehaviour
         }
         return true;   
     }
-    
     void GenerateCorridors()
     {
-        List<Vector2Int> pathPoints = new List<Vector2Int>();
+        pathPoints = new List<Vector2Int>();
         int count =0;
        while(!AllDoorsConnected() && count < 50)
        {
@@ -194,8 +240,12 @@ public class DunguonSpawner : MonoBehaviour
             
             List<Vector2Int> path = GeneratePath(Doors[currentDoor],Doors[ targetDoor]);
             if(path !=null)
-            { 
-                foreach(Vector2Int point in path)
+            {
+                //update Room connected Data 
+                roomsData[Doors[currentDoor].roomNumber].connectedRooms.Add(Doors[targetDoor].roomNumber);
+                roomsData[Doors[targetDoor].roomNumber].connectedRooms.Add(Doors[currentDoor].roomNumber);
+
+                foreach (Vector2Int point in path)
                 {
                     if(!pathPoints.Contains(point))
                         pathPoints.Add(point);
@@ -208,14 +258,12 @@ public class DunguonSpawner : MonoBehaviour
             count++;
        }
        
-        SetPathModels(GenerateWalls(pathPoints,Doors));
     }
-
-    private List<CTile> GenerateWalls(List<Vector2Int> pathPoints, List<Door> doors)
+    private List<CTile> GenerateWalls(List<Vector2Int> pathPoints, List<CDoor> doors)
     {
         List<CTile> pathTiles = new List<CTile>();
         List<Vector2Int> doorLocations = new List<Vector2Int>();
-        foreach(Door door in  doors)
+        foreach(CDoor door in  doors)
         {
             doorLocations.Add(door.doorPoisitoin());
         }
@@ -247,11 +295,11 @@ public class DunguonSpawner : MonoBehaviour
         return pathTiles;
     }
 
-    private List<Vector2Int> GeneratePath(Door  startingDoor,Door targetDoor)
+    private List<Vector2Int> GeneratePath(CDoor startingDoor,CDoor targetDoor)
     {
         //var temp = pathFinder.FindPath(startingDoor.doorLocation, targetDoor.doorLocation);
 
-        return (pathFinder.FindPath(startingDoor.doorLocation,targetDoor.doorLocation));
+        return (pathFinder.FindPath(startingDoor.location,targetDoor.location));
 
     }
      int NearestDoor(int currentDoor)
@@ -260,11 +308,19 @@ public class DunguonSpawner : MonoBehaviour
         float distance = 1000;
         for (int i = 0; i < Doors.Count; i++)
         {
-            if (i != currentDoor && Doors[i].roomNumber != Doors[currentDoor].roomNumber)
+            if (i != currentDoor && Doors[i].roomNumber != Doors[currentDoor].roomNumber) // Making sure doors in the same room dont connted 
             {
-                if (distance > Vector2.Distance(Doors[i].doorLocation, Doors[currentDoor].doorLocation))
+                bool validRoom = true;
+                foreach(int conntedRoom  in roomsData[Doors[i].roomNumber].connectedRooms) //FIX HERE
                 {
-                    distance = Vector2.Distance(Doors[i].doorLocation, Doors[currentDoor].doorLocation);
+                    if(Doors[i].roomNumber == conntedRoom)
+                    {
+                        validRoom = false;
+                    }
+                }
+                if (validRoom && distance > Vector2.Distance(Doors[i].location, Doors[currentDoor].location))
+                {
+                    distance = Vector2.Distance(Doors[i].location, Doors[currentDoor].location);
                     nearestDoor = i;
                 }
             }

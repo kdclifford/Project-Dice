@@ -327,21 +327,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7000db0ec93480d4c8b4da9522f220b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfRooms: 7
+  numberOfRooms: 15
   RoomPrefabs:
-  - {fileID: 3506580042367869591, guid: accb85e1beb2714498461559c4ca8cdb, type: 3}
-  - {fileID: 2653583267993819834, guid: 7156dcd1848a01b41b54aded87d7699c, type: 3}
-  WorldSize: {x: 30, y: 30}
+  - {fileID: 3506580042367869591, guid: bb4ff5e4841e41e42a3f2d1743a4ade8, type: 3}
+  - {fileID: 2653583267993819834, guid: 75baf9eb300ffbe41a5f4c536312c4a1, type: 3}
+  WorldSize: {x: 25, y: 25}
   floorPRefab: {fileID: 1112197981072686, guid: 5812f95c175b34e7a8e5a7566a43a0ef,
     type: 3}
-  finalRoomPrefab: {fileID: 7638974500389706608, guid: 1e18172acd01fab49a703831f3d82667,
+  finalRoomPrefab: {fileID: 7638974500389706608, guid: 7542156e9c81dd24c9588c5d1cf96f0d,
     type: 3}
   wallPrefab: {fileID: 1135327754445724, guid: 2e9bb0112b1a3428f94ba8550d668f2f, type: 3}
-  startingRoom: {fileID: 7638974500389706608, guid: 1e18172acd01fab49a703831f3d82667,
+  startingRoom: {fileID: 7638974500389706608, guid: ba2a0968d192f2343a7cc3d479ed835e,
+    type: 3}
+  doorPrefab: {fileID: 9190169910851453501, guid: 6ea1f8df96a55b34e89adbe668a11f76,
     type: 3}
   roomsPrefabData: []
   roomsData: []
-  Doors: []
+  pathPoints: []
 --- !u!4 &1953116057
 Transform:
   m_ObjectHideFlags: 0
