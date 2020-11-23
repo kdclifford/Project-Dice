@@ -16,6 +16,9 @@ public class DunguonSpawner : MonoBehaviour
     private GameObject wallPrefab;
     [SerializeField]
     private GameObject startingRoom;
+    [SerializeField]
+    private GameObject doorPrefab;
+
 
     [SerializeField]
     private List<Room> roomsPrefabData = new List<Room>();
@@ -43,9 +46,11 @@ public class DunguonSpawner : MonoBehaviour
             GenerateFloor();
         }
         SetSceneLocation();
+        
         SetPathModels(GenerateWalls(pathPoints, Doors));
 
     }
+   
 
     void GenerateFloor()
     {
@@ -161,7 +166,6 @@ public class DunguonSpawner : MonoBehaviour
             }
         }
     }
-
     void SetPathModels(List<CTile> PathNodes)
     {
         if (PathNodes != null)
@@ -225,7 +229,6 @@ public class DunguonSpawner : MonoBehaviour
         }
         return true;   
     }
-    
     void GenerateCorridors()
     {
         pathPoints = new List<Vector2Int>();
@@ -256,7 +259,6 @@ public class DunguonSpawner : MonoBehaviour
        }
        
     }
-
     private List<CTile> GenerateWalls(List<Vector2Int> pathPoints, List<CDoor> doors)
     {
         List<CTile> pathTiles = new List<CTile>();
@@ -297,7 +299,7 @@ public class DunguonSpawner : MonoBehaviour
     {
         //var temp = pathFinder.FindPath(startingDoor.doorLocation, targetDoor.doorLocation);
 
-        return (pathFinder.FindPath(startingDoor.doorLocation,targetDoor.doorLocation));
+        return (pathFinder.FindPath(startingDoor.location,targetDoor.location));
 
     }
      int NearestDoor(int currentDoor)
@@ -316,9 +318,9 @@ public class DunguonSpawner : MonoBehaviour
                         validRoom = false;
                     }
                 }
-                if (validRoom && distance > Vector2.Distance(Doors[i].doorLocation, Doors[currentDoor].doorLocation))
+                if (validRoom && distance > Vector2.Distance(Doors[i].location, Doors[currentDoor].location))
                 {
-                    distance = Vector2.Distance(Doors[i].doorLocation, Doors[currentDoor].doorLocation);
+                    distance = Vector2.Distance(Doors[i].location, Doors[currentDoor].location);
                     nearestDoor = i;
                 }
             }
