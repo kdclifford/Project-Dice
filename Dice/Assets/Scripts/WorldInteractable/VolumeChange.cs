@@ -26,7 +26,7 @@ public class VolumeChange : MonoBehaviour
         if(gameObject.name == "VolumeUp" && currentVolume < 10)
         {
             currentVolume++;
-            AudioListener.volume = currentVolume;
+            AudioListener.volume = currentVolume * 0.1f;
             volumeText.text = currentVolume.ToString();
             PlayerPrefs.SetInt("Volume", currentVolume);
             return currentVolume;
@@ -34,7 +34,7 @@ public class VolumeChange : MonoBehaviour
         else if (gameObject.name == "VolumeDown" && currentVolume > 0)
         {
             currentVolume--;
-            AudioListener.volume = currentVolume;
+            AudioListener.volume = currentVolume * 0.1f;
             volumeText.text = currentVolume.ToString();
             PlayerPrefs.SetInt("Volume", currentVolume);
             return currentVolume;

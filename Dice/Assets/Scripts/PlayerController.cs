@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
     public GameObject projectileRight;
     private Material leftColour;
     private Material rightColour;
-    private float triggerPress = 0;
 
     private float currRTFireCooldown = 0;
     private float currLTFireCooldown = 0;
@@ -61,7 +60,7 @@ public class PlayerController : MonoBehaviour
     private int globalVolume = 10;
     private bool volumeTriggered = false;
     private GameObject volumeObj;
-
+    float volumeButton = 0.1f;
 
     // Start is called before the first frame update
     void Start()
@@ -83,15 +82,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (volumeTriggered == true && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
+        if (volumeTriggered == true &&  volumeButton < 0 && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
         {
             VolumeChange Vol = volumeObj.GetComponent<VolumeChange>();
             globalVolume = Vol.ChangeVolume(globalVolume);
             volumeTriggered = false;
+            volumeButton = 0.1f;
         }
 
+        volumeButton -= Time.deltaTime;
 
-        triggerPress = 0;
+ 
       
 
         leftStickInputAxis.x = ButtonMapping.GetStick(gameSettings.controllerType, EStickMovement.HorizontalMovement, transform.position);
@@ -260,6 +261,7 @@ public class PlayerController : MonoBehaviour
     {
         uIManager.HideEquipPopUp();
         uIManager.HideInteractPopUp();
+        volumeTriggered = false;
     }
 
 
