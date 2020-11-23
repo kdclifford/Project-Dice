@@ -11,5 +11,6 @@ public class AniamtionBallScript : MonoBehaviour
     {
         GameObject throwBall = Instantiate(ballPrefab, ballPosistion.transform.position, Quaternion.identity) as GameObject;
         throwBall.GetComponent<Rigidbody>().AddForce(transform.forward * ballSpeed);
+        Destroy(throwBall, 6f);
     }
 }
