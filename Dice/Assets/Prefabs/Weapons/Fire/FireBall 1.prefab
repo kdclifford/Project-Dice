@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 1991793173940383291}
   - component: {fileID: 8650300934417849260}
   - component: {fileID: 2564647966446954944}
+  - component: {fileID: -4500845918212543509}
   m_Layer: 8
   m_Name: FireBall 1
   m_TagString: Equipped
@@ -4964,3 +4965,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedRange: {x: 20, y: 25}
+--- !u!114 &-4500845918212543509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6344335812988061145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7601d0c2d88d937408d774ed49c911a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
