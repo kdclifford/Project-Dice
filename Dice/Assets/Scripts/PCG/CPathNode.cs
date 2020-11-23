@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PathNode 
+public class CPathNode 
 {
-    private Grid grid;
+    private CGrid grid;
     public int x;
-    public int y;
+    public int y; 
 
     public int gCost;
     public int hCost;
@@ -16,7 +16,7 @@ public class PathNode
     public bool isWalkable;
     public Vector2Int cameFromNode;
 
-    public PathNode(Grid g,int x, int y)
+    public CPathNode(CGrid g,int x, int y)
     {
         this.grid = g;
         this.x = x;

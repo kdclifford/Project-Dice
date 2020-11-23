@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grid
+public class CGrid
 {
 
     public event EventHandler<OnGridObjectChangedEventArgs> OnGridObjectChanged;
@@ -15,25 +15,25 @@ public class Grid
 
     private int width;
     private int height;
-    private PathNode[,] gridArray;
+    private CPathNode[,] gridArray;
 
     public void MakeNonTravesable(int x,int y)
     {
         gridArray[x, y].isWalkable = false;
     }
-    public Grid(int width, int height, Grid g)
+    public CGrid(int width, int height, CGrid g)
     {
         this.width = width;
         this.height = height;
 
 
-        gridArray = new PathNode[width, height];
+        gridArray = new CPathNode[width, height];
 
         for (int x = 0; x < gridArray.GetLength(0); x++)
         {
             for (int y = 0; y < gridArray.GetLength(1); y++)
             {
-                gridArray[x, y] = new PathNode(this, x, y);
+                gridArray[x, y] = new CPathNode(this, x, y);
             }
         }
     }
@@ -59,7 +59,7 @@ public class Grid
 
 
 
-    public void SetGridObject(int x, int y, PathNode value)
+    public void SetGridObject(int x, int y, CPathNode value)
     {
         if (x >= 0 && y >= 0 && x < width && y < height)
         {
@@ -73,13 +73,13 @@ public class Grid
         if (OnGridObjectChanged != null) OnGridObjectChanged(this, new OnGridObjectChangedEventArgs { x = x, y = y });
     }
 
-    public void SetGridObject(Vector2 worldPosition, PathNode value)
+    public void SetGridObject(Vector2 worldPosition, CPathNode value)
     {
        
         SetGridObject((int)worldPosition.x, (int)worldPosition.y ,value);
     }
 
-    public PathNode GetGridObject(int x, int y)
+    public CPathNode GetGridObject(int x, int y)
     {
         if (x >= 0 && y >= 0 && x < width && y < height)
         {
@@ -87,11 +87,11 @@ public class Grid
         }
         else
         {
-            return default(PathNode);
+            return default(CPathNode);
         }
     }
 
-    public PathNode GetGridObject(Vector2 worldPosition)
+    public CPathNode GetGridObject(Vector2 worldPosition)
     {
 
         return GetGridObject((int)worldPosition.x, (int)worldPosition.y);

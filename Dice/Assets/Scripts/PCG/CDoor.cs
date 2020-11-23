@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door 
+public class CDoor 
 {
     // Start is called before the first frame update
     public  Vector2Int doorLocation;
@@ -10,11 +10,11 @@ public class Door
     public bool connected= false;
     public FacingDirection facingDirection;
 
-    public Door()
+    public CDoor()
     {
 
     }
-    public Door(Vector2Int location ,int RoomNumber)
+    public CDoor(Vector2Int location ,int RoomNumber)
     {
         doorLocation = location;
         roomNumber = RoomNumber;
