@@ -11,7 +11,7 @@ public class VolumeChange : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (PlayerPrefs.HasKey("Volume")) { volumeText.text = PlayerPrefs.GetInt("Volume").ToString(); }
     }
 
     // Update is called once per frame

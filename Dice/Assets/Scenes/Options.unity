@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 108052912}
   - component: {fileID: 108052911}
   - component: {fileID: 108052913}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: VolumeDown
   m_TagString: VolumeOption
   m_Icon: {fileID: 0}
@@ -866,7 +866,7 @@ GameObject:
   - component: {fileID: 656912170}
   - component: {fileID: 656912169}
   - component: {fileID: 656912171}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: VolumeUp
   m_TagString: VolumeOption
   m_Icon: {fileID: 0}
@@ -1350,6 +1350,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 1988507828170952, guid: 8036420a35be94a7fb651ad06f9c6a7d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4634247472333534, guid: 8036420a35be94a7fb651ad06f9c6a7d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.271
@@ -1418,7 +1422,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1043903486}
   - component: {fileID: 1043903487}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: VolumeOption
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1456,11 +1460,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 580631efe8570134ebe58fa7cb74a905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volume: {fileID: 1815663988}
-  volumeUP: {fileID: 656912167}
-  volumeDown: {fileID: 108052909}
-  currentVolume: 10
-  controllerType: 0
 --- !u!1001 &1061886144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2087,7 +2086,7 @@ PrefabInstance:
     - target: {fileID: 7184932348631374894, guid: 76d5029045c5e2546886a54ad3ca7b9b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7184932348631374894, guid: 76d5029045c5e2546886a54ad3ca7b9b,
         type: 3}
@@ -2824,7 +2823,7 @@ GameObject:
   - component: {fileID: 1815663987}
   - component: {fileID: 1815663989}
   - component: {fileID: 1815663988}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: VolumeTextStatic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3295,7 +3294,7 @@ GameObject:
   - component: {fileID: 1876430875}
   - component: {fileID: 1876430874}
   - component: {fileID: 1876430873}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: VolumeOption
   m_TagString: Untagged
   m_Icon: {fileID: 0}

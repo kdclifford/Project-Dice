@@ -59,6 +59,8 @@ public class PlayerController : MonoBehaviour
     public float collisionForce = 1.0f;
 
     private int globalVolume = 10;
+    private bool volumeTriggered = false;
+    private GameObject volumeObj;
 
 
     // Start is called before the first frame update
@@ -81,6 +83,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (volumeTriggered == true && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
+        {
+            VolumeChange Vol = volumeObj.GetComponent<VolumeChange>();
+            globalVolume = Vol.ChangeVolume(globalVolume);
+            volumeTriggered = false;
+        }
+
+
         triggerPress = 0;
       
 
@@ -239,15 +249,11 @@ public class PlayerController : MonoBehaviour
             ScenePortal sn = Collision.gameObject.GetComponent<ScenePortal>();
             sn.TeleportToScene();
         }
-        else if (Collision.gameObject.tag == "VolumeOption" && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
+        else if (Collision.gameObject.tag == "VolumeOption")
         {
-            VolumeChange Vol = Collision.gameObject.GetComponent<VolumeChange>();
-            Vol.ChangeVolume(globalVolume);
+            volumeObj = Collision.gameObject;
+            volumeTriggered = true;
         }
-    
-
-
-
     }
 
     private void OnTriggerExit(Collider other)

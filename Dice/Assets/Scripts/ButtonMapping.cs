@@ -19,7 +19,7 @@ namespace Button.Utils
                         case EButtonActions.LeftAttack:
                             return Input.GetAxis("LTrigger") > 0;
                         case EButtonActions.Interact:
-                            return Input.GetKey(KeyCode.JoystickButton0);
+                            return Input.GetKeyDown(KeyCode.JoystickButton0);
                         case EButtonActions.LeftEquipt:
                             return Input.GetAxis("HorizontalDpad") < 0;
                         case EButtonActions.RightEquipt:
