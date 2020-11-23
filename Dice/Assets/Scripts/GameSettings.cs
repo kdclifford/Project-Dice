@@ -6,22 +6,22 @@ public class GameSettings : MonoBehaviour
 {
     public EControllerType controllerType;
 
-    public static GameSettings instance;
+    //public static GameSettings instance;
 
-    void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
+    //void Awake()
+    //{
+    //    if (instance == null)
+    //    {
+    //        instance = this;
+    //    }
+    //    else
+    //    {
+    //        Destroy(gameObject);
+    //        return;
+    //    }
 
-        DontDestroyOnLoad(gameObject);
-    }
+    //    DontDestroyOnLoad(gameObject);
+    //}
 
 
     // Start is called before the first frame update

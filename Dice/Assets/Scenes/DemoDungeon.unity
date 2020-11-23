@@ -2745,6 +2745,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 852814795}
   m_CullTransparentMesh: 0
+--- !u!1 &891377376 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 172768, guid: 07d421e6f47c0424f97198e7ee8ce30c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1943074192}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1048911758
 GameObject:
   m_ObjectHideFlags: 0
@@ -2813,7 +2819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f52d37c75667044fb56d218fae811c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllerType: 0
+  controllerType: 1
 --- !u!1 &1236553221
 GameObject:
   m_ObjectHideFlags: 0
@@ -3924,6 +3930,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1942745405 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 126002, guid: 07d421e6f47c0424f97198e7ee8ce30c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1943074192}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1942745406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1942745405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9671d9220b803a3468363601190cba16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouthPos: {fileID: 891377376}
+  attackPrefab: {fileID: 188488, guid: b016902fa95739745ad3aa832dd54747, type: 3}
+  mouthOffset: {x: -0.4, y: -0.85, z: 0}
 --- !u!1001 &1943074192
 PrefabInstance:
   m_ObjectHideFlags: 0
