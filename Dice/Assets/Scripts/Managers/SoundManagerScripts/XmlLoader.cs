@@ -7,6 +7,7 @@ using System.Xml; //Needed for XML functionality
 using System.Xml.Serialization;
 using UnityEditor;
 using UnityEditor.SceneManagement;
+using UnityEngine.Audio;
 using UnityEngine;
 
 public class XmlLoader : MonoBehaviour
@@ -23,6 +24,7 @@ public class XmlLoader : MonoBehaviour
         //Load Sound manager
         soundManager = gameObject.GetComponent<SoundManager>();
 
+
         //Load XML
         LoadXml();
     }
@@ -33,6 +35,10 @@ public class XmlLoader : MonoBehaviour
         {
             FindSoundManager();
         }
+
+        soundManager = gameObject.GetComponent<SoundManager>();
+
+        soundManager.audioMixer = (AudioMixer)Resources.Load("Sounds/MasterMixer");
 
         if (soundManager.soundClips.Length == 0)
         {
@@ -56,7 +62,7 @@ public class XmlLoader : MonoBehaviour
                 {
                     xmlDoc.LoadXml(xmlData.text);
 
-                    soundManager = gameObject.GetComponent<SoundManager>();
+                    
 
                     XmlNodeList itemList = xmlDoc.SelectNodes("/ArrayOfSound/Sound");
 

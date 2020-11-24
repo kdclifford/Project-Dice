@@ -8,6 +8,7 @@ public class SoundManager : MonoBehaviour
     //Stores all the sound clips   
     [Header("Loaded Sounds"), Tooltip("Remember to save all your changes")]
     public Sound[] soundClips;
+    public AudioMixer audioMixer;
 
     //Makes sure there is only one instace of the audio manager
     public static SoundManager instance;
@@ -35,6 +36,7 @@ public class SoundManager : MonoBehaviour
     //Used to check and change the audio depending on the scene
     private void Update()
     {
+        //audioMixer.SetFloat("MasterVol", volume);
         if (currentScene != SceneManager.GetActiveScene().buildIndex)
         {
             oldScene = currentScene;
@@ -84,6 +86,8 @@ public class SoundManager : MonoBehaviour
         agentAudio.loop = s.loop;
         agentAudio.volume = s.volume;
         agentAudio.pitch = s.pitch;
+        agentAudio.outputAudioMixerGroup = audioMixer.FindMatchingGroups(s.audioMixerName)[(int)s.audioGroup];
+   
         if (s.sound3D)
         {
             agentAudio.spatialBlend = 1;
