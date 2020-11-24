@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9175302205679929718}
   - component: {fileID: 3227544418695698933}
   m_Layer: 8
-  m_Name: BubblePickup
+  m_Name: BubbleProjctile
   m_TagString: Equipped
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4853,7 +4853,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 19.84
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3227544418695698933
 MonoBehaviour:

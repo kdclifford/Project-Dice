@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <ArrayOfSound xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Sound>
-    <name>Electric</name>
+    <name>ElectricPickup</name>
     <clip>
       <name>Electric</name>
       <hideFlags>NotEditable</hideFlags>
@@ -11,10 +11,9 @@
     <volume>1</volume>
     <pitch>1.7</pitch>
     <audioGroup>Projectiles</audioGroup>
-    <audioMixerName />
   </Sound>
   <Sound>
-    <name>FireBall</name>
+    <name>FirePickup</name>
     <clip>
       <name>flamestrike</name>
       <hideFlags>NotEditable</hideFlags>
@@ -24,7 +23,6 @@
     <volume>1</volume>
     <pitch>1.72</pitch>
     <audioGroup>Projectiles</audioGroup>
-    <audioMixerName />
   </Sound>
   <Sound>
     <name>Player Hit</name>
@@ -37,7 +35,6 @@
     <volume>1</volume>
     <pitch>1</pitch>
     <audioGroup>Misc</audioGroup>
-    <audioMixerName />
   </Sound>
   <Sound>
     <name>Player Death</name>
@@ -50,7 +47,6 @@
     <volume>1</volume>
     <pitch>1.3</pitch>
     <audioGroup>Misc</audioGroup>
-    <audioMixerName />
   </Sound>
   <Sound>
     <name>Castle Music</name>
@@ -63,32 +59,65 @@
     <volume>0.3</volume>
     <pitch>0.35</pitch>
     <audioGroup>Music</audioGroup>
-    <audioMixerName />
   </Sound>
   <Sound>
-    <name>Menu Music 2</name>
+    <name>Bubble</name>
+    <clip>
+      <name>Bubble Blowing</name>
+      <hideFlags>NotEditable</hideFlags>
+    </clip>
+    <loop>false</loop>
+    <sound3D>true</sound3D>
+    <volume>1</volume>
+    <pitch>1</pitch>
+    <audioGroup>Projectiles</audioGroup>
+  </Sound>
+  <Sound>
+    <name>Shield</name>
+    <clip>
+      <name>Shield</name>
+      <hideFlags>NotEditable</hideFlags>
+    </clip>
+    <loop>false</loop>
+    <sound3D>true</sound3D>
+    <volume>1</volume>
+    <pitch>1</pitch>
+    <audioGroup>Misc</audioGroup>
+  </Sound>
+  <Sound>
+    <name>Dramatic music</name>
+    <clip>
+      <name>Dramatic music</name>
+      <hideFlags>NotEditable</hideFlags>
+    </clip>
+    <loop>true</loop>
+    <sound3D>false</sound3D>
+    <volume>1</volume>
+    <pitch>1</pitch>
+    <audioGroup>Music</audioGroup>
+  </Sound>
+  <Sound>
+    <name>Menu Music</name>
     <clip>
       <name>Menu Music</name>
       <hideFlags>NotEditable</hideFlags>
     </clip>
     <loop>true</loop>
     <sound3D>false</sound3D>
-    <volume>0.3</volume>
-    <pitch>0.8</pitch>
+    <volume>1</volume>
+    <pitch>1</pitch>
     <audioGroup>Music</audioGroup>
-    <audioMixerName />
   </Sound>
   <Sound>
-    <name>Menu Music</name>
+    <name>Menu Music 2</name>
     <clip>
       <name>Menu Music 2</name>
       <hideFlags>NotEditable</hideFlags>
     </clip>
     <loop>true</loop>
     <sound3D>false</sound3D>
-    <volume>0.3</volume>
-    <pitch>1.58</pitch>
+    <volume>1</volume>
+    <pitch>1</pitch>
     <audioGroup>Music</audioGroup>
-    <audioMixerName />
   </Sound>
 </ArrayOfSound>

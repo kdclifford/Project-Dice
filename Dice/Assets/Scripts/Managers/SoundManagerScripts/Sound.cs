@@ -17,9 +17,8 @@ public class Sound
     public EAudioGroups audioGroup;
 
     private  string location;
-    private AudioMixerGroup audioMixer;
-    [HideInInspector]
-    public string audioMixerName = "";
+    //[SerializeField]
+    private string audioMixerName = "";
 
     public Sound()
     {
@@ -73,6 +72,12 @@ public class Sound
         //audioMixer = master.FindMatchingGroups(audioMixerName)[0];
 
     }
+
+    public string GetGroupMixerName()
+    {
+        return audioMixerName;
+    }
+
 }
 
 public enum EAudioGroups

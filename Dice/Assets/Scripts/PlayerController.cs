@@ -259,6 +259,7 @@ public class PlayerController : MonoBehaviour
             {
                 uIManager.AddUIShield();
                 sn.AddShield();
+                soundManager.Play("Shield", gameObject);
                 Destroy(Collision.gameObject);
             }
         }

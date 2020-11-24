@@ -1,32 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Button.Utils;
 using UnityEngine;
 
 public class Teleport : MonoBehaviour
 {
     public GameObject teleportMesh;
-    public float teleportTimer = 0;
+    public float teleportTimer = 11;
     public float cooldownTimer = 10;
     bool secondPress = false;
-    bool moveMesh = false;
     Vector3 meshNewPos;
     public float distance = 4;
     public GameObject particalPrefab;
 
     [SerializeField]
     private LayerMask layerMask;
+    private GameSettings gameSettings;
 
     // Start is called before the first frame update
     void Start()
     {
         teleportMesh.transform.position = transform.position;
+        gameSettings = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameSettings>();
         //teleportMesh.transform.position += transform.forward * 4;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("Teleport") > 0 && !moveMesh && cooldownTimer < 0)
+        if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Teleport) && cooldownTimer < 0)
         {
             //if (Vector3.Distance(teleportMesh.transform.position, transform.position) == 0)
             //{
@@ -53,7 +55,7 @@ public class Teleport : MonoBehaviour
 
         }
 
-        if (Input.GetAxis("Teleport") > 0 && teleportTimer < 0)
+        if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Teleport) && teleportTimer < 0)
         {
             //if (Vector3.Distance(teleportMesh.transform.position, transform.position) == 0)
             //{

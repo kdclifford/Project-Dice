@@ -35,10 +35,10 @@ public class XmlLoader : MonoBehaviour
         {
             FindSoundManager();
         }
+                //soundManager = gameObject.GetComponent<SoundManager>();
 
-        soundManager = gameObject.GetComponent<SoundManager>();
-
-        soundManager.audioMixer = (AudioMixer)Resources.Load("Sounds/MasterMixer");
+                soundManager.audioMixer = (AudioMixer)Resources.Load("Sounds/MasterMixer");
+       
 
         if (soundManager.soundClips.Length == 0)
         {

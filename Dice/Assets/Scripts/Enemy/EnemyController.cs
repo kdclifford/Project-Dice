@@ -11,8 +11,14 @@ public class EnemyController : MonoBehaviour
     private GameObject projectile;
     [SerializeField]
     private RandomColour meshRenderer;
-    public GameObject target;   
+    public GameObject target;
     public bool isDead = false;
+    [SerializeField]
+    private LayerMask layerMask;
+    public LayerMask layerhit;
+    public LayerMask layerFLoor;
+
+    public EAIStates currentState = EAIStates.RandomMove;
     //Private
     private bool removeBody = false;
     private float removeSpeed = 5;
@@ -32,6 +38,9 @@ public class EnemyController : MonoBehaviour
     private int playerHealth;
     private SoundManager soundManager;
     private Health health;
+
+    bool gotRandomPos = false;
+    Vector3 dest;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,8 +56,41 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (!isDead && health.GetHealth() <= 0)
+        AnimationScript.StopAttack(animator);
+        if (health.GetHealth() <= 0)
+        {
+            currentState = EAIStates.Dead;
+        }
+        else if (!CheckLineofSight(target.transform.position) && Vector3.Distance(target.transform.position, transform.position) <= 30 && target.GetComponent<PlayerAnimations>() != null)
+        {
+            currentState = EAIStates.Fire;
+            
+            agent.ResetPath();
+        }
+        else if (!CheckLineofSight(target.transform.position) && Vector3.Distance(target.transform.position, transform.position) <= 50 && target.GetComponent<PlayerAnimations>() != null)
+        {
+            currentState = EAIStates.MoveTowards;
+        }
+        else
+        {
+            currentState = EAIStates.RandomMove;
+        }
+
+        Vector2 targetDirection;
+        targetDirection.x = agent.velocity.x;
+        targetDirection.y = agent.velocity.z;
+        float velocity = Mathf.Abs(targetDirection.x) + Mathf.Abs(targetDirection.y);
+
+        targetDirection = AnimationScript.CurrentDirection(targetDirection, gameObject);
+        targetDirection.Normalize();
+
+        animator.SetFloat("Velocity", velocity);
+        animator.SetFloat("XMove", targetDirection.x);
+        animator.SetFloat("YMove", targetDirection.y);
+
+
+
+        if (currentState == EAIStates.Dead)
         {
             agent.ResetPath();
             isDead = true;
@@ -58,35 +100,53 @@ public class EnemyController : MonoBehaviour
             Destroy(GetComponent<NavMeshAgent>());
             Destroy(GetComponent<Rigidbody>());
         }
-        else if (!isDead)
+        else if (currentState == EAIStates.MoveTowards)
         {
+
+
             agent.SetDestination(new Vector3(target.transform.position.x, 0, target.transform.position.z));
-            Vector2 targetDirection;
-            targetDirection.x = agent.velocity.x;
-            targetDirection.y = agent.velocity.z;
-            float velocity = Mathf.Abs(targetDirection.x) + Mathf.Abs(targetDirection.y);
+         
 
-            targetDirection = AnimationScript.CurrentDirection(targetDirection, gameObject);
-            targetDirection.Normalize();
 
-            animator.SetFloat("Velocity", velocity);
-            animator.SetFloat("XMove", targetDirection.x);
-            animator.SetFloat("YMove", targetDirection.y);
-
-            if (target.GetComponent<PlayerAnimations>() != null &&  Vector3.Distance(target.transform.position, transform.position) <= 30)
-            {
-                Vector3 targetDir = target.transform.position - transform.position;
-                targetDir.y = transform.position.y;
-                Quaternion rotation;
-
-                //transform.rotation = Quaternion.Euler( Vector3.RotateTowards(transform.position, targetDir, removeSpeed * Time.deltaTime, 0f));
-                rotation = Quaternion.LookRotation(targetDir);
-                // transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 100 * Time.deltaTime);
-                transform.LookAt(target.transform);
-
-                EnemyShoot();
-            }
         }
+        else if (currentState == EAIStates.Fire)
+        {
+            Vector3 targetDir = target.transform.position - transform.position;
+            targetDir.y = transform.position.y;
+            Quaternion rotation;
+
+            //transform.rotation = Quaternion.Euler( Vector3.RotateTowards(transform.position, targetDir, removeSpeed * Time.deltaTime, 0f));
+            rotation = Quaternion.LookRotation(targetDir);
+            // transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 100 * Time.deltaTime);
+            transform.LookAt(target.transform);
+
+            EnemyShoot();
+        }
+        else if (currentState == EAIStates.RandomMove)
+        {
+            if (!gotRandomPos)
+            {
+                while (dest == new Vector3())
+                {
+                    dest = RandomNavSphere(transform.position, 50, layerFLoor);
+                    dest.y = transform.position.y;
+                }
+                gotRandomPos = true;
+            }
+            Debug.Log(dest);
+
+            agent.SetDestination(dest);
+
+            if (Vector3.Distance(transform.position, dest) <= 3)
+            {
+                gotRandomPos = false;
+                agent.ResetPath();
+                dest = new Vector3();
+            }
+
+        }
+
+
 
         if (removeBody)
         {
@@ -100,7 +160,7 @@ public class EnemyController : MonoBehaviour
     {
         removeBody = true;
         Destroy(gameObject, 5);
-    }  
+    }
 
     //Universal call to make enemies
     public void EnemyShoot()
@@ -164,4 +224,37 @@ public class EnemyController : MonoBehaviour
         soundManager.Play(projectile.name, bullet);
         fireCooldown = fireRate;
     }
+
+    bool CheckLineofSight(Vector3 playerPos)
+    {
+        RaycastHit hit;
+        float distance = Vector3.Distance(playerPos, transform.position);
+        Vector3 targetDir = playerPos - transform.position;
+        targetDir.y = transform.position.y + 4;
+            targetDir.Normalize();
+        bool check = Physics.Raycast(transform.position, targetDir, out hit, distance, layerhit);
+        //Debug.Log(hit.collider.gameObject.name);
+        //Debug.DrawRay(transform.position, targetDir * distance, Color.red);
+        //Destroy(hit.collider.gameObject);
+        return check;
+
+    }
+
+    public static Vector3 RandomNavSphere(Vector3 origin, float distance, int layerhit)
+    {
+        Vector3 randomDirection = Random.insideUnitSphere * distance;
+        randomDirection += origin;
+        NavMeshHit hit;
+        NavMesh.SamplePosition(randomDirection, out hit, distance, 1);
+       return hit.position;
+    }
+
+}
+
+public enum EAIStates
+{
+    Dead,
+    RandomMove,
+    Fire,
+    MoveTowards,
 }

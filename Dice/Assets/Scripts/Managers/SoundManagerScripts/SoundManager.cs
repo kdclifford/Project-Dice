@@ -8,6 +8,7 @@ public class SoundManager : MonoBehaviour
     //Stores all the sound clips   
     [Header("Loaded Sounds"), Tooltip("Remember to save all your changes")]
     public Sound[] soundClips;
+    [HideInInspector]
     public AudioMixer audioMixer;
 
     //Makes sure there is only one instace of the audio manager
@@ -86,7 +87,7 @@ public class SoundManager : MonoBehaviour
         agentAudio.loop = s.loop;
         agentAudio.volume = s.volume;
         agentAudio.pitch = s.pitch;
-        agentAudio.outputAudioMixerGroup = audioMixer.FindMatchingGroups(s.audioMixerName)[(int)s.audioGroup];
+        agentAudio.outputAudioMixerGroup = audioMixer.FindMatchingGroups(s.GetGroupMixerName())[(int)s.audioGroup];
    
         if (s.sound3D)
         {
