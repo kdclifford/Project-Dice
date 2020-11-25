@@ -65,10 +65,17 @@ public class PlayerController : MonoBehaviour
     private GameObject volumeObj;
     float volumeButton = 0.1f;
 
+    private bool DoorTriggered = false;
+    private GameObject DoorObj;
+    private bool DungeonDoorTriggered = false;
+    private GameObject DungeonDoorObj;
+
     // Start is called before the first frame update
     void Start()
     {
         uIManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<UIManager>();
+        uIManager.HideInteractPopUp();
+        uIManager.HideEquipPopUp();
         gameSettings = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameSettings>();
         soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
         animator = GetComponent<Animator>();
@@ -111,11 +118,21 @@ public class PlayerController : MonoBehaviour
             volumeTriggered = false;
             volumeButton = 0.1f;
         }
-
         volumeButton -= Time.deltaTime;
 
- 
-      
+        if (DoorTriggered == true && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
+        {
+            openDoor Door = DoorObj.GetComponent<openDoor>();
+            Door.openTheDoor();
+            DoorTriggered = false;
+        }
+        if (DungeonDoorTriggered == true && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
+        {
+            CDungonDoor sn = DungeonDoorObj.GetComponent<CDungonDoor>();
+            sn.openTheDoor();
+            DungeonDoorTriggered = false;
+        }
+
 
         leftStickInputAxis.x = ButtonMapping.GetStick(gameSettings.controllerType, EStickMovement.HorizontalMovement, transform.position);
         leftStickInputAxis.y = ButtonMapping.GetStick(gameSettings.controllerType, EStickMovement.VerticalMovement, transform.position);
@@ -263,25 +280,20 @@ public class PlayerController : MonoBehaviour
                 Destroy(Collision.gameObject);
             }
         }
-        else if (Collision.gameObject.tag == "Door" && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
-        {
-            openDoor sn = Collision.gameObject.GetComponent<openDoor>();
-            sn.openTheDoor();
-        }
-        else if (Collision.gameObject.tag == "DungonDoor" && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
-        {
-            CDungonDoor sn = Collision.gameObject.GetComponent<CDungonDoor>();
-            sn.openTheDoor();
-        }
-        else if (Collision.gameObject.tag == "Portal" && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
-        {
-            ScenePortal sn = Collision.gameObject.GetComponent<ScenePortal>();
-            sn.TeleportToScene();
-        }
         else if (Collision.gameObject.tag == "VolumeOption")
         {
             volumeObj = Collision.gameObject;
             volumeTriggered = true;
+        }
+        else if (Collision.gameObject.tag == "Door")
+        {
+            DoorObj = Collision.gameObject;
+            DoorTriggered = true;
+        }
+        else if (Collision.gameObject.tag == "DungonDoor")
+        {
+            DungeonDoorObj = Collision.gameObject;
+            DungeonDoorTriggered = true;
         }
     }
 

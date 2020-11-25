@@ -18,7 +18,7 @@ public class ScenePortal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.forward * -2);
+        transform.Rotate(Vector3.forward * -0.5f);
     }
 
     public void TeleportToScene()
