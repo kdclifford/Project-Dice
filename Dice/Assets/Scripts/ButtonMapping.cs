@@ -19,12 +19,13 @@ namespace Button.Utils
                         case EButtonActions.LeftAttack:
                             return Input.GetAxis("LTrigger") > 0;
                         case EButtonActions.Interact:
-                            return Input.GetKey(KeyCode.JoystickButton0);
+                            return Input.GetKeyDown(KeyCode.JoystickButton0);
                         case EButtonActions.LeftEquipt:
                             return Input.GetAxis("HorizontalDpad") < 0;
                         case EButtonActions.RightEquipt:
                             return Input.GetAxis("HorizontalDpad") > 0;
-
+                        case EButtonActions.Teleport:
+                            return Input.GetKeyDown(KeyCode.JoystickButton2);
                     }
                     break;
                 case EControllerType.Computer:
@@ -40,7 +41,8 @@ namespace Button.Utils
                             return Input.GetAxis("PickUpKeyBoard") > 0;
                         case EButtonActions.RightEquipt:
                             return Input.GetAxis("PickUpKeyBoard") < 0;
-
+                        case EButtonActions.Teleport:
+                            return Input.GetKey(KeyCode.Space);
 
                     }
                     break;
@@ -65,8 +67,6 @@ namespace Button.Utils
                         case EStickMovement.HorizontalMovement:
                             return Input.GetAxis("LHorizontal");
                         case EStickMovement.VerticalFacing:
-
-
                             return Input.GetAxis("RVertical");
                         case EStickMovement.HorizontalFacing:
                             return Input.GetAxis("RHorizontal");

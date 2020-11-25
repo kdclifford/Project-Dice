@@ -14,7 +14,11 @@ public class Sound
     public float volume = 0;
     [Range(0f, 3f)]
     public float pitch = 0;
+    public EAudioGroups audioGroup;
+
     private  string location;
+    //[SerializeField]
+    private string audioMixerName = "";
 
     public Sound()
     {
@@ -27,6 +31,7 @@ public class Sound
         name = audio.name;
         volume = 1;
         pitch = 1;
+        audioGroup = EAudioGroups.Master;
     }
 
     public Sound(XmlNode curItemNode)
@@ -60,5 +65,25 @@ public class Sound
 
         pitch = float.Parse(curItemNode["pitch"].InnerText);
 
+        audioMixerName = curItemNode["audioGroup"].InnerText;
+
+        audioGroup = (EAudioGroups)System.Enum.Parse(typeof(EAudioGroups), audioMixerName);
+
+        //audioMixer = master.FindMatchingGroups(audioMixerName)[0];
+
     }
+
+    public string GetGroupMixerName()
+    {
+        return audioMixerName;
+    }
+
+}
+
+public enum EAudioGroups
+{
+    Master = 0,
+    Music = 1,
+    Projectiles = 2,
+    Misc = 3,
 }

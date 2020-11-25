@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
     public GameObject projectileRight;
     private Material leftColour;
     private Material rightColour;
-    private float triggerPress = 0;
 
     private float currRTFireCooldown = 0;
     private float currLTFireCooldown = 0;
@@ -59,7 +58,12 @@ public class PlayerController : MonoBehaviour
     public float collisionForce = 1.0f;
 
     private int globalVolume = 10;
-
+    private int musicVolume = 10;
+    private int miscVolume = 10;
+    private int projectileVolume = 10;
+    private bool volumeTriggered = false;
+    private GameObject volumeObj;
+    float volumeButton = 0.1f;
 
     // Start is called before the first frame update
     void Start()
@@ -75,13 +79,42 @@ public class PlayerController : MonoBehaviour
         currRTFireCooldown = MaxFireCooldown;
         currLTFireCooldown = MaxFireCooldown;
 
-        if (PlayerPrefs.HasKey("Volume")) { globalVolume = PlayerPrefs.GetInt("Volume"); }
+        if (PlayerPrefs.HasKey("MasterVol")) { globalVolume = PlayerPrefs.GetInt("MasterVol"); }
+        if (PlayerPrefs.HasKey("MusicVol")) { musicVolume = PlayerPrefs.GetInt("MusicVol"); }
     }
 
     // Update is called once per frame
     void Update()
     {
-        triggerPress = 0;
+        if (volumeTriggered == true &&  volumeButton < 0 && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
+        {
+            VolumeChange Vol = volumeObj.GetComponent<VolumeChange>();
+
+            if(volumeObj.transform.parent.name == "MasterVol")
+
+            {
+                globalVolume = Vol.ChangeVolume(globalVolume);
+            }
+            else if (volumeObj.transform.parent.name == "MusicVol")
+            {
+                musicVolume = Vol.ChangeVolume(musicVolume);
+            }
+            else if (volumeObj.transform.parent.name == "MiscVol")
+            {
+                miscVolume = Vol.ChangeVolume(miscVolume);
+            }
+            else if (volumeObj.transform.parent.name == "ProjectileVol")
+            {
+                projectileVolume = Vol.ChangeVolume(projectileVolume);
+            }
+
+            volumeTriggered = false;
+            volumeButton = 0.1f;
+        }
+
+        volumeButton -= Time.deltaTime;
+
+ 
       
 
         leftStickInputAxis.x = ButtonMapping.GetStick(gameSettings.controllerType, EStickMovement.HorizontalMovement, transform.position);
@@ -226,6 +259,7 @@ public class PlayerController : MonoBehaviour
             {
                 uIManager.AddUIShield();
                 sn.AddShield();
+                soundManager.Play("Shield", gameObject);
                 Destroy(Collision.gameObject);
             }
         }
@@ -239,21 +273,18 @@ public class PlayerController : MonoBehaviour
             ScenePortal sn = Collision.gameObject.GetComponent<ScenePortal>();
             sn.TeleportToScene();
         }
-        else if (Collision.gameObject.tag == "VolumeOption" && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
+        else if (Collision.gameObject.tag == "VolumeOption")
         {
-            VolumeChange Vol = Collision.gameObject.GetComponent<VolumeChange>();
-            Vol.ChangeVolume(globalVolume);
+            volumeObj = Collision.gameObject;
+            volumeTriggered = true;
         }
-    
-
-
-
     }
 
     private void OnTriggerExit(Collider other)
     {
         uIManager.HideEquipPopUp();
         uIManager.HideInteractPopUp();
+        volumeTriggered = false;
     }
 
 

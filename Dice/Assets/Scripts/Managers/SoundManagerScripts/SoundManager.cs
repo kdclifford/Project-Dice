@@ -8,12 +8,15 @@ public class SoundManager : MonoBehaviour
     //Stores all the sound clips   
     [Header("Loaded Sounds"), Tooltip("Remember to save all your changes")]
     public Sound[] soundClips;
+    [HideInInspector]
+    public AudioMixer audioMixer;
 
     //Makes sure there is only one instace of the audio manager
     public static SoundManager instance;
 
     //Checks the current scene used to change the music depending on the scene
-    private string currentScene = "Null";
+    private int currentScene = -1;
+    private int oldScene = -1;
 
     //Checks for an instance of SoundManager in current scene
     void Awake()
@@ -34,9 +37,11 @@ public class SoundManager : MonoBehaviour
     //Used to check and change the audio depending on the scene
     private void Update()
     {
-        if (currentScene != SceneManager.GetActiveScene().name)
+        //audioMixer.SetFloat("MasterVol", volume);
+        if (currentScene != SceneManager.GetActiveScene().buildIndex)
         {
-            currentScene = SceneManager.GetActiveScene().name;
+            oldScene = currentScene;
+            currentScene = SceneManager.GetActiveScene().buildIndex;
             BackGroundMusic();
         }
     }
@@ -45,9 +50,12 @@ public class SoundManager : MonoBehaviour
     //Called when the scene changes
     public void BackGroundMusic()
     {
-        if (currentScene == "Menu")
+        if (currentScene == 0 || currentScene == 1)
         {
-            Play("Menu Music 2", gameObject);
+            if (oldScene != 0 && oldScene != 1)
+            {
+                Play("Menu Music 2", gameObject);
+            }
 
         }
         else
@@ -79,6 +87,8 @@ public class SoundManager : MonoBehaviour
         agentAudio.loop = s.loop;
         agentAudio.volume = s.volume;
         agentAudio.pitch = s.pitch;
+        agentAudio.outputAudioMixerGroup = audioMixer.FindMatchingGroups(s.GetGroupMixerName())[(int)s.audioGroup];
+   
         if (s.sound3D)
         {
             agentAudio.spatialBlend = 1;
