@@ -8,6 +8,9 @@ public class DunguonSpawner : MonoBehaviour
     public List<GameObject> RoomPrefabs;
     public Vector2Int WorldSize;
 
+
+    public GameObject Player;
+
     [SerializeField]
     private GameObject floorPRefab;
     [SerializeField]
@@ -48,6 +51,11 @@ public class DunguonSpawner : MonoBehaviour
         SetSceneLocation();
         
         SetPathModels(GenerateWalls(pathPoints, Doors));
+
+
+        var player = GameObject.FindGameObjectWithTag("Player");
+        player.transform.position = new Vector3(4 * roomsData[1].location.x, 0, 4 * roomsData[1].location.y);
+        //Instantiate(Player, new Vector3(4 * roomsData[1].location.x, 0, 4 * roomsData[1].location.y), Quaternion.identity);
 
     }
    

@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5928751529886715279
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5928751529886715265}
+  - component: {fileID: 5928751529886715264}
+  m_Layer: 0
+  m_Name: Dungeon Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5928751529886715265
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5928751529886715279}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5928751529886715264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5928751529886715279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7000db0ec93480d4c8b4da9522f220b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfRooms: 15
+  RoomPrefabs:
+  - {fileID: 3506580042367869591, guid: bb4ff5e4841e41e42a3f2d1743a4ade8, type: 3}
+  - {fileID: 2653583267993819834, guid: 75baf9eb300ffbe41a5f4c536312c4a1, type: 3}
+  WorldSize: {x: 25, y: 25}
+  floorPRefab: {fileID: 1112197981072686, guid: 5812f95c175b34e7a8e5a7566a43a0ef,
+    type: 3}
+  finalRoomPrefab: {fileID: 7638974500389706608, guid: 7542156e9c81dd24c9588c5d1cf96f0d,
+    type: 3}
+  wallPrefab: {fileID: 1135327754445724, guid: 2e9bb0112b1a3428f94ba8550d668f2f, type: 3}
+  startingRoom: {fileID: 7638974500389706608, guid: ba2a0968d192f2343a7cc3d479ed835e,
+    type: 3}
+  doorPrefab: {fileID: 9190169910851453501, guid: 6ea1f8df96a55b34e89adbe668a11f76,
+    type: 3}
+  roomsPrefabData: []
+  roomsData: []
+  pathPoints: []

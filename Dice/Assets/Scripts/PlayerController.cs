@@ -268,6 +268,11 @@ public class PlayerController : MonoBehaviour
             openDoor sn = Collision.gameObject.GetComponent<openDoor>();
             sn.openTheDoor();
         }
+        else if (Collision.gameObject.tag == "DungonDoor" && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
+        {
+            CDungonDoor sn = Collision.gameObject.GetComponent<CDungonDoor>();
+            sn.openTheDoor();
+        }
         else if (Collision.gameObject.tag == "Portal" && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
         {
             ScenePortal sn = Collision.gameObject.GetComponent<ScenePortal>();

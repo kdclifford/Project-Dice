@@ -30,7 +30,7 @@ Transform:
   m_Father: {fileID: 242313281025763690}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &239676055319137437
+--- !u!114 &4213404577711542269
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -39,11 +39,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 240339731183103692}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae347f6b2df073f4da05a92f5b27e754, type: 3}
+  m_Script: {fileID: 11500000, guid: 91e70d91010940642828c62beab11b15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pivot: {fileID: 239676054369625483}
-  portal: {fileID: 0}
 --- !u!1 &9190169910851453501
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,7 +87,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1789646300229838, guid: 1355992e2e0414a50ba4b0543adead7b, type: 3}
       propertyPath: m_TagString
-      value: Door
+      value: DungonDoor
       objectReference: {fileID: 0}
     - target: {fileID: 1789646300229838, guid: 1355992e2e0414a50ba4b0543adead7b, type: 3}
       propertyPath: m_IsActive
