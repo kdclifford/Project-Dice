@@ -76,26 +76,28 @@ public class EnemyController : MonoBehaviour
             currentState = EAIStates.RandomMove;
         }
 
-        Vector2 targetDirection;
-        targetDirection.x = agent.velocity.x;
-        targetDirection.y = agent.velocity.z;
-        float velocity = Mathf.Abs(targetDirection.x) + Mathf.Abs(targetDirection.y);
+        if (currentState != EAIStates.Dead)
+        {
+            Vector2 targetDirection;
+            targetDirection.x = agent.velocity.x;
+            targetDirection.y = agent.velocity.z;
+            float velocity = Mathf.Abs(targetDirection.x) + Mathf.Abs(targetDirection.y);
 
-        targetDirection = AnimationScript.CurrentDirection(targetDirection, gameObject);
-        targetDirection.Normalize();
+            targetDirection = AnimationScript.CurrentDirection(targetDirection, gameObject);
+            targetDirection.Normalize();
 
-        animator.SetFloat("Velocity", velocity);
-        animator.SetFloat("XMove", targetDirection.x);
-        animator.SetFloat("YMove", targetDirection.y);
+            animator.SetFloat("Velocity", velocity);
+            animator.SetFloat("XMove", targetDirection.x);
+            animator.SetFloat("YMove", targetDirection.y);
+        }
 
 
-
-        if (currentState == EAIStates.Dead)
+        if (currentState == EAIStates.Dead && !removeBody)
         {
             agent.ResetPath();
             isDead = true;
             animator.SetBool("Death", isDead);
-            animator.SetTrigger("Dead");
+            animator.SetTrigger("Dead");            
             Destroy(GetComponent<Collider>());
             Destroy(GetComponent<NavMeshAgent>());
             Destroy(GetComponent<Rigidbody>());
@@ -133,7 +135,7 @@ public class EnemyController : MonoBehaviour
                 }
                 gotRandomPos = true;
             }
-            Debug.Log(dest);
+            ////Debug.Log(dest);
 
             agent.SetDestination(dest);
 
