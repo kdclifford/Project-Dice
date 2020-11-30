@@ -7,7 +7,7 @@ public abstract class SpellBase
     public abstract void CastSpell();
     public float durition;
     public EElementalyType element;
-    public Color colour;
+    public Color castingColour;
     public ESpellType spellType;
     public Sound castingSound;
     public Sprite UILogo;

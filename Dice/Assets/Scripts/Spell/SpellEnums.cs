@@ -6,7 +6,3 @@ public enum ESpellType { Passive,Projectile,Summoning , ControlledProjectile}
 
 public enum EElementalyType { Fire,Wind,Rock,Electricity,Water , Physical}
 
-public class SpellEnums : MonoBehaviour
-{
-
-}
