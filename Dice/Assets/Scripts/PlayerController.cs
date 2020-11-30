@@ -395,8 +395,6 @@ public class PlayerController : MonoBehaviour
 
     string FindSpell(Projectile number)
     {
-
-
         switch (number)
         {
             case Projectile.Bubble:
