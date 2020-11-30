@@ -54,18 +54,49 @@ public class SoundManager : MonoBehaviour
         {
             if (oldScene != 0 && oldScene != 1)
             {
-                Play("Menu Music 2", gameObject);
+                Play(SoundClipEnum.MenuMusic, gameObject);
             }
 
         }
         else
         {
-            Play("Castle Music", gameObject);
+            Play(SoundClipEnum.CastleMusic, gameObject);
         }
     }
 
     //Plays Sound if sound exists
-    public void Play(string name, GameObject agent)
+    public void Play(SoundClipEnum name, GameObject agent)
+    {
+        AudioSource agentAudio = FindAudio(agent, name);
+        agentAudio.Play();
+    }
+
+    //Will play a place holder sound for testing purposes
+    public void Play(GameObject agent)
+    {
+        Play((SoundClipEnum)1, agent);
+        Debug.Log("Place Holder sound being used");
+    }
+
+    //Will play a sound clip once, at the postion it was called at
+    public void PlayOnceAtPoint(SoundClipEnum clipEnum , GameObject agent)
+    {
+        AudioSource agentAudio = FindAudio(agent, clipEnum);
+        agentAudio.PlayOneShot(agentAudio.clip);
+        
+    }
+
+    //Play another Sound clip the audio source will be destroyed when clip is finished
+    void PlayAndDestroy(SoundClipEnum clipEnum, GameObject agent)
+    {
+        AudioSource agentAudio = agent.AddComponent<AudioSource>();
+        Play(clipEnum, agent);
+       Destroy(agentAudio, agentAudio.clip.length);
+    }
+
+
+    //Checks for an AudioSource
+    private AudioSource CheckAudioSource(GameObject agent)
     {
         AudioSource agentAudio;
         if (agent.GetComponent<AudioSource>() == null)
@@ -77,18 +108,28 @@ public class SoundManager : MonoBehaviour
             agentAudio = agent.GetComponent<AudioSource>();
         }
 
-        Sound s = Array.Find(soundClips, Sound => Sound.name == name);
+        return agentAudio;
+    }
+
+    //Find audio clip in array
+    private AudioSource FindAudio(GameObject agent, SoundClipEnum clipName)
+    {
+        AudioSource agentAudio = CheckAudioSource(agent);
+        // Sound s = Array.Find(soundClips, Sound => Sound.name == clipName);
+       // SoundClipEnum clipcheck = (SoundClipEnum)Enum.Parse(typeof(SoundClipEnum), "OIOI", true);
+        int a = 4;
+        Sound s = soundClips[(int)clipName];
         if (s == null)
         {
             s = soundClips[0];
-        }
+        }       
 
         agentAudio.clip = s.clip;
         agentAudio.loop = s.loop;
         agentAudio.volume = s.volume;
         agentAudio.pitch = s.pitch;
         agentAudio.outputAudioMixerGroup = audioMixer.FindMatchingGroups(s.GetGroupMixerName())[(int)s.audioGroup];
-   
+
         if (s.sound3D)
         {
             agentAudio.spatialBlend = 1;
@@ -98,13 +139,10 @@ public class SoundManager : MonoBehaviour
             agentAudio.spatialBlend = 0;
         }
 
-        agentAudio.Play();
+        return agentAudio;
     }
 
-    //Will play a place holder sound for testing purposes
-    public void Play(GameObject agent)
-    {
-        Play(soundClips[0].name, agent);
-        Debug.Log("Place Holder sound being used");
-    }
+
 }
+
+

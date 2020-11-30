@@ -13,12 +13,16 @@ public class UIManager : MonoBehaviour
     private Image interactPopup;
     [SerializeField]
     private Image EquipPopup;
-
-    public GameObject leftHeart;
-    public GameObject rightHeart;
-    public GameObject shieldPrefab;
-    public GameObject boarder;
-    public GameObject canvas;
+    [SerializeField]
+    private GameObject leftHeart;
+    [SerializeField]
+    private GameObject rightHeart;
+    [SerializeField]
+    private GameObject shieldPrefab;
+    [SerializeField]
+    private GameObject boarder;
+    [SerializeField]
+    private GameObject canvas;
 
 
     private Health playerHealth;
@@ -26,8 +30,6 @@ public class UIManager : MonoBehaviour
     private GameObject[] shield;
     private int maxHearts;
     private int maxShields;
-
-
 
     public void RemoveHeart()
     {
@@ -119,6 +121,16 @@ public class UIManager : MonoBehaviour
     public void HideEquipPopUp()
     {
         EquipPopup.enabled = false;
+    }
+
+    public void EnableUI()
+    {
+        boarder.SetActive(true);
+    }
+
+    public void DisableUI()
+    {
+        boarder.SetActive(false);
     }
 
 }

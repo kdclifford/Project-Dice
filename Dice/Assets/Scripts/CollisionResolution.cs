@@ -56,12 +56,12 @@ public class CollisionResolution : MonoBehaviour
                     death.Normalize();
                     playerAnimations.deathDirection = death;
                     playerAnimations.DeathAnimation();
-                    soundManager.Play("Player Death", gameObject);
+                    soundManager.Play(SoundClipEnum.PlayerDeath, gameObject);
                     
                 }
                 else
                 {
-                    soundManager.Play("Player Hit", gameObject);
+                    soundManager.Play(SoundClipEnum.PlayerHit, gameObject);
                 }
                 
 
@@ -74,12 +74,13 @@ public class CollisionResolution : MonoBehaviour
     void ShowFloatingText(GameObject projectile)
     {
         GameObject text = Instantiate(textPrefab, transform.position, textPrefab.transform.rotation) as GameObject;
+        TextMesh textMesh = text.GetComponent<TextMesh>();
         int i = textManager.SelectFont();
-        text.GetComponent<TextMesh>().font = textManager.GetFont(i);
+        textMesh.font = textManager.GetFont(i);
         text.GetComponent<MeshRenderer>().material = textManager.GetFont(i).material;
-        text.GetComponent<TextMesh>().text = textManager.SelectText();
+        textMesh.text = textManager.SelectText();
         //text.GetComponent<TextMesh>().color = projectile.GetComponent<ParticleSystem>().main.startColor.color;
-        text.GetComponent<TextMesh>().color = Color.white;
+        textMesh.color = Color.white;
 
         GetComponent<Health>().RemoveHealth();
     }

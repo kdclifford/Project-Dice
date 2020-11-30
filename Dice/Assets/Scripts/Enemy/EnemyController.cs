@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using AnimationFunctions.Utils;
 using UnityEngine.AI;
+using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
@@ -223,7 +223,8 @@ public class EnemyController : MonoBehaviour
         GameObject bullet = Instantiate(projectile, firePos, playerRot) as GameObject;
         bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * projectileSpeed);
         bullet.tag = "EnemyProjectile";
-        soundManager.Play(projectile.name, bullet);
+        SoundClipEnum clipEnum = (SoundClipEnum)System.Enum.Parse(typeof(SoundClipEnum), projectile.name, true);
+        soundManager.Play(clipEnum, bullet);
         fireCooldown = fireRate;
     }
 

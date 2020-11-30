@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
     public float sceneChangeDelay; //Scene delay
 
+    private UIManager uIManager;
     private SoundManager soundManager;
     private Animator fade;
 
@@ -32,6 +33,7 @@ public class LevelManager : MonoBehaviour
     {
         soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
         fade = GameObject.FindGameObjectWithTag("SceneFade").GetComponent<Animator>();
+        uIManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<UIManager>();
     }
 
   
@@ -51,11 +53,22 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator ChangeScene(string LevelToLoad)
     {
+        int levelIndex = SceneManager.GetSceneByName(LevelToLoad).buildIndex;
+        if (levelIndex != (int)LevelEnum.MainMenu && levelIndex != (int)LevelEnum.Options)
+        {
+            uIManager.EnableUI();
+        }
+        else
+        {
+            uIManager.DisableUI();
+        }
         soundManager.GetComponent<Animator>().SetInteger("Fade", 1);
-        fade.SetTrigger("Fade");
-        yield return new WaitForSeconds(sceneChangeDelay);
+        fade.SetTrigger("FadeIn");       
+         yield return new WaitForSeconds(sceneChangeDelay);
+        fade.SetTrigger("FadeOut");
         SceneManager.LoadScene(LevelToLoad);
         soundManager.GetComponent<Animator>().SetInteger("Fade", 0);
-        fade = GameObject.FindGameObjectWithTag("SceneFade").GetComponent<Animator>();
+       
+       // fade = GameObject.FindGameObjectWithTag("SceneFade").GetComponent<Animator>();
     }
 }

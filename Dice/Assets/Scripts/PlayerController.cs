@@ -276,7 +276,7 @@ public class PlayerController : MonoBehaviour
             {
                 uIManager.AddUIShield();
                 sn.AddShield();
-                soundManager.Play("Shield", gameObject);
+                soundManager.Play(SoundClipEnum.Shield, gameObject);
                 Destroy(Collision.gameObject);
             }
         }
@@ -328,7 +328,8 @@ public class PlayerController : MonoBehaviour
 
         GameObject bullet = Instantiate(projectileRight, RightFirePos, playerRot) as GameObject;
         bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
-        soundManager.Play(projectileRight.name, bullet);
+        SoundClipEnum clipEnum = (SoundClipEnum)System.Enum.Parse(typeof(SoundClipEnum), projectileRight.name, true);
+        soundManager.Play(clipEnum, bullet);
 
         currRTFireCooldown = MaxFireCooldown;
     }
@@ -344,8 +345,8 @@ public class PlayerController : MonoBehaviour
         GameObject bullet = Instantiate(projectileLeft, LeftFirePos, playerRot) as GameObject;
         bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
 
-
-        soundManager.Play(projectileLeft.name, bullet);
+        SoundClipEnum clipEnum = (SoundClipEnum)System.Enum.Parse(typeof(SoundClipEnum), projectileLeft.name, true);
+        soundManager.Play(clipEnum, bullet);
 
         currLTFireCooldown = MaxFireCooldown;
     }
@@ -360,7 +361,8 @@ public class PlayerController : MonoBehaviour
 
         GameObject bullet = Instantiate(projectileLeft, LeftFirePos, playerRot) as GameObject;
         bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
-        soundManager.Play(projectileLeft.name, bullet);
+        SoundClipEnum clipEnum = (SoundClipEnum)System.Enum.Parse(typeof(SoundClipEnum), projectileLeft.name, true);
+        soundManager.Play(clipEnum, bullet);
 
         currLTFireCooldown = MaxFireCooldown;
 
@@ -369,7 +371,8 @@ public class PlayerController : MonoBehaviour
 
         bullet = Instantiate(projectileRight, RightFirePos, playerRot) as GameObject;
         bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
-        soundManager.Play(projectileRight.name, bullet);
+        clipEnum = (SoundClipEnum)System.Enum.Parse(typeof(SoundClipEnum), projectileRight.name, true);
+        soundManager.Play(clipEnum, bullet);
 
         currRTFireCooldown = MaxFireCooldown;
 
