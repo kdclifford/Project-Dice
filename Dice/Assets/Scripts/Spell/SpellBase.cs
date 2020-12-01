@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class SpellBase 
+public abstract class SpellBase : MonoBehaviour
 {
     public abstract void CastSpell();
     public float durition;
     public EElementalyType element;
     public Color castingColour;
     public ESpellType spellType;
-    public Sound castingSound;
+    public ESoundClipEnum castingSound;
     public Sprite UILogo;
 
     //Data Structure for UI Needs to be defineded

@@ -30,9 +30,17 @@ public class GameSettings : MonoBehaviour
     {
         controllerAmount = Input.GetJoystickNames().Length;
         controllerNames = Input.GetJoystickNames();
-        if (controllerAmount > 0 && controllerNames[0] != "")
+        if (controllerAmount > 0)
         {
-            controllerType = EControllerType.Controller;
+            for(int i = 0; i < controllerAmount; i++)
+            {
+                if (controllerNames[i] != "")
+                {
+                    controllerType = EControllerType.Controller;
+                    break;
+                }
+            }
+           
         }
         else
         {

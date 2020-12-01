@@ -223,7 +223,7 @@ public class EnemyController : MonoBehaviour
         GameObject bullet = Instantiate(projectile, firePos, playerRot) as GameObject;
         bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * projectileSpeed);
         bullet.tag = "EnemyProjectile";
-        SoundClipEnum clipEnum = (SoundClipEnum)System.Enum.Parse(typeof(SoundClipEnum), projectile.name, true);
+        ESoundClipEnum clipEnum = (ESoundClipEnum)System.Enum.Parse(typeof(ESoundClipEnum), projectile.name, true);
         soundManager.Play(clipEnum, bullet);
         fireCooldown = fireRate;
     }

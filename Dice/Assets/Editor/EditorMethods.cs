@@ -8,7 +8,9 @@ public class EditorMethods : Editor
 {
    
      const string extension = ".cs";
-    public static void WriteToEnum(string path, string name, Sound[] data)
+    const string name = "ESoundClipEnum";
+    const string path = "Assets/Scripts/";
+    public static void WriteToEnum(Sound[] data)
     {
         using (StreamWriter file = File.CreateText(path + name + extension))
         {

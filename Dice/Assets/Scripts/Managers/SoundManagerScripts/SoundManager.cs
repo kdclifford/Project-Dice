@@ -54,18 +54,18 @@ public class SoundManager : MonoBehaviour
         {
             if (oldScene != 0 && oldScene != 1)
             {
-                Play(SoundClipEnum.MenuMusic, gameObject);
+                Play(ESoundClipEnum.MenuMusic, gameObject);
             }
 
         }
         else
         {
-            Play(SoundClipEnum.CastleMusic, gameObject);
+            Play(ESoundClipEnum.CastleMusic, gameObject);
         }
     }
 
     //Plays Sound if sound exists
-    public void Play(SoundClipEnum name, GameObject agent)
+    public void Play(ESoundClipEnum name, GameObject agent)
     {
         AudioSource agentAudio = FindAudio(agent, name);
         agentAudio.Play();
@@ -74,12 +74,12 @@ public class SoundManager : MonoBehaviour
     //Will play a place holder sound for testing purposes
     public void Play(GameObject agent)
     {
-        Play((SoundClipEnum)1, agent);
+        Play((ESoundClipEnum)1, agent);
         Debug.Log("Place Holder sound being used");
     }
 
     //Will play a sound clip once, at the postion it was called at
-    public void PlayOnceAtPoint(SoundClipEnum clipEnum , GameObject agent)
+    public void PlayOnceAtPoint(ESoundClipEnum clipEnum , GameObject agent)
     {
         AudioSource agentAudio = FindAudio(agent, clipEnum);
         agentAudio.PlayOneShot(agentAudio.clip);
@@ -87,7 +87,7 @@ public class SoundManager : MonoBehaviour
     }
 
     //Play another Sound clip the audio source will be destroyed when clip is finished
-    void PlayAndDestroy(SoundClipEnum clipEnum, GameObject agent)
+    void PlayAndDestroy(ESoundClipEnum clipEnum, GameObject agent)
     {
         AudioSource agentAudio = agent.AddComponent<AudioSource>();
         Play(clipEnum, agent);
@@ -112,7 +112,7 @@ public class SoundManager : MonoBehaviour
     }
 
     //Find audio clip in array
-    private AudioSource FindAudio(GameObject agent, SoundClipEnum clipName)
+    private AudioSource FindAudio(GameObject agent, ESoundClipEnum clipName)
     {
         AudioSource agentAudio = CheckAudioSource(agent);
         // Sound s = Array.Find(soundClips, Sound => Sound.name == clipName);

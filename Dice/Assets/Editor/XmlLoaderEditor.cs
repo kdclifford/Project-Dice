@@ -7,8 +7,6 @@ public class XmlLoaderEditor : Editor
 {
     //Width offset
     private float offset = 20;
-    string filePath = "Assets/Scripts/";
-    string fileName = "SoundClipEnum";
 
     //Acts as a Inspector Update function
     public override void OnInspectorGUI()
@@ -77,7 +75,7 @@ public class XmlLoaderEditor : Editor
         if (GUILayout.Button("Save all Changes to XML", GUILayout.Height(50), GUILayout.Width((Screen.width * 0.5f) - offset)))
         {
             myScript.SaveXML();
-            EditorMethods.WriteToEnum(filePath, fileName, myScript.GetComponentInParent<SoundManager>().soundClips);
+            EditorMethods.WriteToEnum(myScript.GetComponentInParent<SoundManager>().soundClips);
             
         }
 

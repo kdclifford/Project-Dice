@@ -56,12 +56,12 @@ public class CollisionResolution : MonoBehaviour
                     death.Normalize();
                     playerAnimations.deathDirection = death;
                     playerAnimations.DeathAnimation();
-                    soundManager.Play(SoundClipEnum.PlayerDeath, gameObject);
+                    soundManager.Play(ESoundClipEnum.PlayerDeath, gameObject);
                     
                 }
                 else
                 {
-                    soundManager.Play(SoundClipEnum.PlayerHit, gameObject);
+                    soundManager.Play(ESoundClipEnum.PlayerHit, gameObject);
                 }
                 
 

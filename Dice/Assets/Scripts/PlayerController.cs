@@ -238,7 +238,7 @@ public class PlayerController : MonoBehaviour
             if(ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftEquipt))
             {
                 uIManager.ShowLeftSpell(Collision.GetComponent<SpriteRenderer>().sprite);
-                projectileLeft = (GameObject)Resources.Load("Player/" + FindSpell(Collision.GetComponent<ProjectileType>().projectileName));
+                projectileLeft = (GameObject)Resources.Load("Player/" + FindSpell(Collision.GetComponent<ProjectileType>().projectileType));
                 Destroy(Collision.gameObject);
                 if (projectileLeft != null)
                 {
@@ -248,7 +248,7 @@ public class PlayerController : MonoBehaviour
             else if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightEquipt))
             {
                 uIManager.ShowRightSpell(Collision.GetComponent<SpriteRenderer>().sprite);
-                projectileRight = (GameObject)Resources.Load("Player/" + FindSpell(Collision.GetComponent<ProjectileType>().projectileName));
+                projectileRight = (GameObject)Resources.Load("Player/" + FindSpell(Collision.GetComponent<ProjectileType>().projectileType));
                 Destroy(Collision.gameObject);
                 uIManager.HideEquipPopUp();
                 if (projectileRight != null)
@@ -276,7 +276,7 @@ public class PlayerController : MonoBehaviour
             {
                 uIManager.AddUIShield();
                 sn.AddShield();
-                soundManager.Play(SoundClipEnum.Shield, gameObject);
+                soundManager.Play(ESoundClipEnum.Shield, gameObject);
                 Destroy(Collision.gameObject);
             }
         }
@@ -328,7 +328,7 @@ public class PlayerController : MonoBehaviour
 
         GameObject bullet = Instantiate(projectileRight, RightFirePos, playerRot) as GameObject;
         bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
-        SoundClipEnum clipEnum = (SoundClipEnum)System.Enum.Parse(typeof(SoundClipEnum), projectileRight.name, true);
+        ESoundClipEnum clipEnum = (ESoundClipEnum)System.Enum.Parse(typeof(ESoundClipEnum), projectileRight.name, true);
         soundManager.Play(clipEnum, bullet);
 
         currRTFireCooldown = MaxFireCooldown;
@@ -345,7 +345,7 @@ public class PlayerController : MonoBehaviour
         GameObject bullet = Instantiate(projectileLeft, LeftFirePos, playerRot) as GameObject;
         bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
 
-        SoundClipEnum clipEnum = (SoundClipEnum)System.Enum.Parse(typeof(SoundClipEnum), projectileLeft.name, true);
+        ESoundClipEnum clipEnum = (ESoundClipEnum)System.Enum.Parse(typeof(ESoundClipEnum), projectileLeft.name, true);
         soundManager.Play(clipEnum, bullet);
 
         currLTFireCooldown = MaxFireCooldown;
@@ -361,7 +361,7 @@ public class PlayerController : MonoBehaviour
 
         GameObject bullet = Instantiate(projectileLeft, LeftFirePos, playerRot) as GameObject;
         bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
-        SoundClipEnum clipEnum = (SoundClipEnum)System.Enum.Parse(typeof(SoundClipEnum), projectileLeft.name, true);
+        ESoundClipEnum clipEnum = (ESoundClipEnum)System.Enum.Parse(typeof(ESoundClipEnum), projectileLeft.name, true);
         soundManager.Play(clipEnum, bullet);
 
         currLTFireCooldown = MaxFireCooldown;
@@ -371,7 +371,7 @@ public class PlayerController : MonoBehaviour
 
         bullet = Instantiate(projectileRight, RightFirePos, playerRot) as GameObject;
         bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
-        clipEnum = (SoundClipEnum)System.Enum.Parse(typeof(SoundClipEnum), projectileRight.name, true);
+        clipEnum = (ESoundClipEnum)System.Enum.Parse(typeof(ESoundClipEnum), projectileRight.name, true);
         soundManager.Play(clipEnum, bullet);
 
         currRTFireCooldown = MaxFireCooldown;
