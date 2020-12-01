@@ -90,6 +90,8 @@ public class PlayerController : MonoBehaviour
         leftColour = (Material)Resources.Load("Player/Weapon 2");
         playerAnimations = GetComponent<PlayerAnimations>();
 
+        leftSpell = -1;
+        rightSpell = -1;
         currRTFireCooldown = MaxFireCooldown;
         currLTFireCooldown = MaxFireCooldown;
 
@@ -162,9 +164,9 @@ public class PlayerController : MonoBehaviour
 
 
         if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightAttack) &&
-           rightSpell != null &&
+           rightSpell != -1 &&
            ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftAttack) &&
-           leftSpell != null)
+           leftSpell != -1)
         {
             AnimationScript.DoubleAttack(animator);
           
