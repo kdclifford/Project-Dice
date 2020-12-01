@@ -6,6 +6,7 @@ public class ProjectileType : MonoBehaviour
 { 
    // public SpellBase spell = new FireBall();
     public Projectile projectileType;
+    public int spellIndex;
 
     // Start is called before the first frame update
     void Start()

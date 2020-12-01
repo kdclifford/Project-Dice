@@ -4,7 +4,8 @@ using UnityEngine;
 
 public abstract class SpellBase : MonoBehaviour
 {
-    public abstract void CastSpell();
+    public GameObject SpellObject;
+    public abstract void CastSpell(Vector3 posistion, Quaternion playerRot);
     public float durition;
     public EElementalyType element;
     public Color castingColour;

@@ -1238,6 +1238,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1663224832}
     m_Modifications:
+    - target: {fileID: -6771448749878362742, guid: 20d575714db51e048bf1d62796ca8399,
+        type: 3}
+      propertyPath: spellIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2890370868060906427, guid: 20d575714db51e048bf1d62796ca8399,
         type: 3}
       propertyPath: m_Name
@@ -1313,6 +1318,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1663224832}
     m_Modifications:
+    - target: {fileID: -7916933461871589906, guid: d393080bd7ee46849bbd74a2d351ddcd,
+        type: 3}
+      propertyPath: spellIndex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3428829505617517362, guid: d393080bd7ee46849bbd74a2d351ddcd,
         type: 3}
       propertyPath: m_RootOrder
@@ -1474,6 +1484,28 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 362533047}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &464006293 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7184932348631374896, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1352430363}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &464006294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464006293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe57e74dd1d67241a18ab34a9d0eaf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spells:
+  - {fileID: 6344335812988061145, guid: c1149ac06ebbd8a478ee27c10f011330, type: 3}
+  - {fileID: 1306605793903958, guid: 9ce4142b18056ab4b813713b878856ca, type: 3}
+  - {fileID: 3381655597293149968, guid: faa489452f03a154793e1d2869e4c97b, type: 3}
 --- !u!4 &489672257 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3428829505617517362, guid: d393080bd7ee46849bbd74a2d351ddcd,
@@ -2327,6 +2359,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1663224832}
     m_Modifications:
+    - target: {fileID: -6771448749878362742, guid: 20d575714db51e048bf1d62796ca8399,
+        type: 3}
+      propertyPath: spellIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2890370868060906427, guid: 20d575714db51e048bf1d62796ca8399,
         type: 3}
       propertyPath: m_Name
@@ -2432,6 +2469,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1663224832}
     m_Modifications:
+    - target: {fileID: -7916933461871589906, guid: d393080bd7ee46849bbd74a2d351ddcd,
+        type: 3}
+      propertyPath: spellIndex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3428829505617517362, guid: d393080bd7ee46849bbd74a2d351ddcd,
         type: 3}
       propertyPath: m_RootOrder
@@ -3290,6 +3332,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FirePickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 8451263495592988537, guid: 01e6ec26c6e16364c898b6a6a0dde34a,
+        type: 3}
+      propertyPath: spellIndex
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01e6ec26c6e16364c898b6a6a0dde34a, type: 3}

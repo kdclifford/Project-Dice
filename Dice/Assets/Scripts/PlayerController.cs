@@ -13,10 +13,17 @@ public class PlayerController : MonoBehaviour
     private SoundManager soundManager;
     private PlayerAnimations playerAnimations;
 
-   [HideInInspector]
-    public GameObject projectileLeft;
     [HideInInspector]
-    public GameObject projectileRight;
+    public int rightSpell;
+    [HideInInspector]
+    public int leftSpell;
+
+
+
+    //[HideInInspector]
+    //public GameObject projectileLeft;
+    //[HideInInspector]
+    //public GameObject projectileRight;
     private Material leftColour;
     private Material rightColour;
 
@@ -98,7 +105,6 @@ public class PlayerController : MonoBehaviour
             VolumeChange Vol = volumeObj.GetComponent<VolumeChange>();
 
             if(volumeObj.transform.parent.name == "MasterVol")
-
             {
                 globalVolume = Vol.ChangeVolume(globalVolume);
             }
@@ -156,9 +162,9 @@ public class PlayerController : MonoBehaviour
 
 
         if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightAttack) &&
-           projectileRight != null &&
+           rightSpell != null &&
            ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftAttack) &&
-           projectileLeft != null)
+           leftSpell != null)
         {
             AnimationScript.DoubleAttack(animator);
           
@@ -166,7 +172,7 @@ public class PlayerController : MonoBehaviour
         else
         {
 
-            if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightAttack) && projectileRight != null)
+            if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightAttack) && rightSpell != null)
             {
                 if (currRTFireCooldown <= 0)
                 {
@@ -179,7 +185,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            else if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftAttack) && projectileLeft != null)
+            else if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftAttack) && leftSpell != null)
             {
                 if (currLTFireCooldown <= 0)
                 {                  
@@ -237,24 +243,39 @@ public class PlayerController : MonoBehaviour
         
             if(ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftEquipt))
             {
-                uIManager.ShowLeftSpell(Collision.GetComponent<SpriteRenderer>().sprite);
-                projectileLeft = (GameObject)Resources.Load("Player/" + FindSpell(Collision.GetComponent<ProjectileType>().projectileType));
+                //Set the spell
+                leftSpell = Collision.gameObject.GetComponent<ProjectileType>().spellIndex;
+
+                var baseSpell = SpellList.instance.spells[leftSpell].GetComponent<SpellBase>();
+
+                uIManager.ShowLeftSpell(baseSpell.UILogo);
+
                 Destroy(Collision.gameObject);
-                if (projectileLeft != null)
-                {
-                    leftColour.color = projectileLeft.GetComponent<ParticleSystem>().main.startColor.color;
-                }
+                uIManager.HideEquipPopUp();
+
+                //if (projectileLeft != null)
+                //{
+                leftColour.color = baseSpell.castingColour;
+                //}
             }
             else if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightEquipt))
             {
-                uIManager.ShowRightSpell(Collision.GetComponent<SpriteRenderer>().sprite);
-                projectileRight = (GameObject)Resources.Load("Player/" + FindSpell(Collision.GetComponent<ProjectileType>().projectileType));
+
+                rightSpell = Collision.gameObject.GetComponent<ProjectileType>().spellIndex;
+
+                var baseSpell = SpellList.instance.spells[rightSpell].GetComponent<SpellBase>();
+
+                uIManager.ShowRightSpell(baseSpell.UILogo);
+
                 Destroy(Collision.gameObject);
                 uIManager.HideEquipPopUp();
-                if (projectileRight != null)
-                {                    
-                    rightColour.color = projectileRight.GetComponent<ParticleSystem>().main.startColor.color;
-                }
+
+
+                //if (projectileRight != null)
+                //{
+                    rightColour.color = baseSpell.castingColour;
+
+                //}
             }
         }
         else if (Collision.gameObject.tag == "HealthPickup" && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
@@ -320,17 +341,24 @@ public class PlayerController : MonoBehaviour
     //*******************
     public void RightFire()
     {
+        // Cast Spell?
+
+
+
         Quaternion playerRot = Quaternion.identity;
         playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y, 90);
 
-        Vector3 RightFirePos = transform.position + (transform.right * projectileDistance);// RightFirePos.x += 0.4f;
-        RightFirePos.y += yOffsetProgectile;
+        Vector3 rightFirePos = transform.position + (transform.right * projectileDistance);// RightFirePos.x += 0.4f;
+        rightFirePos.y += yOffsetProgectile;
 
-        GameObject bullet = Instantiate(projectileRight, RightFirePos, playerRot) as GameObject;
-        bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
-        ESoundClipEnum clipEnum = (ESoundClipEnum)System.Enum.Parse(typeof(ESoundClipEnum), projectileRight.name, true);
-        soundManager.Play(clipEnum, bullet);
+        SpellList.instance.spells[rightSpell].GetComponent<SpellBase>().CastSpell(rightFirePos, playerRot);
 
+        //
+            //GameObject bullet = Instantiate(projectileRight, RightFirePos, playerRot) as GameObject;
+            //bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
+            //ESoundClipEnum clipEnum = (ESoundClipEnum)System.Enum.Parse(typeof(ESoundClipEnum), projectileRight.name, true);
+            //soundManager.Play(clipEnum, bullet);
+        //
         currRTFireCooldown = MaxFireCooldown;
     }
 
@@ -339,42 +367,45 @@ public class PlayerController : MonoBehaviour
         Quaternion playerRot = Quaternion.identity;
         playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y, 90);
 
-        Vector3 LeftFirePos = transform.position + (transform.right * -projectileDistance);// LeftFirePos.x -= 0.4f;
-        LeftFirePos.y += yOffsetProgectile;
+        Vector3 leftFirePos = transform.position + (transform.right * -projectileDistance);// LeftFirePos.x -= 0.4f;
+        leftFirePos.y += yOffsetProgectile;
 
-        GameObject bullet = Instantiate(projectileLeft, LeftFirePos, playerRot) as GameObject;
-        bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
+        SpellList.instance.spells[leftSpell].GetComponent<SpellBase>().CastSpell(leftFirePos, playerRot);
 
-        ESoundClipEnum clipEnum = (ESoundClipEnum)System.Enum.Parse(typeof(ESoundClipEnum), projectileLeft.name, true);
-        soundManager.Play(clipEnum, bullet);
+
+        //GameObject bullet = Instantiate(projectileLeft, leftFirePos, playerRot) as GameObject;
+        //bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
+
+        //ESoundClipEnum clipEnum = (ESoundClipEnum)System.Enum.Parse(typeof(ESoundClipEnum), projectileLeft.name, true);
+        //soundManager.Play(clipEnum, bullet);
 
         currLTFireCooldown = MaxFireCooldown;
     }
 
     public void MiddleFire()
     {
-        Quaternion playerRot = Quaternion.identity;
-        playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y, 90);
+        //Quaternion playerRot = Quaternion.identity;
+        //playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y, 90);
 
-        Vector3 LeftFirePos = transform.position;// LeftFirePos.x -= 0.4f;
-        LeftFirePos.y += yOffsetProgectile;
+        //Vector3 LeftFirePos = transform.position;// LeftFirePos.x -= 0.4f;
+        //LeftFirePos.y += yOffsetProgectile;
 
-        GameObject bullet = Instantiate(projectileLeft, LeftFirePos, playerRot) as GameObject;
-        bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
-        ESoundClipEnum clipEnum = (ESoundClipEnum)System.Enum.Parse(typeof(ESoundClipEnum), projectileLeft.name, true);
-        soundManager.Play(clipEnum, bullet);
+        //GameObject bullet = Instantiate(projectileLeft, LeftFirePos, playerRot) as GameObject;
+        //bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
+        //ESoundClipEnum clipEnum = (ESoundClipEnum)System.Enum.Parse(typeof(ESoundClipEnum), projectileLeft.name, true);
+        //soundManager.Play(clipEnum, bullet);
 
-        currLTFireCooldown = MaxFireCooldown;
+        //currLTFireCooldown = MaxFireCooldown;
 
-        Vector3 RightFirePos = transform.position;// RightFirePos.x += 0.4f;
-        RightFirePos.y += yOffsetProgectile;
+        //Vector3 RightFirePos = transform.position;// RightFirePos.x += 0.4f;
+        //RightFirePos.y += yOffsetProgectile;
 
-        bullet = Instantiate(projectileRight, RightFirePos, playerRot) as GameObject;
-        bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
-        clipEnum = (ESoundClipEnum)System.Enum.Parse(typeof(ESoundClipEnum), projectileRight.name, true);
-        soundManager.Play(clipEnum, bullet);
+        //bullet = Instantiate(projectileRight, RightFirePos, playerRot) as GameObject;
+        //bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
+        //clipEnum = (ESoundClipEnum)System.Enum.Parse(typeof(ESoundClipEnum), projectileRight.name, true);
+        //soundManager.Play(clipEnum, bullet);
 
-        currRTFireCooldown = MaxFireCooldown;
+        //currRTFireCooldown = MaxFireCooldown;
 
 
     }

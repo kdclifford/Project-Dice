@@ -42,4 +42,11 @@ public class ProjectileController : MonoBehaviour
         }
     }
 
+    public void setTimer(float timerTime)
+    {
+        MaxTimer = timerTime;
+        curTimer = timerTime;
+
+    }
+
 }
