@@ -106,7 +106,6 @@ GameObject:
   - component: {fileID: 4811113834965867643}
   - component: {fileID: 8650300934417849260}
   - component: {fileID: 3595217270179700958}
-  - component: {fileID: -3812747813099698447}
   m_Layer: 8
   m_Name: FireBall 1
   m_TagString: Equipped
@@ -4951,23 +4950,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxTimer: 4
---- !u!114 &-3812747813099698447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6344335812988061145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 162d15b2d6bed8444af9fa67bd6ce1db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SpellObject: {fileID: 6344335812988061145}
-  durition: 3
-  element: 0
-  castingColour: {r: 1, g: 0.031960763, b: 0, a: 0}
-  spellType: 1
-  castingSound: 0
-  UILogo: {fileID: 21300000, guid: bb5ca1cbfe47285469b7cbe80b0e2a99, type: 3}
-  projectileSpeed: 700

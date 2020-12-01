@@ -4,21 +4,16 @@ using UnityEngine;
 
 public class ProjectileType : MonoBehaviour
 { 
-   // public SpellBase spell = new FireBall();
-    public Projectile projectileType;
     public int spellIndex;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-       // GetComponent<SpriteRenderer>().sprite = projectileType.UILogo;
+        GetComponent<SpriteRenderer>().sprite = SpellList.instance.spells[spellIndex].UILogo;
+        transform.GetChild(0).gameObject.GetComponent<Light>().color = SpellList.instance.spells[spellIndex].castingColour;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+
 }
 
 

@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour
 {
     //Public
     [SerializeField, Header("Object Referneces")]
-    private GameObject projectile;
+    private int projectile = -1;
     [SerializeField]
     private RandomColour meshRenderer;
     public GameObject target;
@@ -49,7 +49,7 @@ public class EnemyController : MonoBehaviour
         agent.avoidancePriority = 0;
         fireCooldown = fireRate;
         animator = GetComponent<Animator>();
-        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
+        soundManager = SoundManager.instance;
         health = GetComponent<Health>();
     }
 
@@ -167,7 +167,7 @@ public class EnemyController : MonoBehaviour
     //Universal call to make enemies
     public void EnemyShoot()
     {
-        if (projectile.tag != ("NotEquipped"))
+        if (projectile != -1)
         {
             if (playerHealth >= 0 && fireCooldown <= 0)
             {
@@ -220,11 +220,8 @@ public class EnemyController : MonoBehaviour
         firePos += transform.forward * zOffsetProgectile;
 
         //playerRot.eulerAngles += 45;
-        GameObject bullet = Instantiate(projectile, firePos, playerRot) as GameObject;
-        bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * projectileSpeed);
-        bullet.tag = "EnemyProjectile";
-        ESoundClipEnum clipEnum = (ESoundClipEnum)System.Enum.Parse(typeof(ESoundClipEnum), projectile.name, true);
-        soundManager.Play(clipEnum, bullet);
+        SpellList.instance.spells[projectile].CastSpell(firePos, playerRot, "EnemyProjectile");
+       
         fireCooldown = fireRate;
     }
 

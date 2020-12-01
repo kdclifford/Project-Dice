@@ -6,14 +6,10 @@ public class Bubble : SpellBase
 {
     public float projectileSpeed = 700;
 
-    public override void CastSpell(Vector3 posistion, Quaternion playerRot)
+    public override void CastSpell(Vector3 posistion, Quaternion playerRot, string tag = "Equipped")
     {
-        //Spell Code would go in here then when controller has correct input Cast Spell
-        GameObject bullet = Instantiate(SpellList.instance.spells[2], posistion, playerRot) as GameObject;
-        bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * projectileSpeed);
-        GetComponent<ProjectileController>().setTimer(durition);
+        ProjectileFire(posistion, playerRot, tag, projectileSpeed);
         //soundManager.Play(castingSound, bullet);
-
     }
 
     public Bubble(float mDuration = 3)
@@ -22,7 +18,13 @@ public class Bubble : SpellBase
         castingColour = Color.blue;
         element = EElementalyType.Water;
         castingSound = ESoundClipEnum.Bubble;
-        spellType = ESpellType.Projectile;
-        //  UILogo = (Sprite)Resources.Load("UI Icons/Spells/FireUI");
+        spellType = ESpellType.Projectile;      
     }
+
+    public override void SetValues()
+    {
+        SpellObject = Resources.Load("Player/Bubble", typeof(GameObject)) as GameObject;
+        UILogo = Resources.Load<Sprite>("UIIcons/Spells/WaterUI");
+    }
+
 }

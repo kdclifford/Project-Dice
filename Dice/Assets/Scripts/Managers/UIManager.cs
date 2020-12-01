@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -23,13 +24,37 @@ public class UIManager : MonoBehaviour
     private GameObject boarder;
     [SerializeField]
     private GameObject canvas;
-
+    [SerializeField]
+    private GameObject gameUI;
 
     private Health playerHealth;
-    private GameObject[] hearts;
-    private GameObject[] shield;
+    public GameObject[] hearts;
+    public GameObject[] shield;
     private int maxHearts;
     private int maxShields;
+
+    public static UIManager instance;
+
+    private Scene currentScene;
+
+
+    void Awake()
+    {
+        
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+        currentScene = SceneManager.GetActiveScene();
+
+        DontDestroyOnLoad(gameObject);
+    }
+
 
     public void RemoveHeart()
     {
@@ -43,6 +68,7 @@ public class UIManager : MonoBehaviour
 
         if (playerHealth.GetHealth() > 0)
         {
+            //hearts[playerHealth.GetHealth() - 1].gameObject.GetComponent<Animator>().SetInteger("Health", 1);
             hearts[playerHealth.GetHealth() - 1].gameObject.GetComponent<Animator>().SetInteger("Health", 1);
             /// health.currentHealth--;
         }
@@ -93,6 +119,17 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (SceneManager.GetActiveScene() != currentScene)
+        {
+            playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
+            maxHearts = (int)playerHealth.maxHealth;
+            maxShields = (int)playerHealth.maxShields;
+        }
+    }
+
+
     public void ShowLeftSpell(Sprite powerUp)
     {
         LeftUIIcon.sprite = powerUp;
@@ -125,12 +162,12 @@ public class UIManager : MonoBehaviour
 
     public void EnableUI()
     {
-        boarder.SetActive(true);
+        gameUI.SetActive(true);
     }
 
     public void DisableUI()
     {
-        boarder.SetActive(false);
+        gameUI.SetActive(false);
     }
 
 }

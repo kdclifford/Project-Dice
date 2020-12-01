@@ -15,12 +15,12 @@ public class CollisionResolution : MonoBehaviour
 
     private void Start()
     {
-        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
-        textManager = soundManager.GetComponent<TextManager>();
+        soundManager = SoundManager.instance;
+        textManager = TextManager.instance;
         textPrefab = (GameObject)Resources.Load("Fonts/Text");
         playerAnimations = GetComponent<PlayerAnimations>();
         agentHealth = GetComponent<Health>();
-        uIManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<UIManager>();
+        uIManager = UIManager.instance;
     }
 
     private void OnTriggerEnter(Collider other)

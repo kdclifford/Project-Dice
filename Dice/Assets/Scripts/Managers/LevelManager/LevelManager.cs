@@ -31,9 +31,9 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
+        soundManager = SoundManager.instance;
         fade = GameObject.FindGameObjectWithTag("SceneFade").GetComponent<Animator>();
-        uIManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<UIManager>();
+        uIManager = UIManager.instance;
     }
 
   

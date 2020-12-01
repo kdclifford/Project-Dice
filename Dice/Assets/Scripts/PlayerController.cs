@@ -14,9 +14,9 @@ public class PlayerController : MonoBehaviour
     private PlayerAnimations playerAnimations;
 
     [HideInInspector]
-    public int rightSpell;
+    public int rightSpell = -1;
     [HideInInspector]
-    public int leftSpell;
+    public int leftSpell = -1;
 
 
 
@@ -80,11 +80,11 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        uIManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<UIManager>();
+        uIManager = UIManager.instance;
         uIManager.HideInteractPopUp();
         uIManager.HideEquipPopUp();
-        gameSettings = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameSettings>();
-        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
+        gameSettings = GameSettings.instance;
+        soundManager = SoundManager.instance;
         animator = GetComponent<Animator>();
         rightColour = (Material)Resources.Load("Player/Weapon 1");
         leftColour = (Material)Resources.Load("Player/Weapon 2");
@@ -172,7 +172,7 @@ public class PlayerController : MonoBehaviour
         else
         {
 
-            if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightAttack) && rightSpell != null)
+            if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightAttack) && rightSpell != -1)
             {
                 if (currRTFireCooldown <= 0)
                 {
@@ -185,7 +185,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            else if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftAttack) && leftSpell != null)
+            else if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftAttack) && leftSpell != -1)
             {
                 if (currLTFireCooldown <= 0)
                 {                  
@@ -246,7 +246,7 @@ public class PlayerController : MonoBehaviour
                 //Set the spell
                 leftSpell = Collision.gameObject.GetComponent<ProjectileType>().spellIndex;
 
-                var baseSpell = SpellList.instance.spells[leftSpell].GetComponent<SpellBase>();
+                var baseSpell = SpellList.instance.spells[leftSpell];
 
                 uIManager.ShowLeftSpell(baseSpell.UILogo);
 
@@ -263,7 +263,7 @@ public class PlayerController : MonoBehaviour
 
                 rightSpell = Collision.gameObject.GetComponent<ProjectileType>().spellIndex;
 
-                var baseSpell = SpellList.instance.spells[rightSpell].GetComponent<SpellBase>();
+                var baseSpell = SpellList.instance.spells[rightSpell];
 
                 uIManager.ShowRightSpell(baseSpell.UILogo);
 
@@ -343,22 +343,13 @@ public class PlayerController : MonoBehaviour
     {
         // Cast Spell?
 
-
-
         Quaternion playerRot = Quaternion.identity;
         playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y, 90);
 
         Vector3 rightFirePos = transform.position + (transform.right * projectileDistance);// RightFirePos.x += 0.4f;
         rightFirePos.y += yOffsetProgectile;
 
-        SpellList.instance.spells[rightSpell].GetComponent<SpellBase>().CastSpell(rightFirePos, playerRot);
-
-        //
-            //GameObject bullet = Instantiate(projectileRight, RightFirePos, playerRot) as GameObject;
-            //bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
-            //ESoundClipEnum clipEnum = (ESoundClipEnum)System.Enum.Parse(typeof(ESoundClipEnum), projectileRight.name, true);
-            //soundManager.Play(clipEnum, bullet);
-        //
+        SpellList.instance.spells[rightSpell].CastSpell(rightFirePos, playerRot);
         currRTFireCooldown = MaxFireCooldown;
     }
 
@@ -370,14 +361,7 @@ public class PlayerController : MonoBehaviour
         Vector3 leftFirePos = transform.position + (transform.right * -projectileDistance);// LeftFirePos.x -= 0.4f;
         leftFirePos.y += yOffsetProgectile;
 
-        SpellList.instance.spells[leftSpell].GetComponent<SpellBase>().CastSpell(leftFirePos, playerRot);
-
-
-        //GameObject bullet = Instantiate(projectileLeft, leftFirePos, playerRot) as GameObject;
-        //bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
-
-        //ESoundClipEnum clipEnum = (ESoundClipEnum)System.Enum.Parse(typeof(ESoundClipEnum), projectileLeft.name, true);
-        //soundManager.Play(clipEnum, bullet);
+        SpellList.instance.spells[leftSpell].CastSpell(leftFirePos, playerRot);
 
         currLTFireCooldown = MaxFireCooldown;
     }

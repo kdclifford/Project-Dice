@@ -8,7 +8,24 @@ public class TextManager : MonoBehaviour
     [Tooltip("Fonts used for the Player/Emeny Projectile Collisions")]
     [Header("Hit Text Fonts")]
     public Font[] fonts;
-   
+
+    public static TextManager instance;
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
+    }
+
+
     //Gets the text that is going to be used
     public string SelectText()
     {

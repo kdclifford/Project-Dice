@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7341140322022902002}
   - component: {fileID: 9175302205679929718}
   - component: {fileID: 3227544418695698933}
-  - component: {fileID: -3225006679515682672}
   m_Layer: 8
   m_Name: BubbleProjctile
   m_TagString: Equipped
@@ -4869,26 +4868,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxTimer: 3
---- !u!114 &-3225006679515682672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3381655597293149968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e728aa056a2d629409f920daf6594631, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SpellObject: {fileID: 3381655597293149968}
-  durition: 3
-  element: 4
-  castingColour: {r: 0, g: 1, b: 0.97175574, a: 0}
-  spellType: 1
-  castingSound: 0
-  UILogo: {fileID: 21300000, guid: 858a75c4e0fc28c44b0d9685abb86b3d, type: 3}
-  projectileSpeed: 700
 --- !u!1 &3381655597293149970
 GameObject:
   m_ObjectHideFlags: 0

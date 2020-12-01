@@ -6,12 +6,9 @@ using UnityEngine;
 public class FireBall : SpellBase
 {
     public float projectileSpeed = 700;
-    public override void CastSpell(Vector3 posistion, Quaternion playerRot)
+    public override void CastSpell(Vector3 posistion, Quaternion playerRot, string tag = "Equipped")
     {
-        //Spell Code would go in here then when controller has correct input Cast Spell
-        GameObject bullet = Instantiate(SpellObject, posistion, playerRot) as GameObject;
-        bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * projectileSpeed);
-        GetComponent<ProjectileController>().setTimer(durition);
+        ProjectileFire(posistion, playerRot, tag, projectileSpeed);
 
         //soundManager.Play(castingSound, bullet);
 
@@ -23,13 +20,20 @@ public class FireBall : SpellBase
         castingColour = Color.red;
         element = EElementalyType.Fire;
         castingSound = ESoundClipEnum.FireBall;
-        spellType = ESpellType.Projectile;
-      //  UILogo = (Sprite)Resources.Load("UI Icons/Spells/FireUI");
+        spellType = ESpellType.Projectile;        
+        //  UILogo = (Sprite)Resources.Load("UI Icons/Spells/FireUI");
     }
 
-   // //Default time
-   //public FireBall() : this(3)
-   // {       
-   // }
+    public override void SetValues()
+    {
+        SpellObject = Resources.Load("Player/FireBall", typeof(GameObject)) as GameObject;
+        UILogo = Resources.Load<Sprite>("UIIcons/Spells/FireUI");
+    }
+
+
+    // //Default time
+    //public FireBall() : this(3)
+    // {       
+    // }
 
 }
