@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class ImageCreate : MonoBehaviour
@@ -15,12 +16,13 @@ public class ImageCreate : MonoBehaviour
     // Start is called before the first frame update
     public void Combine()
     {
-       // oldColour = eyeObject.GetComponent<SpriteRenderer>().color;
-        NewTexture = MergeImage(oldTexture, NewTexture);
+        // oldColour = eyeObject.GetComponent<SpriteRenderer>().color;
+        //NewTexture = new Texture2D(oldTexture.width, oldTexture.height);
+        MergeImage();
     }
 
 
-    public Texture2D MergeImage(Texture2D OldTexture, Texture2D NewTexture)
+    public void MergeImage()
     {
         //BodyColour.a = 1f;
         //EyeColour.a = 1f;
@@ -28,15 +30,21 @@ public class ImageCreate : MonoBehaviour
         int startX = 0;
         int startY = 0;
 
-        for (int x = startX; x < OldTexture.width; x++)
+        float i = 1.0f / oldTexture.height;
+
+        for (int x = startX; x < oldTexture.width; x++)
         {
 
-            for (int y = startY; y < OldTexture.height; y++)
+            for (int y = startY; y < oldTexture.height; y++)
             {
-                Color bgColor = OldTexture.GetPixel(x, y);
-                if(bgColor == Color.black )
+                Color bgColor = oldTexture.GetPixel(x, y);
+
+                float test = (float)y / oldTexture.height;
+
+                if (bgColor.a != 0)
                 {
-                    bgColor.a = 0;
+                    bgColor = Color.Lerp(Color.black, Color.white, i * y);
+                    bgColor.a = Mathf.Lerp(0, 1, i * y);
                 }
 
 
@@ -51,8 +59,14 @@ public class ImageCreate : MonoBehaviour
             }
         }
 
-        NewTexture.Apply();
-        return NewTexture;
+        
+       NewTexture.Apply();
+
+
+        byte[] itemBGBytes = NewTexture.EncodeToPNG();
+       // File.WriteAllBytes("/Assets/", itemBGBytes);
+        File.WriteAllBytes(Application.dataPath + "/SavedScreen.png", itemBGBytes);
+
     }
 
 
