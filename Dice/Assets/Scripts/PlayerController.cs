@@ -284,11 +284,11 @@ public class PlayerController : MonoBehaviour
         {
             Health sn = gameObject.GetComponent<Health>();
 
-            if (sn.GetHealth() < sn.maxHealth - 1)
+            if (sn.GetHealth() < sn.maxHealth)
             {
                 sn.AddHealth();
                 Destroy(Collision.gameObject);               
-                uIManager.AddUIHeart();
+                //uIManager.AddUIHeart();
             }
         }
         else if (Collision.gameObject.tag == "ShieldPickup" && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))

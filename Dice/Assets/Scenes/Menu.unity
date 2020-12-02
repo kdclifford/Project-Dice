@@ -1122,25 +1122,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &823268647 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6596837168492618016, guid: 76d5029045c5e2546886a54ad3ca7b9b,
-    type: 3}
-  m_PrefabInstance: {fileID: 884603521}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &823268651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 823268647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43a169c47f9a9d94c8c226fd660e0798, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  image: {fileID: 0}
 --- !u!1001 &884603521
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2456,8 +2437,8 @@ GameObject:
   - component: {fileID: 1076441419094983694}
   - component: {fileID: 1068920597981447522}
   - component: {fileID: 1876403840277204822}
-  - component: {fileID: 3619003941629737207}
   - component: {fileID: 627714386117822272}
+  - component: {fileID: 1045637155237090357}
   m_Layer: 13
   m_Name: dungeon-wall-stone (11)
   m_TagString: Wall
@@ -2465,6 +2446,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!208 &1045637155237090357
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045637155237090356}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2.0010002, y: 1.501, z: 0.163}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.001, y: 1.4990001, z: 0.165}
+  m_TimeToStationary: 0.5
 --- !u!4 &1047411852273322082
 Transform:
   m_ObjectHideFlags: 0
@@ -3973,22 +3970,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!208 &3619003941629737207
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1045637155237090356}
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 2.0010002, y: 1.501, z: 0.163}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: -0.001, y: 1.4990001, z: 0.165}
-  m_TimeToStationary: 0.5
 --- !u!54 &3934203168753464571
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -28,7 +28,7 @@ public class HeartController : MonoBehaviour
         }
 
             healthText.text = health.GetHealth().ToString() + "%";
-        image.material.SetFloat("_Health", 0.7f * health.GetHealth());
+        image.material.SetFloat("_Health", health.GetHealth());
     }
 
 }

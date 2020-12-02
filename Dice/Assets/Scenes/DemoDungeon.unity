@@ -6197,16 +6197,6 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3102238488056755860, guid: accb85e1beb2714498461559c4ca8cdb,
-        type: 3}
-      propertyPath: m_Carve
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3102238488056755860, guid: accb85e1beb2714498461559c4ca8cdb,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3269594757179337273, guid: accb85e1beb2714498461559c4ca8cdb,
         type: 3}
       propertyPath: m_Size.x
@@ -6707,8 +6697,7 @@ PrefabInstance:
       propertyPath: m_LightProbeUsage
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3102238488056755860, guid: accb85e1beb2714498461559c4ca8cdb, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: accb85e1beb2714498461559c4ca8cdb, type: 3}
 --- !u!4 &1971290040 stripped
 Transform:

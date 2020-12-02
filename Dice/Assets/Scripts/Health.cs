@@ -36,7 +36,15 @@ public class Health : MonoBehaviour
     {
         if (currentHealth < maxHealth)
         {
-            currentHealth++;
+            if(currentHealth + 25 > 100)
+            {
+                currentHealth = 100;
+            }
+            else
+            {
+            currentHealth += 25;
+            }
+
         }
     }
 

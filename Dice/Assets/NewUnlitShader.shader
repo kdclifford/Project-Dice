@@ -1,6 +1,6 @@
 ﻿// Unity built-in shader source. Copyright (c) 2016 Unity Technologies. MIT license (see license.txt)
 
-Shader "UI/Default"
+Shader "Heart"
 {
     Properties
     {
@@ -15,7 +15,7 @@ Shader "UI/Default"
         _StencilReadMask("Stencil Read Mask", Float) = 255
 
         _ColorMask("Color Mask", Float) = 15
-            _Health("Health", Range(0, 70)) = 70
+            _Health("Health", Range(0, 100)) = 100
             _Shield("Shield", Range(0, 35)) = 35
 
         [Toggle(UNITY_UI_ALPHACLIP)] _UseUIAlphaClip("Use Alpha Clip", Float) = 0
@@ -99,7 +99,9 @@ Shader "UI/Default"
 
                     OUT.texcoord = TRANSFORM_TEX(v.texcoord, _MainTex);
 
-                    OUT.color = v.color * _Tint;
+                    //v.color.a = _Tint.a;
+                    OUT.color = v.color;
+
                     return OUT;
                 }
 
@@ -108,11 +110,16 @@ Shader "UI/Default"
                     float newHealth = _Health / 100.0f;
                     half4 alphaSample = (tex2D(_Staff, IN.texcoord) + _TextureSampleAdd) * IN.color;
                     half4 color = 0;
+                    half4 newColor = (1,1,0,0);
                     float newShield = _Shield / 100.0f;
 
                     if (alphaSample.a < newHealth)
                     {
                         color = (tex2D(_MainTex, IN.texcoord) + _TextureSampleAdd) * IN.color;
+                        color.r = lerp(_Tint.r, color.r, newHealth);
+                        color.g = lerp(_Tint.g, color.g, newHealth);
+                        color.b = lerp(_Tint.b, color.b, newHealth);
+
                     }
                     else
                     {
