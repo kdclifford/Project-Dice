@@ -6,6 +6,7 @@ Shader "Heart"
     {
         [PerRendererData] _MainTex("Sprite Texture", 2D) = "white" {}
     _Staff("StaffTexture", 2D) = "white" {}
+    _Bar("Bar Colour", 2D) = "white" {}
         _Tint("Tint", Color) = (1,1,1,1)
 
         _StencilComp("Stencil Comparison", Float) = 8
@@ -81,6 +82,7 @@ Shader "Heart"
 
                 sampler2D _MainTex;
                 sampler2D _Staff;
+                sampler2D _Bar;
                 int _Shield;                
                 float _Health;
                 fixed4 _Color;
@@ -112,17 +114,20 @@ Shader "Heart"
                     half4 color = 0;
                     half4 newColor = (1,1,0,0);
                     float newShield = _Shield / 100.0f;
-
-                    if (alphaSample.a < newHealth)
-                    {
                         color = (tex2D(_MainTex, IN.texcoord) + _TextureSampleAdd) * IN.color;
-                        color.r = lerp(_Tint.r, color.r, newHealth);
-                        color.g = lerp(_Tint.g, color.g, newHealth);
-                        color.b = lerp(_Tint.b, color.b, newHealth);
+                        
+                        if (tex2D(_Bar, IN.texcoord).a > 0)
+                        {
+                            color +=  _Tint;
+                        }
 
-                    }
-                    else
+                    if (alphaSample.a > newHealth)
                     {
+                      /*  color.r = lerp(_Tint.r, color.r, newHealth);
+                        color.g = lerp(_Tint.g, color.g, newHealth);
+                        color.b = lerp(_Tint.b, color.b, newHealth);*/
+
+                    
                         color = (tex2D(_MainTex, IN.texcoord) + _TextureSampleAdd) * IN.color;
                         color.r = 1;
                         color.g = 1;
