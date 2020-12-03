@@ -12,6 +12,7 @@ public class CollisionResolution : MonoBehaviour
     private PlayerAnimations playerAnimations;
     private Health agentHealth;
     private UIManager uIManager;
+    private SpellList spellList;
 
     private void Start()
     {
@@ -21,6 +22,7 @@ public class CollisionResolution : MonoBehaviour
         playerAnimations = GetComponent<PlayerAnimations>();
         agentHealth = GetComponent<Health>();
         uIManager = UIManager.instance;
+        spellList = SpellList.instance;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,7 +34,7 @@ public class CollisionResolution : MonoBehaviour
                 //Destory object and show text with 
                 Destroy(other.gameObject);
                 textColour = other.gameObject.GetComponent<ParticleSystem>().main.startColor.color;
-                ShowFloatingText(other.gameObject);
+                ShowFloatingText(other.gameObject.GetComponent<SpellIndex>().spellIndex);
             }
         }
         else if (transform.tag == "Player")
@@ -48,7 +50,7 @@ public class CollisionResolution : MonoBehaviour
                 // playerAnimations.UpdateHeartUI();
                 textColour = other.gameObject.GetComponent<ParticleSystem>().main.startColor.color;
                 uIManager.RemoveHeart();
-                ShowFloatingText(other.gameObject);
+                ShowFloatingText(other.gameObject.GetComponent<SpellIndex>().spellIndex);
 
                 if (agentHealth.GetHealth() <= 0)
                 {
@@ -71,7 +73,7 @@ public class CollisionResolution : MonoBehaviour
         }
     }
 
-    void ShowFloatingText(GameObject projectile)
+    void ShowFloatingText(ESpellEnum projectile)
     {
         GameObject text = Instantiate(textPrefab, transform.position, textPrefab.transform.rotation) as GameObject;
         TextMesh textMesh = text.GetComponent<TextMesh>();
@@ -79,8 +81,8 @@ public class CollisionResolution : MonoBehaviour
         textMesh.font = textManager.GetFont(i);
         text.GetComponent<MeshRenderer>().material = textManager.GetFont(i).material;
         textMesh.text = textManager.SelectText();
-        //text.GetComponent<TextMesh>().color = projectile.GetComponent<ParticleSystem>().main.startColor.color;
-        textMesh.color = Color.white;
+        text.GetComponent<TextMesh>().color = spellList.spells[(int)projectile].castingColour;
+        //textMesh.color = Color.white;
 
         GetComponent<Health>().RemoveHealth();
     }

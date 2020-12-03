@@ -6,9 +6,9 @@ public class Spark : SpellBase
 {
     public float projectileSpeed = 700;
 
-    public override void CastSpell(Vector3 posistion, Quaternion playerRot, string tag = "Equipped")
+    public override void CastSpell(Vector3 posistion, float rot, string tag = "Equipped")
     {
-        ProjectileFire(posistion, playerRot, tag, projectileSpeed);
+        ProjectileFire(posistion, rot, tag, projectileSpeed, ESpellEnum.Spark);
         //soundManager.Play(castingSound, bullet);
 
     }
@@ -17,7 +17,7 @@ public class Spark : SpellBase
     {
         durition = 3;
         castingColour = Color.yellow;
-        element = EElementalyType.Water;
+        element = EElementalyType.Electricity;
         castingSound = ESoundClipEnum.Electric;
         spellType = ESpellType.Projectile;
         //  UILogo = (Sprite)Resources.Load("UI Icons/Spells/FireUI");

@@ -5,7 +5,6 @@ using UnityEditor;
 [CustomEditor(typeof(ProjectileType))]
 public class SpellEditor : Editor
 {
-
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
@@ -16,7 +15,5 @@ public class SpellEditor : Editor
             myScript.spellList.InitializeSpells();
             myScript.LoadUI();
         }
-
-
     }
 }

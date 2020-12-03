@@ -345,25 +345,23 @@ public class PlayerController : MonoBehaviour
     {
         // Cast Spell?
 
-        Quaternion playerRot = Quaternion.identity;
-        playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y, 90);
+       
 
         Vector3 rightFirePos = transform.position + (transform.right * projectileDistance);// RightFirePos.x += 0.4f;
         rightFirePos.y += yOffsetProgectile;
 
-        SpellList.instance.spells[rightSpell].CastSpell(rightFirePos, playerRot);
+        SpellList.instance.spells[rightSpell].CastSpell(rightFirePos, transform.eulerAngles.y);
         currRTFireCooldown = MaxFireCooldown;
     }
 
     public void LeftFire()
     {
-        Quaternion playerRot = Quaternion.identity;
-        playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y, 90);
+   
 
         Vector3 leftFirePos = transform.position + (transform.right * -projectileDistance);// LeftFirePos.x -= 0.4f;
         leftFirePos.y += yOffsetProgectile;
 
-        SpellList.instance.spells[leftSpell].CastSpell(leftFirePos, playerRot);
+        SpellList.instance.spells[leftSpell].CastSpell(leftFirePos, transform.eulerAngles.y);
 
         currLTFireCooldown = MaxFireCooldown;
     }

@@ -5,6 +5,7 @@ public enum ESpellEnum
 {
 	Bubble = 0,
 	FireBall = 1,
-	Spark = 2,
+	FireWork = 2,
+	Spark = 3,
 
 }

@@ -6,9 +6,9 @@ public class Bubble : SpellBase
 {
     public float projectileSpeed = 700;
 
-    public override void CastSpell(Vector3 posistion, Quaternion playerRot, string tag = "Equipped")
+    public override void CastSpell(Vector3 posistion, float rot, string tag = "Equipped")
     {
-        ProjectileFire(posistion, playerRot, tag, projectileSpeed);
+        ProjectileFire(posistion, rot, tag, projectileSpeed, ESpellEnum.Bubble);
         //soundManager.Play(castingSound, bullet);
     }
 
