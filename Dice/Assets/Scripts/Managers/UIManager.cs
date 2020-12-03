@@ -69,7 +69,7 @@ public class UIManager : MonoBehaviour
         if (playerHealth.GetHealth() > 0)
         {
             //hearts[playerHealth.GetHealth() - 1].gameObject.GetComponent<Animator>().SetInteger("Health", 1);
-            hearts[playerHealth.GetHealth() - 1].gameObject.GetComponent<Animator>().SetInteger("Health", 1);
+            //hearts[playerHealth.GetHealth() - 1].gameObject.GetComponent<Animator>().SetInteger("Health", 1);
             /// health.currentHealth--;
         }
     }
@@ -89,7 +89,8 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
-        maxHearts = (int)playerHealth.maxHealth;
+        //maxHearts = (int)playerHealth.maxHealth;
+        maxHearts = 8;
         maxShields = (int)playerHealth.maxShields;
         hearts = new GameObject[maxHearts];
         shield = new GameObject[maxShields];
