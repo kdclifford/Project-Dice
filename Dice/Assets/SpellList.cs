@@ -8,7 +8,7 @@ public class SpellList : MonoBehaviour
 
     // [HideInInspector]
     public SpellBase[] spells;
-    public int o = 5;
+
     void Awake()
     {
        
@@ -34,6 +34,11 @@ public class SpellList : MonoBehaviour
         //Spark spark = new Spark();
         //Bubble bubble = new Bubble();
 
+        InitializeSpells();
+    }
+
+    public void InitializeSpells()
+    {
         spells = new SpellBase[] { new FireBall(), new Spark(), new Bubble() };
 
         foreach (SpellBase spell in spells)
@@ -41,6 +46,4 @@ public class SpellList : MonoBehaviour
             spell.SetValues();
         }
     }
-
-
 }
