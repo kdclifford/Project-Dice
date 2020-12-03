@@ -5,6 +5,8 @@ using UnityEditor;
 [CustomEditor(typeof(XmlLoader)), CanEditMultipleObjects]
 public class XmlLoaderEditor : Editor
 {
+    const string name = "ESoundClipEnum";
+    const string path = "Assets/Scripts/";
     //Width offset
     private float offset = 20;
 
@@ -75,7 +77,14 @@ public class XmlLoaderEditor : Editor
         if (GUILayout.Button("Save all Changes to XML", GUILayout.Height(50), GUILayout.Width((Screen.width * 0.5f) - offset)))
         {
             myScript.SaveXML();
-            EditorMethods.WriteToEnum(myScript.GetComponentInParent<SoundManager>().soundClips);
+            Sound[] tempSound = myScript.GetComponentInParent<SoundManager>().soundClips;
+            string[] names = new string[tempSound.Length];
+            for (int i = 0; i < tempSound.Length; i++)
+            {
+                names[i] = tempSound[i].name;
+            }
+
+            EditorMethods.WriteToEnum(names, name, path);
             
         }
 

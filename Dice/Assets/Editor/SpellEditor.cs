@@ -10,7 +10,7 @@ public class SpellEditor : Editor
     {
         DrawDefaultInspector();
         ProjectileType myScript = (ProjectileType)target;
-        if (myScript.spellIndex > -1)
+        if ((int)myScript.spellIndex > -1)
         {
             myScript.setSpell();
             myScript.spellList.InitializeSpells();

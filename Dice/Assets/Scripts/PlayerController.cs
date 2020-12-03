@@ -246,7 +246,7 @@ public class PlayerController : MonoBehaviour
             if(ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftEquipt))
             {
                 //Set the spell
-                leftSpell = Collision.gameObject.GetComponent<ProjectileType>().spellIndex;
+                leftSpell = (int)Collision.gameObject.GetComponent<ProjectileType>().spellIndex;
 
                 var baseSpell = SpellList.instance.spells[leftSpell];
 
@@ -263,7 +263,7 @@ public class PlayerController : MonoBehaviour
             else if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightEquipt))
             {
 
-                rightSpell = Collision.gameObject.GetComponent<ProjectileType>().spellIndex;
+                rightSpell = (int)Collision.gameObject.GetComponent<ProjectileType>().spellIndex;
 
                 var baseSpell = SpellList.instance.spells[rightSpell];
 

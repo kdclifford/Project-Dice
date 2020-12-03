@@ -8,9 +8,8 @@ public class EditorMethods : Editor
 {
    
      const string extension = ".cs";
-    const string name = "ESoundClipEnum";
-    const string path = "Assets/Scripts/";
-    public static void WriteToEnum(Sound[] data)
+
+    public static void WriteToEnum(string[] data , string name, string path)
     {
         using (StreamWriter file = File.CreateText(path + name + extension))
         {
@@ -21,7 +20,7 @@ public class EditorMethods : Editor
            
             for(int i = 0; i < data.Length; i++)
             { 
-                string lineRep = data[i].name.ToString().Replace(" ", string.Empty);
+                string lineRep = data[i].ToString().Replace(" ", string.Empty);
                 if (!string.IsNullOrEmpty(lineRep))
                 {
                     file.WriteLine(string.Format("\t{0} = {1},",

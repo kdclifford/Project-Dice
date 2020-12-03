@@ -12,9 +12,9 @@ public class Bubble : SpellBase
         //soundManager.Play(castingSound, bullet);
     }
 
-    public Bubble(float mDuration = 3)
+    public Bubble()
     {
-        durition = mDuration;
+        durition = 3;
         castingColour = Color.blue;
         element = EElementalyType.Water;
         castingSound = ESoundClipEnum.Bubble;

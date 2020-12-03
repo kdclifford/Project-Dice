@@ -14,9 +14,9 @@ public class FireBall : SpellBase
 
     }
 
-    public FireBall(float mDuration = 3)
+    public FireBall()
     {
-        durition = mDuration;
+        durition = 3;
         castingColour = Color.red;
         element = EElementalyType.Fire;
         castingSound = ESoundClipEnum.FireBall;

@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class ProjectileType : MonoBehaviour
 { 
-    public int spellIndex;
+    public ESpellEnum spellIndex;
     [HideInInspector]
    public SpellList spellList;
 
     private void Start()
     {
-        gameObject.GetComponent<SpriteRenderer>().sprite = SpellList.instance.spells[spellIndex].UILogo;
-        transform.GetChild(0).gameObject.GetComponent<Light>().color = SpellList.instance.spells[spellIndex].castingColour;
+        gameObject.GetComponent<SpriteRenderer>().sprite = SpellList.instance.spells[(int)spellIndex].UILogo;
+        transform.GetChild(0).gameObject.GetComponent<Light>().color = SpellList.instance.spells[(int)spellIndex].castingColour;
     }
 
     public void LoadUI()
     {
-        gameObject.GetComponent<SpriteRenderer>().sprite = spellList.spells[spellIndex].UILogo;
+        gameObject.GetComponent<SpriteRenderer>().sprite = spellList.spells[(int)spellIndex].UILogo;
         //transform.GetChild(0).gameObject.GetComponent<Light>().color = SpellList.instance.spells[spellIndex].castingColour;
     }
 

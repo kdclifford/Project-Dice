@@ -13,9 +13,9 @@ public class Spark : SpellBase
 
     }
 
-    public Spark(float mDuration = 3)
+    public Spark()
     {
-        durition = mDuration;
+        durition = 3;
         castingColour = Color.yellow;
         element = EElementalyType.Water;
         castingSound = ESoundClipEnum.Electric;

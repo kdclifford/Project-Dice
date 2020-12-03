@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
+using System.Linq;
 using UnityEngine;
 
 public class SpellList : MonoBehaviour
@@ -7,8 +9,8 @@ public class SpellList : MonoBehaviour
     public static SpellList instance;
 
     // [HideInInspector]
-    public SpellBase[] spells;
-
+    //public SpellBase[] spells;
+   public List<SpellBase> spells;
     void Awake()
     {
        
@@ -39,11 +41,24 @@ public class SpellList : MonoBehaviour
 
     public void InitializeSpells()
     {
-        spells = new SpellBase[] { new FireBall(), new Spark(), new Bubble() };
+       // spells = new SpellBase[] { new FireBall(), new Spark(), new Bubble() };
 
+
+        spells = new List<SpellBase>();
+        foreach (Type type in AppDomain.CurrentDomain.GetAssemblies()
+                               .SelectMany(assembly => assembly.GetTypes())
+                               .Where(type => type.IsSubclassOf(typeof(SpellBase))))
+            {
+            spells.Add((SpellBase)Activator.CreateInstance(type));
+        }
         foreach (SpellBase spell in spells)
         {
             spell.SetValues();
         }
     }
+
+
+
+
+
 }
