@@ -27,7 +27,7 @@ public class HeartController : MonoBehaviour
             health = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
         }
 
-            healthText.text = health.GetHealth().ToString() + "%";
+            healthText.text = health.GetHealth().ToString();
         image.material.SetFloat("_Health", health.GetHealth());
     }
 
