@@ -6,9 +6,11 @@ public class FireWork : SpellBase
 {
 
     public float projectileSpeed = 100;
-
+    public GameObject particlePrefab;
     public override void CastSpell(Vector3 posistion, float rot, string tag = "Equipped")
     {
+       GameObject effect = MonoBehaviour.Instantiate(particlePrefab, posistion, Quaternion.identity) as GameObject;
+        MonoBehaviour.Destroy(effect, 1.5f);
         //Spell Code would go in here then when controller has correct input Cast Spell
         for (int i = 0; i < 10; i++)
         {
@@ -39,6 +41,7 @@ public class FireWork : SpellBase
     public override void SetValues()
     {
         SpellObject = Resources.Load("Player/FireBall", typeof(GameObject)) as GameObject;
+        particlePrefab = Resources.Load("GroundExplosion", typeof(GameObject)) as GameObject;
         UILogo = Resources.Load<Sprite>("UIIcons/Spells/FireUI");
     }
 
