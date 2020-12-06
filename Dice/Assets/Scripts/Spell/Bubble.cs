@@ -14,7 +14,7 @@ public class Bubble : SpellBase
 
     public Bubble()
     {
-        durition = 3;
+        duration = 3;
         castingColour = Color.blue;
         element = EElementalyType.Water;
         castingSound = ESoundClipEnum.Bubble;
@@ -25,6 +25,7 @@ public class Bubble : SpellBase
     {
         SpellObject = Resources.Load("Player/Bubble", typeof(GameObject)) as GameObject;
         UILogo = Resources.Load<Sprite>("UIIcons/Spells/WaterUI");
+        destroyInstantiante = Resources.Load("Player/GroundExplosion", typeof(GameObject)) as GameObject;
     }
 
 }

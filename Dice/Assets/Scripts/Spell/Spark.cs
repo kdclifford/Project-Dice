@@ -15,7 +15,7 @@ public class Spark : SpellBase
 
     public Spark()
     {
-        durition = 3;
+        duration = 3;
         castingColour = Color.yellow;
         element = EElementalyType.Electricity;
         castingSound = ESoundClipEnum.Electric;
@@ -27,6 +27,7 @@ public class Spark : SpellBase
     {
         SpellObject = Resources.Load("Player/Electric", typeof(GameObject)) as GameObject;
         UILogo = Resources.Load<Sprite>("UIIcons/Spells/LightningUI");
+        destroyInstantiante = Resources.Load("Player/GroundExplosion", typeof(GameObject)) as GameObject;
     }
 
 }

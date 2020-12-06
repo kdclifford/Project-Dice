@@ -147,13 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593b3186bfa13874fa42db714e97f2f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileType:
-    durition: 0
-    element: 0
-    castingColour: {r: 0, g: 0, b: 0, a: 0}
-    spellType: 0
-    castingSound: 0
-    UILogo: {fileID: 21300000, guid: bb5ca1cbfe47285469b7cbe80b0e2a99, type: 3}
+  spellIndex: 0
+  spellList: {fileID: 0}
 --- !u!1 &2890370868067624923
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +226,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295

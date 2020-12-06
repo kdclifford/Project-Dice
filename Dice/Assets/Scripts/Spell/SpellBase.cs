@@ -7,12 +7,13 @@ public abstract class SpellBase
     public GameObject SpellObject;
     public abstract void CastSpell(Vector3 posistion, float rot, string tag = "Equipped");
     public abstract void SetValues();
-    public float durition;
+    public float duration;
     public EElementalyType element;
     public Color castingColour;
     public ESpellType spellType;
     public ESoundClipEnum castingSound;
     public Sprite UILogo;
+    public GameObject destroyInstantiante;
 
     //Data Structure for UI Needs to be defineded
     //Maybe another Abstract Function called "GetUIData" in base class that can be called by children to feedback Data
@@ -28,10 +29,14 @@ public abstract class SpellBase
         GameObject bullet = MonoBehaviour.Instantiate(SpellObject, posistion, agentRot) as GameObject;
         bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * projectileSpeed);
         bullet.tag = tag;
-        bullet.GetComponent<ProjectileController>().setTimer(durition);
+        bullet.GetComponent<ProjectileController>().setTimer(duration);
         bullet.AddComponent<SpellIndex>().spellIndex = spell;
         SoundManager.instance.Play(castingSound, bullet);
     }
 
-
+    public void death(Vector3 ProjectilePosition, GameObject currentProjectile)
+    {
+        GameObject bullet = MonoBehaviour.Instantiate(destroyInstantiante, ProjectilePosition, Quaternion.identity) as GameObject;
+        MonoBehaviour.Destroy(currentProjectile);
+    }
 }

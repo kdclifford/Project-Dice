@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class FireBall : SpellBase
+public class ProjectileAOEFire : SpellBase
 {
-    public float projectileSpeed = 700;
+    public float projectileSpeed = 300;
     public override void CastSpell(Vector3 posistion, float rot, string tag = "Equipped")
     {
         ProjectileFire(posistion, rot, tag, projectileSpeed, ESpellEnum.FireBall);
@@ -14,21 +13,19 @@ public class FireBall : SpellBase
 
     }
 
-    public FireBall()
+    public ProjectileAOEFire()
     {
-        duration = 3;
+        duration = 1;
         castingColour = Color.red;
         element = EElementalyType.Fire;
         castingSound = ESoundClipEnum.FireBall;
-        spellType = ESpellType.Projectile;        
-        //  UILogo = (Sprite)Resources.Load("UI Icons/Spells/FireUI");
+        spellType = ESpellType.Projectile;
     }
 
     public override void SetValues()
     {
-        SpellObject = Resources.Load("Player/FireBall", typeof(GameObject)) as GameObject;
+        SpellObject = Resources.Load("Player/FireBallAOE", typeof(GameObject)) as GameObject;
         UILogo = Resources.Load<Sprite>("UIIcons/Spells/FireUI");
-        destroyInstantiante = Resources.Load("Player/GroundExplosion", typeof(GameObject)) as GameObject;
+        destroyInstantiante = Resources.Load("Player/FireBall", typeof(GameObject)) as GameObject;
     }
-
 }
