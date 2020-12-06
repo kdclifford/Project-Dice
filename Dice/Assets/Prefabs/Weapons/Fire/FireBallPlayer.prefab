@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 8650300934417849260}
   - component: {fileID: 3595217270179700958}
   m_Layer: 8
-  m_Name: FireBall 1
+  m_Name: FireBallPlayer
   m_TagString: Equipped
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,7 +122,7 @@ Transform:
   m_GameObject: {fileID: 6344335812988061145}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 0.032279085, y: 0.005676167, z: 0.03227909}
+  m_LocalScale: {x: 0.061985526, y: 0.010899943, z: 0.061985534}
   m_Children:
   - {fileID: 5425880597615590115}
   m_Father: {fileID: 0}
@@ -211,7 +211,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -317,7 +317,7 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 1, g: 0.33131784, b: 0, a: 0.25490198}
+      minColor: {r: 1, g: 0.58540666, b: 0, a: 0.25490198}
       maxColor: {r: 1, g: 0.1273585, b: 0.1273585, a: 0.38431373}
       maxGradient:
         serializedVersion: 2
@@ -961,7 +961,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 20
       minScalar: 10
       maxCurve:
         serializedVersion: 2
