@@ -13,9 +13,9 @@ public class PlayerController : MonoBehaviour
     private SoundManager soundManager;
     private PlayerAnimations playerAnimations;
 
-    [HideInInspector]
+    //[HideInInspector]
     public int rightSpell = -1;
-    [HideInInspector]
+   // [HideInInspector]
     public int leftSpell = -1;
 
 

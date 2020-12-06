@@ -5,9 +5,11 @@ using UnityEngine;
 public class ProjectileAOEFire : SpellBase
 {
     public float projectileSpeed = 300;
+
+    //Cast Spell call instaiate your object in here the 
     public override void CastSpell(Vector3 posistion, float rot, string tag = "Equipped")
     {
-        ProjectileFire(posistion, rot, tag, projectileSpeed, ESpellEnum.FireBall);
+        BasicProjectile(posistion, rot, tag, projectileSpeed, ESpellEnum.ProjectileAOEFire);
 
         //soundManager.Play(castingSound, bullet);
 
@@ -24,8 +26,8 @@ public class ProjectileAOEFire : SpellBase
 
     public override void SetValues()
     {
-        SpellObject = Resources.Load("Player/FireBallAOE", typeof(GameObject)) as GameObject;
-        UILogo = Resources.Load<Sprite>("UIIcons/Spells/FireUI");
-        destroyInstantiante = Resources.Load("Player/FireBall", typeof(GameObject)) as GameObject;
+        UILogo = Resources.Load<Sprite>(PathUI + "FireUI");
+        SpellObject = Resources.Load(PathProjectile + "FireBallAOE", typeof(GameObject)) as GameObject;
+        destroyInstantiante = Resources.Load(PathDeath + "FireballDestroy", typeof(GameObject)) as GameObject;
     }
 }

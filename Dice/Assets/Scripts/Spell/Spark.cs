@@ -8,7 +8,7 @@ public class Spark : SpellBase
 
     public override void CastSpell(Vector3 posistion, float rot, string tag = "Equipped")
     {
-        ProjectileFire(posistion, rot, tag, projectileSpeed, ESpellEnum.Spark);
+        BasicProjectile(posistion, rot, tag, projectileSpeed, ESpellEnum.Spark);
         //soundManager.Play(castingSound, bullet);
 
     }
@@ -25,9 +25,9 @@ public class Spark : SpellBase
 
     public override void SetValues()
     {
-        SpellObject = Resources.Load("Player/Electric", typeof(GameObject)) as GameObject;
-        UILogo = Resources.Load<Sprite>("UIIcons/Spells/LightningUI");
-        destroyInstantiante = Resources.Load("Player/GroundExplosion", typeof(GameObject)) as GameObject;
+        SpellObject = Resources.Load(PathProjectile + "Electric", typeof(GameObject)) as GameObject;
+        UILogo = Resources.Load<Sprite>(PathUI + "LightningUI");
+        destroyInstantiante = Resources.Load(PathDeath + "GroundExplosion", typeof(GameObject)) as GameObject;
     }
 
 }

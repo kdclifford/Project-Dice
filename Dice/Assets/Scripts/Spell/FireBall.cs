@@ -8,7 +8,7 @@ public class FireBall : SpellBase
     public float projectileSpeed = 700;
     public override void CastSpell(Vector3 posistion, float rot, string tag = "Equipped")
     {
-        ProjectileFire(posistion, rot, tag, projectileSpeed, ESpellEnum.FireBall);
+        BasicProjectile(posistion, rot, tag, projectileSpeed, ESpellEnum.FireBall);
 
         //soundManager.Play(castingSound, bullet);
 
@@ -26,9 +26,9 @@ public class FireBall : SpellBase
 
     public override void SetValues()
     {
-        SpellObject = Resources.Load("Player/FireBall", typeof(GameObject)) as GameObject;
-        UILogo = Resources.Load<Sprite>("UIIcons/Spells/FireUI");
-        destroyInstantiante = Resources.Load("Player/GroundExplosion", typeof(GameObject)) as GameObject;
+        SpellObject = Resources.Load(PathProjectile + "FireBall", typeof(GameObject)) as GameObject;
+        UILogo = Resources.Load<Sprite>(PathUI + "FireUI");
+        destroyInstantiante = Resources.Load(PathDeath + "GroundExplosion", typeof(GameObject)) as GameObject;
     }
 
 }

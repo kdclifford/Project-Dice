@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class SpellIndex : MonoBehaviour
 {
-    public ESpellEnum spellIndex;
+   public ESpellEnum spellIndex;
 }

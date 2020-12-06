@@ -8,7 +8,7 @@ public class Bubble : SpellBase
 
     public override void CastSpell(Vector3 posistion, float rot, string tag = "Equipped")
     {
-        ProjectileFire(posistion, rot, tag, projectileSpeed, ESpellEnum.Bubble);
+        BasicProjectile(posistion, rot, tag, projectileSpeed, ESpellEnum.Bubble);
         //soundManager.Play(castingSound, bullet);
     }
 
@@ -23,9 +23,9 @@ public class Bubble : SpellBase
 
     public override void SetValues()
     {
-        SpellObject = Resources.Load("Player/Bubble", typeof(GameObject)) as GameObject;
-        UILogo = Resources.Load<Sprite>("UIIcons/Spells/WaterUI");
-        destroyInstantiante = Resources.Load("Player/GroundExplosion", typeof(GameObject)) as GameObject;
+        SpellObject = Resources.Load(PathProjectile + "Bubble", typeof(GameObject)) as GameObject;
+        UILogo = Resources.Load<Sprite>(PathUI + "WaterUI");
+        destroyInstantiante = Resources.Load( PathDeath +  "GroundExplosion", typeof(GameObject)) as GameObject;
     }
 
 }

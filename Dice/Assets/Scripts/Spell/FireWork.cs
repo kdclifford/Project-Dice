@@ -39,10 +39,10 @@ public class FireWork : SpellBase
 
     public override void SetValues()
     {
-        SpellObject = Resources.Load("Player/FireBall", typeof(GameObject)) as GameObject;
-        particlePrefab = Resources.Load("Player/GroundExplosion", typeof(GameObject)) as GameObject;
-        UILogo = Resources.Load<Sprite>("UIIcons/Spells/FireUI");
-        destroyInstantiante = Resources.Load("Player/GroundExplosion", typeof(GameObject)) as GameObject;
+        UILogo = Resources.Load<Sprite>(PathUI + "FireUI");
+        SpellObject = Resources.Load(PathProjectile + "FireBall", typeof(GameObject)) as GameObject;
+        particlePrefab = Resources.Load(PathProjectile + "GroundExplosion", typeof(GameObject)) as GameObject;
+        destroyInstantiante = Resources.Load(PathDeath + "GroundExplosion", typeof(GameObject)) as GameObject;
     }
 
 

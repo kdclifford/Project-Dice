@@ -9,6 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3381655597292782384, guid: faa489452f03a154793e1d2869e4c97b,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3381655597292782384, guid: faa489452f03a154793e1d2869e4c97b,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -24,6 +29,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3381655597292782384, guid: faa489452f03a154793e1d2869e4c97b,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3381655597292782384, guid: faa489452f03a154793e1d2869e4c97b,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -36,16 +46,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 3381655597292782384, guid: faa489452f03a154793e1d2869e4c97b,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 3381655597292782384, guid: faa489452f03a154793e1d2869e4c97b,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3381655597292782384, guid: faa489452f03a154793e1d2869e4c97b,
         type: 3}
@@ -65,7 +65,7 @@ PrefabInstance:
     - target: {fileID: 3381655597293149968, guid: faa489452f03a154793e1d2869e4c97b,
         type: 3}
       propertyPath: m_Name
-      value: BubblePickup
+      value: Bubble
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: faa489452f03a154793e1d2869e4c97b, type: 3}
