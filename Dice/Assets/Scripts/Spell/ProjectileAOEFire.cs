@@ -28,6 +28,6 @@ public class ProjectileAOEFire : SpellBase
     {
         UILogo = Resources.Load<Sprite>(PathUI + "FireUI");
         SpellObject = Resources.Load(PathProjectile + "FireBallAOE", typeof(GameObject)) as GameObject;
-        destroyInstantiante = Resources.Load(PathDeath + "FireballDestroy", typeof(GameObject)) as GameObject;
+        destroyInstantiante = Resources.Load(PathDeath + "GroundExplosion", typeof(GameObject)) as GameObject;
     }
 }
