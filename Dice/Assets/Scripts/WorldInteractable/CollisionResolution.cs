@@ -73,7 +73,13 @@ public class CollisionResolution : MonoBehaviour
         }
     }
 
-    void ShowFloatingText(ESpellEnum projectile)
+    void OnParticleCollision(GameObject other)
+    {
+       // other.gameObject.GetComponent<ParticleSystem>().set
+    }
+
+
+        void ShowFloatingText(ESpellEnum projectile)
     {
         GameObject text = Instantiate(textPrefab, transform.position, textPrefab.transform.rotation) as GameObject;
         TextMesh textMesh = text.GetComponent<TextMesh>();
