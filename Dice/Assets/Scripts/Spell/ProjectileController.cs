@@ -23,14 +23,14 @@ public class ProjectileController : MonoBehaviour
         }
         else
         {
-            SpellList.instance.spells[(int)GetComponent<SpellIndex>().spellIndex].death(transform.position, gameObject);
+            SpellList.instance.spells[(int)GetComponent<SpellIndex>().spellIndex].Death(transform.position, gameObject);
         }
     }
     void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Wall")
         {
-            SpellList.instance.spells[(int)GetComponent<SpellIndex>().spellIndex].death(transform.position, gameObject);
+            SpellList.instance.spells[(int)GetComponent<SpellIndex>().spellIndex].Death(transform.position, gameObject);
         }
     }
 
@@ -38,7 +38,7 @@ public class ProjectileController : MonoBehaviour
     {
         if (other.gameObject.tag == "Wall")
         {
-            SpellList.instance.spells[(int)GetComponent<SpellIndex>().spellIndex].death(transform.position, gameObject);
+            SpellList.instance.spells[(int)GetComponent<SpellIndex>().spellIndex].Death(transform.position, gameObject);
         }
     }
 

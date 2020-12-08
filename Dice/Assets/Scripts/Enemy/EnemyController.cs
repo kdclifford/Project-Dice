@@ -41,6 +41,8 @@ public class EnemyController : MonoBehaviour
 
     bool gotRandomPos = false;
     Vector3 dest;
+    private GameObject lootDrop;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +53,7 @@ public class EnemyController : MonoBehaviour
         animator = GetComponent<Animator>();
         soundManager = SoundManager.instance;
         health = GetComponent<Health>();
+        lootDrop = Resources.Load("test/Particle System", typeof(GameObject)) as GameObject;
     }
 
     // Update is called once per frame
@@ -249,6 +252,13 @@ public class EnemyController : MonoBehaviour
        return hit.position;
     }
 
+    public void LootDrop()
+    {
+        lootDrop.GetComponent<ParticleSystem>().startColor = SpellList.instance.spells[(int)projectile].castingColour;
+        GameObject loot = MonoBehaviour.Instantiate(lootDrop, transform.position, Quaternion.identity) as GameObject;
+    }
+
+
 }
 
 public enum EAIStates
@@ -258,3 +268,4 @@ public enum EAIStates
     Fire,
     MoveTowards,
 }
+

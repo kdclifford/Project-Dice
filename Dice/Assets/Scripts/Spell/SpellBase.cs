@@ -17,6 +17,7 @@ public abstract class SpellBase
     private string pathProjectile = "Spells/";
     private string pathDeath = "SpellDestruction/";
     private string pathUI = "UIIcons/Spells/";
+
 public string PathProjectile { get { return pathProjectile;} }
     public string PathDeath { get { return pathDeath; } }
     public string PathUI { get { return pathUI; } }
@@ -40,7 +41,7 @@ public string PathProjectile { get { return pathProjectile;} }
         SoundManager.instance.Play(castingSound, bullet);
     }
 
-    public void death(Vector3 ProjectilePosition, GameObject currentProjectile)
+    public void Death(Vector3 ProjectilePosition, GameObject currentProjectile)
     {
         GameObject bullet = MonoBehaviour.Instantiate(destroyInstantiante, ProjectilePosition, Quaternion.identity) as GameObject;
         MonoBehaviour.Destroy(currentProjectile);

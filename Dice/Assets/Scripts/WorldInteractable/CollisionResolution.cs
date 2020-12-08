@@ -59,13 +59,13 @@ public class CollisionResolution : MonoBehaviour
                     playerAnimations.deathDirection = death;
                     playerAnimations.DeathAnimation();
                     soundManager.Play(ESoundClipEnum.PlayerDeath, gameObject);
-                    
+
                 }
                 else
                 {
                     soundManager.Play(ESoundClipEnum.PlayerHit, gameObject);
                 }
-                
+
 
                 Destroy(other.gameObject);
 
@@ -73,13 +73,9 @@ public class CollisionResolution : MonoBehaviour
         }
     }
 
-    void OnParticleCollision(GameObject other)
-    {
-       // other.gameObject.GetComponent<ParticleSystem>().set
-    }
 
 
-        void ShowFloatingText(ESpellEnum projectile)
+    void ShowFloatingText(ESpellEnum projectile)
     {
         GameObject text = Instantiate(textPrefab, transform.position, textPrefab.transform.rotation) as GameObject;
         TextMesh textMesh = text.GetComponent<TextMesh>();

@@ -39,6 +39,10 @@ public class GameSettings : MonoBehaviour
                     controllerType = EControllerType.Controller;
                     break;
                 }
+                else
+                {
+                    controllerType = EControllerType.Computer;
+                }
             }
            
         }
