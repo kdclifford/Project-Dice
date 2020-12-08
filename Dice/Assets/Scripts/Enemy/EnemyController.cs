@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using AnimationFunctions.Utils;
 using UnityEngine.AI;
 using UnityEngine;
+using System;
 
 public class EnemyController : MonoBehaviour
 {
@@ -245,7 +246,7 @@ public class EnemyController : MonoBehaviour
 
     public static Vector3 RandomNavSphere(Vector3 origin, float distance, int layerhit)
     {
-        Vector3 randomDirection = Random.insideUnitSphere * distance;
+        Vector3 randomDirection = UnityEngine.Random.insideUnitSphere * distance;
         randomDirection += origin;
         NavMeshHit hit;
         NavMesh.SamplePosition(randomDirection, out hit, distance, 1);
@@ -254,12 +255,34 @@ public class EnemyController : MonoBehaviour
 
     public void LootDrop()
     {
-        lootDrop.GetComponent<ParticleSystem>().startColor = SpellList.instance.spells[(int)projectile].castingColour;
+        ParticleSystem.MainModule particle = lootDrop.GetComponent<ParticleSystem>().main;
+        particle.startColor = SpellList.instance.spells[(int)projectile].castingColour;
         GameObject loot = MonoBehaviour.Instantiate(lootDrop, transform.position, Quaternion.identity) as GameObject;
+        loot.tag = ManaTag(SpellList.instance.spells[(int)projectile].element);
     }
 
+    public string ManaTag(EElementalyType type)
+    {
+        switch (type)
+        {
+            case EElementalyType.Fire:
+                return "Fire";
+            case EElementalyType.Water:
+                return "Water";
+            case EElementalyType.Electricity:
+                return "Electricity";
+            case EElementalyType.Rock:
+                return "Rock";
+            case EElementalyType.Wind:
+                return "Wind";
+        }
+        throw new Exception();
+    }
 
 }
+
+
+
 
 public enum EAIStates
 {
