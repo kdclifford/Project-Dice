@@ -7,6 +7,7 @@ public class ProjectileController : MonoBehaviour
     [SerializeField]
     private float MaxTimer = 4;
     private float curTimer;
+    Quaternion projectileRotation;
 
     // Start is called before the first frame update
     void Start()
@@ -23,14 +24,14 @@ public class ProjectileController : MonoBehaviour
         }
         else
         {
-            SpellList.instance.spells[(int)GetComponent<SpellIndex>().spellIndex].Death(transform.position, gameObject);
+            SpellList.instance.spells[(int)GetComponent<SpellIndex>().spellIndex].death(transform.position, gameObject, transform.rotation);
         }
     }
     void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Wall")
         {
-            SpellList.instance.spells[(int)GetComponent<SpellIndex>().spellIndex].Death(transform.position, gameObject);
+            SpellList.instance.spells[(int)GetComponent<SpellIndex>().spellIndex].death(transform.position, gameObject, transform.rotation);
         }
     }
 
@@ -38,7 +39,7 @@ public class ProjectileController : MonoBehaviour
     {
         if (other.gameObject.tag == "Wall")
         {
-            SpellList.instance.spells[(int)GetComponent<SpellIndex>().spellIndex].Death(transform.position, gameObject);
+            SpellList.instance.spells[(int)GetComponent<SpellIndex>().spellIndex].death(transform.position, gameObject, transform.rotation);
         }
     }
 
