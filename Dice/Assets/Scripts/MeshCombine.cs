@@ -48,16 +48,21 @@ public class MeshCombine : MonoBehaviour
         }
 
         mergedMesh.CombineMeshes(combineInstances);
+        mergedMesh.RecalculateNormals();
         GetComponent<MeshFilter>().sharedMesh = mergedMesh;
+        transform.localScale *= 0.33333f;
         GetComponent<MeshRenderer>().sharedMaterial = material;
+        gameObject.AddComponent<MeshCollider>();
 
         transform.position = oldPos;
         transform.rotation = oldRot;
 
         for (int i = 0; i < transform.childCount; i++)
         {
-            transform.GetChild(i).gameObject.SetActive(false);
+            //transform.GetChild(i).gameObject.SetActive(false);
+            Destroy(transform.GetChild(i).gameObject);
         }
+        
     }
 
     void CheckForMeshComps()
