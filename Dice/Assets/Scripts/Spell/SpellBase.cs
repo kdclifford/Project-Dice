@@ -40,9 +40,9 @@ public string PathProjectile { get { return pathProjectile;} }
         SoundManager.instance.Play(castingSound, bullet);
     }
 
-    public void death(Vector3 ProjectilePosition, GameObject currentProjectile)
+    public void death(Vector3 ProjectilePosition, GameObject currentProjectile, Quaternion ProjectileRotation)
     {
-        GameObject bullet = MonoBehaviour.Instantiate(destroyInstantiante, ProjectilePosition, Quaternion.identity) as GameObject;
+        GameObject bullet = MonoBehaviour.Instantiate(destroyInstantiante, ProjectilePosition, ProjectileRotation) as GameObject;
         MonoBehaviour.Destroy(currentProjectile);
     }
 }

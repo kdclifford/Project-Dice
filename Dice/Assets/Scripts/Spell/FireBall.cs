@@ -28,7 +28,7 @@ public class FireBall : SpellBase
     {
         SpellObject = Resources.Load(PathProjectile + "FireBall", typeof(GameObject)) as GameObject;
         UILogo = Resources.Load<Sprite>(PathUI + "FireUI");
-        destroyInstantiante = Resources.Load(PathDeath + "FireballDestroy", typeof(GameObject)) as GameObject;
+        destroyInstantiante = Resources.Load(PathDeath + "FireballDestroy 1", typeof(GameObject)) as GameObject;
     }
 
 }
