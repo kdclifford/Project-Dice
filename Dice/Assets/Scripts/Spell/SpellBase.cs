@@ -12,6 +12,7 @@ public abstract class SpellBase
     public Color castingColour;
     public ESpellType spellType;
     public ESoundClipEnum castingSound;
+    public ESoundClipEnum deathSound;
     public Sprite UILogo;
     public GameObject destroyInstantiante;
     private string pathProjectile = "Spells/";
@@ -42,7 +43,8 @@ public string PathProjectile { get { return pathProjectile;} }
 
     public void death(Vector3 ProjectilePosition, GameObject currentProjectile, Quaternion ProjectileRotation)
     {
-        GameObject bullet = MonoBehaviour.Instantiate(destroyInstantiante, ProjectilePosition, ProjectileRotation) as GameObject;
+        GameObject deathObject = MonoBehaviour.Instantiate(destroyInstantiante, ProjectilePosition, ProjectileRotation) as GameObject;
+        SoundManager.instance.PlayOnceAtPoint(deathSound, deathObject);
         MonoBehaviour.Destroy(currentProjectile);
     }
 }

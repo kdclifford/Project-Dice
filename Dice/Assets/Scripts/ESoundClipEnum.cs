@@ -13,5 +13,6 @@ public enum ESoundClipEnum
 	Dramaticmusic = 7,
 	MenuMusic = 8,
 	MenuMusic2 = 9,
+	PuttingOutFireBall = 10,
 
 }

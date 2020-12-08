@@ -24,7 +24,8 @@ public class ProjectileController : MonoBehaviour
         }
         else
         {
-            SpellList.instance.spells[(int)GetComponent<SpellIndex>().spellIndex].death(transform.position, gameObject, transform.rotation);
+
+
         }
     }
     void OnCollisionEnter(Collision collision)

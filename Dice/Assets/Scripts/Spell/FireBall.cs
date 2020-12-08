@@ -20,7 +20,8 @@ public class FireBall : SpellBase
         castingColour = Color.red;
         element = EElementalyType.Fire;
         castingSound = ESoundClipEnum.FireBall;
-        spellType = ESpellType.Projectile;        
+        spellType = ESpellType.Projectile;
+        deathSound = ESoundClipEnum.PuttingOutFireBall;
         //  UILogo = (Sprite)Resources.Load("UI Icons/Spells/FireUI");
     }
 
