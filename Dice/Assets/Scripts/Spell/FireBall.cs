@@ -8,7 +8,7 @@ public class FireBall : SpellBase
     public float projectileSpeed = 700;
     public override void CastSpell(Vector3 posistion, float rot, string tag = "Equipped")
     {
-        ProjectileFire(posistion, rot, tag, projectileSpeed, ESpellEnum.FireBall);
+        BasicProjectile(posistion, rot, tag, projectileSpeed, ESpellEnum.FireBall);
 
         //soundManager.Play(castingSound, bullet);
 
@@ -16,24 +16,20 @@ public class FireBall : SpellBase
 
     public FireBall()
     {
-        durition = 3;
+        duration = 3;
         castingColour = Color.red;
         element = EElementalyType.Fire;
         castingSound = ESoundClipEnum.FireBall;
-        spellType = ESpellType.Projectile;        
+        spellType = ESpellType.Projectile;
+        deathSound = ESoundClipEnum.PuttingOutFireBall;
         //  UILogo = (Sprite)Resources.Load("UI Icons/Spells/FireUI");
     }
 
     public override void SetValues()
     {
-        SpellObject = Resources.Load("Player/FireBall", typeof(GameObject)) as GameObject;
-        UILogo = Resources.Load<Sprite>("UIIcons/Spells/FireUI");
+        SpellObject = Resources.Load(PathProjectile + "FireBall", typeof(GameObject)) as GameObject;
+        UILogo = Resources.Load<Sprite>(PathUI + "FireUI");
+        destroyInstantiante = Resources.Load(PathDeath + "FireballDestroy 1", typeof(GameObject)) as GameObject;
     }
-
-
-    // //Default time
-    //public FireBall() : this(3)
-    // {       
-    // }
 
 }

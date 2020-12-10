@@ -33,10 +33,10 @@ public class UIManager : MonoBehaviour
    // private int maxHearts;
     private int maxShields;
 
-    public static UIManager instance;
 
     private Scene currentScene;
 
+    public static UIManager instance;
 
     void Awake()
     {

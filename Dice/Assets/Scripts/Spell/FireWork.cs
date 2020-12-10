@@ -15,13 +15,12 @@ public class FireWork : SpellBase
         for (int i = 0; i < 10; i++)
         {
 
-
             Quaternion agentRot = Quaternion.identity;
             agentRot.eulerAngles = new Vector3(0, rot + (36 * i), 90);
             GameObject bullet = MonoBehaviour.Instantiate(SpellObject, posistion, agentRot) as GameObject;
             bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * projectileSpeed);
             bullet.tag = tag;
-            bullet.GetComponent<ProjectileController>().setTimer(durition);
+            bullet.GetComponent<ProjectileController>().setTimer(duration);
             bullet.AddComponent<SpellIndex>().spellIndex = ESpellEnum.FireWork;
             SoundManager.instance.Play(castingSound, bullet);
         }
@@ -30,7 +29,7 @@ public class FireWork : SpellBase
 
     public FireWork()
     {
-        durition = 1;
+        duration = 1;
         castingColour = Color.red;
         element = EElementalyType.Fire;
         castingSound = ESoundClipEnum.FireBall;
@@ -40,9 +39,10 @@ public class FireWork : SpellBase
 
     public override void SetValues()
     {
-        SpellObject = Resources.Load("Player/FireBall", typeof(GameObject)) as GameObject;
-        particlePrefab = Resources.Load("GroundExplosion", typeof(GameObject)) as GameObject;
-        UILogo = Resources.Load<Sprite>("UIIcons/Spells/FireUI");
+        UILogo = Resources.Load<Sprite>(PathUI + "FireUI");
+        SpellObject = Resources.Load(PathProjectile + "FireBall", typeof(GameObject)) as GameObject;
+        particlePrefab = Resources.Load(PathProjectile + "GroundExplosion", typeof(GameObject)) as GameObject;
+        destroyInstantiante = Resources.Load(PathDeath + "GroundExplosion", typeof(GameObject)) as GameObject;
     }
 
 

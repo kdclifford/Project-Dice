@@ -7,7 +7,7 @@ using UnityEditor;
 public class SpellEnumEditor : Editor
 {    
     const string name = "ESpellEnum";
-    const string path = "Assets/Scripts/";
+    const string path = "Assets/Scripts/Spell/";
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
