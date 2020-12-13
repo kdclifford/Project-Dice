@@ -63,6 +63,6 @@ public string PathProjectile { get { return pathProjectile;} }
     {
         GameObject deathObject = MonoBehaviour.Instantiate(destroyInstantiante, ProjectilePosition, ProjectileRotation) as GameObject;
         SoundManager.instance.PlayOnceAtPoint(deathSound, deathObject);
-        MonoBehaviour.Destroy(currentProjectile);
+       // MonoBehaviour.Destroy(currentProjectile);
     }
 }

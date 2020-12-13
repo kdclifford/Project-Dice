@@ -25,6 +25,6 @@ public class IceSpike : SpellBase
     {
         SpellObject = Resources.Load(PathProjectile + "Spike", typeof(GameObject)) as GameObject;
         UILogo = Resources.Load<Sprite>(PathUI + "IceUI");
-        destroyInstantiante = Resources.Load(PathDeath + "FireballDestroy 1", typeof(GameObject)) as GameObject;
+        destroyInstantiante = Resources.Load(PathDeath + "IceDestroy", typeof(GameObject)) as GameObject;
     }
 }
