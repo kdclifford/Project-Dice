@@ -8,6 +8,7 @@ public enum ESpellEnum
 	FireWork = 2,
 	IceSpike = 3,
 	ProjectileAOEFire = 4,
-	Spark = 5,
+	PumkingExpolosion = 5,
+	Spark = 6,
 
 }
