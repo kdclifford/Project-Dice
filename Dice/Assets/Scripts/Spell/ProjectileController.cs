@@ -8,10 +8,12 @@ public class ProjectileController : MonoBehaviour
     private float MaxTimer = 4;
     private float curTimer;
     Quaternion projectileRotation;
+    Rigidbody rigidbody;
 
     // Start is called before the first frame update
     void Start()
     {
+        rigidbody = GetComponent<Rigidbody>();
         curTimer = MaxTimer;
     }
 
@@ -32,7 +34,9 @@ public class ProjectileController : MonoBehaviour
     {
         if(collision.gameObject.tag == "Wall")
         {
+            
             SpellList.instance.spells[(int)GetComponent<SpellIndex>().spellIndex].death(transform.position, gameObject, transform.rotation);
+            Destroy(gameObject);
         }
     }
 
@@ -40,7 +44,9 @@ public class ProjectileController : MonoBehaviour
     {
         if (other.gameObject.tag == "Wall")
         {
+            //rigidbody.velocity = Vector3.zero;
             SpellList.instance.spells[(int)GetComponent<SpellIndex>().spellIndex].death(transform.position, gameObject, transform.rotation);
+            Destroy(gameObject);
         }
     }
 
