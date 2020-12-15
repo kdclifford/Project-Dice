@@ -27,7 +27,7 @@ public class Spark : SpellBase
     {
         SpellObject = Resources.Load(PathProjectile + "Electric", typeof(GameObject)) as GameObject;
         UILogo = Resources.Load<Sprite>(PathUI + "LightningUI");
-        destroyInstantiante = Resources.Load(PathDeath + "GroundExplosion", typeof(GameObject)) as GameObject;
+        destroyInstantiante = Resources.Load(PathDeath + "SparkDestroy", typeof(GameObject)) as GameObject;
     }
 
 }

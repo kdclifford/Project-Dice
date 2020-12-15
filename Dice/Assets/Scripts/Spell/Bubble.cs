@@ -25,7 +25,7 @@ public class Bubble : SpellBase
     {
         SpellObject = Resources.Load(PathProjectile + "Bubble", typeof(GameObject)) as GameObject;
         UILogo = Resources.Load<Sprite>(PathUI + "WaterUI");
-        destroyInstantiante = Resources.Load( PathDeath +  "GroundExplosion", typeof(GameObject)) as GameObject;
+        destroyInstantiante = Resources.Load( PathDeath +  "BubbleDestroy", typeof(GameObject)) as GameObject;
     }
 
 }
