@@ -32,7 +32,10 @@ public class CollisionResolution : MonoBehaviour
             if (other.gameObject.tag == "Equipped")
             {
                 //Destory object and show text with 
-                Destroy(other.gameObject);
+                if(other.gameObject.layer != 16)
+                {
+                    Destroy(other.gameObject);
+                }
                 textColour = other.gameObject.GetComponent<ParticleSystem>().main.startColor.color;
                 ShowFloatingText(other.gameObject.GetComponent<SpellIndex>().spellIndex);
             }
