@@ -41,6 +41,24 @@ public string PathProjectile { get { return pathProjectile;} }
         SoundManager.instance.Play(castingSound, bullet);
     }
 
+
+
+    public void BasicSummon(Vector3 posistion, float rot, string tag, GameObject summonedSystem, ESpellEnum spell)
+    {
+        Quaternion agentRot = Quaternion.identity;
+
+        agentRot.eulerAngles = new Vector3(0, rot, 0);
+        //Spell Code would go in here then when controller has correct input Cast Spell
+
+        //ChangePosition based on roation and add 5 in local y
+
+        GameObject bullet = MonoBehaviour.Instantiate(SpellObject, posistion, agentRot) as GameObject;
+        bullet.tag = tag;
+        bullet.AddComponent<SpellIndex>().spellIndex = spell;
+        SoundManager.instance.Play(castingSound, bullet);
+    }
+
+
     public void death(Vector3 ProjectilePosition, GameObject currentProjectile, Quaternion ProjectileRotation)
     {
         GameObject deathObject = MonoBehaviour.Instantiate(destroyInstantiante, ProjectilePosition, ProjectileRotation) as GameObject;

@@ -54,7 +54,7 @@ public class DunguonSpawner : MonoBehaviour
 
 
         var player = GameObject.FindGameObjectWithTag("Player");
-        player.transform.position = new Vector3(4 * roomsData[1].location.x, 0, 4 * roomsData[1].location.y);
+        player.transform.position = new Vector3(12 * roomsData[1].location.x, 0, 12 * roomsData[1].location.y);
         //Instantiate(Player, new Vector3(4 * roomsData[1].location.x, 0, 4 * roomsData[1].location.y), Quaternion.identity);
 
     }
@@ -123,7 +123,7 @@ public class DunguonSpawner : MonoBehaviour
         tempRoom = new Room();
         while (!validStart)
         {
-            tempRoom.location = new Vector2Int((int)Random.Range(2, WorldSize.x - 2), (int)Random.Range(2, WorldSize.y - 2));
+            tempRoom.location = new Vector2Int((int)Random.Range(2, WorldSize.x - 2), (int)Random.Range(2, WorldSize.y - 2)); // Needed to allow pathing to find doors
             tempRoom.Size = startingRoom.GetComponent<Room>().Size;
             tempRoom.roomType = RoomType.Start;
             tempRoom.DoorLocations = startingRoom.GetComponent<Room>().DoorLocations;
@@ -180,25 +180,25 @@ public class DunguonSpawner : MonoBehaviour
         {
             foreach (CTile pathPoint in PathNodes)
             {
-                Instantiate(floorPRefab, new Vector3(4 * pathPoint.position.x, 0, 4 * pathPoint.position.y), Quaternion.identity);
+                Instantiate(floorPRefab, new Vector3(12 * pathPoint.position.x, 0, 12 * pathPoint.position.y), Quaternion.identity);
                 if(pathPoint.northWall)
                 {
-                    Instantiate(wallPrefab, new Vector3(4 * pathPoint.position.x, 0, (4 * pathPoint.position.y) +2), Quaternion.identity);
+                    Instantiate(wallPrefab, new Vector3(12 * pathPoint.position.x, 0, (12 * pathPoint.position.y) +6), Quaternion.identity);
 
                 }
                 if (pathPoint.eastWall)
                 {
-                    Instantiate(wallPrefab, new Vector3((4 * pathPoint.position.x) +2, 0, 4 * pathPoint.position.y), Quaternion.Euler(new Vector3(0,270,0)));
+                    Instantiate(wallPrefab, new Vector3((12 * pathPoint.position.x) +6, 0, 12 * pathPoint.position.y), Quaternion.Euler(new Vector3(0,270,0)));
 
                 }
                 if (pathPoint.southWall)
                 {
-                    Instantiate(wallPrefab, new Vector3(4 * pathPoint.position.x, 0, (4 * pathPoint.position.y) - 2), Quaternion.identity);
+                    Instantiate(wallPrefab, new Vector3(12 * pathPoint.position.x, 0, (12 * pathPoint.position.y) - 6), Quaternion.identity);
 
                 }
                 if (pathPoint.westWall)
                 {
-                    Instantiate(wallPrefab, new Vector3((4 * pathPoint.position.x) -2, 0, 4 * pathPoint.position.y), Quaternion.Euler(new Vector3(0, 90, 0)));
+                    Instantiate(wallPrefab, new Vector3((12 * pathPoint.position.x) -6, 0, 12 * pathPoint.position.y), Quaternion.Euler(new Vector3(0, 90, 0)));
 
                 }
             }
@@ -207,15 +207,15 @@ public class DunguonSpawner : MonoBehaviour
     void SetSceneLocation()
     {
 
-        var temp = Instantiate(finalRoomPrefab, new Vector3(4 * roomsData[0].location.x, 0, 4 * roomsData[0].location.y), Quaternion.identity);
+        var temp = Instantiate(finalRoomPrefab, new Vector3(12 * roomsData[0].location.x, 0, 12 * roomsData[0].location.y), Quaternion.identity);
         temp.GetComponent<Room>().location = roomsData[0].location;
 
-        temp = Instantiate(startingRoom, new Vector3(4 * roomsData[1].location.x, 0, 4 * roomsData[1].location.y), Quaternion.identity);
+        temp = Instantiate(startingRoom, new Vector3(12 * roomsData[1].location.x, 0, 12 * roomsData[1].location.y), Quaternion.identity);
         temp.GetComponent<Room>().location = roomsData[1].location;
 
         for (int i=2; i< roomsData.Count;i++)
         {
-                temp = Instantiate(RoomPrefabs[roomsData[i].preFabNumber], new Vector3(4 * roomsData[i].location.x, 0, 4 * roomsData[i].location.y), Quaternion.identity);
+                temp = Instantiate(RoomPrefabs[roomsData[i].preFabNumber], new Vector3(12 * roomsData[i].location.x, 0, 12 * roomsData[i].location.y), Quaternion.identity);
                 temp.GetComponent<Room>().location = roomsData[i].location;
         }
     }
