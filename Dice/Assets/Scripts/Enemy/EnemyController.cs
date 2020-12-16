@@ -9,7 +9,7 @@ public class EnemyController : MonoBehaviour
 {
     //Public
     [SerializeField, Header("Object Referneces")]
-    private ESpellEnum projectile;
+    private ESpellEnum projectile = 0;
     [SerializeField]
     private RandomColour meshRenderer;
     public GameObject target;
@@ -60,6 +60,11 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(target == null)
+        {
+            target = GameObject.FindGameObjectWithTag("Player");
+        }
+
         AnimationScript.StopAttack(animator);
         if (health.GetHealth() <= 0)
         {

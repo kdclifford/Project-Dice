@@ -4,5 +4,15 @@ using UnityEngine;
 
 public enum ESpellType { Passive,Projectile,Summoning , ControlledProjectile}
 
-public enum EElementalyType { Fire,Wind,Rock,Electricity,Water , Physical}
+public enum EElementalyType 
+{ 
+    Fire = 0,
+    Wind,
+    Rock,
+    Electricity,
+    Water, 
+    Physical,
+
+    AmountOfElements,
+}
 
