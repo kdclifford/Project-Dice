@@ -1028,7 +1028,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 4
-  currentHealth: 0
   maxShields: 0
   currentShields: 0
 --- !u!1001 &540827971
@@ -2288,7 +2287,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 4
-  currentHealth: 0
   maxShields: 0
   currentShields: 0
 --- !u!4 &855674746 stripped
@@ -7663,6 +7661,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 339.1798
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781402682217194739, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 900
       objectReference: {fileID: 0}
     - target: {fileID: 3781402682217194739, guid: 76d5029045c5e2546886a54ad3ca7b9b,
         type: 3}
