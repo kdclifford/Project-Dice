@@ -3,13 +3,16 @@
 
 public enum ESpellEnum 
 {
-	FireWork = 0,
-	LightningCone = 1,
-	ProjectileAOEFire = 2,
-	PumkingExpolosion = 3,
-	Bubble = 4,
-	FireBall = 5,
-	IceSpike = 6,
-	Spark = 7,
+	FireCone = 0,
+	FireWork = 1,
+	LightningCone = 2,
+	ProjectileAOEFire = 3,
+	PumkingExpolosion = 4,
+	Boulder = 5,
+	Bubble = 6,
+	FireBall = 7,
+	GrassBall = 8,
+	IceSpike = 9,
+	Spark = 10,
 
 }
