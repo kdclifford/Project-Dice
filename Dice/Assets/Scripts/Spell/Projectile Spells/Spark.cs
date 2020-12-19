@@ -20,6 +20,7 @@ public class Spark : SpellBase
         element = EElementalyType.Electricity;
         castingSound = ESoundClipEnum.Electric;
         spellType = ESpellType.Projectile;
+        SpellName = "LekyTingle";
         //  UILogo = (Sprite)Resources.Load("UI Icons/Spells/FireUI");
     }
 

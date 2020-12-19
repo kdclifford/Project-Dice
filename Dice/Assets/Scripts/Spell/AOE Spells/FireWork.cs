@@ -34,6 +34,7 @@ public class FireWork : SpellBase
         element = EElementalyType.Fire;
         castingSound = ESoundClipEnum.FireBall;
         spellType = ESpellType.Projectile;
+        SpellName = "FloorFire";
         //  UILogo = (Sprite)Resources.Load("UI Icons/Spells/FireUI");
     }
 

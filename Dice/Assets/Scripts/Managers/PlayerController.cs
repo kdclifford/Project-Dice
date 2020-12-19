@@ -242,6 +242,7 @@ public class PlayerController : MonoBehaviour
         if (Collision.gameObject.layer == LayerMask.NameToLayer("Spell"))
         {
             uIManager.ShowEquipPopUp();
+            Collision.gameObject.transform.GetChild(1).gameObject.SetActive(true);
         
             if(ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftEquipt))
             {
@@ -254,6 +255,7 @@ public class PlayerController : MonoBehaviour
 
                 Destroy(Collision.gameObject);
                 uIManager.HideEquipPopUp();
+                Collision.gameObject.transform.GetChild(1).gameObject.SetActive(false);
 
                 //if (projectileLeft != null)
                 //{
@@ -271,11 +273,11 @@ public class PlayerController : MonoBehaviour
 
                 Destroy(Collision.gameObject);
                 uIManager.HideEquipPopUp();
-
+                Collision.gameObject.transform.GetChild(1).gameObject.SetActive(false);
 
                 //if (projectileRight != null)
                 //{
-                    rightColour.color = baseSpell.castingColour;
+                rightColour.color = baseSpell.castingColour;
 
                 //}
             }
@@ -322,6 +324,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Spell"))
+        {
+            other.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+        }
+
         uIManager.HideEquipPopUp();
         uIManager.HideInteractPopUp();
         volumeTriggered = false;

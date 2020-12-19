@@ -19,6 +19,7 @@ public class IceSpike : SpellBase
         castingSound = ESoundClipEnum.Bubble;
         spellType = ESpellType.Projectile;
         deathSound = ESoundClipEnum.PuttingOutFireBall;
+        SpellName = "IceOwchie";
     }
 
     public override void SetValues()
