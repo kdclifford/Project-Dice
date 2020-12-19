@@ -22,6 +22,7 @@ public class ProjectileAOEFire : SpellBase
         element = EElementalyType.Fire;
         castingSound = ESoundClipEnum.FireBall;
         spellType = ESpellType.Projectile;
+        SpellName = "FireThrow";
     }
 
     public override void SetValues()

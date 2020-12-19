@@ -22,6 +22,7 @@ public class FireBall : SpellBase
         castingSound = ESoundClipEnum.FireBall;
         spellType = ESpellType.Projectile;
         deathSound = ESoundClipEnum.PuttingOutFireBall;
+        SpellName = "PewPewFire";
         //  UILogo = (Sprite)Resources.Load("UI Icons/Spells/FireUI");
     }
 

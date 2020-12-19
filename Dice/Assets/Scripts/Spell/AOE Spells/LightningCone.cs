@@ -17,6 +17,7 @@ public class LightningCone : SpellBase
         castingSound = ESoundClipEnum.Electric;
         spellType = ESpellType.Projectile;
         deathSound = ESoundClipEnum.PuttingOutFireBall;
+        SpellName = "LekkyCone";
     }
 
     public override void SetValues()

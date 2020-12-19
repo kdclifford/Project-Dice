@@ -18,7 +18,8 @@ public class Bubble : SpellBase
         castingColour = Color.blue;
         element = EElementalyType.Water;
         castingSound = ESoundClipEnum.Bubble;
-        spellType = ESpellType.Projectile;      
+        spellType = ESpellType.Projectile;
+        SpellName = "BlubBlub";
     }
 
     public override void SetValues()

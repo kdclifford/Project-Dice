@@ -8,6 +8,7 @@ public abstract class SpellBase
     public abstract void CastSpell(Vector3 posistion, float rot, string tag = "Equipped");
     public abstract void SetValues();
     public float duration;
+    public string SpellName;
     public EElementalyType element;
     public Color castingColour;
     public ESpellType spellType;
