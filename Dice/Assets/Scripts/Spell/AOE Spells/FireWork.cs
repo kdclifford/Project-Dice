@@ -7,7 +7,7 @@ public class FireWork : SpellBase
 
     public float projectileSpeed = 100;
     public GameObject particlePrefab;
-    public override void CastSpell(Vector3 posistion, float rot, string tag = "Equipped")
+    public override void CastSpell(Vector3 posistion, float rot, GameObject agentRef, string tag = "Equipped")
     {
        GameObject effect = MonoBehaviour.Instantiate(particlePrefab, posistion, Quaternion.identity) as GameObject;
         MonoBehaviour.Destroy(effect, 1.5f);

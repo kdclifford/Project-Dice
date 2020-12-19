@@ -6,7 +6,7 @@ public class Spark : SpellBase
 {
     public float projectileSpeed = 700;
 
-    public override void CastSpell(Vector3 posistion, float rot, string tag = "Equipped")
+    public override void CastSpell(Vector3 posistion, float rot, GameObject agentRef, string tag = "Equipped")
     {
         BasicProjectile(posistion, rot, tag, projectileSpeed, ESpellEnum.Spark);
         //soundManager.Play(castingSound, bullet);

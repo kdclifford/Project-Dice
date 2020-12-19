@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class SpellBase
 {
     public GameObject SpellObject;
-    public abstract void CastSpell(Vector3 posistion, float rot, string tag = "Equipped");
+    public abstract void CastSpell(Vector3 posistion, float rot, GameObject agentRef, string tag = "Equipped");
     public abstract void SetValues();
     public float duration;
     public EElementalyType element;

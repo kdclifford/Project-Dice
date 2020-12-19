@@ -7,7 +7,7 @@ public class ProjectileAOEFire : SpellBase
     public float projectileSpeed = 300;
 
     //Cast Spell call instaiate your object in here the 
-    public override void CastSpell(Vector3 posistion, float rot, string tag = "Equipped")
+    public override void CastSpell(Vector3 posistion, float rot, GameObject agentRef, string tag = "Equipped")
     {
         BasicProjectile(posistion, rot, tag, projectileSpeed, ESpellEnum.ProjectileAOEFire);
 

@@ -27,6 +27,10 @@ public enum EnemyType
     Cactus,
     PlantMonster,
     Ghost,
+    Bat,
+    Knight,
+    Skeleton,
+
 
     AmountOfEnemies,
 }

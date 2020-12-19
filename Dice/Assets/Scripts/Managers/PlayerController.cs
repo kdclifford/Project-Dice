@@ -350,7 +350,7 @@ public class PlayerController : MonoBehaviour
         Vector3 rightFirePos = transform.position + (transform.right * projectileDistance);// RightFirePos.x += 0.4f;
         rightFirePos.y += yOffsetProgectile;
 
-        SpellList.instance.spells[rightSpell].CastSpell(rightFirePos, transform.eulerAngles.y);
+        SpellList.instance.spells[rightSpell].CastSpell(rightFirePos, transform.eulerAngles.y, gameObject);
         currRTFireCooldown = MaxFireCooldown;
     }
 
@@ -361,7 +361,7 @@ public class PlayerController : MonoBehaviour
         Vector3 leftFirePos = transform.position + (transform.right * -projectileDistance);// LeftFirePos.x -= 0.4f;
         leftFirePos.y += yOffsetProgectile;
 
-        SpellList.instance.spells[leftSpell].CastSpell(leftFirePos, transform.eulerAngles.y);
+        SpellList.instance.spells[leftSpell].CastSpell(leftFirePos, transform.eulerAngles.y, gameObject);
 
         currLTFireCooldown = MaxFireCooldown;
     }

@@ -285,7 +285,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  currentHealth: 0
   maxShields: 0
   currentShields: 0
 --- !u!114 &325228106446229872
@@ -703,7 +702,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 1, b: 0.627451, a: 1}
+      maxColor: {r: 1, g: 0.37647063, b: 0.1764706, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

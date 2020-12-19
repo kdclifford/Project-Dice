@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class LightningCone : SpellBase
 {
-    public override void CastSpell(Vector3 posistion, float rot, string tag = "Equipped")
+    public override void CastSpell(Vector3 posistion, float rot, GameObject agentRef, string tag = "Equipped")
     {
-        PlayerAOE(posistion, tag, GameObject.FindGameObjectWithTag("Player"), ESpellEnum.LightningCone);
+        PlayerAOE(posistion, tag, agentRef, ESpellEnum.LightningCone);
     }
 
     public LightningCone()

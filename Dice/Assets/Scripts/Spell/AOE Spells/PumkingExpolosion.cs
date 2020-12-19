@@ -5,7 +5,7 @@ using UnityEngine;
 public class PumkingExpolosion : SpellBase
 {
     // Start is called before the first frame update
-    public override void CastSpell(Vector3 posistion, float rot, string tag = "Equipped")
+    public override void CastSpell(Vector3 posistion, float rot, GameObject agentRef, string tag = "Equipped")
     {
         SetValues();
         //Summon A Pumkin 

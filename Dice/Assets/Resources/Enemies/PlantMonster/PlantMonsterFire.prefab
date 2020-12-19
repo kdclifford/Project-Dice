@@ -5488,7 +5488,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2f6f3979a26073c44921bf43eaafb884, type: 2}
+  - {fileID: 2100000, guid: 62c6b741eb03371468c6d77643189fc8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5928,7 +5928,7 @@ GameObject:
   - component: {fileID: 1667899205}
   - component: {fileID: 1667899206}
   m_Layer: 0
-  m_Name: Toon Plant Monster-Red
+  m_Name: PlantMonsterFire
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6089,7 +6089,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  currentHealth: 0
   maxShields: 0
   currentShields: 0
 --- !u!1 &197954

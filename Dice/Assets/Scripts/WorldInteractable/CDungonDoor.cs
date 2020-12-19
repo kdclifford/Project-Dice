@@ -6,7 +6,7 @@ public class CDungonDoor : MonoBehaviour
 {
     [SerializeField]
     private GameObject pivot;
-
+    public GameObject roof;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +24,10 @@ public class CDungonDoor : MonoBehaviour
         Vector3 pivotPoint = pivot.transform.position;
         this.transform.RotateAround(pivotPoint, Vector3.up, -90);
         gameObject.tag = "Wall";
+        if (roof != null)
+        {
+            roof.SetActive(false);
+        }
     }
 
 }
