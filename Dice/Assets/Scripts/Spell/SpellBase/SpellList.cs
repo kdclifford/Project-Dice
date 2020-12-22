@@ -13,8 +13,6 @@ public class SpellList : MonoBehaviour
    public List<SpellBase> spells;
     void Awake()
     {
-       
-
         if (instance == null)
         {
             instance = this;

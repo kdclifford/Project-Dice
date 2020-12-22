@@ -12,8 +12,8 @@ public enum ESpellEnum
 	Boulder = 6,
 	Bubble = 7,
 	FireBall = 8,
-	GrassBall = 9,
-	IceSpike = 10,
-	Spark = 11,
-
+	Flamethrower = 9,
+	GrassBall = 10,
+	IceSpike = 11,
+	Spark = 12,
 }
