@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class SpellBase
 {
     public GameObject SpellObject;
+    public float coolDown = 1;
     public abstract void CastSpell(Vector3 posistion, float rot, GameObject agentRef, string tag = "Equipped");
     public abstract void SetValues();
     public float duration;
@@ -19,7 +20,8 @@ public abstract class SpellBase
     private string pathProjectile = "Spells/";
     private string pathDeath = "SpellDestruction/";
     private string pathUI = "UIIcons/Spells/";
-public string PathProjectile { get { return pathProjectile;} }
+
+    public string PathProjectile { get { return pathProjectile; } }
     public string PathDeath { get { return pathDeath; } }
     public string PathUI { get { return pathUI; } }
 
@@ -72,8 +74,11 @@ public string PathProjectile { get { return pathProjectile;} }
 
     public void death(Vector3 ProjectilePosition, GameObject currentProjectile, Quaternion ProjectileRotation)
     {
-        GameObject deathObject = MonoBehaviour.Instantiate(destroyInstantiante, ProjectilePosition, ProjectileRotation) as GameObject;
-        SoundManager.instance.PlayOnceAtPoint(deathSound, deathObject);
-       // MonoBehaviour.Destroy(currentProjectile);
+        if (destroyInstantiante != null)
+        {
+            GameObject deathObject = MonoBehaviour.Instantiate(destroyInstantiante, ProjectilePosition, ProjectileRotation) as GameObject;
+            SoundManager.instance.PlayOnceAtPoint(deathSound, deathObject);
+        }
+        // MonoBehaviour.Destroy(currentProjectile);
     }
 }

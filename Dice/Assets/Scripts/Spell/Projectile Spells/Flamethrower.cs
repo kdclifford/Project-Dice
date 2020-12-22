@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileAOEFire : SpellBase
+public class Flamethrower : SpellBase
 {
-    //Cast Spell call instaiate your object in here the 
+    public float projectileSpeed = 100;
+
     public override void CastSpell(Vector3 posistion, float rot, GameObject agentRef, string tag = "Equipped")
     {
         Quaternion agentRot = Quaternion.identity;
@@ -13,22 +14,25 @@ public class ProjectileAOEFire : SpellBase
         effect.AddComponent<SpellIndex>().spellIndex = ESpellEnum.Flamethrower;
         effect.tag = tag;
 
+
     }
 
-    public ProjectileAOEFire()
+    public Flamethrower()
     {
         duration = 1;
         castingColour = Color.red;
         element = EElementalyType.Fire;
         castingSound = ESoundClipEnum.FireBall;
         spellType = ESpellType.Projectile;
-        SpellName = "FireThrow";
-        coolDown = 3;
+        SpellName = "Thrower";
+        coolDown = 6;
     }
 
     public override void SetValues()
     {
         UILogo = Resources.Load<Sprite>(PathUI + "FireUI");
-        SpellObject = Resources.Load(PathProjectile + "GroundExplosion", typeof(GameObject)) as GameObject;
+        SpellObject = Resources.Load(PathProjectile + "Flamethrower", typeof(GameObject)) as GameObject;
+        destroyInstantiante = Resources.Load(PathDeath + "GroundExplosion", typeof(GameObject)) as GameObject;
     }
+
 }

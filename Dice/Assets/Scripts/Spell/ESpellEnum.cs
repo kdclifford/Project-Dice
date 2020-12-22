@@ -9,7 +9,8 @@ public enum ESpellEnum
 	PumkingExpolosion = 3,
 	Bubble = 4,
 	FireBall = 5,
-	IceSpike = 6,
-	Spark = 7,
+	Flamethrower = 6,
+	IceSpike = 7,
+	Spark = 8,
 
 }

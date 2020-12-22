@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
-
+using UnityEngine.AI;
 public class MeshCombine : MonoBehaviour
 {
     private MeshFilter[] childFilters;
@@ -53,6 +53,7 @@ public class MeshCombine : MonoBehaviour
         transform.localScale *= 0.33333f;
         GetComponent<MeshRenderer>().sharedMaterial = material;
         gameObject.AddComponent<MeshCollider>();
+      
 
         transform.position = oldPos;
         transform.rotation = oldRot;

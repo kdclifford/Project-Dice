@@ -27,10 +27,14 @@ public class PlayerController : MonoBehaviour
     private Material leftColour;
     private Material rightColour;
 
+    [SerializeField]
     private float currRTFireCooldown = 0;
+    [SerializeField]
     private float currLTFireCooldown = 0;
     [SerializeField]
-    private float MaxFireCooldown = 1;
+    private float MaxRTFireCooldown = 1;
+    [SerializeField]
+    private float MaxLTFireCooldown = 1;
 
     //Used to set projectile distance from the player
     [SerializeField, Header("Projectile Settings")]
@@ -92,8 +96,6 @@ public class PlayerController : MonoBehaviour
 
         leftSpell = -1;
         rightSpell = -1;
-        currRTFireCooldown = MaxFireCooldown;
-        currLTFireCooldown = MaxFireCooldown;
 
         if (PlayerPrefs.HasKey("MasterVol")) { globalVolume = PlayerPrefs.GetInt("MasterVol"); }
         if (PlayerPrefs.HasKey("MusicVol")) { musicVolume = PlayerPrefs.GetInt("MusicVol"); }
@@ -173,27 +175,19 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-
-            if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightAttack) && rightSpell != -1)
-            {
-                if (currRTFireCooldown <= 0)
-                {
-                    //if (!rightFire)
-                    //{
-                    //    rightFire = true;
-                    //}
-                   
+            if (currRTFireCooldown <= 0 && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightAttack) && rightSpell != -1)
+            {  
+               
+                    currRTFireCooldown = MaxRTFireCooldown;
                     AnimationScript.RightAttack(animator);
-                }
+                
             }
-
-            else if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftAttack) && leftSpell != -1)
+            else if (currLTFireCooldown <= 0 && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftAttack) && leftSpell != -1)
             {
-                if (currLTFireCooldown <= 0)
-                {                  
-                    
+                
+                    currLTFireCooldown = MaxLTFireCooldown;
                     AnimationScript.LeftAttack(animator);
-                }
+                
             }
             else
             {
@@ -256,7 +250,7 @@ public class PlayerController : MonoBehaviour
                 Destroy(Collision.gameObject);
                 uIManager.HideEquipPopUp();
                 Collision.gameObject.transform.GetChild(1).gameObject.SetActive(false);
-
+                SetCooldownTimer(ref MaxLTFireCooldown, leftSpell);
                 //if (projectileLeft != null)
                 //{
                 leftColour.color = baseSpell.castingColour;
@@ -274,7 +268,7 @@ public class PlayerController : MonoBehaviour
                 Destroy(Collision.gameObject);
                 uIManager.HideEquipPopUp();
                 Collision.gameObject.transform.GetChild(1).gameObject.SetActive(false);
-
+                SetCooldownTimer(ref MaxRTFireCooldown, rightSpell);
                 //if (projectileRight != null)
                 //{
                 rightColour.color = baseSpell.castingColour;
@@ -358,7 +352,7 @@ public class PlayerController : MonoBehaviour
         rightFirePos.y += yOffsetProgectile;
 
         SpellList.instance.spells[rightSpell].CastSpell(rightFirePos, transform.eulerAngles.y, gameObject);
-        currRTFireCooldown = MaxFireCooldown;
+        
     }
 
     public void LeftFire()
@@ -369,38 +363,7 @@ public class PlayerController : MonoBehaviour
         leftFirePos.y += yOffsetProgectile;
 
         SpellList.instance.spells[leftSpell].CastSpell(leftFirePos, transform.eulerAngles.y, gameObject);
-
-        currLTFireCooldown = MaxFireCooldown;
     }
-
-    public void MiddleFire()
-    {
-        //Quaternion playerRot = Quaternion.identity;
-        //playerRot.eulerAngles = new Vector3(0, transform.eulerAngles.y, 90);
-
-        //Vector3 LeftFirePos = transform.position;// LeftFirePos.x -= 0.4f;
-        //LeftFirePos.y += yOffsetProgectile;
-
-        //GameObject bullet = Instantiate(projectileLeft, LeftFirePos, playerRot) as GameObject;
-        //bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
-        //ESoundClipEnum clipEnum = (ESoundClipEnum)System.Enum.Parse(typeof(ESoundClipEnum), projectileLeft.name, true);
-        //soundManager.Play(clipEnum, bullet);
-
-        //currLTFireCooldown = MaxFireCooldown;
-
-        //Vector3 RightFirePos = transform.position;// RightFirePos.x += 0.4f;
-        //RightFirePos.y += yOffsetProgectile;
-
-        //bullet = Instantiate(projectileRight, RightFirePos, playerRot) as GameObject;
-        //bullet.GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed);
-        //clipEnum = (ESoundClipEnum)System.Enum.Parse(typeof(ESoundClipEnum), projectileRight.name, true);
-        //soundManager.Play(clipEnum, bullet);
-
-        //currRTFireCooldown = MaxFireCooldown;
-
-
-    }
-
 
     public void RightFireToggle()
     {
@@ -414,20 +377,11 @@ public class PlayerController : MonoBehaviour
         leftFire = false;
     }
 
-
-    string FindSpell(Projectile number)
+    void SetCooldownTimer(ref float timer, int spell)
     {
-        switch (number)
-        {
-            case Projectile.Bubble:
-                return "Bubble";
-            case Projectile.FireBall:
-                return "FireBall";
-            case Projectile.Electric:
-                return "Electric";
-
-
-        }
-       throw new System.Exception("No Spell Found");
+        timer = SpellList.instance.spells[spell].coolDown;
     }
+
+
+
 }

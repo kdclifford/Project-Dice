@@ -17,21 +17,24 @@ public class ManaCollisions : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        currentParticles = new ParticleSystem.Particle[15];
-        int numParticles = other.GetComponent<ParticleSystem>().GetParticles(currentParticles);
-
-        for (int i = 0; i < numParticles; i++)
+        if (other.gameObject.layer == LayerMask.GetMask("Mana"))
         {
-            float dist = Vector3.Distance(transform.position, currentParticles[i].position);
-            Debug.Log(dist);
-            if (dist < 2)
-            {
-                currentParticles[i].remainingLifetime = 0.0f;
-                GiveMana(other.tag);
-            }
-        }
+            currentParticles = new ParticleSystem.Particle[15];
+            int numParticles = other.GetComponent<ParticleSystem>().GetParticles(currentParticles);
 
-        other.GetComponent<ParticleSystem>().SetParticles(currentParticles);        
+            for (int i = 0; i < numParticles; i++)
+            {
+                float dist = Vector3.Distance(transform.position, currentParticles[i].position);
+                // Debug.Log(dist);
+                if (dist < 2)
+                {
+                    currentParticles[i].remainingLifetime = 0.0f;
+                    GiveMana(other.tag);
+                }
+            }
+
+            other.GetComponent<ParticleSystem>().SetParticles(currentParticles);
+        }
     }
 
 
