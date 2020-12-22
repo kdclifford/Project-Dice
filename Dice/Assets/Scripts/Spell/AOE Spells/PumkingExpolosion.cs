@@ -16,7 +16,7 @@ public class PumkingExpolosion : SpellBase
     public override void SetValues()
     {
         SpellObject = Resources.Load("Spells/PumkinSpell", typeof(GameObject)) as GameObject;
-        UILogo = Resources.Load<Sprite>("UIIcons/Spells/LightningUI");
+        UILogo = Resources.Load<Sprite>("UIIcons/Spells/NatureUI");
         SpellName = "PumpKing";
     }
 }

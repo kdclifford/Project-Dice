@@ -5,7 +5,7 @@ using UnityEngine;
 public class PumkinObject : MonoBehaviour
 {
 
-    public float timer = 3.0f;
+    public float timer = 4.0f;
     // Start is called before the first frame update
     void Start()
     {

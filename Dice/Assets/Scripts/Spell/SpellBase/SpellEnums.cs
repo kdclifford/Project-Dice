@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ESpellType { Passive,Projectile,Summoning , ControlledProjectile}
+public enum ESpellType { Passive, Projectile, Summoning, AOE, ControlledProjectile}
 
 public enum EElementalyType 
 { 
@@ -12,7 +12,7 @@ public enum EElementalyType
     Electricity,
     Water, 
     Physical,
-
+    Nature,
     AmountOfElements,
 }
 
