@@ -12,8 +12,8 @@ public class CollisionResolution : MonoBehaviour
     private Health agentHealth;
     private UIManager uIManager;
     private SpellList spellList;
-    private float maxAoeTime = 0.6f;
-    public float aoeBurnTime = 0;
+    private float maxAoeTime = 2.0f;
+    private float aoeBurnTime = 0;
 
     private void Start()
     {
