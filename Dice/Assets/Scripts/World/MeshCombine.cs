@@ -11,7 +11,7 @@ public class MeshCombine : MonoBehaviour
     Mesh mergedMesh;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         //GetComponent<MeshFilter>().sharedMesh = AdvancedMerge();
         BasicMerge();
@@ -52,8 +52,8 @@ public class MeshCombine : MonoBehaviour
         GetComponent<MeshFilter>().sharedMesh = mergedMesh;
         transform.localScale *= 0.33333f;
         GetComponent<MeshRenderer>().sharedMaterial = material;
-        gameObject.AddComponent<MeshCollider>();
-      
+      //  gameObject.AddComponent<MeshCollider>();
+        gameObject.AddComponent<BoxCollider>();
 
         transform.position = oldPos;
         transform.rotation = oldRot;

@@ -73,7 +73,7 @@ SubShader
            {
                if (secondTex.a == 1)
                {
-                   col += tex2D(_SecondTex, (i.uv + scroll) * 0.5f) * _Color;
+                   col += tex2D(_SecondTex, ((i.uv * 4) + scroll) * 0.5f) * _Color;
                }
            }
        }
