@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6027640028949337748}
-  m_Layer: 0
+  - component: {fileID: 4932986889129722256}
+  m_Layer: 16
   m_Name: SummonLightning
-  m_TagString: Untagged
+  m_TagString: Electricity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,6 +34,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &4932986889129722256
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447337104025193678}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 4.75
+  m_Height: 18.99
+  m_Direction: 1
+  m_Center: {x: 0, y: 4.42, z: 10}
 --- !u!1 &1779869491105668693
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,7 +59,7 @@ GameObject:
   - component: {fileID: 442631493193105442}
   - component: {fileID: 8427069009275896928}
   - component: {fileID: 3010327183394930069}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Clouds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,8 +74,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1779869491105668693}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -20.03, y: 15, z: 0}
-  m_LocalScale: {x: 2.0294, y: 2.1654, z: 1}
+  m_LocalPosition: {x: 0, y: 9.42, z: 10}
+  m_LocalScale: {x: 1.3092675, y: 1.3970078, z: 0.64515}
   m_Children: []
   m_Father: {fileID: 6027640028949337748}
   m_RootOrder: 2
@@ -148,7 +163,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1008,7 +1023,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 30
+        scalar: 20
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -4914,7 +4929,7 @@ GameObject:
   - component: {fileID: 5204661585723407857}
   - component: {fileID: 2240859064265186990}
   - component: {fileID: 6375823417134678741}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: LightningStrike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4929,8 +4944,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3955577845109832301}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -20.03, y: 15, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 9.42, z: 10}
+  m_LocalScale: {x: 0.64515, y: 0.64515, z: 0.64515}
   m_Children: []
   m_Father: {fileID: 6027640028949337748}
   m_RootOrder: 1
@@ -5563,7 +5578,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 15
+    angle: 10
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 0
@@ -9848,7 +9863,7 @@ GameObject:
   - component: {fileID: 3301144778648571363}
   - component: {fileID: 4735372477740056728}
   - component: {fileID: 4830987536146547910}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: FloorCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9863,8 +9878,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5400392672835409716}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -20.03, y: 0.5, z: 0}
-  m_LocalScale: {x: 27.889479, y: 27.889479, z: 27.889479}
+  m_LocalPosition: {x: 0, y: -2, z: 10}
+  m_LocalScale: {x: 17.992897, y: 17.992897, z: 17.992897}
   m_Children: []
   m_Father: {fileID: 6027640028949337748}
   m_RootOrder: 0

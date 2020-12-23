@@ -115,12 +115,7 @@ public class EnemyController : MonoBehaviour
             }
             else if (currentState == EAIStates.MoveTowards)
             {
-
-
                 agent.SetDestination(new Vector3(target.transform.position.x, target.transform.position.x, target.transform.position.z));
-
-
-
             }
             else if (currentState == EAIStates.Fire)
             {
@@ -158,8 +153,6 @@ public class EnemyController : MonoBehaviour
                 }
 
             }
-
-
 
             if (removeBody)
             {
@@ -216,9 +209,6 @@ public class EnemyController : MonoBehaviour
     {
         Vector3 forward = transform.forward;
         forward.y = 0;
-
-
-
 
         Vector3 firePos = transform.position;
         firePos.y += yOffsetProgectile;
@@ -281,9 +271,6 @@ public class EnemyController : MonoBehaviour
     }
 
 }
-
-
-
 
 public enum EAIStates
 {

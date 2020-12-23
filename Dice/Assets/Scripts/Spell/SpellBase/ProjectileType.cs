@@ -41,9 +41,6 @@ public class ProjectileType : MonoBehaviour
     {
         spellList = GameObject.FindGameObjectWithTag("SpellManager").GetComponent<SpellList>();
     }
-
-   
-
 }
 
 
