@@ -29,5 +29,9 @@ public class PumkinObject : MonoBehaviour
             this.GetComponent<SphereCollider>().enabled = true;
             finished = true;
         }
+        if(timer <-0.25)
+        {
+            GameObject.Destroy(this);
+        }
     }
 }
