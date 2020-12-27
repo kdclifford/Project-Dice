@@ -17,5 +17,7 @@ public enum ESpellEnum
 	GrassBall = 11,
 	IceSpike = 12,
 	Spark = 13,
+	StarterKnife = 14,
+	SwordProjectile = 15,
 
 }
