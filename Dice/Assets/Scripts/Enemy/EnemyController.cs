@@ -9,7 +9,7 @@ public class EnemyController : MonoBehaviour
 {
     //Public
     [SerializeField, Header("Object Referneces")]
-    private ESpellEnum projectile;
+    private ESpellEnum projectile = 0;
     [SerializeField]
     private RandomColour meshRenderer;
     public GameObject target;
@@ -60,106 +60,107 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        AnimationScript.StopAttack(animator);
-        if (health.GetHealth() <= 0)
+        if(target == null)
         {
-            currentState = EAIStates.Dead;
-        }
-        else if (!CheckLineofSight(target.transform.position) && Vector3.Distance(target.transform.position, transform.position) <= 30 && target.GetComponent<PlayerAnimations>() != null)
-        {
-            currentState = EAIStates.Fire;
-            
-            agent.ResetPath();
-        }
-        else if (!CheckLineofSight(target.transform.position) && Vector3.Distance(target.transform.position, transform.position) <= 50 && target.GetComponent<PlayerAnimations>() != null)
-        {
-            currentState = EAIStates.MoveTowards;
-        }
-        else
-        {
-            currentState = EAIStates.RandomMove;
+            target = GameObject.FindGameObjectWithTag("Player");
         }
 
-        if (currentState != EAIStates.Dead)
+        if (target != null)
         {
-            Vector2 targetDirection;
-            targetDirection.x = agent.velocity.x;
-            targetDirection.y = agent.velocity.z;
-            float velocity = Mathf.Abs(targetDirection.x) + Mathf.Abs(targetDirection.y);
-
-            targetDirection = AnimationScript.CurrentDirection(targetDirection, gameObject);
-            targetDirection.Normalize();
-
-            animator.SetFloat("Velocity", velocity);
-            animator.SetFloat("XMove", targetDirection.x);
-            animator.SetFloat("YMove", targetDirection.y);
-        }
-
-
-        if (currentState == EAIStates.Dead && !removeBody)
-        {
-            agent.ResetPath();
-            isDead = true;
-            animator.SetBool("Death", isDead);
-            animator.SetTrigger("Dead");            
-            Destroy(GetComponent<Collider>());
-            Destroy(GetComponent<NavMeshAgent>());
-            Destroy(GetComponent<Rigidbody>());
-        }
-        else if (currentState == EAIStates.MoveTowards)
-        {
-
-
-            agent.SetDestination(new Vector3(target.transform.position.x, target.transform.position.x, target.transform.position.z));
-         
-
-
-        }
-        else if (currentState == EAIStates.Fire)
-        {
-            Vector3 targetDir = target.transform.position - transform.position;
-            targetDir.y = transform.position.y;
-            Quaternion rotation;
-
-            //transform.rotation = Quaternion.Euler( Vector3.RotateTowards(transform.position, targetDir, removeSpeed * Time.deltaTime, 0f));
-            rotation = Quaternion.LookRotation(targetDir);
-            // transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 100 * Time.deltaTime);
-            transform.LookAt(target.transform);
-
-            EnemyShoot();
-        }
-        else if (currentState == EAIStates.RandomMove)
-        {
-            if (!gotRandomPos)
+            AnimationScript.StopAttack(animator);
+            if (health.GetHealth() <= 0)
             {
-                while (dest == new Vector3())
-                {
-                    dest = RandomNavSphere(transform.position, 30, layerFLoor);
-                    //dest.y = transform.position.y - 8;
-                }
-                gotRandomPos = true;
+                currentState = EAIStates.Dead;
             }
-            ////Debug.Log(dest);
-
-            agent.SetDestination(dest);
-
-            if (Vector3.Distance(transform.position, dest) <= 3)
+            else if (!CheckLineofSight(target.transform.position) && Vector3.Distance(target.transform.position, transform.position) <= 30 && target.GetComponent<PlayerAnimations>() != null)
             {
-                gotRandomPos = false;
+                currentState = EAIStates.Fire;
+
                 agent.ResetPath();
-                dest = new Vector3();
+            }
+            else if (!CheckLineofSight(target.transform.position) && Vector3.Distance(target.transform.position, transform.position) <= 50 && target.GetComponent<PlayerAnimations>() != null)
+            {
+                currentState = EAIStates.MoveTowards;
+            }
+            else
+            {
+                currentState = EAIStates.RandomMove;
             }
 
+            if (currentState != EAIStates.Dead)
+            {
+                Vector2 targetDirection;
+                targetDirection.x = agent.velocity.x;
+                targetDirection.y = agent.velocity.z;
+                float velocity = Mathf.Abs(targetDirection.x) + Mathf.Abs(targetDirection.y);
+
+                targetDirection = AnimationScript.CurrentDirection(targetDirection, gameObject);
+                targetDirection.Normalize();
+
+                animator.SetFloat("Velocity", velocity);
+                animator.SetFloat("XMove", targetDirection.x);
+                animator.SetFloat("YMove", targetDirection.y);
+            }
+
+
+            if (currentState == EAIStates.Dead && !removeBody)
+            {
+                agent.ResetPath();
+                isDead = true;
+                animator.SetBool("Death", isDead);
+                animator.SetTrigger("Dead");
+                Destroy(GetComponent<Collider>());
+                Destroy(GetComponent<NavMeshAgent>());
+                Destroy(GetComponent<Rigidbody>());
+            }
+            else if (currentState == EAIStates.MoveTowards)
+            {
+                agent.SetDestination(new Vector3(target.transform.position.x, target.transform.position.x, target.transform.position.z));
+            }
+            else if (currentState == EAIStates.Fire)
+            {
+                Vector3 targetDir = target.transform.position - transform.position;
+                targetDir.y = transform.position.y;
+                Quaternion rotation;
+
+                //transform.rotation = Quaternion.Euler( Vector3.RotateTowards(transform.position, targetDir, removeSpeed * Time.deltaTime, 0f));
+                rotation = Quaternion.LookRotation(targetDir);
+                // transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 100 * Time.deltaTime);
+                transform.LookAt(target.transform);
+
+                EnemyShoot();
+            }
+            else if (currentState == EAIStates.RandomMove)
+            {
+                if (!gotRandomPos)
+                {
+                    while (dest == new Vector3())
+                    {
+                        dest = RandomNavSphere(transform.position, 30, layerFLoor);
+                        //dest.y = transform.position.y - 8;
+                    }
+                    gotRandomPos = true;
+                }
+                ////Debug.Log(dest);
+
+                agent.SetDestination(dest);
+
+                if (Vector3.Distance(transform.position, dest) <= 3)
+                {
+                    gotRandomPos = false;
+                    agent.ResetPath();
+                    dest = new Vector3();
+                }
+
+            }
+
+            if (removeBody)
+            {
+                float posY = transform.position.y - (removeSpeed * Time.deltaTime);
+                transform.position = new Vector3(transform.position.x, posY, transform.position.z);
+            }
+            fireCooldown -= Time.deltaTime;
         }
-
-
-
-        if (removeBody)
-        {
-            float posY = transform.position.y - (removeSpeed * Time.deltaTime);
-            transform.position = new Vector3(transform.position.x, posY, transform.position.z);
-        }
-        fireCooldown -= Time.deltaTime;
     }
 
     public void RemoveBody()
@@ -189,20 +190,13 @@ public class EnemyController : MonoBehaviour
     {
         if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAnimations>() != null)
         {
-            SpawnBullet(0, 0);
+            SpawnBullet();
             //SpawnBullet(10, 45);
             //SpawnBullet(-10, -45);
         }
     }
 
-    //Wisard attacks
-    public void WizardFire()
-    {
-        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAnimations>() != null)
-        {
-            SpawnBullet(0, 0);
-        }
-    }
+  
 
     //Changes the staff colour while shooting
     public void StaffAttack()
@@ -211,20 +205,17 @@ public class EnemyController : MonoBehaviour
     }
 
     //Spawns projectiles
-    void SpawnBullet(float angleMin, float angleMAx)
+    void SpawnBullet()
     {
         Vector3 forward = transform.forward;
         forward.y = 0;
 
-     
-
-
         Vector3 firePos = transform.position;
         firePos.y += yOffsetProgectile;
-        //firePos += transform.forward * zOffsetProgectile;
+        //firePos += transform.forward;
 
         //playerRot.eulerAngles += 45;
-        SpellList.instance.spells[(int)projectile].CastSpell(firePos, transform.eulerAngles.y, "EnemyProjectile");
+        SpellList.instance.spells[(int)projectile].CastSpell(firePos, transform.eulerAngles.y, gameObject, "EnemyProjectile");
        
         fireCooldown = fireRate;
     }
@@ -280,9 +271,6 @@ public class EnemyController : MonoBehaviour
     }
 
 }
-
-
-
 
 public enum EAIStates
 {

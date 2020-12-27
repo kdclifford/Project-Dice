@@ -160,6 +160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7638974500389706609}
   - component: {fileID: 7579202164961669060}
+  - component: {fileID: -8516785095644074373}
   m_Layer: 0
   m_Name: FInal Room 1
   m_TagString: Room
@@ -206,6 +207,18 @@ MonoBehaviour:
   location: {x: 0, y: 0}
   preFabNumber: 0
   roomNumber: 0
+--- !u!114 &-8516785095644074373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7638974500389706608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6b8464ea052a074ebe7f3107c0ad14e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &144267368275864605
 PrefabInstance:
   m_ObjectHideFlags: 0
