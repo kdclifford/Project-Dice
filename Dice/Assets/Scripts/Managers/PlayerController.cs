@@ -231,12 +231,15 @@ public class PlayerController : MonoBehaviour
             uIManager.ShowInteractPopUp();
             
         }
-       
+
+        if (Collision.gameObject.layer == LayerMask.NameToLayer("Spell") || Collision.gameObject.layer == LayerMask.NameToLayer("PickUp"))
+        {
+            Collision.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+        }
 
         if (Collision.gameObject.layer == LayerMask.NameToLayer("Spell"))
         {
             uIManager.ShowEquipPopUp();
-            Collision.gameObject.transform.GetChild(1).gameObject.SetActive(true);
         
             if(ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftEquipt))
             {
@@ -283,8 +286,8 @@ public class PlayerController : MonoBehaviour
             if (sn.GetHealth() < sn.maxHealth)
             {
                 sn.AddHealth();
-                Destroy(Collision.gameObject);               
-                //uIManager.AddUIHeart();
+                Destroy(Collision.gameObject);
+                Collision.gameObject.transform.GetChild(1).gameObject.SetActive(false);
             }
         }
         else if (Collision.gameObject.tag == "ShieldPickup" && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
@@ -296,6 +299,7 @@ public class PlayerController : MonoBehaviour
                 uIManager.AddUIShield();
                 sn.AddShield();
                 soundManager.Play(ESoundClipEnum.Shield, gameObject);
+                Collision.gameObject.transform.GetChild(1).gameObject.SetActive(false);
                 Destroy(Collision.gameObject);
             }
         }
@@ -318,7 +322,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Spell"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Spell") || other.gameObject.layer == LayerMask.NameToLayer("PickUp"))
         {
             other.gameObject.transform.GetChild(1).gameObject.SetActive(false);
         }
