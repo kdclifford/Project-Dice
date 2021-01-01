@@ -18,7 +18,7 @@ public class SwordProjectile : SpellBase
         element = EElementalyType.Physical;
         castingSound = ESoundClipEnum.FireBall;
         spellType = ESpellType.Projectile;
-        SpellName = "BigKnife";
+        SpellName = "BigKnifey";
     }
 
     public override void SetValues()

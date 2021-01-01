@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8687304581638903838}
   - component: {fileID: 3213524434392388974}
   - component: {fileID: 8861393562412300949}
+  - component: {fileID: 6666957376631923172}
   m_Layer: 16
   m_Name: GroundExplosion
   m_TagString: Equipped
@@ -4884,3 +4885,17 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 4.26
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6666957376631923172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4968714210280350438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b1dd6990816ad64791247b09f4af6e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Duration: 2
+  tickTimeMax: 1
