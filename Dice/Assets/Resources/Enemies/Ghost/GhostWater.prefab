@@ -169,8 +169,9 @@ GameObject:
   - component: {fileID: 2408302758391321385}
   - component: {fileID: 325228106446229872}
   - component: {fileID: 1876567650068904806}
+  - component: {fileID: 2709523542029287052}
   m_Layer: 0
-  m_Name: Toon Ghost-Blue
+  m_Name: GhostWater
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -285,7 +286,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  currentHealth: 0
   maxShields: 0
   currentShields: 0
 --- !u!114 &325228106446229872
@@ -330,6 +330,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2347e5539975344cb401d946b33b736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2709523542029287052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65be01ef25bf6e444b10ec1e1dc82831, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentElement: 3
 --- !u!1 &117530
 GameObject:
   m_ObjectHideFlags: 0

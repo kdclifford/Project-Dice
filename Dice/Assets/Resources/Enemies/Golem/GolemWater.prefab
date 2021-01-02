@@ -5154,6 +5154,7 @@ GameObject:
   - component: {fileID: 890347150070839290}
   - component: {fileID: 4958853700776409228}
   - component: {fileID: 4239796498611079156}
+  - component: {fileID: 3627767596479284578}
   m_Layer: 0
   m_Name: GolemWater
   m_TagString: Enemy
@@ -5316,6 +5317,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2347e5539975344cb401d946b33b736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3627767596479284578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65be01ef25bf6e444b10ec1e1dc82831, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentElement: 3
 --- !u!1 &144120
 GameObject:
   m_ObjectHideFlags: 0

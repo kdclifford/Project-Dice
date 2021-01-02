@@ -26,5 +26,6 @@ public class SummonLightning : SpellBase
         spellType = ESpellType.AOE;
         deathSound = ESoundClipEnum.Electric;
         SpellName = "ThorMaad";
+        PathProjectile = PathProjectile + element.ToString() + "/";
     }
 }

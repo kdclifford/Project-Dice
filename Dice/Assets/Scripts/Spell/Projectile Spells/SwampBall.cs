@@ -19,6 +19,7 @@ public class SwampBall : SpellBase
         castingSound = ESoundClipEnum.Bubble;
         spellType = ESpellType.Projectile;
         SpellName = "ShrekFart";
+        PathProjectile = PathProjectile + element.ToString() + "/";
     }
 
     public override void SetValues()

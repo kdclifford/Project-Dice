@@ -14,7 +14,7 @@ public class CollisionResolution : MonoBehaviour
     private SpellList spellList;
     private float maxAoeTime = 2.0f;
     private float aoeBurnTime = 0;
-
+    private EElementalyType agentType;
     private void Start()
     {
         soundManager = SoundManager.instance;
@@ -25,6 +25,7 @@ public class CollisionResolution : MonoBehaviour
         uIManager = UIManager.instance;
         spellList = SpellList.instance;
         aoeBurnTime = maxAoeTime;
+        agentType = GetComponent<AgentElementType>().agentElement;
     }
 
     private void Update()
@@ -66,7 +67,7 @@ public class CollisionResolution : MonoBehaviour
         text.GetComponent<TextMesh>().color = spellList.spells[(int)projectile].castingColour;
         //textMesh.color = Color.white;
 
-        GetComponent<Health>().RemoveHealth();
+           GetComponent<Health>().SetHealth(GetComponent<Health>().GetHealth() - (int)CalculateDamage(spellList.spells[(int)projectile].damage, spellList.spells[(int)projectile].element));
     }
 
     private void OnParticleCollision(GameObject other)
@@ -78,7 +79,7 @@ public class CollisionResolution : MonoBehaviour
                 if (other.gameObject.tag == "Equipped")
                 {
 
-                    ShowFloatingText(other.gameObject.GetComponent<SpellIndex>().spellIndex);
+                    ShowFloatingText(other.gameObject.GetComponent<SpellIndex>().spellIndex);                 
                     aoeBurnTime = maxAoeTime;
                 }
             }
@@ -161,6 +162,13 @@ public class CollisionResolution : MonoBehaviour
             }
         }
     }
+
+    public float CalculateDamage(float damageAmount, EElementalyType projectile)
+    {
+        return damageAmount * DamageMultiplier.GetDamageAmount(agentType, projectile);
+    }
+
+
 
 }
     

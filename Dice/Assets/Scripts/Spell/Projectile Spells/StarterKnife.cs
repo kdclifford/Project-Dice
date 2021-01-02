@@ -20,6 +20,7 @@ public class StarterKnife : SpellBase
         castingSound = ESoundClipEnum.FireBall;
         spellType = ESpellType.Projectile;
         SpellName = "Shankie";
+        PathProjectile = PathProjectile + element.ToString() + "/";
     }
 
     public override void SetValues()

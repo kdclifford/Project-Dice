@@ -8,6 +8,7 @@ using System;
 public class EnemyController : MonoBehaviour
 {
     //Public
+    //public EElementalyType element;
     [SerializeField, Header("Object Referneces")]
     private ESpellEnum projectile = 0;
     [SerializeField]
@@ -170,7 +171,7 @@ public class EnemyController : MonoBehaviour
     }
 
     //Universal call to make enemies
-    public void EnemyShoot()
+    private void EnemyShoot()
     {
         if ((int)projectile != -1)
         {
@@ -262,8 +263,8 @@ public class EnemyController : MonoBehaviour
                 return "Water";
             case EElementalyType.Electricity:
                 return "Electricity";
-            case EElementalyType.Rock:
-                return "Rock";
+            case EElementalyType.Nature:
+                return "Nature";
             case EElementalyType.Wind:
                 return "Wind";
         }

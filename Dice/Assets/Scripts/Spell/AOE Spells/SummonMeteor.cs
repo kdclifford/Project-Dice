@@ -21,10 +21,11 @@ public class SummonMeteor : SpellBase
     {
         duration = 10;
         castingColour = Color.red;
-        element = EElementalyType.Rock;
+        element = EElementalyType.Nature;
         castingSound = ESoundClipEnum.Bubble;
         spellType = ESpellType.AOE;
         deathSound = ESoundClipEnum.Bubble;
         SpellName = "DinoKiller";
+        PathProjectile = PathProjectile + element.ToString() + "/";
     }
 }

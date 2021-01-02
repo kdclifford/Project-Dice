@@ -26,5 +26,6 @@ public class SummonRain : SpellBase
         spellType = ESpellType.AOE;
         deathSound = ESoundClipEnum.Bubble;
         SpellName = "RainyDay";
+        PathProjectile = PathProjectile + element.ToString() + "/";
     }
 }

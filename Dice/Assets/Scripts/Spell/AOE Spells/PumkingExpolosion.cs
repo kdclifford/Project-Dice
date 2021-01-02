@@ -13,10 +13,23 @@ public class PumkingExpolosion : SpellBase
         BasicSummon(posistion, rot, tag, SpellObject, ESpellEnum.PumkingExpolosion);
         //Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadious, targetMask);
     }
+
+    public PumkingExpolosion()
+    {
+        duration = 1;
+        castingColour = Color.red;
+        element = EElementalyType.Nature;
+        castingSound = ESoundClipEnum.FireBall;
+        spellType = ESpellType.Summoning;
+        SpellName = "PumkTheJam";
+        coolDown = 3;
+        PathProjectile = PathProjectile + element.ToString() + "/";
+    }
+
+
     public override void SetValues()
     {
-        SpellObject = Resources.Load("Spells/PumkinSpell", typeof(GameObject)) as GameObject;
-        UILogo = Resources.Load<Sprite>("UIIcons/Spells/NatureUI");
-        SpellName = "PumpKing";
+        SpellObject = Resources.Load(PathProjectile  + "PumkinSpell", typeof(GameObject)) as GameObject;
+        UILogo = Resources.Load<Sprite>(PathUI + "NatureUI");
     }
 }
