@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6027640028949337748}
   - component: {fileID: 4932986889129722256}
+  - component: {fileID: 430203616073735552}
   m_Layer: 16
   m_Name: SummonLightning
   m_TagString: Electricity
@@ -48,6 +49,20 @@ CapsuleCollider:
   m_Height: 18.99
   m_Direction: 1
   m_Center: {x: 0, y: 4.42, z: 10}
+--- !u!114 &430203616073735552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447337104025193678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b1dd6990816ad64791247b09f4af6e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Duration: 10
+  tickTimeMax: 2
 --- !u!1 &1779869491105668693
 GameObject:
   m_ObjectHideFlags: 0
