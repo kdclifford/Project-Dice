@@ -226,10 +226,9 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerStay(Collider Collision)
     {
-        if (Collision.gameObject.layer == LayerMask.NameToLayer("PickUp"))            
+        if (Collision.gameObject.layer == LayerMask.NameToLayer("PickUp") || Collision.gameObject.layer == LayerMask.NameToLayer("Door"))            
         {
             uIManager.ShowInteractPopUp();
-            
         }
 
         if (Collision.gameObject.layer == LayerMask.NameToLayer("Spell") || Collision.gameObject.layer == LayerMask.NameToLayer("PickUp"))
