@@ -33,11 +33,21 @@ public class CollisionResolution : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.layer != 16)
+    { 
+        if (other.gameObject.layer == 17 && transform.tag == "Player")
         {
-            ChekcForCollisions(other.gameObject);
+            other.gameObject.GetComponentInParent<ParticleSystem>().Play();
+            other.gameObject.GetComponentInChildren<Light>().intensity = 5;
+            other.gameObject.GetComponentInParent<Collider>().enabled = false;
+            //Get Light Object
+
+            //Turn it on
         }
+        else if (other.gameObject.layer != 16)
+        {
+            CheckForCollisions(other.gameObject);
+        }
+       
     }
 
 
@@ -47,7 +57,7 @@ public class CollisionResolution : MonoBehaviour
         {
             if (aoeBurnTime <= 0)
             {
-                ChekcForCollisions(other.gameObject);
+                CheckForCollisions(other.gameObject);
                 aoeBurnTime = maxAoeTime;
             }
         }
@@ -112,7 +122,7 @@ public class CollisionResolution : MonoBehaviour
 
     }   
 
-    public void ChekcForCollisions(GameObject collider)
+    public void CheckForCollisions(GameObject collider)
     {
         if (transform.tag == "Enemy")
         {
