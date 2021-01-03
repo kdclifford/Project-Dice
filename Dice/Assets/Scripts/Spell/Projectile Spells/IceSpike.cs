@@ -20,6 +20,7 @@ public class IceSpike : SpellBase
         spellType = ESpellType.Projectile;
         deathSound = ESoundClipEnum.PuttingOutFireBall;
         SpellName = "IceOwchie";
+        PathProjectile = PathProjectile + element.ToString() + "/";
     }
 
     public override void SetValues()

@@ -26,6 +26,7 @@ public class Flamethrower : SpellBase
         spellType = ESpellType.Projectile;
         SpellName = "Thrower";
         coolDown = 6;
+        PathProjectile = PathProjectile + element.ToString() + "/";
     }
 
     public override void SetValues()

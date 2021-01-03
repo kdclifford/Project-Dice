@@ -19,6 +19,7 @@ public class SwordProjectile : SpellBase
         castingSound = ESoundClipEnum.FireBall;
         spellType = ESpellType.Projectile;
         SpellName = "BigKnife";
+        PathProjectile = PathProjectile + element.ToString() + "/";
     }
 
     public override void SetValues()

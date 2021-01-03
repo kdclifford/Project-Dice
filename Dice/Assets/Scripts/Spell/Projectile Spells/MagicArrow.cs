@@ -19,6 +19,7 @@ public class MagicArrow : SpellBase
         castingSound = ESoundClipEnum.Bubble;
         spellType = ESpellType.Projectile;
         SpellName = "MagicArrow";
+        PathProjectile = PathProjectile + element.ToString() + "/";
     }
 
     public override void SetValues()

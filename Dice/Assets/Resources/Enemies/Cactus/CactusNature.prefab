@@ -538,8 +538,9 @@ GameObject:
   - component: {fileID: 628957761}
   - component: {fileID: 628957765}
   - component: {fileID: 628957764}
+  - component: {fileID: -3029870626389822070}
   m_Layer: 0
-  m_Name: CactusRock
+  m_Name: CactusNature
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -703,6 +704,19 @@ CapsuleCollider:
   m_Height: 1.57
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &-3029870626389822070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65be01ef25bf6e444b10ec1e1dc82831, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentElement: 5
 --- !u!1 &141366
 GameObject:
   m_ObjectHideFlags: 0
