@@ -24,6 +24,7 @@ public class ProjectileAOEFire : SpellBase
         spellType = ESpellType.Projectile;
         SpellName = "FireThrow";
         coolDown = 3;
+        PathProjectile = PathProjectile + element.ToString() + "/";
     }
 
     public override void SetValues()

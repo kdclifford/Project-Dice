@@ -23,7 +23,7 @@ public class FireBall : SpellBase
         spellType = ESpellType.Projectile;
         deathSound = ESoundClipEnum.PuttingOutFireBall;
         SpellName = "PewPewFire";
-        //  UILogo = (Sprite)Resources.Load("UI Icons/Spells/FireUI");
+        PathProjectile = PathProjectile + element.ToString() + "/";
     }
 
     public override void SetValues()

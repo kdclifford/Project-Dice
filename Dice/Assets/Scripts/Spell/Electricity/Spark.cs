@@ -21,7 +21,7 @@ public class Spark : SpellBase
         castingSound = ESoundClipEnum.Electric;
         spellType = ESpellType.Projectile;
         SpellName = "LekyTingle";
-        //  UILogo = (Sprite)Resources.Load("UI Icons/Spells/FireUI");
+        PathProjectile = PathProjectile + element.ToString() + "/";
     }
 
     public override void SetValues()

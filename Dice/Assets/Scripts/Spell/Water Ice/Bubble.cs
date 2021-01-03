@@ -20,6 +20,7 @@ public class Bubble : SpellBase
         castingSound = ESoundClipEnum.Bubble;
         spellType = ESpellType.Projectile;
         SpellName = "BlubBlub";
+        PathProjectile = PathProjectile + element.ToString() + "/";
     }
 
     public override void SetValues()

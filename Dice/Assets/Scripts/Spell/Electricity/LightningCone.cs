@@ -18,6 +18,7 @@ public class LightningCone : SpellBase
         spellType = ESpellType.Projectile;
         deathSound = ESoundClipEnum.PuttingOutFireBall;
         SpellName = "LekkyCone";
+        PathProjectile = PathProjectile + element.ToString() + "/";
     }
 
     public override void SetValues()

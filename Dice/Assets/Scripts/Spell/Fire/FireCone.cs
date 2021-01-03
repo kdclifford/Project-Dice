@@ -18,6 +18,7 @@ public class FireCone : SpellBase
         spellType = ESpellType.AOE;
         deathSound = ESoundClipEnum.PuttingOutFireBall;
         SpellName = "PSHHHHFire";
+        PathProjectile = PathProjectile + element.ToString() + "/";
     }
 
     public override void SetValues()

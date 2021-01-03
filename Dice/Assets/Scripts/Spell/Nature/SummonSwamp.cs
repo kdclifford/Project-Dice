@@ -26,5 +26,6 @@ public class SummonSwamp : SpellBase
         spellType = ESpellType.AOE;
         deathSound = ESoundClipEnum.Electric;
         SpellName = "ShreksVoid";
+        PathProjectile = PathProjectile + element.ToString() + "/";
     }
 }

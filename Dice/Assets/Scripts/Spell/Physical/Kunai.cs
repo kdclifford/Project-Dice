@@ -19,6 +19,7 @@ public class Kunai : SpellBase
         castingSound = ESoundClipEnum.Bubble;
         spellType = ESpellType.Projectile;
         SpellName = "LightNinja";
+        PathProjectile = PathProjectile + element.ToString() + "/";
     }
 
     public override void SetValues()

@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Toon Ghost-Blue 1
   m_Shader: {fileID: 4800000, guid: 94d1866eab5f87c4f9ddd582ce5b52bb, type: 3}
-  m_ShaderKeywords: _EMISSION _FORCE_ON
+  m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -68,7 +68,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Force: 1
+    - _Force: 0
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1

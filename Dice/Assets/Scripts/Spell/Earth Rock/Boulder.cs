@@ -15,10 +15,11 @@ public class Boulder : SpellBase
     {
         duration = 3;
         castingColour = Color.green;
-        element = EElementalyType.Rock;
+        element = EElementalyType.Nature;
         castingSound = ESoundClipEnum.Electric;
         spellType = ESpellType.Projectile;
         SpellName = "BBBoulder";
+        PathProjectile = PathProjectile + element.ToString() + "/";        
     }
 
     public override void SetValues()

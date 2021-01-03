@@ -19,6 +19,7 @@ public class GrassBall : SpellBase
         castingSound = ESoundClipEnum.Electric;
         spellType = ESpellType.Projectile;
         SpellName = "GrassBall";
+        PathProjectile = PathProjectile + element.ToString() + "/";
     }
 
     public override void SetValues()
