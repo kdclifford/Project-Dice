@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Room :MonoBehaviour
+public class Room : MonoBehaviour
 {
     public List<int> connectedRooms;
     public Vector2 Size;
@@ -12,6 +12,8 @@ public class Room :MonoBehaviour
     public Vector2Int location; 
     public int preFabNumber;
     public int roomNumber;
+   // [HideInInspector]
+    public int roomSpawnPoints;
     // Start is called before the first frame update
 
 }

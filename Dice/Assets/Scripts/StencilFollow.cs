@@ -20,8 +20,6 @@ public class StencilFollow : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
-        DontDestroyOnLoad(gameObject);
     }
 
 

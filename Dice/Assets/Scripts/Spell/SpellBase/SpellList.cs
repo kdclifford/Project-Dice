@@ -22,10 +22,7 @@ public class SpellList : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-       
-        DontDestroyOnLoad(gameObject);
-
-       
+              
     }
 
     private void OnEnable()

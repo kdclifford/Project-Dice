@@ -5,7 +5,7 @@ using UnityEditor;
 [CustomEditor(typeof(XmlLoader)), CanEditMultipleObjects]
 public class XmlLoaderEditor : Editor
 {
-    const string name = "ESoundClipEnum";
+    const string FileName = "ESoundClipEnum";
     const string path = "Assets/Scripts/";
     //Width offset
     private float offset = 20;
@@ -84,7 +84,7 @@ public class XmlLoaderEditor : Editor
                 names[i] = tempSound[i].name;
             }
 
-            EditorMethods.WriteToEnum(names, name, path);
+            EditorMethods.WriteToEnum(names, FileName, path);
             
         }
 

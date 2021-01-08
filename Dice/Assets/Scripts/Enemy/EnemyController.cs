@@ -41,6 +41,7 @@ public class EnemyController : MonoBehaviour
     private SoundManager soundManager;
     private Health health;
 
+    public LayerMask raycastMask;
     bool gotRandomPos = false;
     Vector3 dest;
     private GameObject lootDrop;
@@ -133,6 +134,8 @@ public class EnemyController : MonoBehaviour
             }
             else if (currentState == EAIStates.RandomMove)
             {
+                RaycastHit hit;
+                
                 if (!gotRandomPos)
                 {
                     while (dest == new Vector3())
@@ -143,8 +146,11 @@ public class EnemyController : MonoBehaviour
                     gotRandomPos = true;
                 }
                 ////Debug.Log(dest);
-
-                agent.SetDestination(dest);
+                if (Physics.Raycast(transform.forward, dest, out hit, layerhit))
+                {
+                    dest = RandomNavSphere(transform.position, 30, layerFLoor);
+                }
+                    agent.SetDestination(dest);
 
                 if (Vector3.Distance(transform.position, dest) <= 3)
                 {

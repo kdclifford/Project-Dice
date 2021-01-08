@@ -15,7 +15,7 @@ public class PlayerAnimations : MonoBehaviour
 
     public int idle = 0;
     public int oldIdle = 0;
-    private bool idleAnimation = false;
+    //private bool idleAnimation = false;
 
     public Vector2 deathDirection;
     private Vector2 newDeathDirection;
@@ -91,10 +91,10 @@ public class PlayerAnimations : MonoBehaviour
         animator.SetTrigger("Dead");
     }
 
-    private void IdleAnimationOn()
-    {
-        idleAnimation = true;
-    }
+    //private void IdleAnimationOn()
+    //{
+    //    idleAnimation = true;
+    //}
 
     private void IdleAnimationOff()
     {
@@ -103,7 +103,7 @@ public class PlayerAnimations : MonoBehaviour
             idle = Random.Range(0, 4);
         }
         oldIdle = idle;
-        idleAnimation = false;
+       // idleAnimation = false;
     }
 
     public void AttackOff()

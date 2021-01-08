@@ -52,7 +52,6 @@ public class UIManager : MonoBehaviour
         }
         currentScene = SceneManager.GetActiveScene();
 
-        DontDestroyOnLoad(gameObject);
     }
 
 

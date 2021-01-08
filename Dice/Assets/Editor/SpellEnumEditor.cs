@@ -6,7 +6,7 @@ using UnityEditor;
 [CustomEditor(typeof(SpellList))]
 public class SpellEnumEditor : Editor
 {    
-    const string name = "ESpellEnum";
+    const string FileName = "ESpellEnum";
     const string path = "Assets/Scripts/Spell/";
     public override void OnInspectorGUI()
     {
@@ -28,7 +28,7 @@ public class SpellEnumEditor : Editor
                 names[i] = myScript.spells[i].ToString() ;
             }
 
-            EditorMethods.WriteToEnum(names, name, path);
+            EditorMethods.WriteToEnum(names, FileName, path);
 
 
         }

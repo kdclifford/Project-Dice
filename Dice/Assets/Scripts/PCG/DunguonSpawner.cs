@@ -36,9 +36,22 @@ public class DunguonSpawner : MonoBehaviour
 
     public Pathfinding pathFinder;
 
+    public List<GameObject> roomRef;
 
-    private void Start()
-    {
+    public static DunguonSpawner instance;
+
+    private void Awake()
+    {       
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+                return;
+            }        
+    
         for (int i = 0; i < RoomPrefabs.Count; i++)
             roomsPrefabData.Add(RoomPrefabs[i].GetComponent<Room>());
 
@@ -209,14 +222,17 @@ public class DunguonSpawner : MonoBehaviour
 
         var temp = Instantiate(finalRoomPrefab, new Vector3(12 * roomsData[0].location.x, 0, 12 * roomsData[0].location.y), Quaternion.identity);
         temp.GetComponent<Room>().location = roomsData[0].location;
+        roomRef.Add(temp);
 
         temp = Instantiate(startingRoom, new Vector3(12 * roomsData[1].location.x, 0, 12 * roomsData[1].location.y), Quaternion.identity);
         temp.GetComponent<Room>().location = roomsData[1].location;
+        roomRef.Add(temp);
 
         for (int i=2; i< roomsData.Count;i++)
         {
                 temp = Instantiate(RoomPrefabs[roomsData[i].preFabNumber], new Vector3(12 * roomsData[i].location.x, 0, 12 * roomsData[i].location.y), Quaternion.identity);
                 temp.GetComponent<Room>().location = roomsData[i].location;
+            roomRef.Add(temp);
         }
     }
     bool ValidRoomLocation(Room RoomLocation, List<Room> Rooms)

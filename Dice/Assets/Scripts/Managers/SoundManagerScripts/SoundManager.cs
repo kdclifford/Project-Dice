@@ -30,8 +30,6 @@ public class SoundManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
-        DontDestroyOnLoad(gameObject);
     }
 
     //Used to check and change the audio depending on the scene
