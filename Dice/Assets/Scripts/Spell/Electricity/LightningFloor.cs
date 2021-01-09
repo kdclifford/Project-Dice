@@ -2,29 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BatSonar : SpellBase
+public class LightningFloor : SpellBase
 {
     public override void CastSpell(Vector3 posistion, float rot, GameObject agentRef, string tag = "Equipped")
     {
-        PlayerAOE(posistion, tag, agentRef, ESpellEnum.BatSonar);
+        SetValues();
+        BasicSummon(posistion, rot, tag, SpellObject, ESpellEnum.LightningFloor);
     }
 
-    public BatSonar()
+    public LightningFloor()
     {
-        duration = 2;
-        castingColour = Color.white;
-        element = EElementalyType.Physical;
+        duration = 10;
+        castingColour = Color.blue;
+        element = EElementalyType.Electricity;
         castingSound = ESoundClipEnum.FireBall;
         spellType = ESpellType.AOE;
         deathSound = ESoundClipEnum.Bubble;
-        SpellName = "EEEEK EEEK";
+        SpellName = "SparkieBoi";
         PathProjectile = PathProjectile + element.ToString() + "/";
     }
 
     public override void SetValues()
     {
-        SpellObject = Resources.Load(PathProjectile + "BatSonar", typeof(GameObject)) as GameObject;
-        UILogo = Resources.Load<Sprite>(PathUI + "PhysicalUI");
+        SpellObject = Resources.Load(PathProjectile + "LightningFloor", typeof(GameObject)) as GameObject;
+        UILogo = Resources.Load<Sprite>(PathUI + "LightningUI");
         destroyInstantiante = Resources.Load(PathDeath + "EmptyDestroy", typeof(GameObject)) as GameObject;
     }
 }

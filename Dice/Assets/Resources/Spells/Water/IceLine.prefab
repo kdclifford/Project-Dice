@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &636012117638378635
+--- !u!1 &4914757582660669485
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,65 +8,65 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4134011246261236906}
-  - component: {fileID: 8010855554134566996}
-  - component: {fileID: 7243340369414184560}
-  - component: {fileID: 2579294714268897402}
+  - component: {fileID: 8483054428311949324}
+  - component: {fileID: 2579277201626074354}
+  - component: {fileID: 2910077345998420694}
+  - component: {fileID: -2399105992341580919}
   m_Layer: 16
-  m_Name: FireLine
+  m_Name: IceLine
   m_TagString: Equipped
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4134011246261236906
+--- !u!4 &8483054428311949324
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 636012117638378635}
+  m_GameObject: {fileID: 4914757582660669485}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.688131, y: -2.7316751, z: 20.434269}
+  m_LocalPosition: {x: -7.4953356, y: -2.731676, z: 30.639324}
   m_LocalScale: {x: 1.2065054, y: 0.11202, z: 0.9151779}
   m_Children:
-  - {fileID: 9091885133489006042}
+  - {fileID: 3660288529617650044}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8010855554134566996
+--- !u!114 &2579277201626074354
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 636012117638378635}
+  m_GameObject: {fileID: 4914757582660669485}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2337fe4a4df52145912b8bb96a327eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MaxTimer: 1
---- !u!65 &7243340369414184560
+--- !u!65 &2910077345998420694
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 636012117638378635}
+  m_GameObject: {fileID: 4914757582660669485}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.880231, y: 2.6381235, z: 11.7151575}
   m_Center: {x: 0.03953482, y: 0.063462295, z: 5.7865787}
---- !u!114 &2579294714268897402
+--- !u!114 &-2399105992341580919
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 636012117638378635}
+  m_GameObject: {fileID: 4914757582660669485}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b1dd6990816ad64791247b09f4af6e7, type: 3}
@@ -74,16 +74,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Duration: 1
   tickTimeMax: 0.8
---- !u!1001 &9091885133488922968
+--- !u!1001 &3660288529617602046
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 4134011246261236906}
+    m_TransformParent: {fileID: 8483054428311949324}
     m_Modifications:
     - target: {fileID: 184082, guid: 5d7d20cd12171e64dbf63552d530e567, type: 3}
       propertyPath: m_Name
-      value: FireWave1
+      value: IceWave
       objectReference: {fileID: 0}
     - target: {fileID: 476290, guid: 5d7d20cd12171e64dbf63552d530e567, type: 3}
       propertyPath: m_RootOrder
@@ -202,12 +202,48 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 19822588, guid: 5d7d20cd12171e64dbf63552d530e567, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.90051633
+      objectReference: {fileID: 0}
+    - target: {fileID: 19822588, guid: 5d7d20cd12171e64dbf63552d530e567, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19822588, guid: 5d7d20cd12171e64dbf63552d530e567, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.5896226
+      objectReference: {fileID: 0}
+    - target: {fileID: 19822588, guid: 5d7d20cd12171e64dbf63552d530e567, type: 3}
       propertyPath: InitialModule.gravityModifier.scalar
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19822588, guid: 5d7d20cd12171e64dbf63552d530e567, type: 3}
       propertyPath: InitialModule.startSpeed.minMaxState
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19822588, guid: 5d7d20cd12171e64dbf63552d530e567, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.b
+      value: 0.65591323
+      objectReference: {fileID: 0}
+    - target: {fileID: 19822588, guid: 5d7d20cd12171e64dbf63552d530e567, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.g
+      value: 0.9245283
+      objectReference: {fileID: 0}
+    - target: {fileID: 19822588, guid: 5d7d20cd12171e64dbf63552d530e567, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.r
+      value: 0.53640085
+      objectReference: {fileID: 0}
+    - target: {fileID: 19822588, guid: 5d7d20cd12171e64dbf63552d530e567, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19822588, guid: 5d7d20cd12171e64dbf63552d530e567, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19822588, guid: 5d7d20cd12171e64dbf63552d530e567, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19822588, guid: 5d7d20cd12171e64dbf63552d530e567, type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].cycleCount
@@ -319,9 +355,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d7d20cd12171e64dbf63552d530e567, type: 3}
---- !u!4 &9091885133489006042 stripped
+--- !u!4 &3660288529617650044 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 476290, guid: 5d7d20cd12171e64dbf63552d530e567,
     type: 3}
-  m_PrefabInstance: {fileID: 9091885133488922968}
+  m_PrefabInstance: {fileID: 3660288529617602046}
   m_PrefabAsset: {fileID: 0}

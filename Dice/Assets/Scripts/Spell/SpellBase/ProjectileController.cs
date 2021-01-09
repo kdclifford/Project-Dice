@@ -34,7 +34,6 @@ public class ProjectileController : MonoBehaviour
     {
         if(collision.gameObject.tag == "Wall")
         {
-            
             SpellList.instance.spells[(int)GetComponent<SpellIndex>().spellIndex].death(transform.position, gameObject, transform.rotation);
             Destroy(gameObject);
         }
