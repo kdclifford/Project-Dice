@@ -4534,7 +4534,7 @@ PrefabInstance:
     - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
         type: 3}
       propertyPath: soundClips.Array.size
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
         type: 3}
@@ -4553,13 +4553,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
         type: 3}
+      propertyPath: soundClips.Array.data[11].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: a75fbd754261c2e4f8d6a03e88b7d3fd, type: 3}
+    - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: soundClips.Array.data[11].name
+      value: CHANGEME
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
       propertyPath: soundClips.Array.data[10].pitch
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
         type: 3}
+      propertyPath: soundClips.Array.data[11].pitch
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
       propertyPath: soundClips.Array.data[10].volume
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: soundClips.Array.data[11].volume
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
         type: 3}

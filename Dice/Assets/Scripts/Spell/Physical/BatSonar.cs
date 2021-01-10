@@ -14,9 +14,9 @@ public class BatSonar : SpellBase
         duration = 2;
         castingColour = Color.white;
         element = EElementalyType.Physical;
-        castingSound = ESoundClipEnum.FireBall;
+        castingSound = ESoundClipEnum.CHANGEME;
         spellType = ESpellType.AOE;
-        deathSound = ESoundClipEnum.Bubble;
+        deathSound = ESoundClipEnum.CHANGEME;
         SpellName = "EEEEK EEEK";
         PathProjectile = PathProjectile + element.ToString() + "/";
     }

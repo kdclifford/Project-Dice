@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 4946948663371330703}
   - component: {fileID: 7454708378186342386}
   m_Layer: 0
-  m_Name: BatElecticity
+  m_Name: BatElectricity
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38277a9f8d97b904e8987e5c575e00e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: 1
+  projectile: 0
   meshRenderer: {fileID: 0}
   target: {fileID: 0}
   isDead: 0
@@ -152,8 +152,11 @@ MonoBehaviour:
   currentState: 1
   yOffsetProgectile: 1
   zOffsetProgectile: 1.97
-  fireRate: 1
+  fireRate: 3
   projectileSpeed: 300
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!54 &1200125069734401579
 Rigidbody:
   m_ObjectHideFlags: 0

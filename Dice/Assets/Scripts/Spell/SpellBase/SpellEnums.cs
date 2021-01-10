@@ -8,7 +8,6 @@ public enum EElementalyType
 { 
     Fire = 0,
     Wind,
-    //Rock,
     Electricity,
     Water, 
     Physical,
