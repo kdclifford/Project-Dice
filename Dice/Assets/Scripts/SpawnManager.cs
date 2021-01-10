@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FloorManager : MonoBehaviour
+public class SpawnManager : MonoBehaviour
 {
     public int currentFloor = 0;
     public FloorData[] floors;
@@ -11,6 +11,10 @@ public class FloorManager : MonoBehaviour
    // [HideInInspector]
     public GameObject[] enemyList;
 
+    [HideInInspector]
+    public List<EElementalyType> elementsList;
+
+    
 
 
     private void Awake()
@@ -34,6 +38,14 @@ public class FloorManager : MonoBehaviour
                 enemyList[i * ((int)EElementalyType.AmountOfElements - 1) + j] = Resources.Load("Enemies/" + enemy.ToString() + "/" + enemy.ToString() + element.ToString()) as GameObject;
             }
         }
+
+        for(int i = 0; i < (int)EElementalyType.AmountOfElements - 1; i++)
+        {
+            elementsList.Add((EElementalyType)i);
+        }
+
+        IListExtensions.Shuffle<EElementalyType>(elementsList);
+
     }
 
 
@@ -58,7 +70,8 @@ public class FloorManager : MonoBehaviour
     {
         int points = room.roomSpawnPoints;
         points = (int)room.Size.x * (int)room.Size.y;
-        points = (int)(points * GetRoomDifficulityMultiplier(room.roomType));
+        points = (int)(points * (currentFloor * GetRoomDifficulityMultiplier(room.roomType)));
+        points = (int)(points * 0.7f);
 
         return points;
     }
@@ -156,8 +169,8 @@ public class FloorManager : MonoBehaviour
 
     int RandomElement(FloorData elements)
     {
-        int i = Random.Range(0, elements.floorTypes.Length);
-        return (int)elements.floorTypes[i];
+        int i = Random.Range(0, elements.elementAmount - 1);
+        return (int)elementsList[i];
     }
 
     int GetMaxEnemyCost(EnemyType[] enemies, int maxCost)
@@ -177,4 +190,27 @@ public class FloorManager : MonoBehaviour
         return maxEnemyCost;
     }
 
+
+
+
+}
+
+
+public static class IListExtensions
+{
+    /// <summary>
+    /// Shuffles the element order of the specified list.
+    /// </summary>
+    public static void Shuffle<T>(this IList<T> ts)
+    {
+        var count = ts.Count;
+        var last = count - 1;
+        for (var i = 0; i < last; ++i)
+        {
+            var r = UnityEngine.Random.Range(i, count);
+            var tmp = ts[i];
+            ts[i] = ts[r];
+            ts[r] = tmp;
+        }
+    }
 }
