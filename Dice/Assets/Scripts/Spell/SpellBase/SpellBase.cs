@@ -65,11 +65,12 @@ public abstract class SpellBase
     public void PlayerAOE(Vector3 posistion, string tag, GameObject player, ESpellEnum spell)
     {
         GameObject bullet = MonoBehaviour.Instantiate(SpellObject, posistion, player.transform.rotation) as GameObject;
-        bullet.transform.SetParent(player.transform);
+        //bullet.transform.SetParent(player.transform);
         bullet.tag = tag;
         bullet.AddComponent<SpellIndex>().spellIndex = spell;
         bullet.GetComponent<ProjectileController>().setTimer(duration);
         SoundManager.instance.Play(castingSound, bullet);
+        //bullet.transform.parent = null;
     }
 
 
