@@ -352,7 +352,7 @@ PrefabInstance:
     - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
         type: 3}
       propertyPath: floors.Array.size
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
         type: 3}
@@ -361,8 +361,98 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
         type: 3}
-      propertyPath: floors.Array.data[1].floorTypes.Array.size
+      propertyPath: floors.Array.data[2].name
+      value: Floor3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[3].name
+      value: Floor4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[4].name
+      value: Floor5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[5].name
+      value: Floor6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[6].name
+      value: Floor7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[7].name
+      value: Floor8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[8].name
+      value: Floor9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[9].name
+      value: Floor10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[0].elementAmount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[1].elementAmount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[2].elementAmount
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[3].elementAmount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[4].elementAmount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[5].elementAmount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[6].elementAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[7].elementAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[8].elementAmount
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[9].elementAmount
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[1].floorTypes.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
         type: 3}
@@ -378,6 +468,46 @@ PrefabInstance:
         type: 3}
       propertyPath: floors.Array.data[1].enemiesAllowedToSpawn.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[2].enemiesAllowedToSpawn.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[3].enemiesAllowedToSpawn.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[4].enemiesAllowedToSpawn.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[5].enemiesAllowedToSpawn.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[6].enemiesAllowedToSpawn.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[7].enemiesAllowedToSpawn.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[8].enemiesAllowedToSpawn.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[9].enemiesAllowedToSpawn.Array.size
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
         type: 3}
@@ -398,6 +528,211 @@ PrefabInstance:
         type: 3}
       propertyPath: floors.Array.data[1].enemiesAllowedToSpawn.Array.data[3]
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[2].enemiesAllowedToSpawn.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[2].enemiesAllowedToSpawn.Array.data[1]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[2].enemiesAllowedToSpawn.Array.data[2]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[3].enemiesAllowedToSpawn.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[3].enemiesAllowedToSpawn.Array.data[1]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[3].enemiesAllowedToSpawn.Array.data[2]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[3].enemiesAllowedToSpawn.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[4].enemiesAllowedToSpawn.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[4].enemiesAllowedToSpawn.Array.data[1]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[4].enemiesAllowedToSpawn.Array.data[2]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[4].enemiesAllowedToSpawn.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[5].enemiesAllowedToSpawn.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[5].enemiesAllowedToSpawn.Array.data[1]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[5].enemiesAllowedToSpawn.Array.data[2]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[5].enemiesAllowedToSpawn.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[5].enemiesAllowedToSpawn.Array.data[4]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[6].enemiesAllowedToSpawn.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[6].enemiesAllowedToSpawn.Array.data[1]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[6].enemiesAllowedToSpawn.Array.data[2]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[6].enemiesAllowedToSpawn.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[6].enemiesAllowedToSpawn.Array.data[4]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[7].enemiesAllowedToSpawn.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[7].enemiesAllowedToSpawn.Array.data[1]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[7].enemiesAllowedToSpawn.Array.data[2]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[7].enemiesAllowedToSpawn.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[7].enemiesAllowedToSpawn.Array.data[4]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[7].enemiesAllowedToSpawn.Array.data[5]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[8].enemiesAllowedToSpawn.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[8].enemiesAllowedToSpawn.Array.data[1]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[8].enemiesAllowedToSpawn.Array.data[2]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[8].enemiesAllowedToSpawn.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[8].enemiesAllowedToSpawn.Array.data[4]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[8].enemiesAllowedToSpawn.Array.data[5]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[9].enemiesAllowedToSpawn.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[9].enemiesAllowedToSpawn.Array.data[1]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[9].enemiesAllowedToSpawn.Array.data[2]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[9].enemiesAllowedToSpawn.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[9].enemiesAllowedToSpawn.Array.data[4]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[9].enemiesAllowedToSpawn.Array.data[5]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: floors.Array.data[9].enemiesAllowedToSpawn.Array.data[6]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4177898360544977668, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: m_Name
+      value: SpawnManager
       objectReference: {fileID: 0}
     - target: {fileID: 7184932348631374894, guid: 76d5029045c5e2546886a54ad3ca7b9b,
         type: 3}

@@ -146,11 +146,11 @@ public class EnemyController : MonoBehaviour
                     gotRandomPos = true;
                 }
                 ////Debug.Log(dest);
-                if (Physics.Raycast(transform.forward, dest, out hit, layerhit))
+                if (Physics.Raycast(transform.forward, dest, out hit, 10, layerhit))
                 {
                     dest = RandomNavSphere(transform.position, 30, layerFLoor);
                 }
-                    agent.SetDestination(dest);
+                agent.SetDestination(dest);
 
                 if (Vector3.Distance(transform.position, dest) <= 3)
                 {

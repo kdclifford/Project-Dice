@@ -7,5 +7,5 @@ public class FloorData
 {
     public string name;
     public EnemyType[] enemiesAllowedToSpawn;
-    public EElementalyType[] floorTypes;
+    public int elementAmount;
 }
