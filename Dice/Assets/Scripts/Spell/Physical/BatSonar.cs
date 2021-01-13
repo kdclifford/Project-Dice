@@ -14,7 +14,7 @@ public class BatSonar : SpellBase
         duration = 2;
         castingColour = Color.white;
         element = EElementalyType.Physical;
-        castingSound = ESoundClipEnum.CHANGEME;
+        castingSound = ESoundClipEnum.SonarSpell;
         spellType = ESpellType.AOE;
         deathSound = ESoundClipEnum.CHANGEME;
         SpellName = "EEEEK EEEK";

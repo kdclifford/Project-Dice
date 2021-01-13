@@ -14,6 +14,7 @@ public enum ESoundClipEnum
 	MenuMusic = 8,
 	MenuMusic2 = 9,
 	PuttingOutFireBall = 10,
-	CHANGEME = 11,
+	SonarSpell = 11,
+	CHANGEME = 12,
 
 }

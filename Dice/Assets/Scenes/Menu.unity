@@ -1848,6 +1848,31 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3781402682303088313, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: addedSounds.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781402682303088313, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: addedSounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: d4b2614800694084f80faa714da1353c, type: 3}
+    - target: {fileID: 3781402682303088313, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: addedSounds.Array.data[0].name
+      value: SonarSpell
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781402682303088313, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: addedSounds.Array.data[0].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781402682303088313, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: addedSounds.Array.data[0].volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5628738230150325513, guid: 76d5029045c5e2546886a54ad3ca7b9b,
         type: 3}
       propertyPath: m_LocalScale.y

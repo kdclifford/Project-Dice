@@ -14,7 +14,7 @@ public class BatSonarElectricity : SpellBase
         duration = 2;
         castingColour = Color.white;
         element = EElementalyType.Electricity;
-        castingSound = ESoundClipEnum.CHANGEME;
+        castingSound = ESoundClipEnum.SonarSpell;
         spellType = ESpellType.AOE;
         deathSound = ESoundClipEnum.CHANGEME;
         SpellName = "EEEEK ZZZT";

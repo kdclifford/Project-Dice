@@ -14,7 +14,7 @@ public class BatSonarFire : SpellBase
         duration = 2;
         castingColour = Color.red;
         element = EElementalyType.Fire;
-        castingSound = ESoundClipEnum.CHANGEME;
+        castingSound = ESoundClipEnum.SonarSpell;
         spellType = ESpellType.AOE;
         deathSound = ESoundClipEnum.CHANGEME;
         SpellName = "EEEEK TSHH";

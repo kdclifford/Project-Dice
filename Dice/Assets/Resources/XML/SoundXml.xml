@@ -126,11 +126,23 @@
       <name>PuttingOutFireBall</name>
       <hideFlags>NotEditable</hideFlags>
     </clip>
-    <loop>false</loop>
+    <loop>true</loop>
     <sound3D>true</sound3D>
     <volume>1</volume>
     <pitch>1</pitch>
     <audioGroup>Projectiles</audioGroup>
+  </Sound>
+  <Sound>
+    <name>SonarSpell</name>
+    <clip>
+      <name>SonarSpell</name>
+      <hideFlags>NotEditable</hideFlags>
+    </clip>
+    <loop>false</loop>
+    <sound3D>false</sound3D>
+    <volume>1</volume>
+    <pitch>1</pitch>
+    <audioGroup>Master</audioGroup>
   </Sound>
   <Sound>
     <name>CHANGEME</name>
@@ -140,8 +152,8 @@
     </clip>
     <loop>false</loop>
     <sound3D>false</sound3D>
-    <volume>0</volume>
-    <pitch>0</pitch>
+    <volume>1</volume>
+    <pitch>1</pitch>
     <audioGroup>Master</audioGroup>
   </Sound>
 </ArrayOfSound>

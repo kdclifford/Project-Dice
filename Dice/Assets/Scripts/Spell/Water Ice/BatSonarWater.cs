@@ -14,7 +14,7 @@ public class BatSonarWater : SpellBase
         duration = 2;
         castingColour = Color.blue;
         element = EElementalyType.Water;
-        castingSound = ESoundClipEnum.CHANGEME;
+        castingSound = ESoundClipEnum.SonarSpell;
         spellType = ESpellType.AOE;
         deathSound = ESoundClipEnum.CHANGEME;
         SpellName = "EEEEK BLUB";
