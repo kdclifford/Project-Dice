@@ -32,9 +32,10 @@ public enum ESpellEnum
 	PumkingExpolosion = 26,
 	BatSonarWater = 27,
 	Bubble = 28,
-	IceLine = 29,
-	IceSpike = 30,
-	SummonRain = 31,
-	SummonSnow = 32,
+	CactusWater = 29,
+	IceLine = 30,
+	IceSpike = 31,
+	SummonRain = 32,
+	SummonSnow = 33,
 
 }
