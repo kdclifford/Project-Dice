@@ -35,10 +35,10 @@ public class CollisionResolution : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     { 
-        if (other.gameObject.layer == 17 && transform.tag == "Player")
+        if (other.gameObject.layer == 19 && transform.tag == "Player")
         {
             other.gameObject.GetComponentInParent<ParticleSystem>().Play();
-            other.gameObject.GetComponentInChildren<Light>().intensity = 5;
+            //other.gameObject.GetComponentInChildren<Light>().intensity = 3;
             other.gameObject.GetComponentInParent<Collider>().enabled = false;
             //Get Light Object
 
