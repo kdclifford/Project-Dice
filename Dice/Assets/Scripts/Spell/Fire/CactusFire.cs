@@ -16,7 +16,7 @@ public class CactusFire : SpellBase
         element = EElementalyType.Fire;
         castingSound = ESoundClipEnum.FireBall;
         spellType = ESpellType.AOE;
-        deathSound = ESoundClipEnum.CHANGEME;
+        deathSound = ESoundClipEnum.NoSound;
         SpellName = "Cact Fire";
         PathProjectile = PathProjectile + element.ToString() + "/";
     }

@@ -16,7 +16,7 @@ public class BatSonarFire : SpellBase
         element = EElementalyType.Fire;
         castingSound = ESoundClipEnum.SonarSpell;
         spellType = ESpellType.AOE;
-        deathSound = ESoundClipEnum.CHANGEME;
+        deathSound = ESoundClipEnum.NoSound;
         SpellName = "EEEEK TSHH";
         PathProjectile = PathProjectile + element.ToString() + "/";
     }

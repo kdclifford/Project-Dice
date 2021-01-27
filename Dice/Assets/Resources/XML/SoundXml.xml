@@ -133,9 +133,9 @@
     <audioGroup>Projectiles</audioGroup>
   </Sound>
   <Sound>
-    <name>SonarSpell</name>
+    <name>Lighnting SFX</name>
     <clip>
-      <name>SonarSpell</name>
+      <name>Lighnting SFX</name>
       <hideFlags>NotEditable</hideFlags>
     </clip>
     <loop>false</loop>
@@ -148,6 +148,42 @@
     <name>CHANGEME</name>
     <clip>
       <name>CHANGEME</name>
+      <hideFlags>NotEditable</hideFlags>
+    </clip>
+    <loop>false</loop>
+    <sound3D>false</sound3D>
+    <volume>1</volume>
+    <pitch>1</pitch>
+    <audioGroup>Master</audioGroup>
+  </Sound>
+  <Sound>
+    <name>NoSound</name>
+    <clip>
+      <name>NoSound</name>
+      <hideFlags>NotEditable</hideFlags>
+    </clip>
+    <loop>false</loop>
+    <sound3D>false</sound3D>
+    <volume>1</volume>
+    <pitch>1</pitch>
+    <audioGroup>Master</audioGroup>
+  </Sound>
+  <Sound>
+    <name>SonarSpell</name>
+    <clip>
+      <name>SonarSpell</name>
+      <hideFlags>NotEditable</hideFlags>
+    </clip>
+    <loop>false</loop>
+    <sound3D>false</sound3D>
+    <volume>1</volume>
+    <pitch>1</pitch>
+    <audioGroup>Master</audioGroup>
+  </Sound>
+  <Sound>
+    <name>BoulderCrumpleSFX</name>
+    <clip>
+      <name>BoulderCrumpleSFX</name>
       <hideFlags>NotEditable</hideFlags>
     </clip>
     <loop>false</loop>

@@ -15,9 +15,9 @@ public class LightningFloor : SpellBase
         duration = 10;
         castingColour = Color.blue;
         element = EElementalyType.Electricity;
-        castingSound = ESoundClipEnum.FireBall;
+        castingSound = ESoundClipEnum.LighntingSFX;
         spellType = ESpellType.AOE;
-        deathSound = ESoundClipEnum.Bubble;
+        deathSound = ESoundClipEnum.NoSound;
         SpellName = "SparkieBoi";
         PathProjectile = PathProjectile + element.ToString() + "/";
     }

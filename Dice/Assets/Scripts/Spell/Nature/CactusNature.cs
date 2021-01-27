@@ -14,9 +14,9 @@ public class CactusNature : SpellBase
         duration = 2;
         castingColour = Color.green;
         element = EElementalyType.Nature;
-        castingSound = ESoundClipEnum.CHANGEME;
+        castingSound = ESoundClipEnum.BoulderCrumpleSFX;
         spellType = ESpellType.AOE;
-        deathSound = ESoundClipEnum.CHANGEME;
+        deathSound = ESoundClipEnum.BoulderCrumpleSFX;
         SpellName = "Cact Rock";
         PathProjectile = PathProjectile + element.ToString() + "/";
     }
