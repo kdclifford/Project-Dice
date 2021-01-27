@@ -163,39 +163,30 @@ public class PlayerController : MonoBehaviour
             cameraDummy.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
-
-
         if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightAttack) &&
            rightSpell != -1 &&
            ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftAttack) &&
            leftSpell != -1)
         {
             AnimationScript.DoubleAttack(animator);
-          
         }
         else
         {
             if (currRTFireCooldown <= 0 && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightAttack) && rightSpell != -1)
             {  
-               
-                    currRTFireCooldown = MaxRTFireCooldown;
-                    AnimationScript.RightAttack(animator);
-                
+                currRTFireCooldown = MaxRTFireCooldown;
+                AnimationScript.RightAttack(animator);
             }
             else if (currLTFireCooldown <= 0 && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftAttack) && leftSpell != -1)
             {
-                
-                    currLTFireCooldown = MaxLTFireCooldown;
-                    AnimationScript.LeftAttack(animator);
-                
+                currLTFireCooldown = MaxLTFireCooldown;
+                AnimationScript.LeftAttack(animator);
             }
             else
             {
                 AnimationScript.StopAttack(animator);
             }
-
         }
-
 
         leftStickInputAxis = CollisionCheck.RayCastCollisions(leftStickInputAxis, rayOffset, rayDist, layerMask, collisionForce, transform);
 
@@ -208,9 +199,6 @@ public class PlayerController : MonoBehaviour
 
         leftStickInputAxis = AnimationScript.CurrentDirection(leftStickInputAxis, gameObject);
         playerAnimations.Move(leftStickInputAxis, velocity);
-
-        //leftStickInputAxis.x *= velocity;
-        //leftStickInputAxis.y *= velocity;
 
         if (velocity <= 0)
         {
@@ -225,10 +213,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("NextFloor");
         if (other.gameObject.tag == "NextLevel")
         {
-            Debug.Log("NextFloor");
             LevelManager.instance.NextLevel();
         }
     }
