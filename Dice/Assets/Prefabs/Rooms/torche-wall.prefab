@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 6794849014281682217}
   - component: {fileID: 6279981132831379230}
   - component: {fileID: 2436198294094102560}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: torche-wall
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1330995881027688}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.01, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
@@ -3755,7 +3755,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 3
     type: 1
     collisionMode: 0
@@ -4901,7 +4901,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4656027786521196230}
   - component: {fileID: 7053161410945140806}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -223,6 +223,16 @@ public class PlayerController : MonoBehaviour
         currLTFireCooldown -= Time.deltaTime;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("NextFloor");
+        if (other.gameObject.tag == "NextLevel")
+        {
+            Debug.Log("NextFloor");
+            LevelManager.instance.NextLevel();
+        }
+    }
+
 
     void OnTriggerStay(Collider Collision)
     {
@@ -317,6 +327,11 @@ public class PlayerController : MonoBehaviour
             DungeonDoorObj = Collision.gameObject;
             DungeonDoorTriggered = true;
         }
+        else if (Collision.gameObject.tag == "Light")
+        {
+            Collision.gameObject.GetComponent<ParticleSystem>().Play();
+        }
+
     }
 
     private void OnTriggerExit(Collider other)
@@ -338,7 +353,7 @@ public class PlayerController : MonoBehaviour
         {
 
             GetComponent<Rigidbody>().velocity = Vector3.zero;
-        }
+        }       
     }
 
 
