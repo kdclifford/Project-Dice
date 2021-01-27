@@ -71,4 +71,11 @@ public class LevelManager : MonoBehaviour
        
        // fade = GameObject.FindGameObjectWithTag("SceneFade").GetComponent<Animator>();
     }
+
+    public void NextLevel()
+    {
+        SpawnManager.instance.currentFloor++;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
 }

@@ -317,6 +317,7 @@ public class PlayerController : MonoBehaviour
             DungeonDoorObj = Collision.gameObject;
             DungeonDoorTriggered = true;
         }
+      
     }
 
     private void OnTriggerExit(Collider other)
@@ -338,6 +339,11 @@ public class PlayerController : MonoBehaviour
         {
 
             GetComponent<Rigidbody>().velocity = Vector3.zero;
+        }
+        else if (collision.gameObject.layer == LayerMask.GetMask("NextLevel"))
+        {
+            Debug.Log("NextFloor");
+            LevelManager.instance.NextLevel();
         }
     }
 

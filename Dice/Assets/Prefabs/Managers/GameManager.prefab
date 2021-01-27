@@ -1511,7 +1511,7 @@ GameObject:
   - component: {fileID: 7982321551812732788}
   - component: {fileID: 3218181265902395421}
   m_Layer: 0
-  m_Name: FloorManager
+  m_Name: SpawnManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1543,14 +1543,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 968b5dde4331f9543b056c0104c9e7b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentFloor: 0
+  currentFloor: 1
   floors:
   - name: Floor1
     enemiesAllowedToSpawn: 0400000005000000
-    floorTypes: 0400000000000000
+    elementAmount: 2
+  - name: Floor2
+    enemiesAllowedToSpawn: 040000000500000006000000
+    elementAmount: 2
+  - name: Floor3
+    enemiesAllowedToSpawn: 040000000500000006000000
+    elementAmount: 3
+  - name: Floor4
+    enemiesAllowedToSpawn: 04000000050000000600000003000000
+    elementAmount: 3
+  - name: Floor5
+    enemiesAllowedToSpawn: 04000000050000000600000003000000
+    elementAmount: 4
+  - name: Floor6
+    enemiesAllowedToSpawn: 0400000005000000060000000300000002000000
+    elementAmount: 4
+  - name: Floor7
+    enemiesAllowedToSpawn: 0400000005000000060000000300000002000000
+    elementAmount: 5
+  - name: Floor8
+    enemiesAllowedToSpawn: 040000000500000006000000030000000200000001000000
+    elementAmount: 5
+  - name: Floor9
+    enemiesAllowedToSpawn: 040000000500000006000000030000000200000001000000
+    elementAmount: 6
+  - name: Floor10
+    enemiesAllowedToSpawn: 04000000050000000600000003000000020000000100000000000000
+    elementAmount: 6
   list: []
   roomList: []
   enemyList: []
+  elementsList: 
 --- !u!1 &6596837168492618016
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,11 +14,22 @@ public class SpawnManager : MonoBehaviour
     [HideInInspector]
     public List<EElementalyType> elementsList;
 
-    
+    public static SpawnManager instance;
 
 
-    private void Awake()
+    //Checks for an instance of LevelManager in current scene
+    void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         int enemyTotal = (int)EnemyType.AmountOfEnemies * ((int)EElementalyType.AmountOfElements - 1);
         enemyList = new GameObject[enemyTotal];
 
@@ -61,7 +72,8 @@ public class SpawnManager : MonoBehaviour
             roomList[i].roomSpawnPoints = CalculatePoints(roomList[i]);
             if (roomList[i].roomType != RoomType.Start)
             {
-                SpawnEnemies(ref roomList[i].roomSpawnPoints, DunguonSpawner.instance.roomRef[i]);
+                //SpawnEnemies(ref roomList[i].roomSpawnPoints, DunguonSpawner.instance.roomRef[i]);
+                SpawnEnemies(i, DunguonSpawner.instance.roomRef[i]);
             }
         }
     }
@@ -90,17 +102,17 @@ public class SpawnManager : MonoBehaviour
         return 1f;
     }
 
-    void SpawnEnemies(ref int maxCost, GameObject room)
+    void SpawnEnemies(int index, GameObject room)
     {
         
         BoxCollider spawnArea = room.transform.Find("Floor").GetComponent<BoxCollider>();
        
-        int maxEnemyCost = GetMaxEnemyCost(floors[currentFloor].enemiesAllowedToSpawn, maxCost);
+        int maxEnemyCost = GetMaxEnemyCost(floors[currentFloor].enemiesAllowedToSpawn, roomList[index].roomSpawnPoints);
 
-        while (maxCost > 0)
+        while (roomList[index].roomSpawnPoints > 0)
         {
             
-            maxEnemyCost = GetMaxEnemyCost(floors[currentFloor].enemiesAllowedToSpawn, maxCost);
+            maxEnemyCost = GetMaxEnemyCost(floors[currentFloor].enemiesAllowedToSpawn, roomList[index].roomSpawnPoints);
             Vector3 enemyPos = Vector3.zero;
             EnemyType enemyType = EnemyType.AmountOfEnemies;
 
@@ -119,7 +131,7 @@ public class SpawnManager : MonoBehaviour
                 }
             }
 
-            maxCost -= GetEnemyCost(enemyType);
+            roomList[index].roomSpawnPoints -= GetEnemyCost(enemyType);
 
 
             //enemyPos = RandomPointInBounds(spawnArea.bounds);
@@ -130,6 +142,7 @@ public class SpawnManager : MonoBehaviour
 
 
             GameObject tempEnemy = MonoBehaviour.Instantiate(enemyList[(int)enemyType * ((int)EElementalyType.AmountOfElements - 1) + RandomElement(floors[currentFloor])], enemyPos, transform.rotation) as GameObject;
+            roomList[index].enemyList.Add(tempEnemy);
             //tempEnemy.transform.position = enemyPos;
         }
     }
