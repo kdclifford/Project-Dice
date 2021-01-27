@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
     private UIManager uIManager;
     private SoundManager soundManager;
     private Animator fade;
+    private Scene oldScene;
 
     //Checks for an instance of LevelManager in current scene
     void Awake()
@@ -43,6 +44,17 @@ public class LevelManager : MonoBehaviour
         {
             fade = GameObject.FindGameObjectWithTag("SceneFade").GetComponent<Animator>();
         }
+
+        if(SceneManager.GetActiveScene() != oldScene && SceneManager.GetActiveScene().name != "Menu" && SceneManager.GetActiveScene().name != "Options")
+        {
+            SpawnManager.instance.StartSpawn();
+            oldScene = SceneManager.GetActiveScene();
+        }
+        else
+        {
+            oldScene = SceneManager.GetActiveScene();
+        }
+
     }
 
     //Loads level with a delay
@@ -71,4 +83,12 @@ public class LevelManager : MonoBehaviour
        
        // fade = GameObject.FindGameObjectWithTag("SceneFade").GetComponent<Animator>();
     }
+
+    public void NextLevel()
+    {
+        SpawnManager.instance.currentFloor++;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SpawnManager.instance.StartSpawn();
+    }
+
 }
