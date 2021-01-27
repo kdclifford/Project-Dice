@@ -11,11 +11,15 @@ public class Health : MonoBehaviour
 
     public float maxShields;
     public float currentShields;
-    GameObject agentRoot;    
+    GameObject agentRoot;
+
+    private LevelManager levelManager;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
         currentHealth = maxHealth;
         currentShields = 0;
         agentRoot = transform.GetChild(0).gameObject;
@@ -27,6 +31,10 @@ public class Health : MonoBehaviour
     {
         if(currentHealth <= 0 )
         {
+            //Load Another Scene 
+            levelManager.LoadLevel("DeathRoom");
+            currentHealth = 1;
+            //Reset The player Data on death
             DestroyComponents();
         }
     }
