@@ -59,11 +59,9 @@ public class SpawnManager : MonoBehaviour
 
     }
 
-
-
-    // Start is called before the first frame update
-    private void Start()
+    public void StartSpawn()
     {
+        roomList.Clear();
         list = DunguonSpawner.instance.roomRef;
         for (int i = 0; i < list.Count; i++)
         {
@@ -83,7 +81,7 @@ public class SpawnManager : MonoBehaviour
         int points = room.roomSpawnPoints;
         points = (int)room.Size.x * (int)room.Size.y;
         points = (int)(points * (currentFloor * GetRoomDifficulityMultiplier(room.roomType)));
-        points = (int)(points * 0.7f);
+        points = (int)(points * 0.5f);
 
         return points;
     }
