@@ -32,7 +32,12 @@ public class Health : MonoBehaviour
         if(currentHealth <= 0 )
         {
             //Load Another Scene 
-            levelManager.LoadLevel("DeathRoom");
+            if(gameObject.tag == "Player")
+            {
+                levelManager.LoadLevel("DeathRoom");
+            }
+            
+            
             currentHealth = 1;
             //Reset The player Data on death
             DestroyComponents();

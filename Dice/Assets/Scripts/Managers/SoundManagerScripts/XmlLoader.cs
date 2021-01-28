@@ -6,7 +6,7 @@ using System.IO;
 using System.Xml; //Needed for XML functionality
 using System.Xml.Serialization;
 using UnityEditor;
-using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 using UnityEngine;
 
