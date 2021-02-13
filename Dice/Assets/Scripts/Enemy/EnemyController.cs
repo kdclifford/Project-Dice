@@ -74,15 +74,21 @@ public class EnemyController : MonoBehaviour
             {
                 currentState = EAIStates.Dead;
             }
-            else if (!CheckLineofSight(target.transform.position) && Vector3.Distance(target.transform.position, transform.position) <= 30 && target.GetComponent<PlayerAnimations>() != null)
+            else if (!CheckLineofSight(target.transform.position) && Vector3.Distance(target.transform.position, transform.position) <=
+                SpellList.instance.spells[(int)projectile].range)
             {
                 currentState = EAIStates.Fire;
 
                 agent.ResetPath();
             }
-            else if (!CheckLineofSight(target.transform.position) && Vector3.Distance(target.transform.position, transform.position) <= 50 && target.GetComponent<PlayerAnimations>() != null)
+            else if (!CheckLineofSight(target.transform.position) && Vector3.Distance(target.transform.position, transform.position) >=
+                SpellList.instance.spells[(int)projectile].range/* && target.GetComponent<PlayerAnimations>() != null*/)
             {
-                currentState = EAIStates.MoveTowards;
+                if (currentState != EAIStates.MoveTowards)
+                {
+                    currentState = EAIStates.MoveTowards;
+                    agent.ResetPath();
+                }
             }
             else
             {
@@ -117,7 +123,7 @@ public class EnemyController : MonoBehaviour
             }
             else if (currentState == EAIStates.MoveTowards)
             {
-                agent.SetDestination(new Vector3(target.transform.position.x, target.transform.position.x, target.transform.position.z));
+                agent.SetDestination(new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z));
             }
             else if (currentState == EAIStates.Fire)
             {

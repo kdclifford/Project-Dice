@@ -21,7 +21,7 @@ public abstract class SpellBase
     private string pathDeath = "SpellDestruction/";
     private string pathUI = "UIIcons/Spells/";
     public float damage = 6;
-
+    public float range = 6;
     public string PathProjectile { get { return pathProjectile; } set { pathProjectile = value; } }
     public string PathDeath { get { return pathDeath; } }
     public string PathUI { get { return pathUI; } }
