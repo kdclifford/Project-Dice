@@ -196,7 +196,7 @@ public class DunguonSpawner : MonoBehaviour
                 Instantiate(floorPRefab, new Vector3(12 * pathPoint.position.x, 0, 12 * pathPoint.position.y), Quaternion.identity);
                 if(pathPoint.northWall)
                 {
-                    Instantiate(wallPrefab, new Vector3(12 * pathPoint.position.x, 0, (12 * pathPoint.position.y) +6), Quaternion.identity);
+                    Instantiate(wallPrefab, new Vector3(12 * pathPoint.position.x, 0, (12 * pathPoint.position.y) +6), Quaternion.Euler(new Vector3(0, 180, 0)));
 
                 }
                 if (pathPoint.eastWall)
