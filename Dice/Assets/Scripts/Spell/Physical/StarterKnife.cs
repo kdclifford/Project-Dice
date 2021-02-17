@@ -14,7 +14,10 @@ public class StarterKnife : SpellBase
 
     public StarterKnife()
     {
+        unlockTier = 0;
         duration = 3;
+        damage = 10;
+
         castingColour = Color.white;
         element = EElementalyType.Physical;
         castingSound = ESoundClipEnum.FireBall;

@@ -16,6 +16,8 @@ public class FireBall : SpellBase
 
     public FireBall()
     {
+        damage = 10;
+        unlockTier = 0;
         duration = 3;
         castingColour = Color.red;
         element = EElementalyType.Fire;

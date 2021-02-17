@@ -14,6 +14,9 @@ public class Bubble : SpellBase
 
     public Bubble()
     {
+        unlockTier = 0;
+        damage = 10;
+
         duration = 3;
         castingColour = Color.blue;
         element = EElementalyType.Water;

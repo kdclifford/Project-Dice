@@ -15,6 +15,8 @@ public class Spark : SpellBase
 
     public Spark()
     {
+        unlockTier = 0;
+        damage = 10;
         duration = 3;
         castingColour = Color.yellow;
         element = EElementalyType.Electricity;

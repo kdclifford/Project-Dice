@@ -22,6 +22,7 @@ public abstract class SpellBase
     private string pathUI = "UIIcons/Spells/";
     public float damage = 6;
     public float range = 6;
+    public int unlockTier = 5; //Sets Every Spells Unlock tier to be base level 5 meaning they are not added to random pool at start 
     public string PathProjectile { get { return pathProjectile; } set { pathProjectile = value; } }
     public string PathDeath { get { return pathDeath; } }
     public string PathUI { get { return pathUI; } }

@@ -16,10 +16,14 @@ public class ProjectileType : MonoBehaviour
 
     private void Start()
     {
-        if (randomSpell)
+        while (randomSpell)
         {
             int randSpell = Random.Range(0, SpellList.instance.spells.Count);
-            spellIndex = (ESpellEnum)randSpell;  
+            if(spellList.spells[randSpell].unlockTier == 0)
+            {
+                spellIndex = (ESpellEnum)randSpell;
+                randomSpell = false;
+            }
         } 
         gameObject.GetComponent<SpriteRenderer>().sprite = SpellList.instance.spells[(int)spellIndex].UILogo;
             transform.GetChild(0).gameObject.GetComponent<Light>().color = SpellList.instance.spells[(int)spellIndex].castingColour;

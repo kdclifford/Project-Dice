@@ -11,6 +11,7 @@ public class BatSonarElectricity : SpellBase
 
     public BatSonarElectricity()
     {
+        damage = 6;
         duration = 2;
         castingColour = Color.white;
         element = EElementalyType.Electricity;
