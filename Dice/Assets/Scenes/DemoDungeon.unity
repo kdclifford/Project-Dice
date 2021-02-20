@@ -310,6 +310,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CactusFire
       objectReference: {fileID: 0}
+    - target: {fileID: 135712, guid: cdb4d3be08675ca409cf1deff939c077, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 427836, guid: cdb4d3be08675ca409cf1deff939c077, type: 3}
       propertyPath: m_RootOrder
       value: 37
@@ -366,6 +370,10 @@ PrefabInstance:
     - target: {fileID: 156912, guid: de5de4fd5bd598f47a01e51a09510b8a, type: 3}
       propertyPath: m_Name
       value: Toon Dragon-Purple
+      objectReference: {fileID: 0}
+    - target: {fileID: 156912, guid: de5de4fd5bd598f47a01e51a09510b8a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 443978, guid: de5de4fd5bd598f47a01e51a09510b8a, type: 3}
       propertyPath: m_RootOrder
@@ -520,6 +528,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GhostFire
       objectReference: {fileID: 0}
+    - target: {fileID: 114588, guid: 0036f81a03dbae549a47833af75be0e5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 435982, guid: 0036f81a03dbae549a47833af75be0e5, type: 3}
       propertyPath: m_RootOrder
       value: 27
@@ -589,7 +601,7 @@ PrefabInstance:
     - target: {fileID: -6771448749878362742, guid: dca42855aa3d8ed4281a5a46eb3dbab9,
         type: 3}
       propertyPath: spellIndex
-      value: 1
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: -6771448749878362742, guid: dca42855aa3d8ed4281a5a46eb3dbab9,
         type: 3}
@@ -660,7 +672,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 63783fc998c301948991c11a9b13a24d,
+      objectReference: {fileID: 21300000, guid: 858a75c4e0fc28c44b0d9685abb86b3d,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dca42855aa3d8ed4281a5a46eb3dbab9, type: 3}
@@ -758,6 +770,10 @@ PrefabInstance:
     - target: {fileID: 196488, guid: 14050df2b0ae6cf4db7efce2306ef179, type: 3}
       propertyPath: m_Name
       value: PlantMonsterWind
+      objectReference: {fileID: 0}
+    - target: {fileID: 196488, guid: 14050df2b0ae6cf4db7efce2306ef179, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 433142, guid: 14050df2b0ae6cf4db7efce2306ef179, type: 3}
       propertyPath: m_RootOrder
@@ -884,6 +900,10 @@ PrefabInstance:
     - target: {fileID: 196488, guid: 2f67b058ae4d4da4c999f9bde0eca7b5, type: 3}
       propertyPath: m_Name
       value: PlantMonsterWater
+      objectReference: {fileID: 0}
+    - target: {fileID: 196488, guid: 2f67b058ae4d4da4c999f9bde0eca7b5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 433142, guid: 2f67b058ae4d4da4c999f9bde0eca7b5, type: 3}
       propertyPath: m_RootOrder
@@ -1243,6 +1263,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BatWater
       objectReference: {fileID: 0}
+    - target: {fileID: 100460, guid: 127fe3a8edf4f2f479e5b3a0ad955fb7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 401782, guid: 127fe3a8edf4f2f479e5b3a0ad955fb7, type: 3}
       propertyPath: m_RootOrder
       value: 30
@@ -1299,6 +1323,10 @@ PrefabInstance:
     - target: {fileID: 140632, guid: bece0f6d5352e394098841cabcb24e45, type: 3}
       propertyPath: m_Name
       value: GolemWind
+      objectReference: {fileID: 0}
+    - target: {fileID: 140632, guid: bece0f6d5352e394098841cabcb24e45, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 434996, guid: bece0f6d5352e394098841cabcb24e45, type: 3}
       propertyPath: m_RootOrder
@@ -2201,6 +2229,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GolemNature
       objectReference: {fileID: 0}
+    - target: {fileID: 140632, guid: 6f232f5473650e446b1b09489b30bae0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 434996, guid: 6f232f5473650e446b1b09489b30bae0, type: 3}
       propertyPath: m_RootOrder
       value: 21
@@ -2257,6 +2289,10 @@ PrefabInstance:
     - target: {fileID: 126002, guid: 05242a658c8153148a94b5fbc02be5d3, type: 3}
       propertyPath: m_Name
       value: Toon Dragon-Red
+      objectReference: {fileID: 0}
+    - target: {fileID: 126002, guid: 05242a658c8153148a94b5fbc02be5d3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 412146, guid: 05242a658c8153148a94b5fbc02be5d3, type: 3}
       propertyPath: m_RootOrder
@@ -2326,6 +2362,10 @@ PrefabInstance:
     - target: {fileID: 199904, guid: eebc5fc2fac726b44af092faad00c20b, type: 3}
       propertyPath: m_Name
       value: KnightElectricity
+      objectReference: {fileID: 0}
+    - target: {fileID: 199904, guid: eebc5fc2fac726b44af092faad00c20b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 451078, guid: eebc5fc2fac726b44af092faad00c20b, type: 3}
       propertyPath: m_RootOrder
@@ -2564,6 +2604,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkeletonNature
       objectReference: {fileID: 0}
+    - target: {fileID: 146920, guid: d9cd79e07f0d8bc4a8e023ff0e19c50a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 405736, guid: d9cd79e07f0d8bc4a8e023ff0e19c50a, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -2717,7 +2761,7 @@ PrefabInstance:
     - target: {fileID: -6771448749878362742, guid: dca42855aa3d8ed4281a5a46eb3dbab9,
         type: 3}
       propertyPath: spellIndex
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -6771448749878362742, guid: dca42855aa3d8ed4281a5a46eb3dbab9,
         type: 3}
@@ -2788,7 +2832,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 63783fc998c301948991c11a9b13a24d,
+      objectReference: {fileID: 21300000, guid: bb5ca1cbfe47285469b7cbe80b0e2a99,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dca42855aa3d8ed4281a5a46eb3dbab9, type: 3}
@@ -2802,6 +2846,10 @@ PrefabInstance:
     - target: {fileID: 196488, guid: b8d34883964f1874ebfd298c3373123f, type: 3}
       propertyPath: m_Name
       value: PlantMonsterElectricity
+      objectReference: {fileID: 0}
+    - target: {fileID: 196488, guid: b8d34883964f1874ebfd298c3373123f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 433142, guid: b8d34883964f1874ebfd298c3373123f, type: 3}
       propertyPath: m_RootOrder
@@ -2859,6 +2907,10 @@ PrefabInstance:
     - target: {fileID: 196488, guid: dd447e4b7ad838542a3070fb560e4cd8, type: 3}
       propertyPath: m_Name
       value: PlantMonsterFire
+      objectReference: {fileID: 0}
+    - target: {fileID: 196488, guid: dd447e4b7ad838542a3070fb560e4cd8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 433142, guid: dd447e4b7ad838542a3070fb560e4cd8, type: 3}
       propertyPath: m_RootOrder
@@ -3001,6 +3053,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkeletonWind
       objectReference: {fileID: 0}
+    - target: {fileID: 146920, guid: a76bc5a364169f94284c6991dbfa2ef3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 405736, guid: a76bc5a364169f94284c6991dbfa2ef3, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -3079,6 +3135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GhostElectricity
       objectReference: {fileID: 0}
+    - target: {fileID: 114588, guid: 61c73c81f1b74b34d91835a33ac11661, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 435982, guid: 61c73c81f1b74b34d91835a33ac11661, type: 3}
       propertyPath: m_RootOrder
       value: 28
@@ -3142,6 +3202,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CactusElectricity
       objectReference: {fileID: 0}
+    - target: {fileID: 135712, guid: 51925d38ee4a47f4993830358f5ed010, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 427836, guid: 51925d38ee4a47f4993830358f5ed010, type: 3}
       propertyPath: m_RootOrder
       value: 38
@@ -3186,6 +3250,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 628957759, guid: 51925d38ee4a47f4993830358f5ed010, type: 3}
+      propertyPath: maxHealth
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51925d38ee4a47f4993830358f5ed010, type: 3}
 --- !u!1001 &914288770
@@ -3198,6 +3266,10 @@ PrefabInstance:
     - target: {fileID: 146920, guid: 328cdff70d69f804a916a3587372bfd8, type: 3}
       propertyPath: m_Name
       value: SkeletonWater
+      objectReference: {fileID: 0}
+    - target: {fileID: 146920, guid: 328cdff70d69f804a916a3587372bfd8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 405736, guid: 328cdff70d69f804a916a3587372bfd8, type: 3}
       propertyPath: m_RootOrder
@@ -3260,6 +3332,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CactusNature
       objectReference: {fileID: 0}
+    - target: {fileID: 135712, guid: 87c7555d79f6a5945829bc74fbd95928, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 427836, guid: 87c7555d79f6a5945829bc74fbd95928, type: 3}
       propertyPath: m_RootOrder
       value: 36
@@ -3316,6 +3392,10 @@ PrefabInstance:
     - target: {fileID: 114588, guid: aa95a0b18781e5844a9d5a918c43fae4, type: 3}
       propertyPath: m_Name
       value: GhostWind
+      objectReference: {fileID: 0}
+    - target: {fileID: 114588, guid: aa95a0b18781e5844a9d5a918c43fae4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 435982, guid: aa95a0b18781e5844a9d5a918c43fae4, type: 3}
       propertyPath: m_RootOrder
@@ -3374,6 +3454,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BatElectricity
       objectReference: {fileID: 0}
+    - target: {fileID: 100460, guid: fefc91b5c35969545bd9b282a76a741e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 401782, guid: fefc91b5c35969545bd9b282a76a741e, type: 3}
       propertyPath: m_RootOrder
       value: 33
@@ -3430,6 +3514,10 @@ PrefabInstance:
     - target: {fileID: 199904, guid: ce2fdd1b72531fe4eaa0b39d18dde06c, type: 3}
       propertyPath: m_Name
       value: KnightNature
+      objectReference: {fileID: 0}
+    - target: {fileID: 199904, guid: ce2fdd1b72531fe4eaa0b39d18dde06c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 451078, guid: ce2fdd1b72531fe4eaa0b39d18dde06c, type: 3}
       propertyPath: m_RootOrder
@@ -3488,6 +3576,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Toon Dragon-Green
       objectReference: {fileID: 0}
+    - target: {fileID: 128124, guid: ec84e16942a9b4a41897c1aaeaed92ba, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 482746, guid: ec84e16942a9b4a41897c1aaeaed92ba, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -3544,6 +3636,10 @@ PrefabInstance:
     - target: {fileID: 114588, guid: ba351249c154e4541a475afdbe0e4ea9, type: 3}
       propertyPath: m_Name
       value: GhostWater
+      objectReference: {fileID: 0}
+    - target: {fileID: 114588, guid: ba351249c154e4541a475afdbe0e4ea9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 435982, guid: ba351249c154e4541a475afdbe0e4ea9, type: 3}
       propertyPath: m_RootOrder
@@ -3602,6 +3698,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GolemFire
       objectReference: {fileID: 0}
+    - target: {fileID: 140632, guid: cb5a56229880951449598c1271000fb0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 434996, guid: cb5a56229880951449598c1271000fb0, type: 3}
       propertyPath: m_RootOrder
       value: 22
@@ -3658,6 +3758,10 @@ PrefabInstance:
     - target: {fileID: 100460, guid: bb8ffc8faebf3bc4097f865a4fa8027e, type: 3}
       propertyPath: m_Name
       value: BatWind
+      objectReference: {fileID: 0}
+    - target: {fileID: 100460, guid: bb8ffc8faebf3bc4097f865a4fa8027e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 401782, guid: bb8ffc8faebf3bc4097f865a4fa8027e, type: 3}
       propertyPath: m_RootOrder
@@ -3733,6 +3837,10 @@ PrefabInstance:
     - target: {fileID: 140632, guid: aed42e9bdb859ed4593dfc531ab0b390, type: 3}
       propertyPath: m_Name
       value: GolemWater
+      objectReference: {fileID: 0}
+    - target: {fileID: 140632, guid: aed42e9bdb859ed4593dfc531ab0b390, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 434996, guid: aed42e9bdb859ed4593dfc531ab0b390, type: 3}
       propertyPath: m_RootOrder
@@ -3882,6 +3990,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GhostNature
       objectReference: {fileID: 0}
+    - target: {fileID: 114588, guid: bf5dde6ede64233428b5242c33c90aa8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 435982, guid: bf5dde6ede64233428b5242c33c90aa8, type: 3}
       propertyPath: m_RootOrder
       value: 26
@@ -4005,6 +4117,10 @@ PrefabInstance:
     - target: {fileID: 100460, guid: fa9bd749412bc104ca39bc3e184b08db, type: 3}
       propertyPath: m_Name
       value: BatFire
+      objectReference: {fileID: 0}
+    - target: {fileID: 100460, guid: fa9bd749412bc104ca39bc3e184b08db, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 401782, guid: fa9bd749412bc104ca39bc3e184b08db, type: 3}
       propertyPath: m_RootOrder
@@ -4442,6 +4558,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CactusWind
       objectReference: {fileID: 0}
+    - target: {fileID: 135712, guid: b818a8dad7e76fb47a83c17f654fa68f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 427836, guid: b818a8dad7e76fb47a83c17f654fa68f, type: 3}
       propertyPath: m_RootOrder
       value: 34
@@ -4644,7 +4764,7 @@ PrefabInstance:
     - target: {fileID: -6771448749878362742, guid: dca42855aa3d8ed4281a5a46eb3dbab9,
         type: 3}
       propertyPath: spellIndex
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2890370868060906427, guid: dca42855aa3d8ed4281a5a46eb3dbab9,
         type: 3}
@@ -4710,7 +4830,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 63783fc998c301948991c11a9b13a24d,
+      objectReference: {fileID: 21300000, guid: bb5ca1cbfe47285469b7cbe80b0e2a99,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dca42855aa3d8ed4281a5a46eb3dbab9, type: 3}
@@ -4762,6 +4882,10 @@ PrefabInstance:
     - target: {fileID: 199904, guid: 5da7d225dcd0b0d4eafee07810431959, type: 3}
       propertyPath: m_Name
       value: KnightWater
+      objectReference: {fileID: 0}
+    - target: {fileID: 199904, guid: 5da7d225dcd0b0d4eafee07810431959, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 451078, guid: 5da7d225dcd0b0d4eafee07810431959, type: 3}
       propertyPath: m_RootOrder
@@ -4886,7 +5010,7 @@ PrefabInstance:
     - target: {fileID: -6771448749878362742, guid: dca42855aa3d8ed4281a5a46eb3dbab9,
         type: 3}
       propertyPath: spellIndex
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -6771448749878362742, guid: dca42855aa3d8ed4281a5a46eb3dbab9,
         type: 3}
@@ -4978,6 +5102,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: KnightFire
       objectReference: {fileID: 0}
+    - target: {fileID: 199904, guid: 8ade1d4d89e622242872ee8aac472aaf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 451078, guid: 8ade1d4d89e622242872ee8aac472aaf, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -5034,6 +5162,10 @@ PrefabInstance:
     - target: {fileID: 146920, guid: 09148e75ad6ff1542bd2d87e96c96235, type: 3}
       propertyPath: m_Name
       value: SkeletonElectricity
+      objectReference: {fileID: 0}
+    - target: {fileID: 146920, guid: 09148e75ad6ff1542bd2d87e96c96235, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 405736, guid: 09148e75ad6ff1542bd2d87e96c96235, type: 3}
       propertyPath: m_RootOrder
@@ -5184,12 +5316,12 @@ PrefabInstance:
     - target: {fileID: -6771448749878362742, guid: dca42855aa3d8ed4281a5a46eb3dbab9,
         type: 3}
       propertyPath: spellIndex
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -6771448749878362742, guid: dca42855aa3d8ed4281a5a46eb3dbab9,
         type: 3}
       propertyPath: randomSpell
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2890370868060906427, guid: dca42855aa3d8ed4281a5a46eb3dbab9,
         type: 3}
@@ -5255,7 +5387,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 63783fc998c301948991c11a9b13a24d,
+      objectReference: {fileID: 21300000, guid: bb5ca1cbfe47285469b7cbe80b0e2a99,
         type: 3}
     - target: {fileID: 7135090568715041109, guid: dca42855aa3d8ed4281a5a46eb3dbab9,
         type: 3}
@@ -5355,6 +5487,10 @@ PrefabInstance:
     - target: {fileID: 196488, guid: 04e6670610c07d7469b3f25dc359f5b1, type: 3}
       propertyPath: m_Name
       value: PlantMonsterNature
+      objectReference: {fileID: 0}
+    - target: {fileID: 196488, guid: 04e6670610c07d7469b3f25dc359f5b1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 433142, guid: 04e6670610c07d7469b3f25dc359f5b1, type: 3}
       propertyPath: m_RootOrder
@@ -5471,6 +5607,10 @@ PrefabInstance:
     - target: {fileID: 199904, guid: b8fa913fcb7ceec448046a11541160d5, type: 3}
       propertyPath: m_Name
       value: KnightWind
+      objectReference: {fileID: 0}
+    - target: {fileID: 199904, guid: b8fa913fcb7ceec448046a11541160d5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 451078, guid: b8fa913fcb7ceec448046a11541160d5, type: 3}
       propertyPath: m_RootOrder
@@ -6184,6 +6324,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CactusWater
       objectReference: {fileID: 0}
+    - target: {fileID: 135712, guid: acc9e3b70c98f9446a7901f7212a4746, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 427836, guid: acc9e3b70c98f9446a7901f7212a4746, type: 3}
       propertyPath: m_RootOrder
       value: 35
@@ -6406,6 +6550,10 @@ PrefabInstance:
     - target: {fileID: 146920, guid: 3e9f00cd9897eeb4b8c6ca0553517943, type: 3}
       propertyPath: m_Name
       value: SkeletonFire
+      objectReference: {fileID: 0}
+    - target: {fileID: 146920, guid: 3e9f00cd9897eeb4b8c6ca0553517943, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 405736, guid: 3e9f00cd9897eeb4b8c6ca0553517943, type: 3}
       propertyPath: m_RootOrder
