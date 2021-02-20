@@ -20,6 +20,8 @@ public class Flamethrower : SpellBase
     public Flamethrower()
     {
         duration = 1;
+        unlockTier = 5;
+        damage = 20;
         castingColour = Color.red;
         element = EElementalyType.Fire;
         castingSound = ESoundClipEnum.FireBall;

@@ -12,6 +12,8 @@ public class FireCone : SpellBase
     public FireCone()
     {
         duration = 3;
+        damage = 25;
+        unlockTier = 3;
         castingColour = Color.red;
         element = EElementalyType.Fire;
         castingSound = ESoundClipEnum.FireBall;

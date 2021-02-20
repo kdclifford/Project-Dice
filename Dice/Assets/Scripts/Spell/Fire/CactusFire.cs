@@ -12,6 +12,8 @@ public class CactusFire : SpellBase
     public CactusFire()
     {
         duration = 2;
+        damage = 15;
+        unlockTier = 1;
         castingColour = Color.red;
         element = EElementalyType.Fire;
         castingSound = ESoundClipEnum.FireBall;

@@ -12,6 +12,8 @@ public class FireLine : SpellBase
     public FireLine()
     {
         duration = 3;
+        damage = 20;
+        unlockTier = 2;
         castingColour = Color.red;
         element = EElementalyType.Fire;
         castingSound = ESoundClipEnum.FireBall;

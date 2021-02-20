@@ -30,6 +30,8 @@ public class FireWork : SpellBase
     public FireWork()
     {
         duration = 1;
+        damage = 25;
+        unlockTier = 5;
         castingColour = Color.red;
         element = EElementalyType.Fire;
         castingSound = ESoundClipEnum.FireBall;
