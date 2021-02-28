@@ -235,7 +235,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ff94a25ec992c054095611479f1ebcc5, type: 2}
+  - {fileID: 2100000, guid: bffc911e77ee99943886e421d3e5eb84, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1378,7 +1378,7 @@ GameObject:
   - component: {fileID: 1185632712441941670}
   - component: {fileID: -6284121247234404619}
   m_Layer: 0
-  m_Name: KnightWind
+  m_Name: KnightPhysical
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1560,7 +1560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65be01ef25bf6e444b10ec1e1dc82831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentElement: 1
+  agentElement: 4
 --- !u!1 &1082396675121758
 GameObject:
   m_ObjectHideFlags: 0

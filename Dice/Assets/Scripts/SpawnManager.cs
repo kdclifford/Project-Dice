@@ -30,7 +30,7 @@ public class SpawnManager : MonoBehaviour
             return;
         }
 
-        int enemyTotal = (int)EnemyType.AmountOfEnemies * ((int)EElementalyType.AmountOfElements - 1);
+        int enemyTotal = (int)EnemyType.AmountOfEnemies * ((int)EElementalyType.AmountOfElements);
         enemyList = new GameObject[enemyTotal];
 
 
@@ -38,19 +38,15 @@ public class SpawnManager : MonoBehaviour
         for (int i = 0; i < (int)EnemyType.AmountOfEnemies; i++)
         {
             EnemyType enemy = (EnemyType)i;
-            for (int j = 0; j < (int)EElementalyType.AmountOfElements - 1; j++)
+            for (int j = 0; j < (int)EElementalyType.AmountOfElements; j++)
             {
                 EElementalyType element = (EElementalyType)j;
-                if(element == EElementalyType.Physical)
-                {
-                    element = EElementalyType.Nature;
-                }
 
-                enemyList[i * ((int)EElementalyType.AmountOfElements - 1) + j] = Resources.Load("Enemies/" + enemy.ToString() + "/" + enemy.ToString() + element.ToString()) as GameObject;
+                enemyList[i * ((int)EElementalyType.AmountOfElements) + j] = Resources.Load("Enemies/" + enemy.ToString() + "/" + enemy.ToString() + element.ToString()) as GameObject;
             }
         }
 
-        for(int i = 0; i < (int)EElementalyType.AmountOfElements - 1; i++)
+        for(int i = 0; i < (int)EElementalyType.AmountOfElements; i++)
         {
             elementsList.Add((EElementalyType)i);
         }
@@ -139,7 +135,7 @@ public class SpawnManager : MonoBehaviour
 
 
 
-            GameObject tempEnemy = MonoBehaviour.Instantiate(enemyList[(int)enemyType * ((int)EElementalyType.AmountOfElements - 1) + RandomElement(floors[currentFloor])], enemyPos, transform.rotation) as GameObject;
+            GameObject tempEnemy = MonoBehaviour.Instantiate(enemyList[(int)enemyType * ((int)EElementalyType.AmountOfElements) + RandomElement(floors[currentFloor])], enemyPos, transform.rotation) as GameObject;
             roomList[index].enemyList.Add(tempEnemy);
             //tempEnemy.transform.position = enemyPos;
         }

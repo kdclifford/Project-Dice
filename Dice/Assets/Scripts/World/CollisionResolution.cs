@@ -13,7 +13,7 @@ public class CollisionResolution : MonoBehaviour
     private UIManager uIManager;
     private SpellList spellList;
     private float maxAoeTime = 2.0f;
-    //private float aoeBurnTime = 0;
+    private float aoeBurnTime = 0;
     private EElementalyType agentType;
     private void Start()
     {
@@ -24,13 +24,13 @@ public class CollisionResolution : MonoBehaviour
         agentHealth = GetComponent<Health>();
         uIManager = UIManager.instance;
         spellList = SpellList.instance;
-        //aoeBurnTime = maxAoeTime;
+        aoeBurnTime = maxAoeTime;
         agentType = GetComponent<AgentElementType>().agentElement;
     }
 
     private void Update()
     {
-        //aoeBurnTime -= Time.deltaTime;
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -56,11 +56,12 @@ public class CollisionResolution : MonoBehaviour
     {
         if (other.gameObject.layer == 16)
         {
-            //if (aoeBurnTime <= 0)
-            //{
+            if (aoeBurnTime <= 0)
+            {
                 CheckForCollisions(other.gameObject);
-                //aoeBurnTime = maxAoeTime;
-            //}
+                aoeBurnTime = maxAoeTime;
+            }
+            aoeBurnTime -= Time.deltaTime;
         }
     }
     
@@ -90,7 +91,7 @@ public class CollisionResolution : MonoBehaviour
                 {
     
                     ShowFloatingText(other.gameObject.GetComponent<SpellIndex>().spellIndex);                 
-                    //aoeBurnTime = maxAoeTime;
+                    aoeBurnTime = maxAoeTime;
                 }
             }
             else if (transform.tag == "Player")
@@ -113,7 +114,7 @@ public class CollisionResolution : MonoBehaviour
                     {
                         soundManager.Play(ESoundClipEnum.PlayerHit, gameObject);
                     }
-                    //aoeBurnTime = maxAoeTime;
+                    aoeBurnTime = maxAoeTime;
     
                     // Destroy(other.gameObject);
     
@@ -167,7 +168,10 @@ public class CollisionResolution : MonoBehaviour
                 }
 
 
-                Destroy(collider.gameObject);
+                if (collider.layer != 16)
+                {
+                    Destroy(collider.gameObject);
+                }
 
             }
         }
