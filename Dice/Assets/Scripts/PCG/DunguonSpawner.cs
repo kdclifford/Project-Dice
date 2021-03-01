@@ -67,7 +67,7 @@ public class DunguonSpawner : MonoBehaviour
 
 
         var player = GameObject.FindGameObjectWithTag("Player");
-        player.transform.position = new Vector3(12 * roomsData[1].location.x, 0, 12 * roomsData[1].location.y);
+        player.transform.position = new Vector3(12 * roomsData[1].location.x, 1f, 12 * roomsData[1].location.y);
         //Instantiate(Player, new Vector3(4 * roomsData[1].location.x, 0, 4 * roomsData[1].location.y), Quaternion.identity);
 
     }

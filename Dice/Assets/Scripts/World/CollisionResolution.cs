@@ -133,7 +133,7 @@ public class CollisionResolution : MonoBehaviour
                 //Destory object and show text with 
                 if (collider.layer != 16)
                 {
-                    Destroy(collider);
+                    //Destroy(collider);
                 }
 
                 ShowFloatingText(collider.GetComponent<SpellIndex>().spellIndex);
@@ -170,7 +170,7 @@ public class CollisionResolution : MonoBehaviour
 
                 if (collider.layer != 16)
                 {
-                    Destroy(collider.gameObject);
+                   // Destroy(collider.gameObject);
                 }
 
             }

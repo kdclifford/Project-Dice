@@ -38,7 +38,7 @@ public class Health : MonoBehaviour
             }
             
             
-            currentHealth = 1;
+            //currentHealth = 1;
             //Reset The player Data on death
             DestroyComponents();
         }
