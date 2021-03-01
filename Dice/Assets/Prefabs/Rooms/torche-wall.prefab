@@ -118,8 +118,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 3.1489697
+  m_Center: {x: 0, y: 0, z: 1.1489704}
 --- !u!199 &6279981132831379230
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -3856,7 +3856,7 @@ ParticleSystem:
       emitProbability: 1
   LightsModule:
     enabled: 1
-    ratio: 0.3
+    ratio: 0.2
     light: {fileID: 7053161410945140806}
     randomDistribution: 0
     color: 1
@@ -4826,7 +4826,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.58775365, g: 0.97468334, b: 0.9811321, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.5
   m_Range: 25
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
