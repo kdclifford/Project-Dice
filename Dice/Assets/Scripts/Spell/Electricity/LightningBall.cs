@@ -12,7 +12,7 @@ public class LightningBall : SpellBase
     public LightningBall()
     {
         duration = 1;
-        castingColour = Color.white;
+        castingColour = Color.yellow;
         element = EElementalyType.Electricity;
         castingSound = ESoundClipEnum.Electric;
         spellType = ESpellType.Projectile;

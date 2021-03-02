@@ -12,7 +12,7 @@ public class BatSonarElectricity : SpellBase
     public BatSonarElectricity()
     {
         duration = 2;
-        castingColour = Color.white;
+        castingColour = Color.yellow;
         element = EElementalyType.Electricity;
         castingSound = ESoundClipEnum.SonarSpell;
         spellType = ESpellType.AOE;

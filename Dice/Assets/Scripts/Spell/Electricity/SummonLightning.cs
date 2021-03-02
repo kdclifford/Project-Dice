@@ -19,7 +19,7 @@ public class SummonLightning : SpellBase
     public SummonLightning()
     {
         duration = 10;
-        castingColour = Color.blue;
+        castingColour = Color.yellow;
         element = EElementalyType.Electricity;
         castingSound = ESoundClipEnum.Electric;
         spellType = ESpellType.AOE;

@@ -13,7 +13,7 @@ public class LightningFloor : SpellBase
     public LightningFloor()
     {
         duration = 10;
-        castingColour = Color.blue;
+        castingColour = Color.yellow;
         element = EElementalyType.Electricity;
         castingSound = ESoundClipEnum.LighntingSFX;
         spellType = ESpellType.AOE;
