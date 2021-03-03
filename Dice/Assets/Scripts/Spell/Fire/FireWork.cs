@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FireWork : SpellBase
-{
-
+{ 
     public float projectileSpeed = 100;
     public GameObject particlePrefab;
     public override void CastSpell(Vector3 posistion, float rot, GameObject agentRef, string tag = "Equipped")
@@ -23,7 +22,6 @@ public class FireWork : SpellBase
            bullet.AddComponent<SpellIndex>().spellIndex = ESpellEnum.FireWork;
            SoundManager.instance.Play(castingSound, bullet);
        }
-
     }
 
     public FireWork()
