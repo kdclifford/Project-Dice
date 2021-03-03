@@ -13,6 +13,8 @@ public class LightningFloor : SpellBase
     public LightningFloor()
     {
         duration = 10;
+        damage = 25;
+        unlockTier = 2;
         castingColour = Color.yellow;
         element = EElementalyType.Electricity;
         castingSound = ESoundClipEnum.LighntingSFX;

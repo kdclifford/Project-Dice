@@ -12,6 +12,8 @@ public class LightningCone : SpellBase
     public LightningCone()
     {
         duration = 1;
+        damage = 12;
+        unlockTier = 1;
         castingColour = Color.yellow;
         element = EElementalyType.Electricity;
         castingSound = ESoundClipEnum.Electric;

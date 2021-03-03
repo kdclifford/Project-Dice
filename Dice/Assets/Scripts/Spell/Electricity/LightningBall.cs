@@ -12,6 +12,8 @@ public class LightningBall : SpellBase
     public LightningBall()
     {
         duration = 1;
+        damage = 15;
+        unlockTier = 3;
         castingColour = Color.yellow;
         element = EElementalyType.Electricity;
         castingSound = ESoundClipEnum.Electric;
