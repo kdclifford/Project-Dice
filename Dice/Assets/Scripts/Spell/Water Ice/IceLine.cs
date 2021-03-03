@@ -12,6 +12,8 @@ public class IceLine : SpellBase
     public IceLine()
     {
         duration = 1;
+        damage = 12;
+        unlockTier = 2;
         castingColour = Color.blue;
         element = EElementalyType.Water;
         castingSound = ESoundClipEnum.Bubble;

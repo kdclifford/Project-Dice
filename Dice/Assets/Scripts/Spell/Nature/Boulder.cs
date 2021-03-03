@@ -14,6 +14,8 @@ public class Boulder : SpellBase
     public Boulder()
     {
         duration = 3;
+        damage = 15;
+        unlockTier = 2;
         castingColour = Color.green;
         element = EElementalyType.Nature;
         castingSound = ESoundClipEnum.Electric;

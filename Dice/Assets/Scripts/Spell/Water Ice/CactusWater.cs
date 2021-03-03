@@ -11,6 +11,8 @@ public class CactusWater : SpellBase
 
     public CactusWater()
     {
+        damage = 15;
+        unlockTier = 1;
         duration = 2;
         castingColour = Color.blue;
         element = EElementalyType.Water;

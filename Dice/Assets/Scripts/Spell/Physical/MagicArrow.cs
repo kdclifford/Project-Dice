@@ -13,6 +13,8 @@ public class MagicArrow : SpellBase
 
     public MagicArrow()
     {
+        damage = 12;
+        unlockTier = 1;
         duration = 3;
         castingColour = Color.white;
         element = EElementalyType.Physical;

@@ -14,6 +14,7 @@ public class SwordProjectile : SpellBase
     public SwordProjectile()
     {
         duration = 3;
+        damage = 15;
         castingColour = Color.white;
         element = EElementalyType.Physical;
         castingSound = ESoundClipEnum.FireBall;

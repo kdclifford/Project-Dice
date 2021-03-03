@@ -20,6 +20,8 @@ public class SummonMeteor : SpellBase
     public SummonMeteor()
     {
         duration = 10;
+        damage = 30;
+        unlockTier = 5;
         castingColour = Color.red;
         element = EElementalyType.Nature;
         castingSound = ESoundClipEnum.Bubble;

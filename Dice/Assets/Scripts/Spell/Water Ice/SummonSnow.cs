@@ -19,6 +19,8 @@ public class SummonSnow : SpellBase
     public SummonSnow()
     {
         duration = 5;
+        damage = 25;
+        unlockTier = 3;
         castingColour = Color.blue;
         element = EElementalyType.Water;
         castingSound = ESoundClipEnum.Bubble;

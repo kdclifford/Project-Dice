@@ -14,6 +14,8 @@ public class Kunai : SpellBase
     public Kunai()
     {
         duration = 3;
+        damage = 17;
+        unlockTier = 2;
         castingColour = Color.white;
         element = EElementalyType.Physical;
         castingSound = ESoundClipEnum.Bubble;

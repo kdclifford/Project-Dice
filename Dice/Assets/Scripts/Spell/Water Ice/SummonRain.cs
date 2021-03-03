@@ -20,6 +20,8 @@ public class SummonRain : SpellBase
     public SummonRain()
     {
         duration = 10;
+        damage = 20;
+        unlockTier = 3;
         castingColour = Color.blue;
         element = EElementalyType.Water;
         castingSound = ESoundClipEnum.Bubble;

@@ -12,6 +12,8 @@ public class CactusNature : SpellBase
     public CactusNature()
     {
         duration = 2;
+        damage = 20;
+        unlockTier = 3;
         castingColour = Color.green;
         element = EElementalyType.Nature;
         castingSound = ESoundClipEnum.BoulderCrumpleSFX;

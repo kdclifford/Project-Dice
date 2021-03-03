@@ -13,6 +13,7 @@ public class GrassBall : SpellBase
 
     public GrassBall()
     {
+        damage = 15;
         duration = 3;
         castingColour = Color.green;
         element = EElementalyType.Nature;
