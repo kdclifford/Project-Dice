@@ -13,7 +13,7 @@ public class BatSonarElectricity : SpellBase
     {
         damage = 6;
         duration = 2;
-        castingColour = Color.white;
+        castingColour = Color.yellow;
         element = EElementalyType.Electricity;
         castingSound = ESoundClipEnum.SonarSpell;
         spellType = ESpellType.AOE;
