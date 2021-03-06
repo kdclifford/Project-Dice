@@ -30,7 +30,7 @@ namespace AnimationFunctions.Utils
         }
 
 
-        public static void SpiderAttack(Animator animator)
+        public static void EnemyAttack(Animator animator)
         {
             animator.SetInteger("Attack", 1);
         }
@@ -38,6 +38,22 @@ namespace AnimationFunctions.Utils
         public static void StopAttack(Animator animator)
         {
             animator.SetInteger("Attack", 0);
+        }
+
+        public static void DragonAttack(Animator animator, int attack)
+        {
+            if (attack <= 1 && attack >= 3)
+            {
+                attack = 1;
+            }
+                animator.SetInteger("Attack", attack);
+            Debug.Log("Attack");
+        }
+
+
+        public static void DragonPan(Animator animator, float speed)
+        {
+            animator.SetFloat("PanMovement", speed);
         }
 
         public static Vector2 CurrentDirection(Vector2 input, GameObject agent)

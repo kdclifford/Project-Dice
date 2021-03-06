@@ -19,11 +19,10 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
         currentHealth = maxHealth;
         currentShields = 0;
         agentRoot = transform.GetChild(0).gameObject;
-        
+        levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
     }
 
     // Update is called once per frame
