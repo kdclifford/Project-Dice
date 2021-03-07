@@ -20,7 +20,7 @@ public class Health : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        currentShields = 0;
+        //currentShields = 0;
         agentRoot = transform.GetChild(0).gameObject;
         levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
     }
@@ -60,17 +60,17 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void RemoveHealth()
-    {        
-        if(currentShields > 0)
-        {
-            currentShields--;
-        }
-        else
-        {
-            currentHealth--;   
-        }
-    }
+    //public void RemoveHealth()
+    //{        
+    //    if(currentShields > 0)
+    //    {
+    //        currentShields--;
+    //    }
+    //    else
+    //    {
+    //        currentHealth--;   
+    //    }
+    //}
 
     public int GetHealth()
     {
@@ -79,7 +79,14 @@ public class Health : MonoBehaviour
 
     public void SetHealth(int health)
     {
-        currentHealth = health;
+        if (currentShields > 0)
+        {
+            currentShields--;
+        }
+        else
+        {
+            currentHealth = health;
+        }       
     }
 
     public void AddShield()

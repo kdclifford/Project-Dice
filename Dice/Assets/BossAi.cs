@@ -25,7 +25,7 @@ public class BossAi : MonoBehaviour
         dragon.Action();
     }
 
-    public void SpawnBullet()
+    private void SpellCast(ESpellEnum spell)
     {
         Vector3 forward = transform.forward;
         forward.y = 0;
@@ -35,9 +35,22 @@ public class BossAi : MonoBehaviour
         //firePos += transform.forward;
 
         //playerRot.eulerAngles += 45;
-        SpellList.instance.spells[(int)dragon.currentSpell].CastSpell(firePos, transform.eulerAngles.y, gameObject, "EnemyProjectile");
+        SpellList.instance.spells[(int)spell].CastSpell(firePos, transform.eulerAngles.y, gameObject, "EnemyProjectile");
     }
 
+    public void AttackOne()
+    {
+        SpellCast(dragon.SpellOne);
+    }
+
+    public void AttackTwo()
+    {
+        SpellCast(dragon.SpellTwo);
+    }
+    public void AttackThree()
+    {
+        SpellCast(dragon.SpellThree);
+    }
 }
 
 
@@ -48,19 +61,19 @@ public abstract class CBossBase
 
     public GameObject agent;
     public GameObject target;
-    public Health health;
+    public Health healthComp;
 
-    public void StateCheck(float health)
+    public void StateCheck(float health, float maxHealth, float shield)
     {
-        if (health == 101)
+        if (shield > 0)
         {
             bossState = EBossStates.Idle;
         }
-        else if (health > 66)
+        else if (health > maxHealth * 0.6f)
         {
             bossState = EBossStates.PhaseOne;
         }
-        else if (health > 33)
+        else if (health > maxHealth * 0.3f)
         {
             bossState = EBossStates.PhaseTwo;
         }
@@ -86,11 +99,11 @@ public abstract class CBossBase
 
 public class CDragon : CBossBase
 {
-    ESpellEnum SpellOne = ESpellEnum.FireWork;
-    ESpellEnum SpellTwo = ESpellEnum.FireBall;
-    ESpellEnum SpellThree = ESpellEnum.FireWork;
+    public ESpellEnum SpellOne = ESpellEnum.FireWork;
+    public ESpellEnum SpellTwo = ESpellEnum.FireBall;
+    public ESpellEnum SpellThree = ESpellEnum.FireWork;
     float attackCooldown = 3;
-    public ESpellEnum currentSpell;
+    //public ESpellEnum currentSpell;
 
     Animator anim;
 
@@ -99,69 +112,61 @@ public class CDragon : CBossBase
         agent = agentRef;
         target = targetRef;
         anim = agent.GetComponent<Animator>();
-        health = agent.GetComponent<Health>();
+        healthComp = agent.GetComponent<Health>();
     }
 
     public override void Action()
     {
 
-        StateCheck(health.GetHealth());
-        Debug.Log(health.GetHealth());
+        StateCheck(healthComp.GetHealth(), healthComp.maxHealth, healthComp.GetShield());
+       // Debug.Log(health.GetHealth());
 
         if (bossState == EBossStates.PhaseOne)
         {
             Debug.Log("PhaseOne");
-            currentSpell = SpellOne;
+            //currentSpell = SpellOne;
             PhaseOne();
         }
         else if (bossState == EBossStates.PhaseTwo)
         {
             Debug.Log("Phase2");
-            currentSpell = SpellOne;
+            //currentSpell = SpellTwo;
             PhaseTwo();
         }
         else if (bossState == EBossStates.PhaseThree)
         {
             Debug.Log("Phase3");
-            currentSpell = SpellOne;
+           // currentSpell = SpellThree;
             PhaseThree();
         }
         else if (bossState == EBossStates.Dead)
         {
             Debug.Log("Dead");
+            if (!this.anim.GetCurrentAnimatorStateInfo(0).IsName("Die"))
+            {
+            anim.SetTrigger("Die");
+                // Avoid any reload.
+            }
             DeadAnimation();
         }
         attackCooldown -= Time.deltaTime;
     }
 
-    void PhaseOne()
+    void Attack(float multiplier)
     {
-        //if(Vector3.SignedAngle(agent.transform.position, target.transform.position, Vector3.up) > 0)
-        //{
-        //    AnimationScript.DragonPan(anim, (Vector3.SignedAngle(agent.transform.position, target.transform.position, Vector3.up) - -180) / (180 - -180));
-        //}
-        //else if (Vector3.SignedAngle(agent.transform.position, target.transform.position, Vector3.up) < 0)
-        //{
+        // Determine which direction to rotate towards
+        Vector3 targetDi = target.transform.position - agent.transform.position;
 
-        //}
-        float targetAngle = Vector3.SignedAngle(agent.transform.position, target.transform.position, Vector3.up);
+        float targetAngle = Vector3.SignedAngle(agent.transform.forward, targetDi, Vector3.up);
+        // Debug.Log(targetAngle);
 
-
-
-
-        if (targetAngle > 10 || targetAngle < -10)
-        {
-            if (targetAngle > 10)
-            {
-                targetAngle = 1;
-            }
-            else if (targetAngle < -10)
-            {
-                targetAngle = 0;
-            }
+        
+            Debug.Log(targetAngle);
+           
 
             // Determine which direction to rotate towards
             Vector3 targetDirection = target.transform.position - agent.transform.position;
+
 
             // The step size is equal to speed times frame time.
             float singleStep = 0.5f * Time.deltaTime;
@@ -169,48 +174,81 @@ public class CDragon : CBossBase
             // Rotate the forward vector towards the target direction by one step
             Vector3 newDirection = Vector3.RotateTowards(agent.transform.forward, targetDirection, singleStep, 0.0f);
 
+
             // Draw a ray pointing at our target in
             Debug.DrawRay(agent.transform.position, newDirection, Color.red);
+            newDirection.y = agent.transform.forward.y;
 
+            if (targetAngle > 3 || targetAngle < -3)
+            {
+            if (targetAngle > 3)
+            {
+                targetAngle = 1;
+            }
+            else if (targetAngle < -3)
+            {
+                targetAngle = 0;
+            }
             // Calculate a rotation a step closer to the target and applies rotation to this object
             agent.transform.rotation = Quaternion.LookRotation(newDirection);
 
 
-            anim.SetBool("Pan", true);
-            AnimationScript.DragonPan(anim, targetAngle);
-        
-        }
+                anim.SetBool("Pan", true);
+                AnimationScript.DragonPan(anim, targetAngle);
+            if (attackCooldown < 0)
+            {
+                AnimationScript.DragonAttack(anim, 2);
+                attackCooldown = 4 / multiplier;
+            }
+            else
+            {
+                AnimationScript.DragonAttack(anim, 0);
+            }
+            }        
         else
         {
             anim.SetBool("Pan", false);
+            if (attackCooldown < 0)
+            {
+                AnimationScript.DragonAttack(anim, 1);
+                attackCooldown = 4 / multiplier;
+            }
+            else
+            {
+                AnimationScript.DragonAttack(anim, 0);
+            }
         }
+    }
 
-        //agent.transform.roa(target.transform);
-
-
-        if (attackCooldown < 0)
-        {
-            AnimationScript.DragonAttack(anim, 1);
-            attackCooldown = 10;
-        }
-        else
-        {
-            AnimationScript.DragonAttack(anim, 0);
-        }
-
-
-
-
+    bool once = true;
+    void PhaseOne()
+    {
+        Attack(1);
     }
 
     void PhaseTwo()
     {
+        Attack(2);
+
+        if (once)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                Debug.Log("SpawnEnemy");
+                Vector2 randPos = Random.insideUnitCircle * 20;
+                Vector3 position = new Vector3(agent.transform.position.x + randPos.x, agent.transform.position.y, agent.transform.position.z + randPos.y);
+                GameObject tempEnemy = MonoBehaviour.Instantiate(SpawnManager.instance.enemyList[(int)EnemyType.Bat * ((int)EElementalyType.AmountOfElements) + (int)EElementalyType.Fire], position, agent.transform.rotation) as GameObject;
+
+            }
+            once = false;
+        }
+
 
     }
 
     void PhaseThree()
     {
-
+        Attack(3);
     }
 
 }
