@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4649443416047610061}
   - component: {fileID: 5417796514795871977}
   - component: {fileID: 3559145383323976281}
-  m_Layer: 16
+  m_Layer: 8
   m_Name: FireCone
   m_TagString: Equipped
   m_Icon: {fileID: 0}
@@ -178,6 +178,10 @@ PrefabInstance:
     - target: {fileID: 184082, guid: 5d7d20cd12171e64dbf63552d530e567, type: 3}
       propertyPath: m_Name
       value: FireWave1
+      objectReference: {fileID: 0}
+    - target: {fileID: 184082, guid: 5d7d20cd12171e64dbf63552d530e567, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 476290, guid: 5d7d20cd12171e64dbf63552d530e567, type: 3}
       propertyPath: m_RootOrder

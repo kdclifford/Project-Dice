@@ -19,11 +19,10 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
         currentHealth = maxHealth;
-        currentShields = 0;
+        //currentShields = 0;
         agentRoot = transform.GetChild(0).gameObject;
-        
+        levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
     }
 
     // Update is called once per frame
@@ -61,17 +60,17 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void RemoveHealth()
-    {        
-        if(currentShields > 0)
-        {
-            currentShields--;
-        }
-        else
-        {
-            currentHealth--;   
-        }
-    }
+    //public void RemoveHealth()
+    //{        
+    //    if(currentShields > 0)
+    //    {
+    //        currentShields--;
+    //    }
+    //    else
+    //    {
+    //        currentHealth--;   
+    //    }
+    //}
 
     public int GetHealth()
     {
@@ -80,7 +79,14 @@ public class Health : MonoBehaviour
 
     public void SetHealth(int health)
     {
-        currentHealth = health;
+        if (currentShields > 0)
+        {
+            currentShields--;
+        }
+        else
+        {
+            currentHealth = health;
+        }       
     }
 
     public void AddShield()

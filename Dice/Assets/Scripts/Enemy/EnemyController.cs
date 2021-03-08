@@ -189,7 +189,7 @@ public class EnemyController : MonoBehaviour
         {
             if (playerHealth >= 0 && fireCooldown <= 0)
             {
-                AnimationScript.SpiderAttack(animator);
+                AnimationScript.EnemyAttack(animator);
             }
             else
             {

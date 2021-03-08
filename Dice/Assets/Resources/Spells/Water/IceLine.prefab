@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2579277201626074354}
   - component: {fileID: 2910077345998420694}
   - component: {fileID: -2399105992341580919}
-  m_Layer: 16
+  m_Layer: 8
   m_Name: IceLine
   m_TagString: Equipped
   m_Icon: {fileID: 0}
@@ -85,6 +85,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IceWave
       objectReference: {fileID: 0}
+    - target: {fileID: 184082, guid: 5d7d20cd12171e64dbf63552d530e567, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 476290, guid: 5d7d20cd12171e64dbf63552d530e567, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -143,6 +147,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19822588, guid: 5d7d20cd12171e64dbf63552d530e567, type: 3}
       propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19822588, guid: 5d7d20cd12171e64dbf63552d530e567, type: 3}
+      propertyPath: prewarm
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19822588, guid: 5d7d20cd12171e64dbf63552d530e567, type: 3}
