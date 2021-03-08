@@ -79,7 +79,11 @@ public class PlayerController : MonoBehaviour
     private bool DoorTriggered = false;
     private GameObject DoorObj;
     private bool DungeonDoorTriggered = false;
+    private bool DungeonCheastTriggered = false;
+
     private GameObject DungeonDoorObj;
+    private GameObject DungeonCheastObj;
+
 
     // Start is called before the first frame update
     void Start()
@@ -142,7 +146,12 @@ public class PlayerController : MonoBehaviour
             sn.openTheDoor();
             DungeonDoorTriggered = false;
         }
-
+        if (DungeonCheastTriggered == true && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
+        {
+            CDungeonCheast cheast = DungeonCheastObj.GetComponent<CDungeonCheast>();
+            cheast.openTheCheast();
+            DungeonCheastTriggered = false;
+        }
 
         leftStickInputAxis.x = ButtonMapping.GetStick(gameSettings.controllerType, EStickMovement.HorizontalMovement, transform.position);
         leftStickInputAxis.y = ButtonMapping.GetStick(gameSettings.controllerType, EStickMovement.VerticalMovement, transform.position);
@@ -312,6 +321,11 @@ public class PlayerController : MonoBehaviour
         {
             DungeonDoorObj = Collision.gameObject;
             DungeonDoorTriggered = true;
+        }
+        else if (Collision.gameObject.tag == "Cheast")
+        {
+            DungeonCheastObj = Collision.gameObject;
+            DungeonCheastTriggered = true;
         }
         else if (Collision.gameObject.tag == "Light")
         {
