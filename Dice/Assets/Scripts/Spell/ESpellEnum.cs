@@ -39,6 +39,4 @@ public enum ESpellEnum
 	SummonSnow = 33,
 	SummonPumpkin = 34,
 	Size, 
-
-
 }

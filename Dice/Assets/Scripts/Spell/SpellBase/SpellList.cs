@@ -51,9 +51,4 @@ public class SpellList : MonoBehaviour
             spell.SetValues();
         }
     }
-
-
-
-
-
 }
