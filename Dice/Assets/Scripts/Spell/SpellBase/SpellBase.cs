@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.SerializableAttribute]
 public abstract class SpellBase
 {
     public GameObject SpellObject;

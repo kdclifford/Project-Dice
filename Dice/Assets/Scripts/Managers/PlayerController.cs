@@ -375,8 +375,8 @@ public class PlayerController : MonoBehaviour
 
     public void LeftFire()
     {
-   
 
+        Debug.Log(SpellList.instance.spells[(int)leftSpell].SpellName);
         Vector3 leftFirePos = transform.position + (transform.right * -projectileDistance);// LeftFirePos.x -= 0.4f;
         leftFirePos.y += yOffsetProgectile;
 
