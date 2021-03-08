@@ -7,7 +7,6 @@ public class SummonPumpkin : SpellBase
     public override void CastSpell(Vector3 posistion, float rot, GameObject agentRef, string tag = "Equipped")
     {
         SetValues();
-        //Summon A Pumkin 
         BasicSummon(posistion, rot, tag, SpellObject, ESpellEnum.SummonPumpkin);
     }
     public override void SetValues()
@@ -26,7 +25,7 @@ public class SummonPumpkin : SpellBase
         element = EElementalyType.Nature;
         castingSound = ESoundClipEnum.NoSound;
         spellType = ESpellType.AOE;
-        deathSound = ESoundClipEnum.Bubble;
+        deathSound = ESoundClipEnum.NoSound;
         SpellName = "PumpKing";
         PathProjectile = PathProjectile + element.ToString() + "/";
     }
