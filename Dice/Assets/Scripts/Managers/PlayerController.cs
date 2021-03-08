@@ -238,7 +238,10 @@ public class PlayerController : MonoBehaviour
 
         if (Collision.gameObject.layer == LayerMask.NameToLayer("Spell") || Collision.gameObject.layer == LayerMask.NameToLayer("PickUp"))
         {
-            if(Collision.gameObject.tag != "VolumeOption") Collision.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+            if (Collision.gameObject.tag != "VolumeOption")
+            {
+                Collision.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+            }
         }
 
         if (Collision.gameObject.layer == LayerMask.NameToLayer("Spell"))
