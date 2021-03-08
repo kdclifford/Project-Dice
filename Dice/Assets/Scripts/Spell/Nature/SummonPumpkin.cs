@@ -12,7 +12,7 @@ public class SummonPumpkin : SpellBase
     }
     public override void SetValues()
     {
-        SpellObject = Resources.Load(PathProjectile + "PumpkinSpell", typeof(GameObject)) as GameObject;
+        SpellObject = Resources.Load(PathProjectile + "PumkinSpell", typeof(GameObject)) as GameObject;
         UILogo = Resources.Load<Sprite>(PathUI + "NatureUI");
         destroyInstantiante = Resources.Load(PathDeath + "EmptyDestroy", typeof(GameObject)) as GameObject;
     }
