@@ -37,7 +37,8 @@ public enum ESpellEnum
 	IceSpike = 31,
 	SummonRain = 32,
 	SummonSnow = 33,
-    Size, 
+	SummonPumpkin = 34,
+	Size, 
 
 
 }
