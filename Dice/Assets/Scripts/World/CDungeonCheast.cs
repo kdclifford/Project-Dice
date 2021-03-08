@@ -24,6 +24,8 @@ public class CDungeonCheast : MonoBehaviour
         //this.transform.RotateAround(pivotPoint, Vector3.down, -90);
         gameObject.tag = "Wall";
         Vector3 spawnPosition = transform.position;
+        spawnPosition.y = 1;
+
         if(facingDirection == FacingDirection.Up)
         {
             spawnPosition.z -= 5;
