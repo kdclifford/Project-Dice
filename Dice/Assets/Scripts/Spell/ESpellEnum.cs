@@ -29,7 +29,7 @@ public enum ESpellEnum
 	MagicArrow = 23,
 	StarterKnife = 24,
 	SwordProjectile = 25,
-	PumkingExpolosion = 26,
+	SummonPumpkin = 26,
 	BatSonarWater = 27,
 	Bubble = 28,
 	CactusWater = 29,
@@ -37,6 +37,5 @@ public enum ESpellEnum
 	IceSpike = 31,
 	SummonRain = 32,
 	SummonSnow = 33,
-	SummonPumpkin = 34,
-	Size, 
+	Size,
 }
