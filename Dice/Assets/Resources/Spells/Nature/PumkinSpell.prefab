@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -8217126690504381434}
   - component: {fileID: 2256487401600420335}
   - component: {fileID: 1375488009154924116}
-  - component: {fileID: 1512110384338514250}
+  - component: {fileID: 4058371647387851163}
   m_Layer: 12
   m_Name: PumkinSpell
   m_TagString: Equipped
@@ -3817,7 +3817,7 @@ ParticleSystem:
   LightsModule:
     enabled: 1
     ratio: 1
-    light: {fileID: 0}
+    light: {fileID: 6607779366743797201}
     randomDistribution: 1
     color: 1
     range: 1
@@ -4822,7 +4822,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1512110384338514250
+--- !u!114 &4058371647387851163
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4831,10 +4831,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1162879071623814}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c680b284b1c07f340a9494a45347c4e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b1dd6990816ad64791247b09f4af6e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 3
+  Duration: 5
+  tickTimeMax: 1
 --- !u!1 &8073888997480048025
 GameObject:
   m_ObjectHideFlags: 0
