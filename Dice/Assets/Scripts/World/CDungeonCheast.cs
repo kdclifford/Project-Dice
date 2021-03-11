@@ -19,30 +19,30 @@ public class CDungeonCheast : MonoBehaviour
     // Update is called once per frame
     public void openTheCheast()
     {
-        pivot.transform.rotation =  Quaternion.Euler(-90,0 , 0);
-        
+        pivot.transform.localRotation = Quaternion.Euler(-90, 0,0);
         gameObject.tag = "Wall";
+
         Vector3 spawnPosition = transform.position;
+
         if(facingDirection == FacingDirection.Up)
         {
-            spawnPosition.z += 2.5f;
+            spawnPosition.z -= 5;
         } 
         else if (facingDirection == FacingDirection.Right)
         {
-            spawnPosition.x += 2.5f;
+            spawnPosition.x += 5;
 
         }
         else if(facingDirection == FacingDirection.Down)
         {
-            spawnPosition.z -= 2.5f;
+            spawnPosition.z += 5;
 
         }
         else if(facingDirection == FacingDirection.Left)
         {
-            spawnPosition.x -=2.5f;
+            spawnPosition.x -=5;
 
         }
-        spawnPosition.y = 2;
         var quat = new Quaternion();
         quat = Quaternion.Euler(90, 0, 0);
         Instantiate(spellPrefab, spawnPosition, quat);
