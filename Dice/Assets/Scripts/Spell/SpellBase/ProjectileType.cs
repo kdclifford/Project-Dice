@@ -18,7 +18,7 @@ public class ProjectileType : MonoBehaviour
     {
         while (randomSpell)
         {
-            int randSpell = Random.Range(0, (int)ESpellEnum.Size);
+            int randSpell = Random.Range(0, (int)ESpellEnum.Size - 2);
             if(spellList.spells[randSpell].unlockTier == 0)
             {
                 spellIndex = (ESpellEnum)randSpell;
