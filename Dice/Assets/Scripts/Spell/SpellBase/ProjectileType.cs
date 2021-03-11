@@ -5,8 +5,6 @@ using UnityEngine;
 public class ProjectileType : MonoBehaviour
 { 
     public ESpellEnum spellIndex;
-    [HideInInspector]
-    public SpellList spellList;
     public bool randomSpell = true;
 
     public TextMesh NameText;
@@ -19,7 +17,7 @@ public class ProjectileType : MonoBehaviour
         while (randomSpell)
         {
             int randSpell = Random.Range(0, (int)ESpellEnum.Size - 2);
-            if(spellList.spells[randSpell].unlockTier == 0)
+            if(SpellList.instance.spells[randSpell].unlockTier == 0)
             {
                 spellIndex = (ESpellEnum)randSpell;
                 randomSpell = false;
@@ -38,13 +36,8 @@ public class ProjectileType : MonoBehaviour
 
     public void LoadUI()
     {
-        gameObject.GetComponent<SpriteRenderer>().sprite = spellList.spells[(int)spellIndex].UILogo;
+        gameObject.GetComponent<SpriteRenderer>().sprite = SpellList.instance.spells[(int)spellIndex].UILogo;
         //transform.GetChild(0).gameObject.GetComponent<Light>().color = SpellList.instance.spells[spellIndex].castingColour;
-    }
-
-    public void setSpell()
-    {
-        spellList = GameObject.FindGameObjectWithTag("SpellManager").GetComponent<SpellList>();
     }
 }
 

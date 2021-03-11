@@ -11,8 +11,7 @@ public class SpellEditor : Editor
         ProjectileType myScript = (ProjectileType)target;
         if ((int)myScript.spellIndex > -1)
         {
-            myScript.setSpell();
-            myScript.spellList.InitializeSpells();
+            SpellList.instance.InitializeSpells();
             myScript.LoadUI();
         }
     }
