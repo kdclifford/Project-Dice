@@ -25,8 +25,9 @@ public class ProjectileType : MonoBehaviour
                 randomSpell = false;
             }
         } 
+
         gameObject.GetComponent<SpriteRenderer>().sprite = SpellList.instance.spells[(int)spellIndex].UILogo;
-            transform.GetChild(0).gameObject.GetComponent<Light>().color = SpellList.instance.spells[(int)spellIndex].castingColour;
+        transform.GetChild(0).gameObject.GetComponent<Light>().color = SpellList.instance.spells[(int)spellIndex].castingColour;
 
         TypeText.text = SpellList.instance.spells[(int)spellIndex].spellType.ToString();
         ElementText.text = SpellList.instance.spells[(int)spellIndex].element.ToString();
