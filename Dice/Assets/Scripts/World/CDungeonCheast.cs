@@ -20,29 +20,29 @@ public class CDungeonCheast : MonoBehaviour
     public void openTheCheast()
     {
         pivot.transform.rotation =  Quaternion.Euler(-90,0 , 0);
-        //Vector3 pivotPoint = pivot.transform.position;
-        //this.transform.RotateAround(pivotPoint, Vector3.down, -90);
+        
         gameObject.tag = "Wall";
         Vector3 spawnPosition = transform.position;
         if(facingDirection == FacingDirection.Up)
         {
-            spawnPosition.z -= 5;
+            spawnPosition.z += 2.5f;
         } 
         else if (facingDirection == FacingDirection.Right)
         {
-            spawnPosition.x += 5;
+            spawnPosition.x += 2.5f;
 
         }
         else if(facingDirection == FacingDirection.Down)
         {
-            spawnPosition.z += 5;
+            spawnPosition.z -= 2.5f;
 
         }
         else if(facingDirection == FacingDirection.Left)
         {
-            spawnPosition.x -=5;
+            spawnPosition.x -=2.5f;
 
         }
+        spawnPosition.y = 2;
         var quat = new Quaternion();
         quat = Quaternion.Euler(90, 0, 0);
         Instantiate(spellPrefab, spawnPosition, quat);
