@@ -20,7 +20,12 @@ public class EnemyController : MonoBehaviour
     public LayerMask layerhit;
     public LayerMask layerFLoor;
 
+    public GameObject HPPickup;
+
     public EAIStates currentState = EAIStates.RandomMove;
+    private float randDrop;
+    private bool HPdropped = false;
+
     //Private
     private bool removeBody = false;
     private float removeSpeed = 5;
@@ -113,6 +118,14 @@ public class EnemyController : MonoBehaviour
 
             if (currentState == EAIStates.Dead && !removeBody)
             {
+                randDrop = UnityEngine.Random.Range(0.0f, 100.0f);
+
+                if(randDrop <= 50.0f && HPdropped == false)
+                {
+                    Instantiate(HPPickup, transform.position, transform.rotation);
+                    HPdropped = true;
+                }
+
                 agent.ResetPath();
                 isDead = true;
                 animator.SetBool("Death", isDead);
