@@ -7,12 +7,17 @@ public class DunguonSpawner : MonoBehaviour
     [SerializeField] private int numberOfRooms;
     public List<GameObject> RoomPrefabs;
     public Vector2Int WorldSize;
+    public float wallOffset = 12;
+    public float wallPosOffset = 6.6f;
 
+    private GameObject wallParent;
+    private GameObject floorParent;
+    private GameObject lightHolder;
 
     public GameObject Player;
 
     [SerializeField]
-    private GameObject floorPRefab;
+    private GameObject floorPrefab;
     [SerializeField]
     private GameObject finalRoomPrefab;
     [SerializeField]
@@ -44,21 +49,24 @@ public class DunguonSpawner : MonoBehaviour
     public static DunguonSpawner instance;
 
     private void Awake()
-    {       
-            if (instance == null)
-            {
-                instance = this;
-            }
-            else
-            {
-                Destroy(gameObject);
-                return;
-            }        
-    
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
+
+    private void Start()
+    {
         for (int i = 0; i < RoomPrefabs.Count; i++)
             roomsPrefabData.Add(RoomPrefabs[i].GetComponent<Room>());
 
-       
+
         GenerateFloor();
 
         while (!AcceptableFloortCheck())
@@ -66,7 +74,7 @@ public class DunguonSpawner : MonoBehaviour
             GenerateFloor();
         }
         SetSceneLocation();
-        
+
         SetPathModels(GenerateWalls(pathPoints, Doors));
 
 
@@ -75,7 +83,7 @@ public class DunguonSpawner : MonoBehaviour
         //Instantiate(Player, new Vector3(4 * roomsData[1].location.x, 0, 4 * roomsData[1].location.y), Quaternion.identity);
 
     }
-   
+
 
     void GenerateFloor()
     {
@@ -95,12 +103,12 @@ public class DunguonSpawner : MonoBehaviour
         roomsToSearch.Add(roomsData[0].connectedRooms[0]);
         searchedRooms.Add(roomsData[0].roomNumber);
 
-        while(roomsToSearch.Count>0)
+        while (roomsToSearch.Count > 0)
         {
             connectedRooms.Add(roomsToSearch[0]);
             foreach (int connectedRoom in roomsData[roomsToSearch[0]].connectedRooms)
             {
-                if(!connectedRooms.Contains(connectedRoom) && !searchedRooms.Contains(connectedRoom) && !roomsToSearch.Contains(connectedRoom))
+                if (!connectedRooms.Contains(connectedRoom) && !searchedRooms.Contains(connectedRoom) && !roomsToSearch.Contains(connectedRoom))
                 {
                     roomsToSearch.Add(connectedRoom);
                 }
@@ -109,7 +117,7 @@ public class DunguonSpawner : MonoBehaviour
             roomsToSearch.RemoveAt(0);
         }
 
-        if(searchedRooms.Count < roomsData.Count)
+        if (searchedRooms.Count < roomsData.Count)
         {
             return false;
         }
@@ -123,7 +131,7 @@ public class DunguonSpawner : MonoBehaviour
         roomsData = new List<Room>();
         Doors = new List<CDoor>();
 
-        int numberOfAttempts = 50;
+        int numberOfAttempts = 100;
 
         //Place the Start and final Room Both of these only have a single door way
         //Then add rooms to till the room count is reached
@@ -139,8 +147,8 @@ public class DunguonSpawner : MonoBehaviour
             tempRoom.connectedRooms = new List<int>();
             roomsData.Add(tempRoom);
         }
-        else 
-        { 
+        else
+        {
             tempRoom.location = new Vector2Int((int)Random.Range(2, WorldSize.x - 2), (int)Random.Range(2, WorldSize.y - 2));
             tempRoom.Size = finalRoomPrefab.GetComponent<Room>().Size;
             tempRoom.roomType = RoomType.Exit;
@@ -173,11 +181,11 @@ public class DunguonSpawner : MonoBehaviour
         {
             tempRoom = new Room();
             tempRoom.preFabNumber = Random.Range(0, RoomPrefabs.Count);
-            tempRoom.location = new Vector2Int((int)Random.Range(2, WorldSize.x-2), (int)Random.Range(2, WorldSize.y -2));
+            tempRoom.location = new Vector2Int((int)Random.Range(2, WorldSize.x - 2), (int)Random.Range(2, WorldSize.y - 2));
             tempRoom.Size = roomsPrefabData[tempRoom.preFabNumber].Size;
             tempRoom.DoorLocations = roomsPrefabData[tempRoom.preFabNumber].DoorLocations;
             tempRoom.DoorFacingDirections = roomsPrefabData[tempRoom.preFabNumber].DoorFacingDirections;
-            tempRoom.roomNumber = roomsData.Count ;
+            tempRoom.roomNumber = roomsData.Count;
             tempRoom.connectedRooms = new List<int>();
 
             if (ValidRoomLocation(tempRoom, roomsData))
@@ -193,7 +201,7 @@ public class DunguonSpawner : MonoBehaviour
         CDoor tempDoor;
         foreach (Room room in roomsData)
         {
-            for(int i = 0; i < room.DoorLocations.Count;i++)
+            for (int i = 0; i < room.DoorLocations.Count; i++)
             {
                 tempDoor = new CDoor();
                 newDoorPosistion = room.DoorLocations[i];
@@ -210,29 +218,48 @@ public class DunguonSpawner : MonoBehaviour
     {
         if (PathNodes != null)
         {
+            floorParent = new GameObject("FloorHolder");
+            wallParent = new GameObject("WallHolder");
+            lightHolder = new GameObject("LightHolder");
+            GameObject wall;
+
             foreach (CTile pathPoint in PathNodes)
             {
-                Instantiate(floorPRefab, new Vector3(12 * pathPoint.position.x, 0, 12 * pathPoint.position.y), Quaternion.identity);
-                if(pathPoint.northWall)
+                if (pathPoint.northWall)
                 {
-                    Instantiate(wallPrefab, new Vector3(12 * pathPoint.position.x, 0, (12 * pathPoint.position.y) +6), Quaternion.Euler(new Vector3(0, 180, 0)));
-
+                    wall = Instantiate(wallPrefab, new Vector3(wallOffset * pathPoint.position.x, 0, (wallOffset * pathPoint.position.y) + wallPosOffset), Quaternion.Euler(new Vector3(0, 180, 0)), wallParent.transform);
+                    wall.transform.GetChild(0).parent = lightHolder.transform;
                 }
                 if (pathPoint.eastWall)
                 {
-                    Instantiate(wallPrefab, new Vector3((12 * pathPoint.position.x) +6, 0, 12 * pathPoint.position.y), Quaternion.Euler(new Vector3(0,270,0)));
-
+                    wall = Instantiate(wallPrefab, new Vector3((wallOffset * pathPoint.position.x) + wallPosOffset, 0, wallOffset * pathPoint.position.y), Quaternion.Euler(new Vector3(0, 270, 0)), wallParent.transform);
+                    wall.transform.GetChild(0).parent = lightHolder.transform;
                 }
                 if (pathPoint.southWall)
                 {
-                    Instantiate(wallPrefab, new Vector3(12 * pathPoint.position.x, 0, (12 * pathPoint.position.y) - 6), Quaternion.identity);
-
+                    wall = Instantiate(wallPrefab, new Vector3(wallOffset * pathPoint.position.x, 0, (wallOffset * pathPoint.position.y) - wallPosOffset), Quaternion.identity, wallParent.transform);
+                    wall.transform.GetChild(0).parent = lightHolder.transform;
                 }
                 if (pathPoint.westWall)
                 {
-                    Instantiate(wallPrefab, new Vector3((12 * pathPoint.position.x) -6, 0, 12 * pathPoint.position.y), Quaternion.Euler(new Vector3(0, 90, 0)));
-
+                    wall = Instantiate(wallPrefab, new Vector3((wallOffset * pathPoint.position.x) - wallPosOffset, 0, wallOffset * pathPoint.position.y), Quaternion.Euler(new Vector3(0, 90, 0)), wallParent.transform);
+                    wall.transform.GetChild(0).parent = null;
                 }
+                Instantiate(floorPrefab, new Vector3(wallOffset * pathPoint.position.x, 0, wallOffset * pathPoint.position.y), Quaternion.identity, floorParent.transform);
+            }
+            wallParent.AddComponent<MeshRenderer>().materials = wallParent.transform.GetChild(0).GetComponent<MeshRenderer>().materials;
+            wallParent.AddComponent<MergeMeshes>();
+            wallParent.AddComponent<MeshCollider>();
+            wallParent.tag = "Wall";
+            wallParent.layer = LayerMask.NameToLayer( "Obstacle");
+
+            floorParent.AddComponent<MeshRenderer>().materials = floorParent.transform.GetChild(0).GetComponent<MeshRenderer>().materials;
+            floorParent.AddComponent<MergeMeshes>();
+            floorParent.layer = LayerMask.NameToLayer("Floor");
+
+            for (int i = 0; i < wallParent.transform.childCount; i++)
+            {
+                Destroy(wallParent.transform.GetChild(i).gameObject);
             }
         }
     }
@@ -241,11 +268,11 @@ public class DunguonSpawner : MonoBehaviour
 
 
         var finalRoomObject = finalRoomPrefab;
-        if(SpawnManager.instance.currentFloor % BossFloor == 0)
+        if (SpawnManager.instance.currentFloor % BossFloor == 0)
         {
             finalRoomObject = finalBossRoom;
         }
-    
+
         var temp = Instantiate(finalRoomObject, new Vector3(12 * roomsData[0].location.x, 0, 12 * roomsData[0].location.y), Quaternion.identity);
         temp.GetComponent<Room>().location = roomsData[0].location;
         roomRef.Add(temp);
@@ -254,10 +281,10 @@ public class DunguonSpawner : MonoBehaviour
         temp.GetComponent<Room>().location = roomsData[1].location;
         roomRef.Add(temp);
 
-        for (int i=2; i< roomsData.Count;i++)
+        for (int i = 2; i < roomsData.Count; i++)
         {
-                temp = Instantiate(RoomPrefabs[roomsData[i].preFabNumber], new Vector3(12 * roomsData[i].location.x, 0, 12 * roomsData[i].location.y), Quaternion.identity);
-                temp.GetComponent<Room>().location = roomsData[i].location;
+            temp = Instantiate(RoomPrefabs[roomsData[i].preFabNumber], new Vector3(12 * roomsData[i].location.x, 0, 12 * roomsData[i].location.y), Quaternion.identity);
+            temp.GetComponent<Room>().location = roomsData[i].location;
             roomRef.Add(temp);
         }
     }
@@ -269,27 +296,27 @@ public class DunguonSpawner : MonoBehaviour
             Room currentRoom = Rooms[i];
             //Saftey Cheack need so taht rooms dont spawn back to back and is a tile space
             //Instead of coroner of the room and its size, it is adjusted to have a ring of space around each room so corriodods can fit
-            if (newRoom.location.x-1 < currentRoom.location.x + currentRoom.Size.x + 2 &&
-                newRoom.location.x-1 + newRoom.Size.x +2 > currentRoom.location.x &&
-                newRoom.location.y-1 < currentRoom.location.y + currentRoom.Size.y+2 &&
-                newRoom.location.y - 1+ newRoom.Size.y +2 > currentRoom.Size.y)
+            if (newRoom.location.x - 1 < currentRoom.location.x + currentRoom.Size.x + 2 &&
+                newRoom.location.x - 1 + newRoom.Size.x + 2 > currentRoom.location.x &&
+                newRoom.location.y - 1 < currentRoom.location.y + currentRoom.Size.y + 2 &&
+                newRoom.location.y - 1 + newRoom.Size.y + 2 > currentRoom.Size.y)
             {
                 return false;
             }
         }
-        return true;   
+        return true;
     }
     void GenerateCorridors()
     {
         pathPoints = new List<Vector2Int>();
-        int count =0;
-       while(!AllDoorsConnected() && count < 50)
-       {
+        int count = 0;
+        while (!AllDoorsConnected() && count < 50)
+        {
             int currentDoor = PickDoor();
-            int targetDoor =NearestDoor(currentDoor);
-            
-            List<Vector2Int> path = GeneratePath(Doors[currentDoor],Doors[ targetDoor]);
-            if(path !=null)
+            int targetDoor = NearestDoor(currentDoor);
+
+            List<Vector2Int> path = GeneratePath(Doors[currentDoor], Doors[targetDoor]);
+            if (path != null)
             {
                 //update Room connected Data 
                 roomsData[Doors[currentDoor].roomNumber].connectedRooms.Add(Doors[targetDoor].roomNumber);
@@ -297,23 +324,23 @@ public class DunguonSpawner : MonoBehaviour
 
                 foreach (Vector2Int point in path)
                 {
-                    if(!pathPoints.Contains(point))
+                    if (!pathPoints.Contains(point))
                         pathPoints.Add(point);
                 }
                 Doors[currentDoor].connected = true;
                 Doors[targetDoor].connected = true;
             }
-            
-            
+
+
             count++;
-       }
-       
+        }
+
     }
     private List<CTile> GenerateWalls(List<Vector2Int> pathPoints, List<CDoor> doors)
     {
         List<CTile> pathTiles = new List<CTile>();
         List<Vector2Int> doorLocations = new List<Vector2Int>();
-        foreach(CDoor door in  doors)
+        foreach (CDoor door in doors)
         {
             doorLocations.Add(door.doorPoisitoin());
         }
@@ -323,19 +350,19 @@ public class DunguonSpawner : MonoBehaviour
             bool southWall = true;
             bool eastWall = true;
             bool westWall = true;
-            if (pathPoints.Contains(new Vector2Int(point.x,point.y + 1)) || doorLocations.Contains(new Vector2Int(point.x, point.y + 1)))
+            if (pathPoints.Contains(new Vector2Int(point.x, point.y + 1)) || doorLocations.Contains(new Vector2Int(point.x, point.y + 1)))
             {
                 northWall = false;
             }
-            if (pathPoints.Contains(new Vector2Int(point.x, point.y - 1)) || doorLocations.Contains(new Vector2Int(point.x, point.y  - 1)))
+            if (pathPoints.Contains(new Vector2Int(point.x, point.y - 1)) || doorLocations.Contains(new Vector2Int(point.x, point.y - 1)))
             {
                 southWall = false;
             }
-            if (pathPoints.Contains(new Vector2Int(point.x +1, point.y)) || doorLocations.Contains(new Vector2Int(point.x + 1, point.y)))
+            if (pathPoints.Contains(new Vector2Int(point.x + 1, point.y)) || doorLocations.Contains(new Vector2Int(point.x + 1, point.y)))
             {
                 eastWall = false;
             }
-            if (pathPoints.Contains(new Vector2Int(point.x -1, point.y)) || doorLocations.Contains(new Vector2Int(point.x - 1, point.y)))
+            if (pathPoints.Contains(new Vector2Int(point.x - 1, point.y)) || doorLocations.Contains(new Vector2Int(point.x - 1, point.y)))
             {
                 westWall = false;
             }
@@ -345,25 +372,25 @@ public class DunguonSpawner : MonoBehaviour
         return pathTiles;
     }
 
-    private List<Vector2Int> GeneratePath(CDoor startingDoor,CDoor targetDoor)
+    private List<Vector2Int> GeneratePath(CDoor startingDoor, CDoor targetDoor)
     {
         //var temp = pathFinder.FindPath(startingDoor.doorLocation, targetDoor.doorLocation);
 
-        return (pathFinder.FindPath(startingDoor.location,targetDoor.location));
+        return (pathFinder.FindPath(startingDoor.location, targetDoor.location));
 
     }
-     int NearestDoor(int currentDoor)
-     {
-        int nearestDoor=-1;
+    int NearestDoor(int currentDoor)
+    {
+        int nearestDoor = -1;
         float distance = 1000;
         for (int i = 0; i < Doors.Count; i++)
         {
             if (i != currentDoor && Doors[i].roomNumber != Doors[currentDoor].roomNumber) // Making sure doors in the same room dont connted 
             {
                 bool validRoom = true;
-                foreach(int conntedRoom  in roomsData[Doors[i].roomNumber].connectedRooms) //FIX HERE
+                foreach (int conntedRoom in roomsData[Doors[i].roomNumber].connectedRooms) //FIX HERE
                 {
-                    if(Doors[i].roomNumber == conntedRoom)
+                    if (Doors[i].roomNumber == conntedRoom)
                     {
                         validRoom = false;
                     }
@@ -392,9 +419,9 @@ public class DunguonSpawner : MonoBehaviour
     }
     bool AllDoorsConnected()
     {
-        for(int i =0; i<Doors.Count;i++)
+        for (int i = 0; i < Doors.Count; i++)
         {
-            if(!Doors[i].connected)
+            if (!Doors[i].connected)
             {
                 return false;
             }

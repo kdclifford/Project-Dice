@@ -602,6 +602,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 5928751529886715264, guid: 02fd2ffbb42143649bf162769ce040f0,
         type: 3}
+      propertyPath: wallOffset
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5928751529886715264, guid: 02fd2ffbb42143649bf162769ce040f0,
+        type: 3}
       propertyPath: wallPrefab
       value: 
       objectReference: {fileID: 4389426729003715151, guid: 0f6c3a52d5a41054883af06bbb1af5e3,
@@ -614,9 +619,32 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 5928751529886715264, guid: 02fd2ffbb42143649bf162769ce040f0,
         type: 3}
+      propertyPath: floorPrefab
+      value: 
+      objectReference: {fileID: 7977562450860816977, guid: eb8249707b8f2594198c00d0944b41bb,
+        type: 3}
+    - target: {fileID: 5928751529886715264, guid: 02fd2ffbb42143649bf162769ce040f0,
+        type: 3}
+      propertyPath: startingRoom
+      value: 
+      objectReference: {fileID: 5159188060741031527, guid: dbe6886a44a153c4a9944a60af2ece1a,
+        type: 3}
+    - target: {fileID: 5928751529886715264, guid: 02fd2ffbb42143649bf162769ce040f0,
+        type: 3}
       propertyPath: finalBossRoom
       value: 
-      objectReference: {fileID: 2653583267993819834, guid: dfd29505bb39b4f4bb47cb56f92641b0,
+      objectReference: {fileID: 6171326314353036032, guid: 54c21a15147f692468021013230810c9,
+        type: 3}
+    - target: {fileID: 5928751529886715264, guid: 02fd2ffbb42143649bf162769ce040f0,
+        type: 3}
+      propertyPath: wallPosOffset
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5928751529886715264, guid: 02fd2ffbb42143649bf162769ce040f0,
+        type: 3}
+      propertyPath: finalRoomPrefab
+      value: 
+      objectReference: {fileID: 2377704007481891010, guid: 74b64823e20aa4e4d833bce0c2648732,
         type: 3}
     - target: {fileID: 5928751529886715264, guid: 02fd2ffbb42143649bf162769ce040f0,
         type: 3}
@@ -627,37 +655,37 @@ PrefabInstance:
         type: 3}
       propertyPath: RoomPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 3506580042367869591, guid: 23e642f3512e09e45acfd605894848cd,
+      objectReference: {fileID: 783640236286500505, guid: 27ffbdd6c46c2eb49b0de35cb379b4d8,
         type: 3}
     - target: {fileID: 5928751529886715264, guid: 02fd2ffbb42143649bf162769ce040f0,
         type: 3}
       propertyPath: RoomPrefabs.Array.data[1]
       value: 
-      objectReference: {fileID: 2653583267993819834, guid: 1524b62d2c19ecd41a89dddc293b25df,
+      objectReference: {fileID: 3250764300051909127, guid: 0ca2c5f060e48b244b37a2ccd8a76d6a,
         type: 3}
     - target: {fileID: 5928751529886715264, guid: 02fd2ffbb42143649bf162769ce040f0,
         type: 3}
       propertyPath: RoomPrefabs.Array.data[2]
       value: 
-      objectReference: {fileID: 3506580042367869591, guid: bb4ff5e4841e41e42a3f2d1743a4ade8,
+      objectReference: {fileID: 3333647625271663329, guid: 68451133442d6a145b837189222fccce,
         type: 3}
     - target: {fileID: 5928751529886715264, guid: 02fd2ffbb42143649bf162769ce040f0,
         type: 3}
       propertyPath: RoomPrefabs.Array.data[3]
       value: 
-      objectReference: {fileID: 2653583267993819834, guid: 75baf9eb300ffbe41a5f4c536312c4a1,
+      objectReference: {fileID: 1340796416043053602, guid: 4cbb09da601a7f74d9340c6f712a4f7e,
         type: 3}
     - target: {fileID: 5928751529886715264, guid: 02fd2ffbb42143649bf162769ce040f0,
         type: 3}
       propertyPath: RoomPrefabs.Array.data[4]
       value: 
-      objectReference: {fileID: 2653583267993819834, guid: 986ac381a7ed3634795b505857b043e0,
+      objectReference: {fileID: 7949121319465135351, guid: 1ad071238e6fb6c408cee1f9b6d3b92d,
         type: 3}
     - target: {fileID: 5928751529886715264, guid: 02fd2ffbb42143649bf162769ce040f0,
         type: 3}
       propertyPath: RoomPrefabs.Array.data[5]
       value: 
-      objectReference: {fileID: 2653583267993819834, guid: 0e0fb535e769b8748928340da21a48ef,
+      objectReference: {fileID: 803241049153042207, guid: 7eece0d2ac0777c4b9bd2b479cb842f9,
         type: 3}
     - target: {fileID: 5928751529886715265, guid: 02fd2ffbb42143649bf162769ce040f0,
         type: 3}
