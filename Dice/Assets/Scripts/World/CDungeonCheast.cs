@@ -45,6 +45,7 @@ public class CDungeonCheast : MonoBehaviour
 
         }
         var quat = new Quaternion();
+        spawnPosition.y += 2;
         quat = Quaternion.Euler(90, 0, 0);
         Instantiate(spellPrefab, spawnPosition, quat);
     }

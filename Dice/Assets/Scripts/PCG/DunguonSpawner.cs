@@ -16,12 +16,15 @@ public class DunguonSpawner : MonoBehaviour
     [SerializeField]
     private GameObject finalRoomPrefab;
     [SerializeField]
+    private GameObject finalBossRoom;
+    [SerializeField]
     private GameObject wallPrefab;
     [SerializeField]
     private GameObject startingRoom;
     [SerializeField]
     private GameObject doorPrefab;
 
+    public int BossFloor = 3;
 
     [SerializeField]
     private List<Room> roomsPrefabData = new List<Room>();
@@ -55,6 +58,7 @@ public class DunguonSpawner : MonoBehaviour
         for (int i = 0; i < RoomPrefabs.Count; i++)
             roomsPrefabData.Add(RoomPrefabs[i].GetComponent<Room>());
 
+       
         GenerateFloor();
 
         while (!AcceptableFloortCheck())
@@ -114,6 +118,7 @@ public class DunguonSpawner : MonoBehaviour
     }
     void GenerateRooms()
     {
+
         Room tempRoom = new Room();
         roomsData = new List<Room>();
         Doors = new List<CDoor>();
@@ -122,15 +127,29 @@ public class DunguonSpawner : MonoBehaviour
 
         //Place the Start and final Room Both of these only have a single door way
         //Then add rooms to till the room count is reached
-        tempRoom.location = new Vector2Int((int)Random.Range(2, WorldSize.x - 2), (int)Random.Range(2, WorldSize.y - 2));
-        tempRoom.Size = finalRoomPrefab.GetComponent<Room>().Size;
-        tempRoom.roomType = RoomType.Exit;
-        tempRoom.DoorLocations = finalRoomPrefab.GetComponent<Room>().DoorLocations;
-        tempRoom.DoorFacingDirections = finalRoomPrefab.GetComponent<Room>().DoorFacingDirections;
-        tempRoom.roomNumber = 0;
-        tempRoom.connectedRooms = new List<int>();
-        roomsData.Add(tempRoom);
 
+        if (SpawnManager.instance.currentFloor % BossFloor == 0)
+        {
+            tempRoom.location = new Vector2Int((int)Random.Range(2, WorldSize.x - 2), (int)Random.Range(2, WorldSize.y - 2));
+            tempRoom.Size = finalBossRoom.GetComponent<Room>().Size;
+            tempRoom.roomType = RoomType.Exit;
+            tempRoom.DoorLocations = finalBossRoom.GetComponent<Room>().DoorLocations;
+            tempRoom.DoorFacingDirections = finalBossRoom.GetComponent<Room>().DoorFacingDirections;
+            tempRoom.roomNumber = 0;
+            tempRoom.connectedRooms = new List<int>();
+            roomsData.Add(tempRoom);
+        }
+        else 
+        { 
+            tempRoom.location = new Vector2Int((int)Random.Range(2, WorldSize.x - 2), (int)Random.Range(2, WorldSize.y - 2));
+            tempRoom.Size = finalRoomPrefab.GetComponent<Room>().Size;
+            tempRoom.roomType = RoomType.Exit;
+            tempRoom.DoorLocations = finalRoomPrefab.GetComponent<Room>().DoorLocations;
+            tempRoom.DoorFacingDirections = finalRoomPrefab.GetComponent<Room>().DoorFacingDirections;
+            tempRoom.roomNumber = 0;
+            tempRoom.connectedRooms = new List<int>();
+            roomsData.Add(tempRoom);
+        }
 
         bool validStart = false;
         tempRoom = new Room();
@@ -220,7 +239,14 @@ public class DunguonSpawner : MonoBehaviour
     void SetSceneLocation()
     {
 
-        var temp = Instantiate(finalRoomPrefab, new Vector3(12 * roomsData[0].location.x, 0, 12 * roomsData[0].location.y), Quaternion.identity);
+
+        var finalRoomObject = finalRoomPrefab;
+        if(SpawnManager.instance.currentFloor % BossFloor == 0)
+        {
+            finalRoomObject = finalBossRoom;
+        }
+    
+        var temp = Instantiate(finalRoomObject, new Vector3(12 * roomsData[0].location.x, 0, 12 * roomsData[0].location.y), Quaternion.identity);
         temp.GetComponent<Room>().location = roomsData[0].location;
         roomRef.Add(temp);
 

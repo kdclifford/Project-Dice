@@ -614,8 +614,14 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 5928751529886715264, guid: 02fd2ffbb42143649bf162769ce040f0,
         type: 3}
+      propertyPath: finalBossRoom
+      value: 
+      objectReference: {fileID: 2653583267993819834, guid: dfd29505bb39b4f4bb47cb56f92641b0,
+        type: 3}
+    - target: {fileID: 5928751529886715264, guid: 02fd2ffbb42143649bf162769ce040f0,
+        type: 3}
       propertyPath: RoomPrefabs.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5928751529886715264, guid: 02fd2ffbb42143649bf162769ce040f0,
         type: 3}
@@ -640,6 +646,18 @@ PrefabInstance:
       propertyPath: RoomPrefabs.Array.data[3]
       value: 
       objectReference: {fileID: 2653583267993819834, guid: 75baf9eb300ffbe41a5f4c536312c4a1,
+        type: 3}
+    - target: {fileID: 5928751529886715264, guid: 02fd2ffbb42143649bf162769ce040f0,
+        type: 3}
+      propertyPath: RoomPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 2653583267993819834, guid: 986ac381a7ed3634795b505857b043e0,
+        type: 3}
+    - target: {fileID: 5928751529886715264, guid: 02fd2ffbb42143649bf162769ce040f0,
+        type: 3}
+      propertyPath: RoomPrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 2653583267993819834, guid: 0e0fb535e769b8748928340da21a48ef,
         type: 3}
     - target: {fileID: 5928751529886715265, guid: 02fd2ffbb42143649bf162769ce040f0,
         type: 3}
