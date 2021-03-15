@@ -222,10 +222,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7054916585635797348, guid: d11f2b8a7b10ea645b73b3227f2ee18d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054916586494920330, guid: d11f2b8a7b10ea645b73b3227f2ee18d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7054916587394235084, guid: d11f2b8a7b10ea645b73b3227f2ee18d,
         type: 3}
       propertyPath: m_Name
       value: PlayerLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054916587394235084, guid: d11f2b8a7b10ea645b73b3227f2ee18d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7054916587394235122, guid: d11f2b8a7b10ea645b73b3227f2ee18d,
         type: 3}
@@ -371,6 +386,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -6
       objectReference: {fileID: 0}
+    - target: {fileID: 3218181265902395421, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: boss
+      value: 
+      objectReference: {fileID: 6082232225699575366, guid: e5d4f56bf45affc45a7aa05e75e079dc,
+        type: 3}
     - target: {fileID: 3781402680845451185, guid: 76d5029045c5e2546886a54ad3ca7b9b,
         type: 3}
       propertyPath: m_Name
@@ -600,6 +621,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6658817375150945558, guid: 047ad09605d6c554f965221fd2329984,
         type: 3}
+    - target: {fileID: 5928751529886715264, guid: 02fd2ffbb42143649bf162769ce040f0,
+        type: 3}
+      propertyPath: BossFloor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5928751529886715264, guid: 02fd2ffbb42143649bf162769ce040f0,
         type: 3}
       propertyPath: wallOffset

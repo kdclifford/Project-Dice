@@ -10,7 +10,7 @@ public class SpawnManager : MonoBehaviour
     public List<Room> roomList;
    // [HideInInspector]
     public GameObject[] enemyList;
-
+    public GameObject boss;
     [HideInInspector]
     public List<EElementalyType> elementsList;
 
@@ -64,7 +64,11 @@ public class SpawnManager : MonoBehaviour
             roomList.Add(DunguonSpawner.instance.roomRef[i].GetComponent<Room>());
             Debug.Log(CalculatePoints(roomList[i]));
             roomList[i].roomSpawnPoints = CalculatePoints(roomList[i]);
-            if (roomList[i].roomType != RoomType.Start)
+            if (roomList[i].roomType == RoomType.Boss)
+            {
+                Instantiate(boss, DunguonSpawner.instance.roomRef[i].transform.position, Quaternion.identity);
+            }
+            else if (roomList[i].roomType != RoomType.Start)
             {
                 //SpawnEnemies(ref roomList[i].roomSpawnPoints, DunguonSpawner.instance.roomRef[i]);
                 SpawnEnemies(i, DunguonSpawner.instance.roomRef[i]);

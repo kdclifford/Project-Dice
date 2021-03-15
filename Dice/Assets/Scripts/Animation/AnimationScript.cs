@@ -47,7 +47,7 @@ namespace AnimationFunctions.Utils
                 attack = 1;
             }
                 animator.SetInteger("Attack", attack);
-            Debug.Log("Attack");
+           // Debug.Log("Attack");
         }
 
 

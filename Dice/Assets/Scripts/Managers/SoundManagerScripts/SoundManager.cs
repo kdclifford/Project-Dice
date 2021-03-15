@@ -112,34 +112,47 @@ public class SoundManager : MonoBehaviour
     //Find audio clip in array
     private AudioSource FindAudio(GameObject agent, ESoundClipEnum clipName)
     {
-        AudioSource agentAudio = CheckAudioSource(agent);
-        // Sound s = Array.Find(soundClips, Sound => Sound.name == clipName);
-       // SoundClipEnum clipcheck = (SoundClipEnum)Enum.Parse(typeof(SoundClipEnum), "OIOI", true);
-        int a = 4;
-        Sound s = soundClips[(int)clipName];
-        if (s == null)
+        if (soundClips.Length != 0)
         {
-            s = soundClips[0];
-        }       
+            Debug.Log(clipName.ToString());
+            AudioSource agentAudio = CheckAudioSource(agent);
+            // Sound s = Array.Find(soundClips, Sound => Sound.name == clipName);
+            // SoundClipEnum clipcheck = (SoundClipEnum)Enum.Parse(typeof(SoundClipEnum), "OIOI", true);
+            Sound s;
+            if ((int)clipName < soundClips.Length)
+            {
 
-        agentAudio.clip = s.clip;
-        agentAudio.loop = s.loop;
-        agentAudio.volume = s.volume;
-        agentAudio.pitch = s.pitch;
-        agentAudio.outputAudioMixerGroup = audioMixer.FindMatchingGroups(s.GetGroupMixerName())[(int)s.audioGroup];
+                s = soundClips[(int)clipName];
+            }
+            else
+            {
+                s = soundClips[0];
+            }
+            //if (s == null)
+            //{
+            //    s = soundClips[0];
+            //}     
 
-        if (s.sound3D)
-        {
-            agentAudio.spatialBlend = 1;
+            agentAudio.clip = s.clip;
+            agentAudio.loop = s.loop;
+            agentAudio.volume = s.volume;
+            agentAudio.pitch = s.pitch;
+                agentAudio.outputAudioMixerGroup = audioMixer.FindMatchingGroups(s.GetGroupMixerName())[(int)s.audioGroup];
+
+            if (s.sound3D)
+            {
+                agentAudio.spatialBlend = 1;
+            }
+            else
+            {
+                agentAudio.spatialBlend = 0;
+            }
+
+            return agentAudio;
         }
-        else
-        {
-            agentAudio.spatialBlend = 0;
-        }
-
-        return agentAudio;
+        throw new Exception("No Sound Clips");
     }
-
+    
 
 }
 
