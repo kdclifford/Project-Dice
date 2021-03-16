@@ -32,9 +32,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float currLTFireCooldown = 0;
     [SerializeField]
-    private float MaxRTFireCooldown = 1;
+    private float MaxRTFireCooldown = 0.5f;
     [SerializeField]
-    private float MaxLTFireCooldown = 1;
+    private float MaxLTFireCooldown = 0.5f;
 
     //Used to set projectile distance from the player
     [SerializeField, Header("Projectile Settings")]
@@ -79,10 +79,10 @@ public class PlayerController : MonoBehaviour
     private bool DoorTriggered = false;
     private GameObject DoorObj;
     private bool DungeonDoorTriggered = false;
-    private bool DungeonCheastTriggered = false;
+    private bool DungeonChestTriggered = false;
 
     private GameObject DungeonDoorObj;
-    private GameObject DungeonCheastObj;
+    private GameObject DungeonChestObj;
 
 
     // Start is called before the first frame update
@@ -146,11 +146,11 @@ public class PlayerController : MonoBehaviour
             sn.openTheDoor();
             DungeonDoorTriggered = false;
         }
-        if (DungeonCheastTriggered == true && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
+        if (DungeonChestTriggered == true && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
         {
-            CDungeonChest cheast = DungeonCheastObj.GetComponent<CDungeonChest>();
-            cheast.openTheCheast();
-            DungeonCheastTriggered = false;
+            CDungeonChest chest = DungeonChestObj.GetComponent<CDungeonChest>();
+            chest.openTheChest();
+            DungeonChestTriggered = false;
         }
 
         leftStickInputAxis.x = ButtonMapping.GetStick(gameSettings.controllerType, EStickMovement.HorizontalMovement, transform.position);
@@ -177,7 +177,8 @@ public class PlayerController : MonoBehaviour
            ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftAttack) &&
            leftSpell != -1)
         {
-            AnimationScript.DoubleAttack(animator);
+            //Commenting Out this as there is currently no use for this 
+            //AnimationScript.DoubleAttack(animator);
         }
         else
         {
@@ -325,10 +326,10 @@ public class PlayerController : MonoBehaviour
             DungeonDoorObj = Collision.gameObject;
             DungeonDoorTriggered = true;
         }
-        else if (Collision.gameObject.tag == "Cheast")
+        else if (Collision.gameObject.tag == "Chest")
         {
-            DungeonCheastObj = Collision.gameObject;
-            DungeonCheastTriggered = true;
+            DungeonChestObj = Collision.gameObject;
+            DungeonChestTriggered = true;
         }
         else if (Collision.gameObject.tag == "Light")
         {

@@ -15,6 +15,8 @@ public class Room : MonoBehaviour
     public int roomNumber;
    // [HideInInspector]
     public int roomSpawnPoints;
+    public Vector4 chestSpawnLocations; //4th value will be used to indidcate the rotation of the chest
+
     // Start is called before the first frame update
 
 }
