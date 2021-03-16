@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CDungeonCheast : MonoBehaviour
+public class CDungeonChest : MonoBehaviour
 {
 
     [SerializeField]

@@ -148,7 +148,7 @@ public class PlayerController : MonoBehaviour
         }
         if (DungeonCheastTriggered == true && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
         {
-            CDungeonCheast cheast = DungeonCheastObj.GetComponent<CDungeonCheast>();
+            CDungeonChest cheast = DungeonCheastObj.GetComponent<CDungeonChest>();
             cheast.openTheCheast();
             DungeonCheastTriggered = false;
         }
