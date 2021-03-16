@@ -73,6 +73,11 @@ public class DunguonSpawner : MonoBehaviour
         {
             GenerateFloor();
         }
+        //Calcaute how many chests will be placed on that floor
+
+        //Pick Rooms to put them in
+
+        //Place the chests and rotate as needed and set dirction for enum 
         SetSceneLocation();
 
         SetPathModels(GenerateWalls(pathPoints, Doors));
