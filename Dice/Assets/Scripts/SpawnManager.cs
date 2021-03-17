@@ -80,7 +80,7 @@ public class SpawnManager : MonoBehaviour
     {
         int points = room.roomSpawnPoints;
         points = (int)room.Size.x * (int)room.Size.y;
-        points = (int)(points * (currentFloor * GetRoomDifficulityMultiplier(room.roomType)));
+        points = (int)(points * (currentFloor * GetRoomDifficulityMultiplier(room.roomType))); //This is gonna get hella out of control doubles every so often
         points = (int)(points * 0.5f);
 
         return points;
