@@ -332,16 +332,23 @@ MonoBehaviour:
   - {fileID: 3506580042367869591, guid: accb85e1beb2714498461559c4ca8cdb, type: 3}
   - {fileID: 2653583267993819834, guid: 7156dcd1848a01b41b54aded87d7699c, type: 3}
   WorldSize: {x: 30, y: 30}
-  floorPRefab: {fileID: 1112197981072686, guid: 5812f95c175b34e7a8e5a7566a43a0ef,
-    type: 3}
+  wallOffset: 12
+  wallPosOffset: 6.6
+  Player: {fileID: 0}
+  floorPrefab: {fileID: 0}
   finalRoomPrefab: {fileID: 7638974500389706608, guid: 1e18172acd01fab49a703831f3d82667,
     type: 3}
+  finalBossRoom: {fileID: 0}
   wallPrefab: {fileID: 1135327754445724, guid: 2e9bb0112b1a3428f94ba8550d668f2f, type: 3}
   startingRoom: {fileID: 7638974500389706608, guid: 1e18172acd01fab49a703831f3d82667,
     type: 3}
+  doorPrefab: {fileID: 0}
+  chestPrefab: {fileID: 0}
+  BossFloor: 3
   roomsPrefabData: []
   roomsData: []
-  Doors: []
+  pathPoints: []
+  roomRef: []
 --- !u!4 &1953116057
 Transform:
   m_ObjectHideFlags: 0

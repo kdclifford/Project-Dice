@@ -66,6 +66,7 @@ MonoBehaviour:
   preFabNumber: 0
   roomNumber: 0
   roomSpawnPoints: 0
+  chestSpawnLocations: []
 --- !u!1 &8259476240767878327
 GameObject:
   m_ObjectHideFlags: 0
@@ -1648,7 +1649,7 @@ PrefabInstance:
     - target: {fileID: 7407044423070090802, guid: 28c90598a2b8765468371486ca76a11e,
         type: 3}
       propertyPath: facingDirection
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28c90598a2b8765468371486ca76a11e, type: 3}

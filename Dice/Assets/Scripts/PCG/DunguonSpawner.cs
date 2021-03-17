@@ -28,6 +28,8 @@ public class DunguonSpawner : MonoBehaviour
     private GameObject startingRoom;
     [SerializeField]
     private GameObject doorPrefab;
+    [SerializeField]
+    private GameObject chestPrefab;
 
     public int BossFloor = 3;
 
@@ -73,14 +75,62 @@ public class DunguonSpawner : MonoBehaviour
         {
             GenerateFloor();
         }
-        //Calcaute how many chests will be placed on that floor
 
-        //Pick Rooms to put them in
 
-        //Place the chests and rotate as needed and set dirction for enum 
         SetSceneLocation();
 
         SetPathModels(GenerateWalls(pathPoints, Doors));
+
+        //Calcaute how many chests will be placed on that floor
+        var numberOfChests = Random.Range(1, 3);
+        //Pick Rooms to put them in
+
+        for (int i = 0; i < numberOfChests; i++)
+        {
+            //First 2 rooms in the list are the starting and ending Room
+            var chosenRoom = Random.Range(2, roomsData.Count);
+            var chosenSpawnLocation = Random.Range(0, roomsData[chosenRoom].chestSpawnLocations.Count);
+
+            //Place the chests and rotate as needed and set dirction for enum 
+            //north = 2.5 East = 5 South = 7.5  West = 10
+            //Place The chest in the correct postion
+            //Set the chest rotation after and CDungeon Script values 
+            Vector3 chestPostion = new Vector3(12 * roomsData[chosenRoom].location.x  , 0, 12 * roomsData[chosenRoom].location.y);
+            chestPostion.x += roomsData[chosenRoom].chestSpawnLocations[chosenSpawnLocation].x;
+            chestPostion.z += roomsData[chosenRoom].chestSpawnLocations[chosenSpawnLocation].z;
+
+
+
+
+           var chest = Instantiate(chestPrefab, chestPostion,Quaternion.identity);
+
+            if (roomsData[chosenRoom].chestSpawnLocations[chosenSpawnLocation].w == 2.5)
+            {
+                chest.transform.rotation = Quaternion.Euler(0, 0, 0);
+                chest.GetComponent<CDungeonChest>().facingDirection = FacingDirection.Up;
+
+            }
+            else if (roomsData[chosenRoom].chestSpawnLocations[chosenSpawnLocation].w == 5)
+            {
+                chest.transform.rotation = Quaternion.Euler(0, 90, 0);
+                chest.GetComponent<CDungeonChest>().facingDirection = FacingDirection.Right;
+
+            }
+            else if (roomsData[chosenRoom].chestSpawnLocations[chosenSpawnLocation].w == 7.5)
+            {
+                chest.transform.rotation = Quaternion.Euler(0, 180, 0);
+                chest.GetComponent<CDungeonChest>().facingDirection = FacingDirection.Down;
+
+            }
+            else if (roomsData[chosenRoom].chestSpawnLocations[chosenSpawnLocation].w == 10)
+            {
+                chest.transform.rotation = Quaternion.Euler(0, 270, 0);
+                
+                chest.GetComponent<CDungeonChest>().facingDirection = FacingDirection.Left;
+
+            }
+
+        }
 
 
         var player = GameObject.FindGameObjectWithTag("Player");
@@ -192,6 +242,7 @@ public class DunguonSpawner : MonoBehaviour
             tempRoom.DoorFacingDirections = roomsPrefabData[tempRoom.preFabNumber].DoorFacingDirections;
             tempRoom.roomNumber = roomsData.Count;
             tempRoom.connectedRooms = new List<int>();
+            tempRoom.chestSpawnLocations = RoomPrefabs[tempRoom.preFabNumber].GetComponent<Room>().chestSpawnLocations;
 
             if (ValidRoomLocation(tempRoom, roomsData))
             {

@@ -296,6 +296,10 @@ MonoBehaviour:
   preFabNumber: 2
   roomNumber: 0
   roomSpawnPoints: 0
+  chestSpawnLocations:
+  - {x: 6.5, y: 0, z: -1.5, w: 2.5}
+  - {x: 2.5, y: 0, z: 17, w: 7.5}
+  - {x: 10, y: 0, z: 17, w: 7.5}
 --- !u!65 &8843508988961075527
 BoxCollider:
   m_ObjectHideFlags: 0
