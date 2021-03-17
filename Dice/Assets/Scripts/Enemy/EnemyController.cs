@@ -122,7 +122,7 @@ public class EnemyController : MonoBehaviour
 
                 if(randDrop <= 50.0f && HPdropped == false)
                 {
-                    Instantiate(HPPickup, transform.position, transform.rotation);
+                    Instantiate(HPPickup, transform.position, Quaternion.Euler(0,0,0));
                     HPdropped = true;
                 }
 
