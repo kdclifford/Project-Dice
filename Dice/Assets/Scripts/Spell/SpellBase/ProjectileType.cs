@@ -17,6 +17,9 @@ public class ProjectileType : MonoBehaviour
     {
         while (randomSpell)
         {
+            float temp = (float)SpawnManager.instance.currentFloor / (float)DunguonSpawner.instance.BossFloor;
+            tierOfSpell = (int)temp;
+            
             int randSpell = Random.Range(0, (int)ESpellEnum.Size - 2);
             if(SpellList.instance.spells[randSpell].unlockTier == tierOfSpell)
             {

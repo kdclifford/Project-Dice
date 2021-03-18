@@ -32,9 +32,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float currLTFireCooldown = 0;
     [SerializeField]
-    private float MaxRTFireCooldown = 0.5f;
+    private float MaxRTFireCooldown = 1f;
     [SerializeField]
-    private float MaxLTFireCooldown = 0.5f;
+    private float MaxLTFireCooldown = 1f;
 
     //Used to set projectile distance from the player
     [SerializeField, Header("Projectile Settings")]
