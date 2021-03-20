@@ -342,7 +342,10 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Spell") || other.gameObject.layer == LayerMask.NameToLayer("PickUp"))
         {
-            other.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+            if (other.gameObject.tag != "VolumeOption")
+            {
+                other.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+            }
         }
 
         uIManager.HideEquipPopUp();
