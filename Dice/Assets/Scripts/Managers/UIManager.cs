@@ -15,10 +15,6 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Image EquipPopup;
     [SerializeField]
-    private GameObject leftHeart;
-    [SerializeField]
-    private GameObject rightHeart;
-    [SerializeField]
     private GameObject shieldPrefab;
     [SerializeField]
     private GameObject boarder;
@@ -60,23 +56,14 @@ public class UIManager : MonoBehaviour
         if (playerHealth.GetShield() > 0)
         {
             shield[playerHealth.GetShield()- 1].SetActive(false);
-            // shield[playerHealth.GetShield() - 1].gameObject.GetComponent<Animator>().SetInteger("Health", 1);
-            //playerHealth.SetShield(playerHealth.GetShield() - 1);
             return;
         }
 
         if (playerHealth.GetHealth() > 0)
         {
-            //hearts[playerHealth.GetHealth() - 1].gameObject.GetComponent<Animator>().SetInteger("Health", 1);
-            //hearts[playerHealth.GetHealth() - 1].gameObject.GetComponent<Animator>().SetInteger("Health", 1);
-            /// health.currentHealth--;
+
         }
     }
-
-    //public void AddUIHeart()
-    //{
-    //    hearts[playerHealth.GetHealth() - 1].gameObject.GetComponent<Animator>().SetInteger("Health", 0);
-    //}
 
     public void AddUIShield()
     {
