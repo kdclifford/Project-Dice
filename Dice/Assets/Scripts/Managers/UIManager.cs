@@ -11,9 +11,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Image RightUIIcon;
     [SerializeField]
-    private Image interactPopup;
+    private GameObject interactPopup;
     [SerializeField]
-    private Image EquipPopup;
+    private GameObject EquipPopup;
     [SerializeField]
     private GameObject shieldPrefab;
     [SerializeField]
@@ -22,6 +22,12 @@ public class UIManager : MonoBehaviour
     private GameObject canvas;
     [SerializeField]
     private GameObject gameUI;
+    [SerializeField]
+    private GameObject HeartUI;
+    [SerializeField]
+    private GameObject ManaUI;
+    [SerializeField]
+    private Text ManaText;
 
     private Health playerHealth;
    // public GameObject[] hearts;
@@ -68,17 +74,13 @@ public class UIManager : MonoBehaviour
     public void AddUIShield()
     {
         shield[playerHealth.GetShield()].SetActive(true);
-        //shield[playerHealth.GetShield()].gameObject.GetComponent<Animator>().SetInteger("Health", 0);
     }
 
     // Start is called before the first frame update
     void Start()
     {
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
-        //maxHearts = (int)playerHealth.maxHealth;
-        //maxHearts = 8;
         maxShields = (int)playerHealth.maxShields;
-       // hearts = new GameObject[maxHearts];
         shield = new GameObject[maxShields];
         Vector3 heartsPosLeft = new Vector3(-1, 0);
         Vector3 heartsPosRight = new Vector3(-1, 0);
@@ -98,7 +100,6 @@ public class UIManager : MonoBehaviour
         if (SceneManager.GetActiveScene() != currentScene)
         {
             playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
-            //maxHearts = (int)playerHealth.maxHealth;
             maxShields = (int)playerHealth.maxShields;
             HideEquipPopUp(); HideInteractPopUp();
             currentScene = SceneManager.GetActiveScene();
@@ -118,22 +119,22 @@ public class UIManager : MonoBehaviour
 
     public void ShowInteractPopUp()
     {
-        interactPopup.enabled = true;
+        interactPopup.SetActive(true);
     }
 
     public void ShowEquipPopUp()
     {
-        EquipPopup.enabled = true;
+        EquipPopup.SetActive(true);
     }
 
     public void HideInteractPopUp()
     {
-        interactPopup.enabled = false;
+        interactPopup.SetActive(false);
     }
 
     public void HideEquipPopUp()
     {
-        EquipPopup.enabled = false;
+        EquipPopup.SetActive(false);
     }
 
     public void EnableUI()
@@ -146,4 +147,19 @@ public class UIManager : MonoBehaviour
         gameUI.SetActive(false);
     }
 
+    public void EnableBarUI()
+    {
+        HeartUI.SetActive(true);
+        ManaUI.SetActive(true);
+    }
+    public void DisableBarUI()
+    {
+        HeartUI.SetActive(false);
+        ManaUI.SetActive(false);
+    }
+
+    public void updateMana(int manaValue)
+    {
+        ManaText.text = manaValue.ToString();
+    }
 }

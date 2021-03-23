@@ -18,12 +18,6 @@ public class PlayerController : MonoBehaviour
    // [HideInInspector]
     public int leftSpell = -1;
 
-
-
-    //[HideInInspector]
-    //public GameObject projectileLeft;
-    //[HideInInspector]
-    //public GameObject projectileRight;
     private Material leftColour;
     private Material rightColour;
 
@@ -32,9 +26,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float currLTFireCooldown = 0;
     [SerializeField]
-    private float MaxRTFireCooldown = 1f;
+    private float MaxRTFireCooldown = 1.5f;
     [SerializeField]
-    private float MaxLTFireCooldown = 1f;
+    private float MaxLTFireCooldown = 1.5f;
 
     //Used to set projectile distance from the player
     [SerializeField, Header("Projectile Settings")]
@@ -80,6 +74,10 @@ public class PlayerController : MonoBehaviour
     private GameObject DoorObj;
     private bool DungeonDoorTriggered = false;
     private bool DungeonChestTriggered = false;
+
+    private int MaxMana = 100;
+    private int CurMana = 100;
+    private bool fired = false;
 
     private GameObject DungeonDoorObj;
     private GameObject DungeonChestObj;
@@ -160,12 +158,6 @@ public class PlayerController : MonoBehaviour
         var angle = Mathf.Atan2(ButtonMapping.GetStick(gameSettings.controllerType, EStickMovement.HorizontalFacing, transform.position),
             ButtonMapping.GetStick(gameSettings.controllerType, EStickMovement.VerticalFacing, transform.position)) * Mathf.Rad2Deg;
 
-       // horizontalInput = ButtonMapping.GetStick(gameSettings.controllerType, EStickMovement.HorizontalMovement, transform.position);
-       // verticalInput = ButtonMapping.GetStick(gameSettings.controllerType, EStickMovement.VerticalMovement, transform.position);
-
-
-        //rigidbody.AddRelativeForce(move);
-
         if (angle > 1 || angle < -1)
         {
             transform.rotation = Quaternion.Euler(0, angle, 0);
@@ -184,16 +176,29 @@ public class PlayerController : MonoBehaviour
         {
             if (currRTFireCooldown <= 0 && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightAttack) && rightSpell != -1)
             {  
-                currRTFireCooldown = MaxRTFireCooldown;
-                AnimationScript.RightAttack(animator);
+                if(CurMana > 15 && fired == false)
+                {
+                    fired = true;
+                    currRTFireCooldown = MaxRTFireCooldown;
+                    AnimationScript.RightAttack(animator);
+                    CurMana -= 15;
+                    uIManager.updateMana(CurMana);
+                }
             }
             else if (currLTFireCooldown <= 0 && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftAttack) && leftSpell != -1)
             {
-                currLTFireCooldown = MaxLTFireCooldown;
-                AnimationScript.LeftAttack(animator);
+                if (CurMana > 15 && fired == false)
+                {
+                    fired = true;
+                    currLTFireCooldown = MaxLTFireCooldown;
+                    AnimationScript.LeftAttack(animator);
+                    CurMana -= 15;
+                    uIManager.updateMana(CurMana);
+                }
             }
             else
             {
+                fired = false;
                 AnimationScript.StopAttack(animator);
             }
         }
@@ -216,6 +221,14 @@ public class PlayerController : MonoBehaviour
             playerAnimations.Idle();
         }
 
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            uIManager.ShowEquipPopUp();
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            uIManager.HideEquipPopUp();
+        }
 
         currRTFireCooldown -= Time.deltaTime;
         currLTFireCooldown -= Time.deltaTime;
@@ -232,7 +245,7 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerStay(Collider Collision)
     {
-        if (Collision.gameObject.layer == LayerMask.NameToLayer("PickUp") || Collision.gameObject.layer == LayerMask.NameToLayer("Door"))            
+        if (Collision.gameObject.layer == LayerMask.NameToLayer("PickUp") || Collision.gameObject.layer == LayerMask.NameToLayer("Door") || Collision.gameObject.tag == "Chest")            
         {
             uIManager.ShowInteractPopUp();
         }
