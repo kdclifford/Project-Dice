@@ -73,11 +73,14 @@ MonoBehaviour:
   - {x: 1, y: 0}
   - {x: 3, y: 1}
   DoorFacingDirections: 0100000003000000
-  roomType: 2
+  roomType: 4
   location: {x: 0, y: 0}
   preFabNumber: 3
   roomNumber: 0
   roomSpawnPoints: 0
+  chestSpawnLocations:
+  - {x: -0.5, y: 0, z: 9, w: 7.5}
+  - {x: 12, y: 0, z: -1.5, w: 2.5}
 --- !u!65 &3587154258111590836
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -109,7 +112,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7469954539707939994
 Transform:
   m_ObjectHideFlags: 0

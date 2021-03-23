@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using AnimationFunctions.Utils;
+using UnityEngine.AI;
 using UnityEngine;
 
 public class BossAi : MonoBehaviour
@@ -10,13 +11,14 @@ public class BossAi : MonoBehaviour
     Health bossHealth;
     CDragon dragon;
     GameObject player;
-
+    NavMeshAgent navAgent;
     // Start is called before the first frame update
     void Start()
     {
+        navAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
         bossHealth = GetComponent<Health>();
-        dragon = new CDragon(gameObject, player);
+        dragon = new CDragon(gameObject, player, navAgent);
     }
 
     // Update is called once per frame
@@ -106,26 +108,27 @@ public class CDragon : CBossBase
     //public ESpellEnum currentSpell;
 
     Animator anim;
-
-    public CDragon(GameObject agentRef, GameObject targetRef)
+    NavMeshAgent navMesh;
+    public CDragon(GameObject agentRef, GameObject targetRef, NavMeshAgent nav)
     {
         agent = agentRef;
         target = targetRef;
         anim = agent.GetComponent<Animator>();
         healthComp = agent.GetComponent<Health>();
+        navMesh = nav;
     }
 
     public override void Action()
     {
 
         StateCheck(healthComp.GetHealth(), healthComp.maxHealth, healthComp.GetShield());
-       // Debug.Log(health.GetHealth());
+        // Debug.Log(health.GetHealth());
 
         if (bossState == EBossStates.PhaseOne)
         {
             Debug.Log("PhaseOne");
             //currentSpell = SpellOne;
-            PhaseOne();
+             PhaseOne();
         }
         else if (bossState == EBossStates.PhaseTwo)
         {
@@ -136,7 +139,7 @@ public class CDragon : CBossBase
         else if (bossState == EBossStates.PhaseThree)
         {
             Debug.Log("Phase3");
-           // currentSpell = SpellThree;
+            // currentSpell = SpellThree;
             PhaseThree();
         }
         else if (bossState == EBossStates.Dead)
@@ -144,7 +147,7 @@ public class CDragon : CBossBase
             Debug.Log("Dead");
             if (!this.anim.GetCurrentAnimatorStateInfo(0).IsName("Die"))
             {
-            anim.SetTrigger("Die");
+                anim.SetTrigger("Die");
                 // Avoid any reload.
             }
             DeadAnimation();
@@ -160,27 +163,27 @@ public class CDragon : CBossBase
         float targetAngle = Vector3.SignedAngle(agent.transform.forward, targetDi, Vector3.up);
         // Debug.Log(targetAngle);
 
-        
-            Debug.Log(targetAngle);
-           
 
-            // Determine which direction to rotate towards
-            Vector3 targetDirection = target.transform.position - agent.transform.position;
+        //Debug.Log(targetAngle);
 
 
-            // The step size is equal to speed times frame time.
-            float singleStep = 0.5f * Time.deltaTime;
-
-            // Rotate the forward vector towards the target direction by one step
-            Vector3 newDirection = Vector3.RotateTowards(agent.transform.forward, targetDirection, singleStep, 0.0f);
+        // Determine which direction to rotate towards
+        Vector3 targetDirection = target.transform.position - agent.transform.position;
 
 
-            // Draw a ray pointing at our target in
-            Debug.DrawRay(agent.transform.position, newDirection, Color.red);
-            newDirection.y = agent.transform.forward.y;
+        // The step size is equal to speed times frame time.
+        float singleStep = 0.5f * Time.deltaTime;
 
-            if (targetAngle > 3 || targetAngle < -3)
-            {
+        // Rotate the forward vector towards the target direction by one step
+        Vector3 newDirection = Vector3.RotateTowards(agent.transform.forward, targetDirection, singleStep, 0.0f);
+
+
+        // Draw a ray pointing at our target in
+        Debug.DrawRay(agent.transform.position, newDirection, Color.red);
+        newDirection.y = agent.transform.forward.y;
+
+        if (targetAngle > 3 || targetAngle < -3)
+        {
             if (targetAngle > 3)
             {
                 targetAngle = 1;
@@ -193,8 +196,8 @@ public class CDragon : CBossBase
             agent.transform.rotation = Quaternion.LookRotation(newDirection);
 
 
-                anim.SetBool("Pan", true);
-                AnimationScript.DragonPan(anim, targetAngle);
+            anim.SetBool("Pan", true);
+            AnimationScript.DragonPan(anim, targetAngle);
             if (attackCooldown < 0)
             {
                 AnimationScript.DragonAttack(anim, 2);
@@ -204,7 +207,7 @@ public class CDragon : CBossBase
             {
                 AnimationScript.DragonAttack(anim, 0);
             }
-            }        
+        }
         else
         {
             anim.SetBool("Pan", false);
@@ -228,7 +231,7 @@ public class CDragon : CBossBase
 
     void PhaseTwo()
     {
-        Attack(2);
+        Attack(6);
 
         if (once)
         {
@@ -243,12 +246,47 @@ public class CDragon : CBossBase
             once = false;
         }
 
+        if (!navMesh.hasPath)
+        {
+            Debug.Log("Path");
+            Vector3 dir = target.transform.position - agent.transform.position;
+
+            RaycastHit hit;
+            RaycastHit floorHit;
+
+            if (Physics.Raycast(agent.transform.position, dir, out hit, 100f, LayerMask.GetMask("Obstacle")))
+            {
+                if (Physics.Raycast(hit.point, Vector3.down, out floorHit, 100f, LayerMask.GetMask("Floor")))
+                {
+                    navMesh.SetDestination(floorHit.point);
+                }
+            }
+
+
+        }
+
 
     }
 
     void PhaseThree()
     {
-        Attack(3);
+        Attack(13);
+
+       
+            Debug.Log("Path");
+            Vector3 dir = target.transform.position - agent.transform.position;
+
+            RaycastHit hit;
+            RaycastHit floorHit;
+
+          
+                    navMesh.SetDestination(target.transform.position);
+                
+
+
+        
+
+
     }
 
 }

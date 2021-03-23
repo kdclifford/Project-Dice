@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CDungeonCheast : MonoBehaviour
+public class CDungeonChest : MonoBehaviour
 {
 
     [SerializeField]
@@ -17,7 +17,7 @@ public class CDungeonCheast : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void openTheCheast()
+    public void openTheChest()
     {
         //pivot.transform.localRotation = Quaternion.Euler(-90, 0,0);
         GetComponent<Animator>().SetInteger("Open", 1);
@@ -27,21 +27,21 @@ public class CDungeonCheast : MonoBehaviour
 
         if(facingDirection == FacingDirection.Up)
         {
-            spawnPosition.z -= 5;
+            spawnPosition.z -= 2.5f;
         } 
         else if (facingDirection == FacingDirection.Right)
         {
-            spawnPosition.x += 5;
+            spawnPosition.x += 2.5f;
 
         }
         else if(facingDirection == FacingDirection.Down)
         {
-            spawnPosition.z += 5;
+            spawnPosition.z += 2.5f;
 
         }
         else if(facingDirection == FacingDirection.Left)
         {
-            spawnPosition.x -=5;
+            spawnPosition.x -=2.5f;
 
         }
         var quat = new Quaternion();

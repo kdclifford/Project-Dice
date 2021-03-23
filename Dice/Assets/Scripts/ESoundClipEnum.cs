@@ -20,4 +20,5 @@ public enum ESoundClipEnum
 	SonarSpell = 14,
 	BoulderCrumpleSFX = 15,
 
+	AmountOfSounds,
 }

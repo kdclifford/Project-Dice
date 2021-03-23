@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FireWork : SpellBase
 { 
-    public float projectileSpeed = 100;
+    public float projectileSpeed = 500;
     public GameObject particlePrefab;
     public override void CastSpell(Vector3 posistion, float rot, GameObject agentRef, string tag = "Equipped")
     {

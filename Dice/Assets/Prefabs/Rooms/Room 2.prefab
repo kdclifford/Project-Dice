@@ -256,12 +256,15 @@ MonoBehaviour:
   DoorLocations:
   - {x: 1, y: 0}
   - {x: 1, y: 2}
-  DoorFacingDirections: 0100000003000000
-  roomType: 3
+  DoorFacingDirections: 0100000000000000
+  roomType: 4
   location: {x: 0, y: 0}
   preFabNumber: 1
   roomNumber: 0
   roomSpawnPoints: 0
+  chestSpawnLocations:
+  - {x: 0.5, y: 0, z: 8, w: 7.5}
+  - {x: 13, y: 0, z: 0.5, w: 10}
 --- !u!1 &3002376161109637264
 GameObject:
   m_ObjectHideFlags: 0

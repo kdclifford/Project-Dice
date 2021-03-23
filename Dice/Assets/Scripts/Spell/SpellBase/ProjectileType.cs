@@ -6,6 +6,7 @@ public class ProjectileType : MonoBehaviour
 { 
     public ESpellEnum spellIndex;
     public bool randomSpell = true;
+    public int tierOfSpell = 0;
 
     public TextMesh NameText;
     public TextMesh TypeText;
@@ -16,8 +17,11 @@ public class ProjectileType : MonoBehaviour
     {
         while (randomSpell)
         {
+            //float temp = (float)SpawnManager.instance.currentFloor / (float)DunguonSpawner.instance.BossFloor;
+            //tierOfwdSpell = (int)temp;
+            
             int randSpell = Random.Range(0, (int)ESpellEnum.Size - 2);
-            if(SpellList.instance.spells[randSpell].unlockTier == 0)
+            if(SpellList.instance.spells[randSpell].unlockTier == tierOfSpell)
             {
                 spellIndex = (ESpellEnum)randSpell;
                 randomSpell = false;
