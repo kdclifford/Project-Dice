@@ -30,7 +30,7 @@ public class LeftSpellCooldownController : MonoBehaviour
         }
         else
         {
-            timerString = ((int)timer).ToString();
+            //timerString = ((int)timer).ToString();
         }
         timerImage.fillAmount = PlayerController.instance.currLTFireCooldown / PlayerController.instance.MaxLTFireCooldown;
         timerText.text = timerString;

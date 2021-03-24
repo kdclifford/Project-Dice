@@ -31,7 +31,7 @@ public class RightSpellCooldownController : MonoBehaviour
         }
         else
         {
-            timerString = ((int)timer).ToString();
+           // timerString = ((int)timer).ToString();
         }
         timerImage.fillAmount = PlayerController.instance.currRTFireCooldown / PlayerController.instance.MaxRTFireCooldown;
         timerText.text = timerString;

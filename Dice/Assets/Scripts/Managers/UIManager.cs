@@ -26,8 +26,6 @@ public class UIManager : MonoBehaviour
     private GameObject HeartUI;
     [SerializeField]
     private GameObject ManaUI;
-    [SerializeField]
-    private Text ManaText;
 
     private Health playerHealth;
    // public GameObject[] hearts;
@@ -81,13 +79,13 @@ public class UIManager : MonoBehaviour
         Vector3 heartsPosRight = new Vector3(-1, 0);
         Vector3 shieldPosLeft = new Vector3(-1, 0);
 
-        for (int i = 0; i < maxShields; i++)
-        {
-            shieldPosLeft = new Vector3(-230 - (100 * i), -70);
-            shield[i] = Instantiate(shieldPrefab, boarder.transform.position, Quaternion.identity, canvas.transform) as GameObject;
-            shield[i].GetComponent<RectTransform>().localPosition += shieldPosLeft;
-            shield[i].SetActive(false);
-        }
+        //for (int i = 0; i < maxShields; i++)
+        //{
+        //    shieldPosLeft = new Vector3(-230 - (100 * i), -70);
+        //    shield[i] = Instantiate(shieldPrefab, boarder.transform.position, Quaternion.identity, canvas.transform) as GameObject;
+        //    shield[i].GetComponent<RectTransform>().localPosition += shieldPosLeft;
+        //    shield[i].SetActive(false);
+        //}
     }
 
     private void Update()

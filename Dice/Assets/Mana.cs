@@ -5,9 +5,10 @@ using UnityEngine;
 public class Mana : MonoBehaviour
 {
     public static Mana instance;
-    private int maxMana = 100;
+    public int maxMana = 100;
     public int currentMana;
-
+    private float manaTimer = 0;
+    public float startTime = 1;
 
     void Awake()
     {
@@ -32,11 +33,31 @@ public class Mana : MonoBehaviour
 
     public int GetMana()
     {
-      return currentMana;
+        return currentMana;
     }
 
     public void RemoveMana(int mana)
     {
         currentMana -= mana;
     }
+
+    private void Update()
+    {
+        if (currentMana <= maxMana)
+        {
+            if (manaTimer <= 0)
+            {
+
+                currentMana += 2;
+                if(currentMana > maxMana)
+                {
+                    currentMana = maxMana;
+                }
+                manaTimer = startTime;
+            }
+        }
+        manaTimer -= Time.deltaTime;
+    }
+
+
 }
