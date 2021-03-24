@@ -164,7 +164,7 @@ public class EnemyController : MonoBehaviour
                     }
                     gotRandomPos = true;
                 }
-                ////Debug.Log(dest);
+
                 if (Physics.Raycast(transform.forward, dest, out hit, 10, layerhit))
                 {
                     dest = RandomNavSphere(transform.position, 30, layerFLoor);
@@ -254,9 +254,6 @@ public class EnemyController : MonoBehaviour
         targetDir.y = transform.position.y + 4;
             targetDir.Normalize();
         bool check = Physics.Raycast(transform.position, targetDir, out hit, distance, layerhit);
-        //Debug.Log(hit.collider.gameObject.name);
-        //Debug.DrawRay(transform.position, targetDir * distance, Color.red);
-        //Destroy(hit.collider.gameObject);
         return check;
 
     }

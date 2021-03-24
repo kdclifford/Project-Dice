@@ -47,7 +47,6 @@ namespace AnimationFunctions.Utils
                 attack = 1;
             }
                 animator.SetInteger("Attack", attack);
-           // Debug.Log("Attack");
         }
 
 
@@ -73,9 +72,7 @@ namespace AnimationFunctions.Utils
             // Take into consideration the angle of the camera
             //a += Camera.main.transform.eulerAngles.y;
 
-            var aRad = Mathf.Deg2Rad * a; // degrees to radians
-                                          //Debug.Log(leftStickInputAxis);
-                                          // If there is some form of input, calculate the new axis relative to the rotation of the model
+            var aRad = Mathf.Deg2Rad * a;
             if (input.x != 0 || input.y != 0)
             {
                 input = new Vector2(Mathf.Sin(aRad), Mathf.Cos(aRad));

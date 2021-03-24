@@ -248,7 +248,6 @@ public class CDragon : CBossBase
 
         if (!navMesh.hasPath)
         {
-            Debug.Log("Path");
             Vector3 dir = target.transform.position - agent.transform.position;
 
             RaycastHit hit;
@@ -271,22 +270,11 @@ public class CDragon : CBossBase
     void PhaseThree()
     {
         Attack(13);
+        Vector3 dir = target.transform.position - agent.transform.position;
 
-       
-            Debug.Log("Path");
-            Vector3 dir = target.transform.position - agent.transform.position;
-
-            RaycastHit hit;
-            RaycastHit floorHit;
-
-          
-                    navMesh.SetDestination(target.transform.position);
-                
-
-
-        
-
-
+        RaycastHit hit;
+        RaycastHit floorHit;
+        navMesh.SetDestination(target.transform.position);
     }
 
 }

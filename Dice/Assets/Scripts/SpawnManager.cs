@@ -68,7 +68,6 @@ public class SpawnManager : MonoBehaviour
         for (int i = 0; i < list.Count; i++)
         {
             roomList.Add(DunguonSpawner.instance.roomRef[i].GetComponent<Room>());
-            Debug.Log(CalculatePoints(roomList[i]));
             roomList[i].roomSpawnPoints = CalculatePoints(roomList[i]);
             if (roomList[i].roomType == RoomType.Boss)
             {
