@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
     private bool DungeonChestTriggered = false;
 
     private int MaxMana = 100;
-    private int CurMana = 100;
+    private float CurMana = 100;
     private bool fired = false;
 
     private GameObject DungeonDoorObj;
@@ -182,7 +182,7 @@ public class PlayerController : MonoBehaviour
                     currRTFireCooldown = MaxRTFireCooldown;
                     AnimationScript.RightAttack(animator);
                     CurMana -= 15;
-                    uIManager.updateMana(CurMana);
+                    uIManager.updateMana((int)CurMana);
                 }
             }
             else if (currLTFireCooldown <= 0 && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftAttack) && leftSpell != -1)
@@ -193,7 +193,7 @@ public class PlayerController : MonoBehaviour
                     currLTFireCooldown = MaxLTFireCooldown;
                     AnimationScript.LeftAttack(animator);
                     CurMana -= 15;
-                    uIManager.updateMana(CurMana);
+                    uIManager.updateMana((int)CurMana);
                 }
             }
             else
@@ -228,6 +228,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.O))
         {
             uIManager.HideEquipPopUp();
+        }
+
+        if(CurMana <= 100)
+        {
+            CurMana += Time.deltaTime * 2;
+            uIManager.updateMana((int)CurMana);
         }
 
         currRTFireCooldown -= Time.deltaTime;
