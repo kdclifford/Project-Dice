@@ -120,7 +120,7 @@ public class EnemyController : MonoBehaviour
             {
                 randDrop = UnityEngine.Random.Range(0.0f, 100.0f);
 
-                if(randDrop <= 50.0f && HPdropped == false)
+                if(randDrop <= 25.0f && HPdropped == false)
                 {
                     Instantiate(HPPickup, transform.position, Quaternion.Euler(0,0,0));
                     HPdropped = true;
