@@ -80,6 +80,8 @@ public class PlayerController : MonoBehaviour
     private bool firedLT = false;
     private bool firedRT = false;
 
+    private bool nextLevel = false;
+
     private GameObject DungeonDoorObj;
     private GameObject DungeonChestObj;
 
@@ -252,9 +254,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "NextLevel")
+        if (other.gameObject.tag == "NextLevel" && !nextLevel)
         {
             LevelManager.instance.NextLevel();
+            nextLevel = true;
         }
     }
 

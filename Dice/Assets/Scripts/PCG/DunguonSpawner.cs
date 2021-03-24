@@ -31,7 +31,7 @@ public class DunguonSpawner : MonoBehaviour
     [SerializeField]
     private GameObject chestPrefab;
 
-    public int BossFloor = 3;
+    public int BossFloor = 2;
 
     [SerializeField]
     private List<Room> roomsPrefabData = new List<Room>();
