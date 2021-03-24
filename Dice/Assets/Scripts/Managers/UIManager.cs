@@ -64,11 +64,6 @@ public class UIManager : MonoBehaviour
             shield[playerHealth.GetShield()- 1].SetActive(false);
             return;
         }
-
-        if (playerHealth.GetHealth() > 0)
-        {
-
-        }
     }
 
     public void AddUIShield()
@@ -156,10 +151,5 @@ public class UIManager : MonoBehaviour
     {
         HeartUI.SetActive(false);
         ManaUI.SetActive(false);
-    }
-
-    public void updateMana(int manaValue)
-    {
-        ManaText.text = manaValue.ToString();
     }
 }

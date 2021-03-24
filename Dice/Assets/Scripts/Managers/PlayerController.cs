@@ -15,20 +15,20 @@ public class PlayerController : MonoBehaviour
 
     //[HideInInspector]
     public int rightSpell = -1;
-   // [HideInInspector]
+    // [HideInInspector]
     public int leftSpell = -1;
 
     private Material leftColour;
     private Material rightColour;
 
     [SerializeField]
-    private float currRTFireCooldown = 0;
+    public float currRTFireCooldown = 0;
     [SerializeField]
-    private float currLTFireCooldown = 0;
+    public float currLTFireCooldown = 0;
     [SerializeField]
-    private float MaxRTFireCooldown = 1.5f;
+    public float MaxRTFireCooldown = 1.5f;
     [SerializeField]
-    private float MaxLTFireCooldown = 1.5f;
+    public float MaxLTFireCooldown = 1.5f;
 
     //Used to set projectile distance from the player
     [SerializeField, Header("Projectile Settings")]
@@ -75,12 +75,30 @@ public class PlayerController : MonoBehaviour
     private bool DungeonDoorTriggered = false;
     private bool DungeonChestTriggered = false;
 
-    private int MaxMana = 100;
-    private int CurMana = 100;
     private bool fired = false;
 
     private GameObject DungeonDoorObj;
     private GameObject DungeonChestObj;
+
+
+    public static PlayerController instance;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
+    }
+
+
 
 
     // Start is called before the first frame update
@@ -106,11 +124,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (volumeTriggered == true &&  volumeButton < 0 && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
+        if (volumeTriggered == true && volumeButton < 0 && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
         {
             VolumeChange Vol = volumeObj.GetComponent<VolumeChange>();
 
-            if(volumeObj.transform.parent.name == "MasterVol")
+            if (volumeObj.transform.parent.name == "MasterVol")
             {
                 globalVolume = Vol.ChangeVolume(globalVolume);
             }
@@ -164,44 +182,33 @@ public class PlayerController : MonoBehaviour
             cameraDummy.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
-        if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightAttack) &&
-           rightSpell != -1 &&
-           ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftAttack) &&
-           leftSpell != -1)
+
+        if (currRTFireCooldown <= 0 && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightAttack) && rightSpell != -1)
         {
-            //Commenting Out this as there is currently no use for this 
-            //AnimationScript.DoubleAttack(animator);
+            if (Mana.instance.GetMana() > 15 && fired == false)
+            {
+                fired = true;
+                currRTFireCooldown = MaxRTFireCooldown;
+                AnimationScript.RightAttack(animator);
+                Mana.instance.RemoveMana(15);
+            }
+        }
+        else if (currLTFireCooldown <= 0 && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftAttack) && leftSpell != -1)
+        {
+            if (Mana.instance.GetMana() > 15 && fired == false)
+            {
+                fired = true;
+                currLTFireCooldown = MaxLTFireCooldown;
+                AnimationScript.LeftAttack(animator);
+                Mana.instance.RemoveMana(15);
+            }
         }
         else
         {
-            if (currRTFireCooldown <= 0 && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightAttack) && rightSpell != -1)
-            {  
-                if(CurMana > 15 && fired == false)
-                {
-                    fired = true;
-                    currRTFireCooldown = MaxRTFireCooldown;
-                    AnimationScript.RightAttack(animator);
-                    CurMana -= 15;
-                    uIManager.updateMana(CurMana);
-                }
-            }
-            else if (currLTFireCooldown <= 0 && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftAttack) && leftSpell != -1)
-            {
-                if (CurMana > 15 && fired == false)
-                {
-                    fired = true;
-                    currLTFireCooldown = MaxLTFireCooldown;
-                    AnimationScript.LeftAttack(animator);
-                    CurMana -= 15;
-                    uIManager.updateMana(CurMana);
-                }
-            }
-            else
-            {
-                fired = false;
-                AnimationScript.StopAttack(animator);
-            }
+            fired = false;
+            AnimationScript.StopAttack(animator);
         }
+
 
         leftStickInputAxis = CollisionCheck.RayCastCollisions(leftStickInputAxis, rayOffset, rayDist, layerMask, collisionForce, transform);
 
@@ -221,7 +228,7 @@ public class PlayerController : MonoBehaviour
             playerAnimations.Idle();
         }
 
-        if(Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             uIManager.ShowEquipPopUp();
         }
@@ -245,7 +252,7 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerStay(Collider Collision)
     {
-        if (Collision.gameObject.layer == LayerMask.NameToLayer("PickUp") || Collision.gameObject.layer == LayerMask.NameToLayer("Door") || Collision.gameObject.tag == "Chest")            
+        if (Collision.gameObject.layer == LayerMask.NameToLayer("PickUp") || Collision.gameObject.layer == LayerMask.NameToLayer("Door") || Collision.gameObject.tag == "Chest")
         {
             uIManager.ShowInteractPopUp();
         }
@@ -261,8 +268,8 @@ public class PlayerController : MonoBehaviour
         if (Collision.gameObject.layer == LayerMask.NameToLayer("Spell"))
         {
             uIManager.ShowEquipPopUp();
-        
-            if(ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftEquipt))
+
+            if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftEquipt))
             {
                 //Set the spell
                 leftSpell = (int)Collision.gameObject.GetComponent<ProjectileType>().spellIndex;
@@ -373,7 +380,7 @@ public class PlayerController : MonoBehaviour
         {
 
             GetComponent<Rigidbody>().velocity = Vector3.zero;
-        }       
+        }
     }
 
 
@@ -384,13 +391,13 @@ public class PlayerController : MonoBehaviour
     {
         // Cast Spell?
 
-       
+
 
         Vector3 rightFirePos = transform.position + (transform.right * projectileDistance);// RightFirePos.x += 0.4f;
         rightFirePos.y += yOffsetProgectile;
 
         SpellList.instance.spells[rightSpell].CastSpell(rightFirePos, transform.eulerAngles.y, gameObject);
-        
+
     }
 
     public void LeftFire()

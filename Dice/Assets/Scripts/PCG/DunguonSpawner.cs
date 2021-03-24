@@ -10,9 +10,9 @@ public class DunguonSpawner : MonoBehaviour
     public float wallOffset = 12;
     public float wallPosOffset = 6.6f;
 
-    private GameObject wallParent;
-    private GameObject floorParent;
-    private GameObject lightHolder;
+    //private GameObject wallParent;
+    //private GameObject floorParent;
+   // private GameObject lightHolder;
 
     public GameObject Player;
 
@@ -224,49 +224,49 @@ public class DunguonSpawner : MonoBehaviour
     {
         if (PathNodes != null)
         {
-            floorParent = new GameObject("FloorHolder");
-            wallParent = new GameObject("WallHolder");
-            lightHolder = new GameObject("LightHolder");
+            //floorParent = new GameObject("FloorHolder");
+            //wallParent = new GameObject("WallHolder");
+            //lightHolder = new GameObject("LightHolder");
             GameObject wall;
 
             foreach (CTile pathPoint in PathNodes)
             {
                 if (pathPoint.northWall)
                 {
-                    wall = Instantiate(wallPrefab, new Vector3(wallOffset * pathPoint.position.x, 0, (wallOffset * pathPoint.position.y) + wallPosOffset), Quaternion.Euler(new Vector3(0, 180, 0)), wallParent.transform);
-                    wall.transform.GetChild(0).parent = lightHolder.transform;
+                    wall = Instantiate(wallPrefab, new Vector3(wallOffset * pathPoint.position.x, 0, (wallOffset * pathPoint.position.y) + wallPosOffset), Quaternion.Euler(new Vector3(0, 180, 0)));
+                    //wall.transform.GetChild(0).parent = lightHolder.transform;
                 }
                 if (pathPoint.eastWall)
                 {
-                    wall = Instantiate(wallPrefab, new Vector3((wallOffset * pathPoint.position.x) + wallPosOffset, 0, wallOffset * pathPoint.position.y), Quaternion.Euler(new Vector3(0, 270, 0)), wallParent.transform);
-                    wall.transform.GetChild(0).parent = lightHolder.transform;
+                    wall = Instantiate(wallPrefab, new Vector3((wallOffset * pathPoint.position.x) + wallPosOffset, 0, wallOffset * pathPoint.position.y), Quaternion.Euler(new Vector3(0, 270, 0)));
+                    //wall.transform.GetChild(0).parent = lightHolder.transform;
                 }
                 if (pathPoint.southWall)
                 {
-                    wall = Instantiate(wallPrefab, new Vector3(wallOffset * pathPoint.position.x, 0, (wallOffset * pathPoint.position.y) - wallPosOffset), Quaternion.identity, wallParent.transform);
-                    wall.transform.GetChild(0).parent = lightHolder.transform;
+                    wall = Instantiate(wallPrefab, new Vector3(wallOffset * pathPoint.position.x, 0, (wallOffset * pathPoint.position.y) - wallPosOffset), Quaternion.identity);
+                    //wall.transform.GetChild(0).parent = lightHolder.transform;
                 }
                 if (pathPoint.westWall)
                 {
-                    wall = Instantiate(wallPrefab, new Vector3((wallOffset * pathPoint.position.x) - wallPosOffset, 0, wallOffset * pathPoint.position.y), Quaternion.Euler(new Vector3(0, 90, 0)), wallParent.transform);
-                    wall.transform.GetChild(0).parent = null;
+                    wall = Instantiate(wallPrefab, new Vector3((wallOffset * pathPoint.position.x) - wallPosOffset, 0, wallOffset * pathPoint.position.y), Quaternion.Euler(new Vector3(0, 90, 0)));
+                    //wall.transform.GetChild(0).parent = null;
                 }
-                Instantiate(floorPrefab, new Vector3(wallOffset * pathPoint.position.x, 0, wallOffset * pathPoint.position.y), Quaternion.identity, floorParent.transform);
+                Instantiate(floorPrefab, new Vector3(wallOffset * pathPoint.position.x, 0, wallOffset * pathPoint.position.y), Quaternion.identity);
             }
-            wallParent.AddComponent<MeshRenderer>().materials = wallParent.transform.GetChild(0).GetComponent<MeshRenderer>().materials;
-            wallParent.AddComponent<MergeMeshes>();
-            wallParent.AddComponent<MeshCollider>();
-            wallParent.tag = "Wall";
-            wallParent.layer = LayerMask.NameToLayer( "Obstacle");
+            //wallParent.AddComponent<MeshRenderer>().materials = wallParent.transform.GetChild(0).GetComponent<MeshRenderer>().materials;
+            ////wallParent.AddComponent<MergeMeshes>();
+            //wallParent.AddComponent<MeshCollider>();
+            //wallParent.tag = "Wall";
+            //wallParent.layer = LayerMask.NameToLayer( "Obstacle");
 
-            floorParent.AddComponent<MeshRenderer>().materials = floorParent.transform.GetChild(0).GetComponent<MeshRenderer>().materials;
-            floorParent.AddComponent<MergeMeshes>();
-            floorParent.layer = LayerMask.NameToLayer("Floor");
+            //floorParent.AddComponent<MeshRenderer>().materials = floorParent.transform.GetChild(0).GetComponent<MeshRenderer>().materials;
+            ////floorParent.AddComponent<MergeMeshes>();
+            //floorParent.layer = LayerMask.NameToLayer("Floor");
 
-            for (int i = 0; i < wallParent.transform.childCount; i++)
-            {
-                Destroy(wallParent.transform.GetChild(i).gameObject);
-            }
+            //for (int i = 0; i < wallParent.transform.childCount; i++)
+            //{
+            //    Destroy(wallParent.transform.GetChild(i).gameObject);
+            //}
         }
     }
     void SetSceneLocation()
