@@ -22,13 +22,13 @@ public class PlayerController : MonoBehaviour
     private Material rightColour;
 
     [SerializeField]
-    private float currRTFireCooldown = 0;
+    private float currRTFireCooldown = 0.0f;
     [SerializeField]
-    private float currLTFireCooldown = 0;
+    private float currLTFireCooldown = 0.0f;
     [SerializeField]
-    private float MaxRTFireCooldown = 1.5f;
+    private float MaxRTFireCooldown = 3.0f;
     [SerializeField]
-    private float MaxLTFireCooldown = 1.5f;
+    private float MaxLTFireCooldown = 3.0f;
 
     //Used to set projectile distance from the player
     [SerializeField, Header("Projectile Settings")]
@@ -77,7 +77,8 @@ public class PlayerController : MonoBehaviour
 
     private float MaxMana = 100.0f;
     private float CurMana = 100.0f;
-    private bool fired = false;
+    private bool firedLT = false;
+    private bool firedRT = false;
 
     private GameObject DungeonDoorObj;
     private GameObject DungeonChestObj;
@@ -174,22 +175,22 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (currRTFireCooldown <= 0 && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightAttack) && rightSpell != -1)
+            if (currRTFireCooldown <= 0.0f && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightAttack) && rightSpell != -1)
             {  
-                if(CurMana > 15 && fired == false)
+                if(CurMana > 15 && firedRT == false)
                 {
-                    fired = true;
+                    firedRT = true;
                     currRTFireCooldown = MaxRTFireCooldown;
                     AnimationScript.RightAttack(animator);
                     CurMana -= 15;
                     uIManager.updateMana((int)CurMana);
                 }
             }
-            else if (currLTFireCooldown <= 0 && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftAttack) && leftSpell != -1)
+            else if (currLTFireCooldown <= 0.0f && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftAttack) && leftSpell != -1)
             {
-                if (CurMana > 15 && fired == false)
+                if (CurMana > 15 && firedLT == false)
                 {
-                    fired = true;
+                    firedLT = true;
                     currLTFireCooldown = MaxLTFireCooldown;
                     AnimationScript.LeftAttack(animator);
                     CurMana -= 15;
@@ -243,6 +244,9 @@ public class PlayerController : MonoBehaviour
         {
             currLTFireCooldown -= Time.deltaTime;
         }
+
+        if(currLTFireCooldown <= 0.0f) { firedLT = false; }
+        if (currRTFireCooldown <= 0.0f) { firedRT = false; }
 
     }
 
