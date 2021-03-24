@@ -75,8 +75,8 @@ public class PlayerController : MonoBehaviour
     private bool DungeonDoorTriggered = false;
     private bool DungeonChestTriggered = false;
 
-    private int MaxMana = 100;
-    private float CurMana = 100;
+    private float MaxMana = 100.0f;
+    private float CurMana = 100.0f;
     private bool fired = false;
 
     private GameObject DungeonDoorObj;
@@ -198,7 +198,6 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                fired = false;
                 AnimationScript.StopAttack(animator);
             }
         }
@@ -236,8 +235,15 @@ public class PlayerController : MonoBehaviour
             uIManager.updateMana((int)CurMana);
         }
 
-        currRTFireCooldown -= Time.deltaTime;
-        currLTFireCooldown -= Time.deltaTime;
+        if(currRTFireCooldown >= 0.0f)
+        {
+            currRTFireCooldown -= Time.deltaTime;
+        }
+        if (currLTFireCooldown >= 0.0f)
+        {
+            currLTFireCooldown -= Time.deltaTime;
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
