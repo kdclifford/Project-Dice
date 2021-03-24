@@ -27,6 +27,8 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject ManaUI;
     [SerializeField]
+    private Text FloorCounterUI;
+    [SerializeField]
     private Text ManaText;
 
     private Health playerHealth;
@@ -161,5 +163,10 @@ public class UIManager : MonoBehaviour
     public void updateMana(int manaValue)
     {
         ManaText.text = manaValue.ToString();
+    }
+
+    public void updateFloor(int currentFloor)
+    {
+        FloorCounterUI.text = currentFloor.ToString();
     }
 }

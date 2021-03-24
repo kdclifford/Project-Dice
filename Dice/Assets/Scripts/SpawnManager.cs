@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    private UIManager uIManager;
     public int currentFloor = 0;
     public FloorData[] floors;
     public List<GameObject> list;
@@ -20,6 +21,11 @@ public class SpawnManager : MonoBehaviour
     //Checks for an instance of LevelManager in current scene
     void Awake()
     {
+        if(uIManager == null)
+        {
+            uIManager = UIManager.instance;
+        }
+
         if (instance == null)
         {
             instance = this;
@@ -116,14 +122,9 @@ public class SpawnManager : MonoBehaviour
 
             while (enemyType == EnemyType.AmountOfEnemies)
             {
-                ////Debug.Log("Spawn");
                 int pickEnemy = Random.Range(0, floors[currentFloor].enemiesAllowedToSpawn.Length);
-                Debug.Log(pickEnemy);
                 if (GetEnemyCost(floors[currentFloor].enemiesAllowedToSpawn[pickEnemy]) <= maxEnemyCost)
                 {
-
-
-                    Debug.Log(floors[currentFloor].enemiesAllowedToSpawn[pickEnemy]);
                     enemyType = floors[currentFloor].enemiesAllowedToSpawn[pickEnemy];
                     break;
                 }

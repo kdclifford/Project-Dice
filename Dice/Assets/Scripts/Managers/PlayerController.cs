@@ -79,6 +79,7 @@ public class PlayerController : MonoBehaviour
     private float CurMana = 100.0f;
     private bool firedLT = false;
     private bool firedRT = false;
+    private int UICurrentFloor = 1;
 
     private bool nextLevel = false;
 
@@ -223,15 +224,6 @@ public class PlayerController : MonoBehaviour
             playerAnimations.Idle();
         }
 
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            uIManager.ShowEquipPopUp();
-        }
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            uIManager.HideEquipPopUp();
-        }
-
         if(CurMana <= 100)
         {
             CurMana += Time.deltaTime * 2;
@@ -256,6 +248,8 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "NextLevel" && !nextLevel)
         {
+            UICurrentFloor++;
+            uIManager.updateFloor(UICurrentFloor);
             LevelManager.instance.NextLevel();
             nextLevel = true;
         }
