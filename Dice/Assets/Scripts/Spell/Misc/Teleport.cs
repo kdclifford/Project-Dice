@@ -20,9 +20,9 @@ public class Teleport : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        teleportMesh.SetActive(false);
         teleportMesh.transform.position = transform.position;
         gameSettings = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameSettings>();
-        //teleportMesh.transform.position += transform.forward * 4;
     }
 
     // Update is called once per frame
@@ -30,61 +30,30 @@ public class Teleport : MonoBehaviour
     {
         if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Teleport) && cooldownTimer < 0)
         {
-            //if (Vector3.Distance(teleportMesh.transform.position, transform.position) == 0)
-            //{
-            //    moveMesh = true;
-            //}
-
-            
-
-
-            if(!secondPress)
+            teleportMesh.SetActive(true);
+            if (!secondPress)
             {
-            teleportMesh.transform.position = transform.position;
-            teleportMesh.transform.position += transform.forward * distance;
+                teleportMesh.transform.position = transform.position;
+                teleportMesh.transform.position += transform.forward * distance;
                 secondPress = true;
-                    teleportTimer = 1;
+                teleportTimer = 1;
             }
-
-            //if (!moveMesh)
-            //{
-            //    cooldownTimer = 10;
-            //    transform.position = teleportMesh.transform.position;
-            //    teleportMesh.transform.position = transform.position;
-            //}
-
         }
 
         if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Teleport) && teleportTimer < 0)
         {
-            //if (Vector3.Distance(teleportMesh.transform.position, transform.position) == 0)
-            //{
-            //    moveMesh = true;
-            //}
-
             if (secondPress)
             {
+                teleportMesh.SetActive(false);
                 cooldownTimer = 10;
                 transform.position = teleportMesh.transform.position;
-            teleportMesh.transform.position = transform.position;
+                teleportMesh.transform.position = transform.position;
                 secondPress = false;
                 GameObject teleport = Instantiate(particalPrefab, transform.position, Quaternion.identity) as GameObject;
                 Destroy(teleport, 5.0f);
             }
         }
-        //}
 
-        //if(moveMesh)
-        //{
-        //    meshNewPos = transform.forward * 4;
-        //    teleportMesh.transform.position += meshNewPos * Time.deltaTime;
-        //    if(Vector3.Distance(teleportMesh.transform.position, transform.position) > 4)
-        //    {
-        //       // teleportMesh.transform.position = meshNewPos;
-        //        moveMesh = false;
-        //    }
-
-        //}
         if (secondPress)
         {
             RaycastHit hit;

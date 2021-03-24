@@ -15,20 +15,21 @@ public class PlayerController : MonoBehaviour
 
     //[HideInInspector]
     public int rightSpell = -1;
-   // [HideInInspector]
+    // [HideInInspector]
     public int leftSpell = -1;
 
     private Material leftColour;
     private Material rightColour;
 
     [SerializeField]
-    private float currRTFireCooldown = 0.0f;
+    public float currRTFireCooldown = 0;
     [SerializeField]
-    private float currLTFireCooldown = 0.0f;
+    public float currLTFireCooldown = 0;
     [SerializeField]
-    private float MaxRTFireCooldown = 3.0f;
+    public float MaxRTFireCooldown = 1.5f;
     [SerializeField]
-    private float MaxLTFireCooldown = 3.0f;
+    public float MaxLTFireCooldown = 1.5f;
+
 
     //Used to set projectile distance from the player
     [SerializeField, Header("Projectile Settings")]
@@ -75,16 +76,37 @@ public class PlayerController : MonoBehaviour
     private bool DungeonDoorTriggered = false;
     private bool DungeonChestTriggered = false;
 
-    private float MaxMana = 100.0f;
-    private float CurMana = 100.0f;
+
+
     private bool firedLT = false;
     private bool firedRT = false;
     private int UICurrentFloor = 1;
 
     private bool nextLevel = false;
 
+
     private GameObject DungeonDoorObj;
     private GameObject DungeonChestObj;
+
+
+    public static PlayerController instance;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
+    }
+
+
 
 
     // Start is called before the first frame update
@@ -110,11 +132,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (volumeTriggered == true &&  volumeButton < 0 && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
+        if (volumeTriggered == true && volumeButton < 0 && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
         {
             VolumeChange Vol = volumeObj.GetComponent<VolumeChange>();
 
-            if(volumeObj.transform.parent.name == "MasterVol")
+            if (volumeObj.transform.parent.name == "MasterVol")
             {
                 globalVolume = Vol.ChangeVolume(globalVolume);
             }
@@ -168,43 +190,35 @@ public class PlayerController : MonoBehaviour
             cameraDummy.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
-        if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightAttack) &&
-           rightSpell != -1 &&
-           ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftAttack) &&
-           leftSpell != -1)
+
+
+        if (currRTFireCooldown <= 0.0f && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightAttack) && rightSpell != -1)
         {
-            //Commenting Out this as there is currently no use for this 
-            //AnimationScript.DoubleAttack(animator);
+            if (Mana.instance.GetMana() > 15 && firedRT == false)
+            {
+                firedRT = true;
+                currRTFireCooldown = MaxRTFireCooldown;
+                AnimationScript.RightAttack(animator);
+                Mana.instance.RemoveMana(15);
+            }
+        }
+        else if (currLTFireCooldown <= 0.0f && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftAttack) && leftSpell != -1)
+        {
+            if (Mana.instance.GetMana() > 15 && firedLT == false)
+            {
+                firedLT = true;
+                currLTFireCooldown = MaxLTFireCooldown;
+                AnimationScript.LeftAttack(animator);
+                Mana.instance.RemoveMana(15);
+            }
         }
         else
         {
-            if (currRTFireCooldown <= 0.0f && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightAttack) && rightSpell != -1)
-            {  
-                if(CurMana > 15 && firedRT == false)
-                {
-                    firedRT = true;
-                    currRTFireCooldown = MaxRTFireCooldown;
-                    AnimationScript.RightAttack(animator);
-                    CurMana -= 15;
-                    uIManager.updateMana((int)CurMana);
-                }
-            }
-            else if (currLTFireCooldown <= 0.0f && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftAttack) && leftSpell != -1)
-            {
-                if (CurMana > 15 && firedLT == false)
-                {
-                    firedLT = true;
-                    currLTFireCooldown = MaxLTFireCooldown;
-                    AnimationScript.LeftAttack(animator);
-                    CurMana -= 15;
-                    uIManager.updateMana((int)CurMana);
-                }
-            }
-            else
-            {
-                AnimationScript.StopAttack(animator);
-            }
+            firedLT = false;
+            firedRT = false;
+            AnimationScript.StopAttack(animator);
         }
+
 
         leftStickInputAxis = CollisionCheck.RayCastCollisions(leftStickInputAxis, rayOffset, rayDist, layerMask, collisionForce, transform);
 
@@ -224,13 +238,16 @@ public class PlayerController : MonoBehaviour
             playerAnimations.Idle();
         }
 
-        if(CurMana <= 100)
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            CurMana += Time.deltaTime * 2;
-            uIManager.updateMana((int)CurMana);
+            uIManager.ShowEquipPopUp();
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            uIManager.HideEquipPopUp();
         }
 
-        if(currRTFireCooldown >= 0.0f)
+        if (currRTFireCooldown >= 0.0f)
         {
             currRTFireCooldown -= Time.deltaTime;
         }
@@ -239,10 +256,10 @@ public class PlayerController : MonoBehaviour
             currLTFireCooldown -= Time.deltaTime;
         }
 
-        if(currLTFireCooldown <= 0.0f) { firedLT = false; }
+        if (currLTFireCooldown <= 0.0f) { firedLT = false; }
         if (currRTFireCooldown <= 0.0f) { firedRT = false; }
-
     }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -255,184 +272,184 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-    void OnTriggerStay(Collider Collision)
-    {
-        if (Collision.gameObject.layer == LayerMask.NameToLayer("PickUp") || Collision.gameObject.layer == LayerMask.NameToLayer("Door") || Collision.gameObject.tag == "Chest")            
+        void OnTriggerStay(Collider Collision)
         {
-            uIManager.ShowInteractPopUp();
+            if (Collision.gameObject.layer == LayerMask.NameToLayer("PickUp") || Collision.gameObject.layer == LayerMask.NameToLayer("Door") || Collision.gameObject.tag == "Chest")
+            {
+                uIManager.ShowInteractPopUp();
+            }
+
+            if (Collision.gameObject.layer == LayerMask.NameToLayer("Spell") || Collision.gameObject.layer == LayerMask.NameToLayer("PickUp"))
+            {
+                if (Collision.gameObject.tag != "VolumeOption")
+                {
+                    Collision.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                }
+            }
+
+            if (Collision.gameObject.layer == LayerMask.NameToLayer("Spell"))
+            {
+                uIManager.ShowEquipPopUp();
+
+                if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftEquipt))
+                {
+                    //Set the spell
+                    leftSpell = (int)Collision.gameObject.GetComponent<ProjectileType>().spellIndex;
+
+                    var baseSpell = SpellList.instance.spells[leftSpell];
+
+                    uIManager.ShowLeftSpell(baseSpell.UILogo);
+
+                    Destroy(Collision.gameObject);
+                    uIManager.HideEquipPopUp();
+                    Collision.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+                    SetCooldownTimer(ref MaxLTFireCooldown, leftSpell);
+                    //if (projectileLeft != null)
+                    //{
+                    leftColour.color = baseSpell.castingColour;
+                    //}
+                }
+                else if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightEquipt))
+                {
+
+                    rightSpell = (int)Collision.gameObject.GetComponent<ProjectileType>().spellIndex;
+
+                    var baseSpell = SpellList.instance.spells[rightSpell];
+
+                    uIManager.ShowRightSpell(baseSpell.UILogo);
+
+                    Destroy(Collision.gameObject);
+                    uIManager.HideEquipPopUp();
+                    Collision.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+                    SetCooldownTimer(ref MaxRTFireCooldown, rightSpell);
+                    //if (projectileRight != null)
+                    //{
+                    rightColour.color = baseSpell.castingColour;
+
+                    //}
+                }
+            }
+            else if (Collision.gameObject.tag == "HealthPickup" && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
+            {
+                Health sn = gameObject.GetComponent<Health>();
+
+                if (sn.GetHealth() < sn.maxHealth)
+                {
+                    sn.AddHealth();
+                    Destroy(Collision.gameObject);
+                    Collision.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+                }
+            }
+            else if (Collision.gameObject.tag == "ShieldPickup" && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
+            {
+                Health sn = gameObject.GetComponent<Health>();
+
+                if (sn.GetShield() < sn.maxShields)
+                {
+                    uIManager.AddUIShield();
+                    sn.AddShield();
+                    soundManager.Play(ESoundClipEnum.Shield, gameObject);
+                    Collision.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+                    Destroy(Collision.gameObject);
+                }
+            }
+            else if (Collision.gameObject.tag == "VolumeOption")
+            {
+                volumeObj = Collision.gameObject;
+                volumeTriggered = true;
+            }
+            else if (Collision.gameObject.tag == "Door")
+            {
+                DoorObj = Collision.gameObject;
+                DoorTriggered = true;
+            }
+            else if (Collision.gameObject.tag == "DungonDoor")
+            {
+                DungeonDoorObj = Collision.gameObject;
+                DungeonDoorTriggered = true;
+            }
+            else if (Collision.gameObject.tag == "Chest")
+            {
+                DungeonChestObj = Collision.gameObject;
+                DungeonChestTriggered = true;
+            }
+            else if (Collision.gameObject.tag == "Light")
+            {
+                Collision.gameObject.GetComponent<ParticleSystem>().Play();
+            }
+
         }
 
-        if (Collision.gameObject.layer == LayerMask.NameToLayer("Spell") || Collision.gameObject.layer == LayerMask.NameToLayer("PickUp"))
+        private void OnTriggerExit(Collider other)
         {
-            if (Collision.gameObject.tag != "VolumeOption")
+            if (other.gameObject.layer == LayerMask.NameToLayer("Spell") || other.gameObject.layer == LayerMask.NameToLayer("PickUp"))
             {
-                Collision.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                if (other.gameObject.tag != "VolumeOption")
+                {
+                    other.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+                }
+            }
+
+            uIManager.HideEquipPopUp();
+            uIManager.HideInteractPopUp();
+            volumeTriggered = false;
+        }
+
+
+        void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.CompareTag("Wall"))
+            {
+
+                GetComponent<Rigidbody>().velocity = Vector3.zero;
             }
         }
 
-        if (Collision.gameObject.layer == LayerMask.NameToLayer("Spell"))
+
+        //*******************
+        //Animation Functions
+        //*******************
+        public void RightFire()
         {
-            uIManager.ShowEquipPopUp();
-        
-            if(ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftEquipt))
-            {
-                //Set the spell
-                leftSpell = (int)Collision.gameObject.GetComponent<ProjectileType>().spellIndex;
+            // Cast Spell?
 
-                var baseSpell = SpellList.instance.spells[leftSpell];
 
-                uIManager.ShowLeftSpell(baseSpell.UILogo);
 
-                Destroy(Collision.gameObject);
-                uIManager.HideEquipPopUp();
-                Collision.gameObject.transform.GetChild(1).gameObject.SetActive(false);
-                SetCooldownTimer(ref MaxLTFireCooldown, leftSpell);
-                //if (projectileLeft != null)
-                //{
-                leftColour.color = baseSpell.castingColour;
-                //}
-            }
-            else if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightEquipt))
-            {
+            Vector3 rightFirePos = transform.position + (transform.right * projectileDistance);// RightFirePos.x += 0.4f;
+            rightFirePos.y += yOffsetProgectile;
 
-                rightSpell = (int)Collision.gameObject.GetComponent<ProjectileType>().spellIndex;
+            SpellList.instance.spells[rightSpell].CastSpell(rightFirePos, transform.eulerAngles.y, gameObject);
 
-                var baseSpell = SpellList.instance.spells[rightSpell];
-
-                uIManager.ShowRightSpell(baseSpell.UILogo);
-
-                Destroy(Collision.gameObject);
-                uIManager.HideEquipPopUp();
-                Collision.gameObject.transform.GetChild(1).gameObject.SetActive(false);
-                SetCooldownTimer(ref MaxRTFireCooldown, rightSpell);
-                //if (projectileRight != null)
-                //{
-                rightColour.color = baseSpell.castingColour;
-
-                //}
-            }
-        }
-        else if (Collision.gameObject.tag == "HealthPickup" && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
-        {
-            Health sn = gameObject.GetComponent<Health>();
-
-            if (sn.GetHealth() < sn.maxHealth)
-            {
-                sn.AddHealth();
-                Destroy(Collision.gameObject);
-                Collision.gameObject.transform.GetChild(1).gameObject.SetActive(false);
-            }
-        }
-        else if (Collision.gameObject.tag == "ShieldPickup" && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
-        {
-            Health sn = gameObject.GetComponent<Health>();
-
-            if (sn.GetShield() < sn.maxShields)
-            {
-                uIManager.AddUIShield();
-                sn.AddShield();
-                soundManager.Play(ESoundClipEnum.Shield, gameObject);
-                Collision.gameObject.transform.GetChild(1).gameObject.SetActive(false);
-                Destroy(Collision.gameObject);
-            }
-        }
-        else if (Collision.gameObject.tag == "VolumeOption")
-        {
-            volumeObj = Collision.gameObject;
-            volumeTriggered = true;
-        }
-        else if (Collision.gameObject.tag == "Door")
-        {
-            DoorObj = Collision.gameObject;
-            DoorTriggered = true;
-        }
-        else if (Collision.gameObject.tag == "DungonDoor")
-        {
-            DungeonDoorObj = Collision.gameObject;
-            DungeonDoorTriggered = true;
-        }
-        else if (Collision.gameObject.tag == "Chest")
-        {
-            DungeonChestObj = Collision.gameObject;
-            DungeonChestTriggered = true;
-        }
-        else if (Collision.gameObject.tag == "Light")
-        {
-            Collision.gameObject.GetComponent<ParticleSystem>().Play();
         }
 
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Spell") || other.gameObject.layer == LayerMask.NameToLayer("PickUp"))
+        public void LeftFire()
         {
-            if (other.gameObject.tag != "VolumeOption")
-            {
-                other.gameObject.transform.GetChild(1).gameObject.SetActive(false);
-            }
+
+            Debug.Log(SpellList.instance.spells[(int)leftSpell].SpellName);
+            Vector3 leftFirePos = transform.position + (transform.right * -projectileDistance);// LeftFirePos.x -= 0.4f;
+            leftFirePos.y += yOffsetProgectile;
+
+            SpellList.instance.spells[leftSpell].CastSpell(leftFirePos, transform.eulerAngles.y, gameObject);
         }
 
-        uIManager.HideEquipPopUp();
-        uIManager.HideInteractPopUp();
-        volumeTriggered = false;
-    }
-
-
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Wall"))
+        public void RightFireToggle()
         {
 
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
-        }       
-    }
+            rightFire = false;
+        }
 
+        public void LeftFireToggle()
+        {
 
-    //*******************
-    //Animation Functions
-    //*******************
-    public void RightFire()
-    {
-        // Cast Spell?
+            leftFire = false;
+        }
 
-       
-
-        Vector3 rightFirePos = transform.position + (transform.right * projectileDistance);// RightFirePos.x += 0.4f;
-        rightFirePos.y += yOffsetProgectile;
-
-        SpellList.instance.spells[rightSpell].CastSpell(rightFirePos, transform.eulerAngles.y, gameObject);
-        
-    }
-
-    public void LeftFire()
-    {
-
-        Debug.Log(SpellList.instance.spells[(int)leftSpell].SpellName);
-        Vector3 leftFirePos = transform.position + (transform.right * -projectileDistance);// LeftFirePos.x -= 0.4f;
-        leftFirePos.y += yOffsetProgectile;
-
-        SpellList.instance.spells[leftSpell].CastSpell(leftFirePos, transform.eulerAngles.y, gameObject);
-    }
-
-    public void RightFireToggle()
-    {
-
-        rightFire = false;
-    }
-
-    public void LeftFireToggle()
-    {
-
-        leftFire = false;
-    }
-
-    void SetCooldownTimer(ref float timer, int spell)
-    {
-        timer = SpellList.instance.spells[spell].coolDown;
-    }
+        void SetCooldownTimer(ref float timer, int spell)
+        {
+            timer = SpellList.instance.spells[spell].coolDown;
+        }
 
 
 
+    
 }

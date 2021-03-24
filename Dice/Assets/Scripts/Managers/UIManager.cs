@@ -16,8 +16,6 @@ public class UIManager : MonoBehaviour
     private GameObject EquipPopup;
     [SerializeField]
     private GameObject shieldPrefab;
-    //[SerializeField]
-    //private GameObject boarder;
     [SerializeField]
     private GameObject canvas;
     [SerializeField]
@@ -26,10 +24,10 @@ public class UIManager : MonoBehaviour
     private GameObject HeartUI;
     [SerializeField]
     private GameObject ManaUI;
+
     [SerializeField]
     private Text FloorCounterUI;
-    [SerializeField]
-    private Text ManaText;
+
 
     private Health playerHealth;
    // public GameObject[] hearts;
@@ -65,11 +63,6 @@ public class UIManager : MonoBehaviour
         {
             shield[playerHealth.GetShield()- 1].SetActive(false);
             return;
-        }
-
-        if (playerHealth.GetHealth() > 0)
-        {
-
         }
     }
 
@@ -158,11 +151,6 @@ public class UIManager : MonoBehaviour
     {
         HeartUI.SetActive(false);
         ManaUI.SetActive(false);
-    }
-
-    public void updateMana(int manaValue)
-    {
-        ManaText.text = manaValue.ToString();
     }
 
     public void updateFloor(int currentFloor)

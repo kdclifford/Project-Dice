@@ -150,7 +150,6 @@ public class CollisionResolution : MonoBehaviour
                 //  other.gameObject.GetComponent<Rigidbody>().velocity.x, other.gameObject.GetComponent<Rigidbody>().velocity.z);
 
                 // playerAnimations.UpdateHeartUI();
-                uIManager.RemoveHeart();
                 ShowFloatingText(collider.GetComponent<SpellIndex>().spellIndex);
 
                 if (agentHealth.GetHealth() <= 0)
