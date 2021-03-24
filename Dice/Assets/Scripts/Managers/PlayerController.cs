@@ -80,6 +80,9 @@ public class PlayerController : MonoBehaviour
 
     private bool firedLT = false;
     private bool firedRT = false;
+    private int UICurrentFloor = 1;
+
+    private bool nextLevel = false;
 
 
     private GameObject DungeonDoorObj;
@@ -244,8 +247,6 @@ public class PlayerController : MonoBehaviour
             uIManager.HideEquipPopUp();
         }
 
-
-
         if (currRTFireCooldown >= 0.0f)
         {
             currRTFireCooldown -= Time.deltaTime;
@@ -260,14 +261,16 @@ public class PlayerController : MonoBehaviour
     }
 
 
-        void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "NextLevel" && !nextLevel)
         {
-            if (other.gameObject.tag == "NextLevel")
-            {
-                LevelManager.instance.NextLevel();
-            }
+            UICurrentFloor++;
+            uIManager.updateFloor(UICurrentFloor);
+            LevelManager.instance.NextLevel();
+            nextLevel = true;
         }
-
+    }
 
         void OnTriggerStay(Collider Collision)
         {

@@ -17,8 +17,6 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject shieldPrefab;
     [SerializeField]
-    private GameObject boarder;
-    [SerializeField]
     private GameObject canvas;
     [SerializeField]
     private GameObject gameUI;
@@ -26,6 +24,10 @@ public class UIManager : MonoBehaviour
     private GameObject HeartUI;
     [SerializeField]
     private GameObject ManaUI;
+
+    [SerializeField]
+    private Text FloorCounterUI;
+
 
     private Health playerHealth;
    // public GameObject[] hearts;
@@ -149,5 +151,10 @@ public class UIManager : MonoBehaviour
     {
         HeartUI.SetActive(false);
         ManaUI.SetActive(false);
+    }
+
+    public void updateFloor(int currentFloor)
+    {
+        FloorCounterUI.text = currentFloor.ToString();
     }
 }
