@@ -7,6 +7,7 @@ public class ImageCreate : MonoBehaviour
 {
     public Texture2D oldTexture;
     public Texture2D NewTexture;
+    public string fileName;
 
     private Color oldColour;
 
@@ -66,7 +67,7 @@ public class ImageCreate : MonoBehaviour
 
         byte[] itemBGBytes = NewTexture.EncodeToPNG();
        // File.WriteAllBytes("/Assets/", itemBGBytes);
-        File.WriteAllBytes(Application.dataPath + "/SavedScreen.png", itemBGBytes);
+        File.WriteAllBytes(Application.dataPath + "/" + fileName + ".png", itemBGBytes);
 
     }
 
