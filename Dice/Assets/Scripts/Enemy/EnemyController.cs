@@ -61,7 +61,7 @@ public class EnemyController : MonoBehaviour
         animator = GetComponent<Animator>();
         soundManager = SoundManager.instance;
         health = GetComponent<Health>();
-        lootDrop = Resources.Load("Mana/ManaPS", typeof(GameObject)) as GameObject;
+        lootDrop = Resources.Load("test/Particle System", typeof(GameObject)) as GameObject;
     }
 
     // Update is called once per frame
