@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     public float MaxLTFireCooldown = 1.5f;
 
+
     //Used to set projectile distance from the player
     [SerializeField, Header("Projectile Settings")]
     private float projectileDistance;
@@ -75,7 +76,11 @@ public class PlayerController : MonoBehaviour
     private bool DungeonDoorTriggered = false;
     private bool DungeonChestTriggered = false;
 
-    private bool fired = false;
+
+
+    private bool firedLT = false;
+    private bool firedRT = false;
+
 
     private GameObject DungeonDoorObj;
     private GameObject DungeonChestObj;
@@ -183,26 +188,27 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (currRTFireCooldown <= 0 && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightAttack) && rightSpell != -1)
-        {
-            if (Mana.instance.GetMana() > 15 && fired == false)
-            {
-                fired = true;
-                currRTFireCooldown = MaxRTFireCooldown;
+        
+            if (currRTFireCooldown <= 0.0f && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightAttack) && rightSpell != -1)
+            {  
+                if(Mana.instance.GetMana() > 15 && firedRT == false)
+                {
+                    firedRT = true;
+               currRTFireCooldown = MaxRTFireCooldown;
                 AnimationScript.RightAttack(animator);
                 Mana.instance.RemoveMana(15);
+                }
             }
-        }
-        else if (currLTFireCooldown <= 0 && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftAttack) && leftSpell != -1)
-        {
-            if (Mana.instance.GetMana() > 15 && fired == false)
+            else if (currLTFireCooldown <= 0.0f && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftAttack) && leftSpell != -1)
             {
-                fired = true;
+                if (Mana.instance.GetMana() > 15 && firedLT == false)
+                {
+                    firedLT = true;
                 currLTFireCooldown = MaxLTFireCooldown;
                 AnimationScript.LeftAttack(animator);
                 Mana.instance.RemoveMana(15);
             }
-        }
+        
         else
         {
             fired = false;
@@ -237,8 +243,24 @@ public class PlayerController : MonoBehaviour
             uIManager.HideEquipPopUp();
         }
 
-        currRTFireCooldown -= Time.deltaTime;
-        currLTFireCooldown -= Time.deltaTime;
+        if(CurMana <= 100)
+        {
+            CurMana += Time.deltaTime * 2;
+            uIManager.updateMana((int)CurMana);
+        }
+
+        if(currRTFireCooldown >= 0.0f)
+        {
+            currRTFireCooldown -= Time.deltaTime;
+        }
+        if (currLTFireCooldown >= 0.0f)
+        {
+            currLTFireCooldown -= Time.deltaTime;
+        }
+
+        if(currLTFireCooldown <= 0.0f) { firedLT = false; }
+        if (currRTFireCooldown <= 0.0f) { firedRT = false; }
+
     }
 
     private void OnTriggerEnter(Collider other)
