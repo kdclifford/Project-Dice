@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1702478309054507043}
   - component: {fileID: 6198199286528156394}
   m_Layer: 15
-  m_Name: Particle System
+  m_Name: ManaPS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -223,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 0, b: 1, a: 1}
+      maxColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -3847,7 +3847,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 25600
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
