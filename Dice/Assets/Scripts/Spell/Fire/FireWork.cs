@@ -26,6 +26,7 @@ public class FireWork : SpellBase
 
     public FireWork()
     {
+        range = 20;
         duration = 1;
         damage = 25;
         unlockTier = 5;

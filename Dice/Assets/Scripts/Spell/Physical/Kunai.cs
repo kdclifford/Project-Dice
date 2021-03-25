@@ -13,6 +13,7 @@ public class Kunai : SpellBase
 
     public Kunai()
     {
+        range = 17;
         duration = 3;
         damage = 17;
         unlockTier = 2;

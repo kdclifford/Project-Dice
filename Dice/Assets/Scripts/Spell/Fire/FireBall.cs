@@ -16,6 +16,7 @@ public class FireBall : SpellBase
 
     public FireBall()
     {
+        range = 12;
         damage = 10;
         unlockTier = 0;
         duration = 3;

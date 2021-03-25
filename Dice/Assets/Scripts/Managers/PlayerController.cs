@@ -300,7 +300,7 @@ public class PlayerController : MonoBehaviour
 
                     var baseSpell = SpellList.instance.spells[leftSpell];
 
-                    uIManager.ShowLeftSpell(baseSpell.UILogo);
+                    uIManager.ApplyNewLeftSpell(baseSpell.UILogo);
 
                     Destroy(Collision.gameObject);
                     uIManager.HideEquipPopUp();
@@ -318,7 +318,7 @@ public class PlayerController : MonoBehaviour
 
                     var baseSpell = SpellList.instance.spells[rightSpell];
 
-                    uIManager.ShowRightSpell(baseSpell.UILogo);
+                    uIManager.ApplyNewRightSpell(baseSpell.UILogo);
 
                     Destroy(Collision.gameObject);
                     uIManager.HideEquipPopUp();

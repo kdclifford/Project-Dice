@@ -15,6 +15,7 @@ public class Spark : SpellBase
 
     public Spark()
     {
+        range = 12;
         unlockTier = 0;
         damage = 10;
         duration = 3;

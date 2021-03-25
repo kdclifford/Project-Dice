@@ -13,6 +13,7 @@ public class Boulder : SpellBase
 
     public Boulder()
     {
+        range = 1;
         duration = 3;
         damage = 15;
         unlockTier = 2;

@@ -14,6 +14,7 @@ public class StarterKnife : SpellBase
 
     public StarterKnife()
     {
+        range = 16;
         unlockTier = 0;
         duration = 3;
         damage = 10;

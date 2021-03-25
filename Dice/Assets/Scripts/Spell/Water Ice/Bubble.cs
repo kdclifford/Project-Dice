@@ -14,6 +14,7 @@ public class Bubble : SpellBase
 
     public Bubble()
     {
+        range = 10;
         unlockTier = 0;
         damage = 10;
 

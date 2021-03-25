@@ -13,6 +13,7 @@ public class IceSpike : SpellBase
 
     public IceSpike()
     {
+        range = 14;
         duration = 3;
         castingColour = Color.white;
         element = EElementalyType.Water;

@@ -13,6 +13,7 @@ public class MagicArrow : SpellBase
 
     public MagicArrow()
     {
+        range = 14;
         damage = 12;
         unlockTier = 1;
         duration = 3;

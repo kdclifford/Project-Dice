@@ -13,6 +13,7 @@ public class SwordProjectile : SpellBase
 
     public SwordProjectile()
     {
+        range = 20;
         duration = 3;
         damage = 15;
         castingColour = Color.white;

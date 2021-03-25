@@ -18,6 +18,7 @@ public class SummonPumpkin : SpellBase
 
     public SummonPumpkin()
     {
+        range = 3;
         duration = 5;
         damage = 30;
         unlockTier = 5;

@@ -71,7 +71,8 @@ public class SpawnManager : MonoBehaviour
             roomList[i].roomSpawnPoints = CalculatePoints(roomList[i]);
             if (roomList[i].roomType == RoomType.Boss)
             {
-                Instantiate(boss, DunguonSpawner.instance.roomRef[i].transform.position, Quaternion.identity);
+              GameObject bossTemp =  Instantiate(boss, DunguonSpawner.instance.roomRef[i].transform.position, Quaternion.identity);
+                roomList[i].enemyList.Add(bossTemp);
             }
             else if (roomList[i].roomType != RoomType.Start)
             {
@@ -85,8 +86,8 @@ public class SpawnManager : MonoBehaviour
     {
         int points = room.roomSpawnPoints;
         points = (int)room.Size.x * (int)room.Size.y;
-        points = (int)(points * (currentFloor * GetRoomDifficulityMultiplier(room.roomType))); //This is gonna get hella out of control doubles every so often
-        points = (int)(points * 0.5f);
+        points = (int)(points * ((currentFloor * 0.2f) * GetRoomDifficulityMultiplier(room.roomType))); //This is gonna get hella out of control doubles every so often
+        //points = (int)(points * 0.5f);
 
         return points;
     }

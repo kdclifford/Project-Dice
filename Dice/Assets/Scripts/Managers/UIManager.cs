@@ -24,7 +24,8 @@ public class UIManager : MonoBehaviour
     private GameObject HeartUI;
     [SerializeField]
     private GameObject ManaUI;
-
+    [SerializeField]
+    private GameObject teleportUI;
     [SerializeField]
     private Text FloorCounterUI;
 
@@ -92,22 +93,41 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (SceneManager.GetActiveScene() != currentScene)
+        if (SceneManager.GetActiveScene().name != "Menu" && SceneManager.GetActiveScene().name != "Options")
         {
-            playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
-            maxShields = (int)playerHealth.maxShields;
-            HideEquipPopUp(); HideInteractPopUp();
-            currentScene = SceneManager.GetActiveScene();
+            ShowUI();
         }
+        else
+        {
+            HideUI();
+        }
+
     }
 
 
-    public void ShowLeftSpell(Sprite powerUp)
+    public void ShowUI()
+    {
+        RightUIIcon.gameObject.transform.parent.gameObject.SetActive(true);
+        HeartUI.SetActive(true);
+        ManaUI.SetActive(true);
+        teleportUI.SetActive(true);
+    }
+
+    public void HideUI()
+    {
+        RightUIIcon.gameObject.transform.parent.gameObject.SetActive(false);
+        HeartUI.SetActive(false);
+        ManaUI.SetActive(false);
+        teleportUI.SetActive(false);
+    }
+
+
+    public void ApplyNewLeftSpell(Sprite powerUp)
     {
         LeftUIIcon.sprite = powerUp;
     }
 
-    public void ShowRightSpell(Sprite powerUp)
+    public void ApplyNewRightSpell(Sprite powerUp)
     {
         RightUIIcon.sprite = powerUp;
     }
