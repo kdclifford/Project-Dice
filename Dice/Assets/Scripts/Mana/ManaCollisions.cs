@@ -25,7 +25,6 @@ public class ManaCollisions : MonoBehaviour
             for (int i = 0; i < numParticles; i++)
             {
                 float dist = Vector3.Distance(transform.position, currentParticles[i].position);
-                // Debug.Log(dist);
                 if (dist < 3)
                 {
                     currentParticles[i].remainingLifetime = 0.0f;

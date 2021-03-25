@@ -64,12 +64,10 @@ namespace PlayerCollisionCheck.Utils
         {
             if (Physics.Raycast(playerPos.position + rayOffset, direction, rayDist * 0.9f, ~layerMask))
             {
-                Debug.DrawRay(playerPos.position, direction * (rayDist * 0.9f), Color.red);
                 return true;
             }
             else
             {
-                Debug.DrawRay(playerPos.position, direction * (rayDist * 0.9f), Color.green);
                 return false;
             }
         }
@@ -95,12 +93,10 @@ namespace PlayerCollisionCheck.Utils
                 {
                     velocity = 0;
                 }
-                //playerPos.position = oldpos;
-                Debug.DrawRay(playerPos.position, direction * rayDist, Color.red);
             }
             else
             {
-                Debug.DrawRay(playerPos.position, direction * rayDist, Color.green);
+
             }
         }
 

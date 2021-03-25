@@ -266,9 +266,8 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.layer == 18 && !nextLevel)
         {
-        Debug.Log("wooooooooooooooooooooooooo");
             UICurrentFloor++;
-            //uIManager.updateFloor(UICurrentFloor);
+            uIManager.updateFloor(UICurrentFloor);
             LevelManager.instance.NextLevel();
             nextLevel = true;
         }

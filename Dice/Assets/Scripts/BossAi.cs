@@ -122,29 +122,21 @@ public class CDragon : CBossBase
     {
 
         StateCheck(healthComp.GetHealth(), healthComp.maxHealth, healthComp.GetShield());
-        // Debug.Log(health.GetHealth());
 
         if (bossState == EBossStates.PhaseOne)
         {
-            Debug.Log("PhaseOne");
-            //currentSpell = SpellOne;
              PhaseOne();
         }
         else if (bossState == EBossStates.PhaseTwo)
         {
-            Debug.Log("Phase2");
-            //currentSpell = SpellTwo;
             PhaseTwo();
         }
         else if (bossState == EBossStates.PhaseThree)
         {
-            Debug.Log("Phase3");
-            // currentSpell = SpellThree;
             PhaseThree();
         }
         else if (bossState == EBossStates.Dead)
         {
-            Debug.Log("Dead");
             if (!this.anim.GetCurrentAnimatorStateInfo(0).IsName("Die"))
             {
                 anim.SetTrigger("Die");
@@ -161,10 +153,6 @@ public class CDragon : CBossBase
         Vector3 targetDi = target.transform.position - agent.transform.position;
 
         float targetAngle = Vector3.SignedAngle(agent.transform.forward, targetDi, Vector3.up);
-        // Debug.Log(targetAngle);
-
-
-        //Debug.Log(targetAngle);
 
 
         // Determine which direction to rotate towards
@@ -177,9 +165,6 @@ public class CDragon : CBossBase
         // Rotate the forward vector towards the target direction by one step
         Vector3 newDirection = Vector3.RotateTowards(agent.transform.forward, targetDirection, singleStep, 0.0f);
 
-
-        // Draw a ray pointing at our target in
-        Debug.DrawRay(agent.transform.position, newDirection, Color.red);
         newDirection.y = agent.transform.forward.y;
 
         if (targetAngle > 3 || targetAngle < -3)
@@ -237,7 +222,6 @@ public class CDragon : CBossBase
         {
             for (int i = 0; i < 5; i++)
             {
-                Debug.Log("SpawnEnemy");
                 Vector2 randPos = Random.insideUnitCircle * 20;
                 Vector3 position = new Vector3(agent.transform.position.x + randPos.x, agent.transform.position.y, agent.transform.position.z + randPos.y);
                 GameObject tempEnemy = MonoBehaviour.Instantiate(SpawnManager.instance.enemyList[(int)EnemyType.Bat * ((int)EElementalyType.AmountOfElements) + (int)EElementalyType.Fire], position, agent.transform.rotation) as GameObject;

@@ -135,7 +135,6 @@ public class CollisionResolution : MonoBehaviour
                 {
                     //Destroy(collider);
                 }
-                Debug.Log("Spell " + collider.GetComponent<SpellIndex>().spellIndex);
                 ShowFloatingText(collider.GetComponent<SpellIndex>().spellIndex);
             }
         }

@@ -31,10 +31,7 @@ public class EditorMethods : Editor
                 }
 
             }
-            Debug.Log(data.Length);
-            Debug.Log(data[data.Length - 1]);
             data = newData;
-            Debug.Log(data[data.Length - 1]);
         }
 
 

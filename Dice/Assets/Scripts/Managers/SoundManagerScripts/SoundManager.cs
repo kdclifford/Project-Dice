@@ -73,7 +73,6 @@ public class SoundManager : MonoBehaviour
     public void Play(GameObject agent)
     {
         Play((ESoundClipEnum)1, agent);
-        Debug.Log("Place Holder sound being used");
     }
 
     //Will play a sound clip once, at the postion it was called at
@@ -114,7 +113,6 @@ public class SoundManager : MonoBehaviour
     {
         if (soundClips.Length != 0)
         {
-            Debug.Log(clipName.ToString());
             AudioSource agentAudio = CheckAudioSource(agent);
             // Sound s = Array.Find(soundClips, Sound => Sound.name == clipName);
             // SoundClipEnum clipcheck = (SoundClipEnum)Enum.Parse(typeof(SoundClipEnum), "OIOI", true);

@@ -28,6 +28,9 @@ public class UIManager : MonoBehaviour
     private GameObject teleportUI;
     [SerializeField]
     private Text FloorCounterUI;
+    [SerializeField]
+    private GameObject FloorUI;
+
 
 
     private Health playerHealth;
@@ -111,6 +114,7 @@ public class UIManager : MonoBehaviour
         HeartUI.SetActive(true);
         ManaUI.SetActive(true);
         teleportUI.SetActive(true);
+        FloorUI.SetActive(true);
     }
 
     public void HideUI()
@@ -119,6 +123,7 @@ public class UIManager : MonoBehaviour
         HeartUI.SetActive(false);
         ManaUI.SetActive(false);
         teleportUI.SetActive(false);
+        FloorUI.SetActive(false);
     }
 
 
@@ -173,8 +178,8 @@ public class UIManager : MonoBehaviour
         ManaUI.SetActive(false);
     }
 
-    //public void updateFloor(int currentFloor)
-    //{
-    //    FloorCounterUI.text = currentFloor.ToString();
-    //}
+    public void updateFloor(int currentFloor)
+    {
+        FloorCounterUI.text = currentFloor.ToString();
+    }
 }

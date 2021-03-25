@@ -188,8 +188,7 @@ public class XmlLoader : MonoBehaviour
 
 
     public void AddXML(AudioClip audio)
-    {
-       // Debug.Log(AssetDatabase.GetAssetPath(obj));        
+    {      
 
         Sound sound = new Sound(audio);       
 

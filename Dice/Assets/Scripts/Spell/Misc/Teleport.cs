@@ -65,13 +65,9 @@ public class Teleport : MonoBehaviour
                 //transform.position = newPos;
                 teleportMesh.transform.position = transform.position;
                 teleportMesh.transform.position += teleportMesh.transform.forward * (hit.distance - 1);
-                Debug.Log("Ghost hitting");
-
-                Debug.DrawRay(transform.position, transform.forward * distance, Color.red);
             }
             else
             {
-                Debug.DrawRay(transform.position, transform.forward * distance, Color.green);
                 teleportMesh.transform.position = transform.position;
                 teleportMesh.transform.position += teleportMesh.transform.forward * distance;
             }
