@@ -153,8 +153,8 @@ public class UIManager : MonoBehaviour
         ManaUI.SetActive(false);
     }
 
-    public void updateFloor(int currentFloor)
-    {
-        FloorCounterUI.text = currentFloor.ToString();
-    }
+    //public void updateFloor(int currentFloor)
+    //{
+    //    FloorCounterUI.text = currentFloor.ToString();
+    //}
 }

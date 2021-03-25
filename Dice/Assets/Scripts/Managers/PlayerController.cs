@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private SoundManager soundManager;
     private PlayerAnimations playerAnimations;
+    public int spellManaCost;
 
     //[HideInInspector]
     public int rightSpell = -1;
@@ -82,7 +83,7 @@ public class PlayerController : MonoBehaviour
     private bool firedRT = false;
     private int UICurrentFloor = 1;
 
-    private bool nextLevel = false;
+    public bool nextLevel = false;
 
 
     private GameObject DungeonDoorObj;
@@ -194,22 +195,22 @@ public class PlayerController : MonoBehaviour
 
         if (currRTFireCooldown <= 0.0f && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightAttack) && rightSpell != -1)
         {
-            if (Mana.instance.GetMana() > 15 && firedRT == false)
+            if (Mana.instance.GetMana() > spellManaCost && firedRT == false)
             {
                 firedRT = true;
                 currRTFireCooldown = MaxRTFireCooldown;
                 AnimationScript.RightAttack(animator);
-                Mana.instance.RemoveMana(15);
+                Mana.instance.RemoveMana(spellManaCost);
             }
         }
         else if (currLTFireCooldown <= 0.0f && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftAttack) && leftSpell != -1)
         {
-            if (Mana.instance.GetMana() > 15 && firedLT == false)
+            if (Mana.instance.GetMana() > spellManaCost && firedLT == false)
             {
                 firedLT = true;
                 currLTFireCooldown = MaxLTFireCooldown;
                 AnimationScript.LeftAttack(animator);
-                Mana.instance.RemoveMana(15);
+                Mana.instance.RemoveMana(spellManaCost);
             }
         }
         else
@@ -263,10 +264,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "NextLevel" && !nextLevel)
+        if (other.gameObject.layer == 18 && !nextLevel)
         {
+        Debug.Log("wooooooooooooooooooooooooo");
             UICurrentFloor++;
-            uIManager.updateFloor(UICurrentFloor);
+            //uIManager.updateFloor(UICurrentFloor);
             LevelManager.instance.NextLevel();
             nextLevel = true;
         }

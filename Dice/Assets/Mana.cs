@@ -35,6 +35,14 @@ public class Mana : MonoBehaviour
     {
         return currentMana;
     }
+    public void AddMana(int mana)
+    {
+        currentMana += mana;
+        if (currentMana > maxMana)
+        {
+            currentMana = maxMana;
+        }
+    }
 
     public void RemoveMana(int mana)
     {

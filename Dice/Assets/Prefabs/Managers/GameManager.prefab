@@ -2086,7 +2086,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4553437083234396148
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2424,6 +2424,7 @@ GameObject:
   - component: {fileID: 6279030291234677515}
   - component: {fileID: 3728186826766726880}
   - component: {fileID: 4798192636121760805}
+  - component: {fileID: 7850244573634558437}
   m_Layer: 5
   m_Name: CooldownTimerUI (1)
   m_TagString: Untagged
@@ -2489,6 +2490,18 @@ MonoBehaviour:
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7850244573634558437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6672834314834006284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1683a76231e65a64dbdd7bd0ae1d89f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7217084171085813044
 GameObject:
   m_ObjectHideFlags: 0
@@ -2688,12 +2701,11 @@ MonoBehaviour:
   EquipPopup: {fileID: 3781402681666625177}
   shieldPrefab: {fileID: 1804500024957632664, guid: 9cfd467d3f4b2cc42a808de3f8f6bb9d,
     type: 3}
-  boarder: {fileID: 1276449764}
   canvas: {fileID: 3781402682266517959}
   gameUI: {fileID: 3781402681032248743}
   HeartUI: {fileID: 209323964566500362}
   ManaUI: {fileID: 8797027812906050446}
-  ManaText: {fileID: 0}
+  FloorCounterUI: {fileID: 0}
   shield: []
 --- !u!1 &8475155235637229354
 GameObject:

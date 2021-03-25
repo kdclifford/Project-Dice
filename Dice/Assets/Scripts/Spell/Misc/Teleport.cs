@@ -6,8 +6,10 @@ using UnityEngine;
 public class Teleport : MonoBehaviour
 {
     public GameObject teleportMesh;
-    public float teleportTimer = 11;
+    public float teleportTimer = 1;
+    public float maxTeleportTimer = 1;
     public float cooldownTimer = 10;
+    public float maxCooldownTimer = 10;
     bool secondPress = false;
     Vector3 meshNewPos;
     public float distance = 4;
@@ -36,7 +38,7 @@ public class Teleport : MonoBehaviour
                 teleportMesh.transform.position = transform.position;
                 teleportMesh.transform.position += transform.forward * distance;
                 secondPress = true;
-                teleportTimer = 1;
+                teleportTimer = maxTeleportTimer;
             }
         }
 
@@ -45,7 +47,7 @@ public class Teleport : MonoBehaviour
             if (secondPress)
             {
                 teleportMesh.SetActive(false);
-                cooldownTimer = 10;
+                cooldownTimer = maxCooldownTimer;
                 transform.position = teleportMesh.transform.position;
                 teleportMesh.transform.position = transform.position;
                 secondPress = false;

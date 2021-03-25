@@ -11,6 +11,7 @@ public class NextLevelPortal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerController.instance.nextLevel = false;
       room =  transform.parent.GetComponent<Room>();
     }
 
