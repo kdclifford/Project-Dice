@@ -189,7 +189,6 @@ public class XmlLoader : MonoBehaviour
 
     public void AddXML(AudioClip audio)
     {      
-
         Sound sound = new Sound(audio);       
 
         Sound[] temp;
@@ -205,13 +204,8 @@ public class XmlLoader : MonoBehaviour
             temp = new Sound[1];
             temp[0] = sound;
         }
-        
 
-        
         addedSounds = temp;
-
-
-
     }
 
 
