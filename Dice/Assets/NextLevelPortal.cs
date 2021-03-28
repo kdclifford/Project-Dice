@@ -7,6 +7,7 @@ public class NextLevelPortal : MonoBehaviour
     private Room room;
     private List<GameObject> newEnemyList;
     public GameObject portalPrefab;
+    public GameObject PortalPosGO;
     private bool portalSpawned = false;
     // Start is called before the first frame update
     void Start()
@@ -35,7 +36,7 @@ public class NextLevelPortal : MonoBehaviour
 
         if(!portalSpawned && room.enemyList.Count == 0)
         {
-            GameObject tempEnemy = Instantiate(portalPrefab, transform.position, transform.rotation) as GameObject;
+            GameObject tempEnemy = Instantiate(portalPrefab, PortalPosGO.transform.position, transform.rotation) as GameObject;
             portalSpawned = true;
         }
 
