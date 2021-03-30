@@ -15,6 +15,7 @@ public class Spark : SpellBase
 
     public Spark()
     {
+        manaCost = 5;
         range = 12;
         unlockTier = 0;
         damage = 10;

@@ -16,6 +16,7 @@ public class StarterKnife : SpellBase
     {
         range = 16;
         unlockTier = 0;
+        manaCost = 5;
         duration = 3;
         damage = 10;
 

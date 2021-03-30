@@ -7,6 +7,7 @@ public abstract class SpellBase
 {
     public GameObject SpellObject;
     public float coolDown = 0.5f;
+    public int manaCost = 10;
     public abstract void CastSpell(Vector3 posistion, float rot, GameObject agentRef, string tag = "Equipped");
     public abstract void SetValues();
     public float duration;
