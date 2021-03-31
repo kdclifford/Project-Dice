@@ -195,6 +195,7 @@ public class PlayerController : MonoBehaviour
 
         if (currRTFireCooldown <= 0.0f && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightAttack) && rightSpell != -1)
         {
+            spellManaCost = SpellList.instance.spells[leftSpell].manaCost;
             if (Mana.instance.GetMana() > spellManaCost && firedRT == false)
             {
                 firedRT = true;
@@ -205,6 +206,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (currLTFireCooldown <= 0.0f && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftAttack) && leftSpell != -1)
         {
+            spellManaCost = SpellList.instance.spells[leftSpell].manaCost;
             if (Mana.instance.GetMana() > spellManaCost && firedLT == false)
             {
                 firedLT = true;

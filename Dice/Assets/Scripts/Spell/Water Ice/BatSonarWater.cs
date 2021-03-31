@@ -16,7 +16,7 @@ public class BatSonarWater : SpellBase
         element = EElementalyType.Water;
         castingSound = ESoundClipEnum.SonarSpell;
         spellType = ESpellType.AOE;
-        deathSound = ESoundClipEnum.CHANGEME;
+        deathSound = ESoundClipEnum.NoSound;
         SpellName = "EEEEK BLUB";
         PathProjectile = PathProjectile + element.ToString() + "/";
     }

@@ -19,6 +19,7 @@ public class FireBall : SpellBase
         range = 12;
         damage = 10;
         unlockTier = 0;
+        manaCost = 5;
         duration = 3;
         castingColour = Color.red;
         element = EElementalyType.Fire;
