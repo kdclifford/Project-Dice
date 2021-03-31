@@ -51,7 +51,7 @@ public class Teleport : MonoBehaviour
                 transform.position = teleportMesh.transform.position;
                 teleportMesh.transform.position = transform.position;
                 secondPress = false;
-                GameObject teleport = Instantiate(particalPrefab, transform.position, Quaternion.identity) as GameObject;
+                GameObject teleport = Instantiate(particalPrefab, transform.position, transform.rotation) as GameObject;
                 Destroy(teleport, 5.0f);
             }
         }
