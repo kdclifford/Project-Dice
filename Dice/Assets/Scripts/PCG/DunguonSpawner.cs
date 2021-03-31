@@ -111,7 +111,7 @@ public class DunguonSpawner : MonoBehaviour
             if (roomsData[chosenRoom].chestSpawnLocations[chosenSpawnLocation].w == 2.5)
             {
                 chest.transform.rotation = Quaternion.Euler(0, 0, 0);
-                chest.GetComponent<CDungeonChest>().facingDirection = FacingDirection.Up;
+                chest.GetComponent<CDungeonChest>().facingDirection = FacingDirection.Down;
 
             }
             else if (roomsData[chosenRoom].chestSpawnLocations[chosenSpawnLocation].w == 5)
@@ -123,7 +123,7 @@ public class DunguonSpawner : MonoBehaviour
             else if (roomsData[chosenRoom].chestSpawnLocations[chosenSpawnLocation].w == 7.5)
             {
                 chest.transform.rotation = Quaternion.Euler(0, 180, 0);
-                chest.GetComponent<CDungeonChest>().facingDirection = FacingDirection.Down;
+                chest.GetComponent<CDungeonChest>().facingDirection = FacingDirection.Up;
 
             }
             else if (roomsData[chosenRoom].chestSpawnLocations[chosenSpawnLocation].w == 10)

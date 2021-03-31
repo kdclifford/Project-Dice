@@ -17,7 +17,7 @@ public class Bubble : SpellBase
         range = 10;
         unlockTier = 0;
         damage = 10;
-
+        manaCost = 5;
         duration = 3;
         castingColour = Color.blue;
         element = EElementalyType.Water;

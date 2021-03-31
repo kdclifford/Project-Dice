@@ -15,7 +15,7 @@ public class SwampBall : SpellBase
     {
         unlockTier = 0;
         damage = 10;
-
+        manaCost = 5;
         duration = 3;
         castingColour = Color.green;
         element = EElementalyType.Nature;
