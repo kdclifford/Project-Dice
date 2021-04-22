@@ -30,7 +30,8 @@ public class UIManager : MonoBehaviour
     private Text FloorCounterUI;
     [SerializeField]
     private GameObject FloorUI;
-
+    [SerializeField]
+    private GameObject MiniMapUI;
 
 
     private Health playerHealth;
@@ -99,6 +100,18 @@ public class UIManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name != "Menu" && SceneManager.GetActiveScene().name != "Options")
         {
             ShowUI();
+            //Update Map
+           
+          
+            Texture2D texture = new Texture2D(DunguonSpawner.instance.WorldSize.x, DunguonSpawner.instance.WorldSize.y);
+            var colourMap = DunguonSpawner.instance.worldColourMap;
+
+            texture.SetPixels(colourMap);
+            texture.Apply();
+            var miniMap = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+
+            MiniMapUI.GetComponent<Image>().sprite = miniMap;
+
         }
         else
         {
@@ -115,6 +128,8 @@ public class UIManager : MonoBehaviour
         ManaUI.SetActive(true);
         teleportUI.SetActive(true);
         FloorUI.SetActive(true);
+        MiniMapUI.SetActive(true);
+
     }
 
     public void HideUI()
@@ -124,6 +139,7 @@ public class UIManager : MonoBehaviour
         ManaUI.SetActive(false);
         teleportUI.SetActive(false);
         FloorUI.SetActive(false);
+        MiniMapUI.SetActive(false);
     }
 
 

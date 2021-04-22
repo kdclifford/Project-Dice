@@ -31,6 +31,8 @@ public class DunguonSpawner : MonoBehaviour
     [SerializeField]
     private GameObject chestPrefab;
 
+    public Color[] worldColourMap;
+
     public int BossFloor = 2;
 
     [SerializeField]
@@ -49,6 +51,8 @@ public class DunguonSpawner : MonoBehaviour
     public List<GameObject> roomRef;
 
     public static DunguonSpawner instance;
+
+    public Sprite miniMap;
 
     private void Awake()
     {
@@ -144,6 +148,99 @@ public class DunguonSpawner : MonoBehaviour
         player.transform.position = new Vector3(12 * roomsData[1].location.x, 1f, 12 * roomsData[1].location.y);
         //Instantiate(Player, new Vector3(4 * roomsData[1].location.x, 0, 4 * roomsData[1].location.y), Quaternion.identity);
 
+
+        //generate the colour map Set Background of colour map to be white 
+        //Will then go over and paint and rooms to be black and the corriders to be grey
+        var texture = GenerateMinMapTexture();
+        miniMap =  Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+    }
+
+    public Texture2D GenerateStartingMiniMapTexture() 
+    {
+        worldColourMap = new Color[WorldSize.x * WorldSize.y];
+
+        var tempColour = Color.white;
+        for (int x = 0; x < WorldSize.x; x++)
+        {
+            for (int y = 0; y < WorldSize.y; y++)
+            {
+                worldColourMap[y * WorldSize.y + x] = tempColour;
+            }
+        }
+
+
+        //Set The Starting Room Texture
+        tempColour = Color.black;
+
+           
+        for (int x = 0; x < roomsData[1].Size.x; x++)
+        {
+            for (int y = 0; y < roomsData[1].Size.y; y++)
+            {
+                worldColourMap[(roomsData[1].location.y + y) * WorldSize.y + (roomsData[1].location.x + x)] = tempColour;
+            }
+        }
+        
+
+
+        Texture2D texture = new Texture2D(WorldSize.x, WorldSize.y);
+        texture.SetPixels(worldColourMap);
+        texture.Apply();
+        return texture;
+
+    }
+    public Texture2D UpdateCorridorMinMapTexture(float x, float y)
+    {
+
+        var tempColour = Color.blue;
+
+        Vector2Int worldMapSize = new Vector2Int((int)x/12, (int)y /12);
+
+        worldColourMap[(worldMapSize.y ) * WorldSize.y + (worldMapSize.x )] = tempColour;
+
+        Texture2D texture = new Texture2D(WorldSize.x, WorldSize.y);
+        texture.SetPixels(worldColourMap);
+        texture.Apply();
+        return texture;
+    }
+
+    public Texture2D GenerateMinMapTexture()
+    {
+        worldColourMap = new Color[WorldSize.x * WorldSize.y];
+        //generate the colour map Set Background of colour map to be white 
+        //Will then go over and paint and rooms to be black and the corriders to be grey
+
+        var tempColour = Color.white;
+        for (int x = 0; x < WorldSize.x; x++)
+        {
+            for (int y = 0; y < WorldSize.y; y++)
+            {
+                worldColourMap[x * WorldSize.x + y] = tempColour;
+            }
+        }
+        tempColour = Color.blue;
+
+        foreach (Vector2Int point in pathPoints)
+        {
+            worldColourMap[(point.x * WorldSize.x-1) + point.y] = tempColour;
+        }
+
+        tempColour = Color.black;
+        foreach (Room room in roomsData)
+        {
+            for (int x = 0; x < room.Size.x; x++)
+            {
+                for (int y = 0; y < room.Size.y; y++)   
+                {
+                    worldColourMap[((room.location.x + x) * WorldSize.x -1)+ (room.location.y + y)] = tempColour;
+                }
+            }
+        }
+
+        Texture2D texture = new Texture2D(WorldSize.x, WorldSize.y);
+        texture.SetPixels(worldColourMap);
+        texture.Apply();
+        return texture;
     }
 
 
