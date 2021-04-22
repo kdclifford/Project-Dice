@@ -379,6 +379,7 @@ public class PlayerController : MonoBehaviour
             else if (Collision.gameObject.tag == "Light")
             {
                 Collision.gameObject.GetComponent<ParticleSystem>().Play();
+                DunguonSpawner.instance.UpdateCorridorMinMapTexture(Collision.gameObject.transform.position.x, Collision.gameObject.transform.position.y);
             }
 
         }
