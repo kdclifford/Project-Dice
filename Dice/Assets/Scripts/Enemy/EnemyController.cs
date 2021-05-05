@@ -50,7 +50,6 @@ public class EnemyController : MonoBehaviour
     bool gotRandomPos = false;
     Vector3 dest;
     private GameObject lootDrop;
-    PlayerController playerController;
 
     // Start is called before the first frame update
     void Start()
@@ -132,11 +131,7 @@ public class EnemyController : MonoBehaviour
                 animator.SetBool("Death", isDead);
                 animator.SetTrigger("Dead");
 
-                if(!playerController)
-                {
-                    playerController = gameObject.GetComponent<PlayerController>();
-                }
-                playerController.increaseKills();
+                PlayerController.instance.increaseKills();
 
                 Destroy(GetComponent<Collider>());
                 Destroy(GetComponent<NavMeshAgent>());
