@@ -222,7 +222,7 @@ public class DunguonSpawner : MonoBehaviour
 
         foreach (Vector2Int point in pathPoints)
         {
-            worldColourMap[(point.x * WorldSize.x-1) + point.y] = tempColour;
+            worldColourMap[(point.x * WorldSize.x) + point.y] = tempColour;
         }
 
         tempColour = Color.black;
