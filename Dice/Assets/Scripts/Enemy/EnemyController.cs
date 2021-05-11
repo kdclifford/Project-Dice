@@ -128,6 +128,7 @@ public class EnemyController : MonoBehaviour
 
                 agent.ResetPath();
                 isDead = true;
+
                 animator.SetBool("Death", isDead);
                 animator.SetTrigger("Dead");
 

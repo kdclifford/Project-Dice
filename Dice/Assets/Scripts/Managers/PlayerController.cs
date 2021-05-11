@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Button.Utils;
 using AnimationFunctions.Utils;
 using PlayerCollisionCheck.Utils;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -85,8 +87,13 @@ public class PlayerController : MonoBehaviour
     private int UICurrentFloor = 1;
     private int CurrentKills = 0;
 
-    public bool nextLevel = false;
+    private Text KillsText;
+    private Text FloorsText;
+    private Text PickupsText;
+    private Text TimeText;
+    private bool DeathTextLoaded = false;
 
+    public bool nextLevel = false;
 
     private GameObject DungeonDoorObj;
     private GameObject DungeonChestObj;
@@ -135,6 +142,18 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(SceneManager.GetActiveScene().name == "DeathRoom" && DeathTextLoaded == false)
+        {
+            KillsText = GameObject.Find("KillsValue").GetComponent<Text>();
+            FloorsText = GameObject.Find("FloorsValue").GetComponent<Text>();
+            PickupsText = GameObject.Find("PickupsValue").GetComponent<Text>();
+            TimeText = GameObject.Find("TimeValue").GetComponent<Text>();
+
+            LoadDeathRoomText();
+
+            DeathTextLoaded = true;
+        }
+
         if (volumeTriggered == true && volumeButton < 0 && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
         {
             VolumeChange Vol = volumeObj.GetComponent<VolumeChange>();
@@ -457,5 +476,11 @@ public class PlayerController : MonoBehaviour
         CurrentKills++;
     }
 
-    
+    public void LoadDeathRoomText()
+    {
+        KillsText.text = CurrentKills.ToString();
+        FloorsText.text = UICurrentFloor.ToString();
+        PickupsText.text = CurrentKills.ToString();
+        TimeText.text = CurrentKills.ToString();
+    }
 }
