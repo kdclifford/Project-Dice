@@ -86,6 +86,7 @@ public class PlayerController : MonoBehaviour
 
     private int UICurrentFloor = 1;
     private int CurrentKills = 0;
+    private int CurrentPickups = 0;
 
     private Text KillsText;
     private Text FloorsText;
@@ -262,14 +263,14 @@ public class PlayerController : MonoBehaviour
             playerAnimations.Idle();
         }
 
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            uIManager.ShowEquipPopUp();
-        }
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            uIManager.HideEquipPopUp();
-        }
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
+        //    uIManager.ShowEquipPopUp();
+        //}
+        //if (Input.GetKeyDown(KeyCode.O))
+        //{
+        //    uIManager.HideEquipPopUp();
+        //}
 
         if (currRTFireCooldown >= 0.0f)
         {
@@ -317,6 +318,7 @@ public class PlayerController : MonoBehaviour
 
             if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftEquipt))
             {
+                CurrentPickups++;
                 //Set the spell
                 leftSpell = (int)Collision.gameObject.GetComponent<ProjectileType>().spellIndex;
 
@@ -335,7 +337,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightEquipt))
             {
-
+                CurrentPickups++;
                 rightSpell = (int)Collision.gameObject.GetComponent<ProjectileType>().spellIndex;
 
                 var baseSpell = SpellList.instance.spells[rightSpell];
@@ -359,6 +361,7 @@ public class PlayerController : MonoBehaviour
 
             if (sn.GetHealth() < sn.maxHealth)
             {
+                CurrentPickups++;
                 sn.AddHealth();
                 Destroy(Collision.gameObject);
                 Collision.gameObject.transform.GetChild(1).gameObject.SetActive(false);
@@ -480,7 +483,7 @@ public class PlayerController : MonoBehaviour
     {
         KillsText.text = CurrentKills.ToString();
         FloorsText.text = UICurrentFloor.ToString();
-        PickupsText.text = CurrentKills.ToString();
+        PickupsText.text = CurrentPickups.ToString();
         TimeText.text = CurrentKills.ToString();
     }
 }
