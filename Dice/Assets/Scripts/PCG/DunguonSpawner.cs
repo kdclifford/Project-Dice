@@ -108,8 +108,6 @@ public class DunguonSpawner : MonoBehaviour
             chestPostion.z += (roomsData[chosenRoom].chestSpawnLocations[chosenSpawnLocation].z*3);
 
 
-
-
             var chest = Instantiate(chestPrefab, chestPostion, Quaternion.identity);
 
             if (roomsData[chosenRoom].chestSpawnLocations[chosenSpawnLocation].w == 2.5)
@@ -139,8 +137,6 @@ public class DunguonSpawner : MonoBehaviour
 
             }
 
-            
-
         }
 
 
@@ -151,8 +147,8 @@ public class DunguonSpawner : MonoBehaviour
 
         //generate the colour map Set Background of colour map to be white 
         //Will then go over and paint and rooms to be black and the corriders to be grey
-        var texture = GenerateMinMapTexture();
-        miniMap =  Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+        //var texture = GenerateMinMapTexture();
+        //miniMap =  Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
     }
 
     public Texture2D GenerateStartingMiniMapTexture() 
@@ -167,7 +163,6 @@ public class DunguonSpawner : MonoBehaviour
                 worldColourMap[y * WorldSize.y + x] = tempColour;
             }
         }
-
 
         //Set The Starting Room Texture
         tempColour = Color.black;
