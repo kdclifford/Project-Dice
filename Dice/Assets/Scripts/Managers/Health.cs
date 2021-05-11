@@ -36,12 +36,14 @@ public class Health : MonoBehaviour
             {
                 isDead = true;
                 levelManager.LoadLevel("DeathRoom");
+                gameObject.transform.position = new Vector3 (20, 2, 7);
+            currentHealth = 1;
+                gameObject.GetComponent<PlayerController>().enabled = true;
             }
             
             
-            //currentHealth = 1;
             //Reset The player Data on death
-            DestroyComponents();
+           // DestroyComponents();
         }
     }
 
