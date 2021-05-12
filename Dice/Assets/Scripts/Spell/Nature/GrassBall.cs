@@ -17,7 +17,7 @@ public class GrassBall : SpellBase
         duration = 3;
         castingColour = Color.green;
         element = EElementalyType.Nature;
-        castingSound = ESoundClipEnum.Electric;
+        castingSound = ESoundClipEnum.GrassOrbSFX;
         spellType = ESpellType.Projectile;
         SpellName = "GrassBall";
         PathProjectile = PathProjectile + element.ToString() + "/";

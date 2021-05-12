@@ -19,9 +19,11 @@ public class SwampBall : SpellBase
         duration = 3;
         castingColour = Color.green;
         element = EElementalyType.Nature;
-        castingSound = ESoundClipEnum.Bubble;
+        castingSound = ESoundClipEnum.GrassOrbSFX;
         spellType = ESpellType.Projectile;
         SpellName = "ShrekFart";
+        deathSound = ESoundClipEnum.GrassCrumpleSFX;
+
         PathProjectile = PathProjectile + element.ToString() + "/";
     }
 

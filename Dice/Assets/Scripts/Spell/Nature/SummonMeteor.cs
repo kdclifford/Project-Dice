@@ -24,9 +24,9 @@ public class SummonMeteor : SpellBase
         unlockTier = 5;
         castingColour = Color.red;
         element = EElementalyType.Nature;
-        castingSound = ESoundClipEnum.Bubble;
+        castingSound = ESoundClipEnum.MetorFallingSfx;
         spellType = ESpellType.AOE;
-        deathSound = ESoundClipEnum.Bubble;
+        deathSound = ESoundClipEnum.BoulderCrumpleSFX;
         SpellName = "DinoKiller";
         PathProjectile = PathProjectile + element.ToString() + "/";
     }

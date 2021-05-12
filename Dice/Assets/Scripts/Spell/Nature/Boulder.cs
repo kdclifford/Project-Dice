@@ -19,7 +19,7 @@ public class Boulder : SpellBase
         unlockTier = 2;
         castingColour = Color.green;
         element = EElementalyType.Nature;
-        castingSound = ESoundClipEnum.Electric;
+        castingSound = ESoundClipEnum.BoulderCrumpleSFX;
         spellType = ESpellType.Projectile;
         SpellName = "BBBoulder";
         PathProjectile = PathProjectile + element.ToString() + "/";        

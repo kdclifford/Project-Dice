@@ -22,6 +22,7 @@ public class Flamethrower : SpellBase
         duration = 1;
         unlockTier = 5;
         damage = 20;
+        manaCost = 25;
         castingColour = Color.red;
         element = EElementalyType.Fire;
         castingSound = ESoundClipEnum.FireBall;

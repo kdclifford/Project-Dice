@@ -796,6 +796,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkeletonElectricity
       objectReference: {fileID: 0}
+    - target: {fileID: 146920, guid: 09148e75ad6ff1542bd2d87e96c96235, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400832, guid: 09148e75ad6ff1542bd2d87e96c96235, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -7.512848
@@ -1404,6 +1408,10 @@ PrefabInstance:
     - target: {fileID: 100460, guid: fefc91b5c35969545bd9b282a76a741e, type: 3}
       propertyPath: m_Name
       value: BatElectricity
+      objectReference: {fileID: 0}
+    - target: {fileID: 100460, guid: fefc91b5c35969545bd9b282a76a741e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: fefc91b5c35969545bd9b282a76a741e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2769,7 +2777,7 @@ PrefabInstance:
     - target: {fileID: -6771448749878362742, guid: dca42855aa3d8ed4281a5a46eb3dbab9,
         type: 3}
       propertyPath: randomSpell
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2890370868060906427, guid: dca42855aa3d8ed4281a5a46eb3dbab9,
         type: 3}
@@ -2961,6 +2969,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CactusElectricity
       objectReference: {fileID: 0}
+    - target: {fileID: 135712, guid: 51925d38ee4a47f4993830358f5ed010, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 427836, guid: 51925d38ee4a47f4993830358f5ed010, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -3017,6 +3029,10 @@ PrefabInstance:
     - target: {fileID: 156912, guid: de5de4fd5bd598f47a01e51a09510b8a, type: 3}
       propertyPath: m_Name
       value: Toon Dragon-Purple (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 156912, guid: de5de4fd5bd598f47a01e51a09510b8a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 443978, guid: de5de4fd5bd598f47a01e51a09510b8a, type: 3}
       propertyPath: m_RootOrder
@@ -3090,6 +3106,10 @@ PrefabInstance:
     - target: {fileID: 140632, guid: 60dd4e6683c81c746a537207cd2f45ea, type: 3}
       propertyPath: m_Name
       value: GolemPhysical
+      objectReference: {fileID: 0}
+    - target: {fileID: 140632, guid: 60dd4e6683c81c746a537207cd2f45ea, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 434996, guid: 60dd4e6683c81c746a537207cd2f45ea, type: 3}
       propertyPath: m_RootOrder
@@ -3238,6 +3258,10 @@ PrefabInstance:
     - target: {fileID: 196488, guid: a72190d3584c5024b91f0d5e5e3fbc88, type: 3}
       propertyPath: m_Name
       value: PlantMonsterPhysical
+      objectReference: {fileID: 0}
+    - target: {fileID: 196488, guid: a72190d3584c5024b91f0d5e5e3fbc88, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 433142, guid: a72190d3584c5024b91f0d5e5e3fbc88, type: 3}
       propertyPath: m_RootOrder
@@ -3830,7 +3854,7 @@ PrefabInstance:
     - target: {fileID: -6771448749878362742, guid: dca42855aa3d8ed4281a5a46eb3dbab9,
         type: 3}
       propertyPath: spellIndex
-      value: 13
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -6771448749878362742, guid: dca42855aa3d8ed4281a5a46eb3dbab9,
         type: 3}
@@ -3958,7 +3982,7 @@ PrefabInstance:
     - target: {fileID: -6771448749878362742, guid: dca42855aa3d8ed4281a5a46eb3dbab9,
         type: 3}
       propertyPath: spellIndex
-      value: 26
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -6771448749878362742, guid: dca42855aa3d8ed4281a5a46eb3dbab9,
         type: 3}
@@ -4368,6 +4392,10 @@ PrefabInstance:
     - target: {fileID: 199904, guid: 5da7d225dcd0b0d4eafee07810431959, type: 3}
       propertyPath: m_Name
       value: KnightWater
+      objectReference: {fileID: 0}
+    - target: {fileID: 199904, guid: 5da7d225dcd0b0d4eafee07810431959, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 401238, guid: 5da7d225dcd0b0d4eafee07810431959, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5711,6 +5739,10 @@ PrefabInstance:
     - target: {fileID: 114588, guid: 16860835610b7fa48bbbb3c6cae55141, type: 3}
       propertyPath: m_Name
       value: GhostPhysical
+      objectReference: {fileID: 0}
+    - target: {fileID: 114588, guid: 16860835610b7fa48bbbb3c6cae55141, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 412690, guid: 16860835610b7fa48bbbb3c6cae55141, type: 3}
       propertyPath: m_LocalPosition.y

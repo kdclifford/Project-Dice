@@ -21,6 +21,8 @@ public class SwordProjectile : SpellBase
         castingSound = ESoundClipEnum.FireBall;
         spellType = ESpellType.Projectile;
         SpellName = "BigKnifie";
+        deathSound = ESoundClipEnum.BluntHitSFX;
+
         PathProjectile = PathProjectile + element.ToString() + "/";
     }
 

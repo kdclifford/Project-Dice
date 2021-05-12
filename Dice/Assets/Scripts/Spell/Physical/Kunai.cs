@@ -19,8 +19,9 @@ public class Kunai : SpellBase
         unlockTier = 2;
         castingColour = Color.white;
         element = EElementalyType.Physical;
-        castingSound = ESoundClipEnum.Bubble;
+        castingSound = ESoundClipEnum.DrawnSwordSFX;
         spellType = ESpellType.Projectile;
+        deathSound = ESoundClipEnum.BluntHitSFX;
         SpellName = "LightNinja";
         PathProjectile = PathProjectile + element.ToString() + "/";
     }

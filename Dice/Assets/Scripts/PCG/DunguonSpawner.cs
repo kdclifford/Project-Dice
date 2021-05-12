@@ -12,7 +12,7 @@ public class DunguonSpawner : MonoBehaviour
 
     //private GameObject wallParent;
     //private GameObject floorParent;
-   // private GameObject lightHolder;
+     //private GameObject lightHolder;
 
     public GameObject Player;
 
