@@ -24,7 +24,7 @@ public class SummonPumpkin : SpellBase
         unlockTier = 5;
         castingColour = Color.red;
         element = EElementalyType.Nature;
-        castingSound = ESoundClipEnum.NoSound;
+        castingSound = ESoundClipEnum.GrassCrumpleSFX;
         spellType = ESpellType.AOE;
         deathSound = ESoundClipEnum.NoSound;
         SpellName = "PumpKing";

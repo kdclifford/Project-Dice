@@ -25,7 +25,7 @@ public class Flamethrower : SpellBase
         manaCost = 25;
         castingColour = Color.red;
         element = EElementalyType.Fire;
-        castingSound = ESoundClipEnum.FireBall;
+        castingSound = ESoundClipEnum.FlamingConeSFX;
         spellType = ESpellType.Projectile;
         SpellName = "Thrower";
         coolDown = 6;

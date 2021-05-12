@@ -16,7 +16,7 @@ public class FireLine : SpellBase
         unlockTier = 2;
         castingColour = Color.red;
         element = EElementalyType.Fire;
-        castingSound = ESoundClipEnum.FireBall;
+        castingSound = ESoundClipEnum.flamestrike;
         spellType = ESpellType.AOE;
         deathSound = ESoundClipEnum.PuttingOutFireBall;
         SpellName = "PSHHHHFire";

@@ -25,6 +25,8 @@ public enum ESoundClipEnum
 	MetorFallingSfx = 19,
 	DrawnSwordSFX = 20,
 	BowSFX = 21,
+	flamestrike = 22,
+	FlamingConeSFX = 23,
     Size, 
 
 

@@ -16,7 +16,7 @@ public class FireCone : SpellBase
         unlockTier = 3;
         castingColour = Color.red;
         element = EElementalyType.Fire;
-        castingSound = ESoundClipEnum.FireBall;
+        castingSound = ESoundClipEnum.FlamingConeSFX;
         spellType = ESpellType.AOE;
         deathSound = ESoundClipEnum.PuttingOutFireBall;
         SpellName = "PSHHHHFire";

@@ -22,9 +22,9 @@ public class SummonSwamp : SpellBase
         duration = 10;
         castingColour = Color.green;
         element = EElementalyType.Nature;
-        castingSound = ESoundClipEnum.GrassOrbSFX;
+        castingSound = ESoundClipEnum.GrassCrumpleSFX;
         spellType = ESpellType.AOE;
-        deathSound = ESoundClipEnum.GrassCrumpleSFX;
+        deathSound = ESoundClipEnum.NoSound;
         SpellName = "ShreksVoid";
         PathProjectile = PathProjectile + element.ToString() + "/";
     }
