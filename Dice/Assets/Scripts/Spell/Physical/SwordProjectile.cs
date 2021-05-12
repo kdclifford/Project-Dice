@@ -18,7 +18,7 @@ public class SwordProjectile : SpellBase
         damage = 15;
         castingColour = Color.white;
         element = EElementalyType.Physical;
-        castingSound = ESoundClipEnum.FireBall;
+        castingSound = ESoundClipEnum.DrawnSwordSFX;
         spellType = ESpellType.Projectile;
         SpellName = "BigKnifie";
         deathSound = ESoundClipEnum.BluntHitSFX;
