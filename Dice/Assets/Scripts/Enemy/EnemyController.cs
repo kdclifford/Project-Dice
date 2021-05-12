@@ -50,7 +50,6 @@ public class EnemyController : MonoBehaviour
     bool gotRandomPos = false;
     Vector3 dest;
     private GameObject lootDrop;
-    PlayerController playerController;
 
     // Start is called before the first frame update
     void Start()
@@ -80,25 +79,31 @@ public class EnemyController : MonoBehaviour
             {
                 currentState = EAIStates.Dead;
             }
-            else if (!CheckLineofSight(target.transform.position) && Vector3.Distance(target.transform.position, transform.position) <=
-                SpellList.instance.spells[(int)projectile].range)
-            {
-                currentState = EAIStates.Fire;
-
-                agent.ResetPath();
-            }
-            else if (!CheckLineofSight(target.transform.position) && Vector3.Distance(target.transform.position, transform.position) >=
-                SpellList.instance.spells[(int)projectile].range/* && target.GetComponent<PlayerAnimations>() != null*/)
-            {
-                if (currentState != EAIStates.MoveTowards)
-                {
-                    currentState = EAIStates.MoveTowards;
-                    agent.ResetPath();
-                }
-            }
             else
             {
-                currentState = EAIStates.RandomMove;
+                if (currentState != EAIStates.Nothing)
+                {
+                    if (!CheckLineofSight(target.transform.position) && Vector3.Distance(target.transform.position, transform.position) <=
+                        SpellList.instance.spells[(int)projectile].range)
+                    {
+                        currentState = EAIStates.Fire;
+
+                        agent.ResetPath();
+                    }
+                    else if (!CheckLineofSight(target.transform.position) && Vector3.Distance(target.transform.position, transform.position) >=
+                        SpellList.instance.spells[(int)projectile].range/* && target.GetComponent<PlayerAnimations>() != null*/)
+                    {
+                        if (currentState != EAIStates.MoveTowards)
+                        {
+                            currentState = EAIStates.MoveTowards;
+                            agent.ResetPath();
+                        }
+                    }
+                    else
+                    {
+                        currentState = EAIStates.RandomMove;
+                    }
+                }
             }
 
             if (currentState != EAIStates.Dead)
@@ -117,7 +122,7 @@ public class EnemyController : MonoBehaviour
             }
 
 
-            if (currentState == EAIStates.Dead && !removeBody)
+            if (currentState == EAIStates.Dead)
             {
                 randDrop = UnityEngine.Random.Range(0.0f, 100.0f);
 
@@ -127,20 +132,16 @@ public class EnemyController : MonoBehaviour
                     HPdropped = true;
                 }
 
-                agent.ResetPath();
+              //  agent.ResetPath();
                 isDead = true;
                 animator.SetBool("Death", isDead);
                 animator.SetTrigger("Dead");
 
-                if(!playerController)
-                {
-                    playerController = gameObject.GetComponent<PlayerController>();
-                }
-                playerController.increaseKills();
-
+                PlayerController.instance.increaseKills();
+                currentState = EAIStates.Nothing;
                 Destroy(GetComponent<Collider>());
-                Destroy(GetComponent<NavMeshAgent>());
                 Destroy(GetComponent<Rigidbody>());
+                Destroy(GetComponent<NavMeshAgent>());
             }
             else if (currentState == EAIStates.MoveTowards)
             {
@@ -280,7 +281,7 @@ public class EnemyController : MonoBehaviour
         ParticleSystem.MainModule particle = lootDrop.GetComponent<ParticleSystem>().main;
         particle.startColor = SpellList.instance.spells[(int)projectile].castingColour;
         GameObject loot = MonoBehaviour.Instantiate(lootDrop, transform.position, Quaternion.identity) as GameObject;
-        loot.tag = ManaTag(SpellList.instance.spells[(int)projectile].element);
+       // loot.tag = ManaTag(SpellList.instance.spells[(int)projectile].element);
     }
 
     public string ManaTag(EElementalyType type)
@@ -309,5 +310,6 @@ public enum EAIStates
     RandomMove,
     Fire,
     MoveTowards,
+    Nothing,
 }
 

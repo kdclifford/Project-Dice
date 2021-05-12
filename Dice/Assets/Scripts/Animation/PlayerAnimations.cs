@@ -51,8 +51,9 @@ public class PlayerAnimations : MonoBehaviour
     }
 
     public void DeathAnimation()
-    {                    
-            Destroy(GetComponent<PlayerController>());
+    {
+        //Destroy(GetComponent<PlayerController>());
+        GetComponent<PlayerController>().enabled = false;
         //Destroy(this);
 
         if (deathDirection.y >= 0 && deathDirection.y < 0.1)
@@ -67,7 +68,7 @@ public class PlayerAnimations : MonoBehaviour
             newDeathDirection = AnimationScript.CurrentDirection(deathDirection, gameObject);
             Death();
         AnimationScript.StopAttack(animator);
-        }
+    }
     
 
     public void Move(Vector2 direction, float velocity)

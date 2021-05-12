@@ -100,17 +100,17 @@ public class UIManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name != "Menu" && SceneManager.GetActiveScene().name != "Options")
         {
             ShowUI();
-            //Update Map
+            ////Update Map
            
           
-            Texture2D texture = new Texture2D(DunguonSpawner.instance.WorldSize.x, DunguonSpawner.instance.WorldSize.y);
-            var colourMap = DunguonSpawner.instance.worldColourMap;
+            //Texture2D texture = new Texture2D(DunguonSpawner.instance.WorldSize.x, DunguonSpawner.instance.WorldSize.y);
+            //var colourMap = DunguonSpawner.instance.worldColourMap;
 
-            texture.SetPixels(colourMap);
-            texture.Apply();
-            var miniMap = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+            //texture.SetPixels(colourMap);
+            //texture.Apply();
+            //var miniMap = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
 
-            MiniMapUI.GetComponent<Image>().sprite = miniMap;
+            //MiniMapUI.GetComponent<Image>().sprite = miniMap;
 
         }
         else
@@ -128,7 +128,7 @@ public class UIManager : MonoBehaviour
         ManaUI.SetActive(true);
         teleportUI.SetActive(true);
         FloorUI.SetActive(true);
-        MiniMapUI.SetActive(true);
+        //MiniMapUI.SetActive(true);
 
     }
 
