@@ -45,7 +45,7 @@ public class LevelManager : MonoBehaviour
             fade = GameObject.FindGameObjectWithTag("SceneFade").GetComponent<Animator>();
         }
 
-        if(SceneManager.GetActiveScene() != oldScene && SceneManager.GetActiveScene().name != "Menu" && SceneManager.GetActiveScene().name != "Options")
+        if(SceneManager.GetActiveScene() != oldScene && SceneManager.GetActiveScene().name != "Menu" && SceneManager.GetActiveScene().name != "Options" && SceneManager.GetActiveScene().name != "DeathRoom")
         {
             SpawnManager.instance.StartSpawn();
             oldScene = SceneManager.GetActiveScene();
@@ -88,7 +88,12 @@ public class LevelManager : MonoBehaviour
     {
         SpawnManager.instance.currentFloor++;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        SpawnManager.instance.StartSpawn();
+        if (SceneManager.GetActiveScene().name == "Test PCG")
+        {
+            {
+                SpawnManager.instance.StartSpawn();
+            }
+        }
     }
 
 }
