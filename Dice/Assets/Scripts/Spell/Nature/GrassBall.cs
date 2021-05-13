@@ -15,11 +15,14 @@ public class GrassBall : SpellBase
     {
         damage = 15;
         duration = 3;
+        manaCost = 8;
+        unlockTier = 1;
         castingColour = Color.green;
         element = EElementalyType.Nature;
-        castingSound = ESoundClipEnum.Electric;
+        castingSound = ESoundClipEnum.GrassOrbSFX;
         spellType = ESpellType.Projectile;
         SpellName = "GrassBall";
+        deathSound = ESoundClipEnum.GrassCrumpleSFX;
         PathProjectile = PathProjectile + element.ToString() + "/";
     }
 

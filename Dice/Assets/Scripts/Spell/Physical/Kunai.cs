@@ -17,10 +17,12 @@ public class Kunai : SpellBase
         duration = 3;
         damage = 17;
         unlockTier = 2;
+        manaCost = 15;
         castingColour = Color.white;
         element = EElementalyType.Physical;
-        castingSound = ESoundClipEnum.Bubble;
+        castingSound = ESoundClipEnum.DrawnSwordSFX;
         spellType = ESpellType.Projectile;
+        deathSound = ESoundClipEnum.BluntHitSFX;
         SpellName = "LightNinja";
         PathProjectile = PathProjectile + element.ToString() + "/";
     }

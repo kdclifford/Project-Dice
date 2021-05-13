@@ -21,7 +21,10 @@ public class SummonLightning : SpellBase
         duration = 10;
         castingColour = Color.yellow;
         element = EElementalyType.Electricity;
-        castingSound = ESoundClipEnum.Electric;
+        castingSound = ESoundClipEnum.LighntingSFX;
+        unlockTier = 4;
+        damage = 30;
+        manaCost = 20;
         spellType = ESpellType.AOE;
         deathSound = ESoundClipEnum.Electric;
         SpellName = "ThorMaad";

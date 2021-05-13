@@ -97,6 +97,7 @@ public class PlayerController : MonoBehaviour
     private bool DeathTextLoaded = false;
 
     public bool nextLevel = false;
+    private bool levelLoaded = false;
 
     private GameObject DungeonDoorObj;
     private GameObject DungeonChestObj;
@@ -145,6 +146,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(SceneManager.GetActiveScene().name == "Test PCG" && levelLoaded == false)
+        {
+            Vector3 SpawnPos = GameObject.Find("altarSpawn").transform.position;
+            SpawnPos.z -= 5;
+           gameObject.transform.position = SpawnPos;
+            levelLoaded = true;
+        }
+
+
         if(SceneManager.GetActiveScene().name != "Menu" && SceneManager.GetActiveScene().name != "DeathRoom")
         {
             TimeInDungeon += Time.deltaTime;
@@ -218,7 +228,7 @@ public class PlayerController : MonoBehaviour
 
         if (currRTFireCooldown <= 0.0f && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightAttack) && rightSpell != -1)
         {
-            spellManaCost = SpellList.instance.spells[leftSpell].manaCost;
+            spellManaCost = SpellList.instance.spells[rightSpell].manaCost;
             if (Mana.instance.GetMana() > spellManaCost && firedRT == false)
             {
                 firedRT = true;
@@ -372,14 +382,14 @@ public class PlayerController : MonoBehaviour
         {
             Health sn = gameObject.GetComponent<Health>();
 
-            if (sn.GetShield() < sn.maxShields)
-            {
-                uIManager.AddUIShield();
-                sn.AddShield();
-                soundManager.Play(ESoundClipEnum.Shield, gameObject);
-                Collision.gameObject.transform.GetChild(1).gameObject.SetActive(false);
-                Destroy(Collision.gameObject);
-            }
+            //if (sn.GetShield() < sn.maxShields)
+            //{
+            //    //uIManager.AddUIShield();
+            //    //sn.AddShield();
+            //    soundManager.Play(ESoundClipEnum.Shield, gameObject);
+            //    Collision.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+            //    Destroy(Collision.gameObject);
+            //}
         }
         else if (Collision.gameObject.tag == "VolumeOption")
         {

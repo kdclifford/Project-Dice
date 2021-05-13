@@ -20,11 +20,12 @@ public class Flamethrower : SpellBase
     public Flamethrower()
     {
         duration = 1;
-        unlockTier = 5;
+        unlockTier = 4;
         damage = 20;
+        manaCost = 25;
         castingColour = Color.red;
         element = EElementalyType.Fire;
-        castingSound = ESoundClipEnum.FireBall;
+        castingSound = ESoundClipEnum.FlamingConeSFX;
         spellType = ESpellType.Projectile;
         SpellName = "Thrower";
         coolDown = 6;

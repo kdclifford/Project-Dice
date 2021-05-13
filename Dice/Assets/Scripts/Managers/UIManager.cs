@@ -14,8 +14,8 @@ public class UIManager : MonoBehaviour
     private GameObject interactPopup;
     [SerializeField]
     private GameObject EquipPopup;
-    [SerializeField]
-    private GameObject shieldPrefab;
+    //[SerializeField]
+    //private GameObject shieldPrefab;
     [SerializeField]
     private GameObject canvas;
     [SerializeField]
@@ -36,9 +36,9 @@ public class UIManager : MonoBehaviour
 
     private Health playerHealth;
    // public GameObject[] hearts;
-    public GameObject[] shield;
+   // public GameObject[] shield;
    // private int maxHearts;
-    private int maxShields;
+    //private int maxShields;
 
 
     private Scene currentScene;
@@ -62,29 +62,29 @@ public class UIManager : MonoBehaviour
     }
 
 
-    public void RemoveHeart()
-    {
-        if (playerHealth.GetShield() > 0)
-        {
-            shield[playerHealth.GetShield()- 1].SetActive(false);
-            return;
-        }
-    }
+    //public void RemoveHeart()
+    //{
+    //    if (playerHealth.GetShield() > 0)
+    //    {
+    //        shield[playerHealth.GetShield()- 1].SetActive(false);
+    //        return;
+    //    }
+    //}
 
-    public void AddUIShield()
-    {
-        shield[playerHealth.GetShield()].SetActive(true);
-    }
+    //public void AddUIShield()
+    //{
+    //    shield[playerHealth.GetShield()].SetActive(true);
+    //}
 
     // Start is called before the first frame update
     void Start()
     {
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
-        maxShields = (int)playerHealth.maxShields;
-        shield = new GameObject[maxShields];
+        //maxShields = (int)playerHealth.maxShields;
+        //shield = new GameObject[maxShields];
         Vector3 heartsPosLeft = new Vector3(-1, 0);
         Vector3 heartsPosRight = new Vector3(-1, 0);
-        Vector3 shieldPosLeft = new Vector3(-1, 0);
+        //Vector3 shieldPosLeft = new Vector3(-1, 0);
 
         //for (int i = 0; i < maxShields; i++)
         //{

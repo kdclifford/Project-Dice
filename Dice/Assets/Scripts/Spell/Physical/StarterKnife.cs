@@ -22,9 +22,11 @@ public class StarterKnife : SpellBase
 
         castingColour = Color.white;
         element = EElementalyType.Physical;
-        castingSound = ESoundClipEnum.FireBall;
+        castingSound = ESoundClipEnum.DrawnSwordSFX;
         spellType = ESpellType.Projectile;
         SpellName = "Shankie";
+        deathSound = ESoundClipEnum.BluntHitSFX;
+
         PathProjectile = PathProjectile + element.ToString() + "/";
     }
 

@@ -30,6 +30,7 @@ public class FireWork : SpellBase
         duration = 1;
         damage = 25;
         unlockTier = 5;
+        manaCost = 25;
         castingColour = Color.red;
         element = EElementalyType.Fire;
         castingSound = ESoundClipEnum.FireBall;

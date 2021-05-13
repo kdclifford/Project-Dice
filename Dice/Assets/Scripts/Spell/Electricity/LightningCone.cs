@@ -16,9 +16,9 @@ public class LightningCone : SpellBase
         unlockTier = 1;
         castingColour = Color.yellow;
         element = EElementalyType.Electricity;
-        castingSound = ESoundClipEnum.Electric;
+        castingSound = ESoundClipEnum.ElectircConeSFX;
         spellType = ESpellType.Projectile;
-        deathSound = ESoundClipEnum.PuttingOutFireBall;
+        deathSound = ESoundClipEnum.NoSound;
         SpellName = "LekkyCone";
         PathProjectile = PathProjectile + element.ToString() + "/";
     }

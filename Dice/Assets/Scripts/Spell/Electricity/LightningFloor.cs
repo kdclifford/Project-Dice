@@ -17,7 +17,7 @@ public class LightningFloor : SpellBase
         unlockTier = 2;
         castingColour = Color.yellow;
         element = EElementalyType.Electricity;
-        castingSound = ESoundClipEnum.LighntingSFX;
+        castingSound = ESoundClipEnum.Electric;
         spellType = ESpellType.AOE;
         deathSound = ESoundClipEnum.NoSound;
         SpellName = "SparkieBoi";

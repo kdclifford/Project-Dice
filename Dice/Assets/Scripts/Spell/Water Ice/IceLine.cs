@@ -16,10 +16,11 @@ public class IceLine : SpellBase
         unlockTier = 2;
         castingColour = Color.blue;
         element = EElementalyType.Water;
-        castingSound = ESoundClipEnum.Bubble;
+        castingSound = ESoundClipEnum.SnowConeSFX;
         spellType = ESpellType.AOE;
         deathSound = ESoundClipEnum.PuttingOutFireBall;
         SpellName = "ChillyBill";
+        manaCost = 15;
         PathProjectile = PathProjectile + element.ToString() + "/";
     }
 

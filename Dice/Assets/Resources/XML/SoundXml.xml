@@ -133,30 +133,6 @@
     <audioGroup>Projectiles</audioGroup>
   </Sound>
   <Sound>
-    <name>Lighnting SFX</name>
-    <clip>
-      <name>Lighnting SFX</name>
-      <hideFlags>NotEditable</hideFlags>
-    </clip>
-    <loop>false</loop>
-    <sound3D>false</sound3D>
-    <volume>1</volume>
-    <pitch>1</pitch>
-    <audioGroup>Master</audioGroup>
-  </Sound>
-  <Sound>
-    <name>CHANGEME</name>
-    <clip>
-      <name>CHANGEME</name>
-      <hideFlags>NotEditable</hideFlags>
-    </clip>
-    <loop>false</loop>
-    <sound3D>false</sound3D>
-    <volume>1</volume>
-    <pitch>1</pitch>
-    <audioGroup>Master</audioGroup>
-  </Sound>
-  <Sound>
     <name>NoSound</name>
     <clip>
       <name>NoSound</name>
@@ -164,19 +140,7 @@
     </clip>
     <loop>false</loop>
     <sound3D>false</sound3D>
-    <volume>1</volume>
-    <pitch>1</pitch>
-    <audioGroup>Master</audioGroup>
-  </Sound>
-  <Sound>
-    <name>SonarSpell</name>
-    <clip>
-      <name>SonarSpell</name>
-      <hideFlags>NotEditable</hideFlags>
-    </clip>
-    <loop>false</loop>
-    <sound3D>false</sound3D>
-    <volume>1</volume>
+    <volume>0.194</volume>
     <pitch>1</pitch>
     <audioGroup>Master</audioGroup>
   </Sound>
@@ -188,6 +152,222 @@
     </clip>
     <loop>false</loop>
     <sound3D>false</sound3D>
+    <volume>0.927</volume>
+    <pitch>1</pitch>
+    <audioGroup>Master</audioGroup>
+  </Sound>
+  <Sound>
+    <name>SonarSpell</name>
+    <clip>
+      <name>SonarSpell</name>
+      <hideFlags>NotEditable</hideFlags>
+    </clip>
+    <loop>false</loop>
+    <sound3D>false</sound3D>
+    <volume>0.942</volume>
+    <pitch>1</pitch>
+    <audioGroup>Master</audioGroup>
+  </Sound>
+  <Sound>
+    <name>CHANGEME</name>
+    <clip>
+      <name>CHANGEME</name>
+      <hideFlags>NotEditable</hideFlags>
+    </clip>
+    <loop>false</loop>
+    <sound3D>false</sound3D>
+    <volume>0.797</volume>
+    <pitch>1</pitch>
+    <audioGroup>Master</audioGroup>
+  </Sound>
+  <Sound>
+    <name>Lighnting SFX</name>
+    <clip>
+      <name>Lighnting SFX</name>
+      <hideFlags>NotEditable</hideFlags>
+    </clip>
+    <loop>false</loop>
+    <sound3D>false</sound3D>
+    <volume>0.695</volume>
+    <pitch>1</pitch>
+    <audioGroup>Master</audioGroup>
+  </Sound>
+  <Sound>
+    <name>GrassOrbSFX</name>
+    <clip>
+      <name>_rassOrbSFX</name>
+      <hideFlags>NotEditable</hideFlags>
+    </clip>
+    <loop>false</loop>
+    <sound3D>false</sound3D>
+    <volume>0.833</volume>
+    <pitch>0.85</pitch>
+    <audioGroup>Master</audioGroup>
+  </Sound>
+  <Sound>
+    <name>BluntHitSFX</name>
+    <clip>
+      <name>BluntHitSFX</name>
+      <hideFlags>NotEditable</hideFlags>
+    </clip>
+    <loop>false</loop>
+    <sound3D>false</sound3D>
+    <volume>1</volume>
+    <pitch>0.87</pitch>
+    <audioGroup>Master</audioGroup>
+  </Sound>
+  <Sound>
+    <name>GrassCrumpleSFX</name>
+    <clip>
+      <name>GrassCrumpleSFX</name>
+      <hideFlags>NotEditable</hideFlags>
+    </clip>
+    <loop>false</loop>
+    <sound3D>false</sound3D>
+    <volume>1</volume>
+    <pitch>0.61</pitch>
+    <audioGroup>Master</audioGroup>
+  </Sound>
+  <Sound>
+    <name>MetorFalling Sfx</name>
+    <clip>
+      <name>MetorFalling Sfx</name>
+      <hideFlags>NotEditable</hideFlags>
+    </clip>
+    <loop>false</loop>
+    <sound3D>true</sound3D>
+    <volume>1</volume>
+    <pitch>1</pitch>
+    <audioGroup>Master</audioGroup>
+  </Sound>
+  <Sound>
+    <name>DrawnSwordSFX</name>
+    <clip>
+      <name>DrawnSwordSFX</name>
+      <hideFlags>NotEditable</hideFlags>
+    </clip>
+    <loop>false</loop>
+    <sound3D>true</sound3D>
+    <volume>1</volume>
+    <pitch>1</pitch>
+    <audioGroup>Master</audioGroup>
+  </Sound>
+  <Sound>
+    <name>BowSFX</name>
+    <clip>
+      <name>BowSFX</name>
+      <hideFlags>NotEditable</hideFlags>
+    </clip>
+    <loop>false</loop>
+    <sound3D>true</sound3D>
+    <volume>1</volume>
+    <pitch>1</pitch>
+    <audioGroup>Master</audioGroup>
+  </Sound>
+  <Sound>
+    <name>flamestrike</name>
+    <clip>
+      <name>flamestrike</name>
+      <hideFlags>NotEditable</hideFlags>
+    </clip>
+    <loop>false</loop>
+    <sound3D>true</sound3D>
+    <volume>1</volume>
+    <pitch>1</pitch>
+    <audioGroup>Master</audioGroup>
+  </Sound>
+  <Sound>
+    <name>FlamingConeSFX</name>
+    <clip>
+      <name>FlamingConeSFX</name>
+      <hideFlags>NotEditable</hideFlags>
+    </clip>
+    <loop>false</loop>
+    <sound3D>true</sound3D>
+    <volume>1</volume>
+    <pitch>1</pitch>
+    <audioGroup>Master</audioGroup>
+  </Sound>
+  <Sound>
+    <name>SnowConeSFX</name>
+    <clip>
+      <name>SnowConeSFX</name>
+      <hideFlags>NotEditable</hideFlags>
+    </clip>
+    <loop>false</loop>
+    <sound3D>true</sound3D>
+    <volume>1</volume>
+    <pitch>1</pitch>
+    <audioGroup>Master</audioGroup>
+  </Sound>
+  <Sound>
+    <name>BlizzardSFX</name>
+    <clip>
+      <name>_lizzardSFX</name>
+      <hideFlags>NotEditable</hideFlags>
+    </clip>
+    <loop>false</loop>
+    <sound3D>false</sound3D>
+    <volume>1</volume>
+    <pitch>1</pitch>
+    <audioGroup>Master</audioGroup>
+  </Sound>
+  <Sound>
+    <name>ElectircConeSFX</name>
+    <clip>
+      <name>ElectircConeSFX</name>
+      <hideFlags>NotEditable</hideFlags>
+    </clip>
+    <loop>false</loop>
+    <sound3D>true</sound3D>
+    <volume>1</volume>
+    <pitch>1</pitch>
+    <audioGroup>Master</audioGroup>
+  </Sound>
+  <Sound>
+    <name>RainSFX</name>
+    <clip>
+      <name>_ainSFX</name>
+      <hideFlags>NotEditable</hideFlags>
+    </clip>
+    <loop>false</loop>
+    <sound3D>false</sound3D>
+    <volume>1</volume>
+    <pitch>1</pitch>
+    <audioGroup>Master</audioGroup>
+  </Sound>
+  <Sound>
+    <name>IceDeathSoundSFX</name>
+    <clip>
+      <name>IceDeathSoundSFX</name>
+      <hideFlags>NotEditable</hideFlags>
+    </clip>
+    <loop>false</loop>
+    <sound3D>true</sound3D>
+    <volume>1</volume>
+    <pitch>1</pitch>
+    <audioGroup>Master</audioGroup>
+  </Sound>
+  <Sound>
+    <name>IceCreationSoundFX</name>
+    <clip>
+      <name>IceCreationSoundFX</name>
+      <hideFlags>NotEditable</hideFlags>
+    </clip>
+    <loop>false</loop>
+    <sound3D>true</sound3D>
+    <volume>1</volume>
+    <pitch>1</pitch>
+    <audioGroup>Master</audioGroup>
+  </Sound>
+  <Sound>
+    <name>BubblePopSFX</name>
+    <clip>
+      <name>BubblePopSFX</name>
+      <hideFlags>NotEditable</hideFlags>
+    </clip>
+    <loop>false</loop>
+    <sound3D>true</sound3D>
     <volume>1</volume>
     <pitch>1</pitch>
     <audioGroup>Master</audioGroup>

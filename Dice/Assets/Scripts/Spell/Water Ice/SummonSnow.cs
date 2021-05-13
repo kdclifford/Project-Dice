@@ -21,11 +21,12 @@ public class SummonSnow : SpellBase
         duration = 5;
         damage = 25;
         unlockTier = 3;
+        manaCost = 20;
         castingColour = Color.blue;
         element = EElementalyType.Water;
-        castingSound = ESoundClipEnum.Bubble;
+        castingSound = ESoundClipEnum.BlizzardSFX;
         spellType = ESpellType.AOE;
-        deathSound = ESoundClipEnum.Bubble;
+        deathSound = ESoundClipEnum.NoSound;
         SpellName = "SnowwyDay";
         PathProjectile = PathProjectile + element.ToString() + "/";
     }

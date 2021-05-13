@@ -18,8 +18,9 @@ public class MagicArrow : SpellBase
         unlockTier = 1;
         duration = 3;
         castingColour = Color.white;
+        deathSound = ESoundClipEnum.BluntHitSFX;
         element = EElementalyType.Physical;
-        castingSound = ESoundClipEnum.Bubble;
+        castingSound = ESoundClipEnum.BowSFX;
         spellType = ESpellType.Projectile;
         SpellName = "MagicArrow";
         PathProjectile = PathProjectile + element.ToString() + "/";
