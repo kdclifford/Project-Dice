@@ -5,6 +5,7 @@ using AnimationFunctions.Utils;
 using PlayerCollisionCheck.Utils;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -87,11 +88,12 @@ public class PlayerController : MonoBehaviour
     private int UICurrentFloor = 1;
     private int CurrentKills = 0;
     private int CurrentPickups = 0;
+    private double TimeInDungeon = 0.0; 
 
-    private Text KillsText;
-    private Text FloorsText;
-    private Text PickupsText;
-    private Text TimeText;
+    private TextMeshPro KillsText;
+    private TextMeshPro FloorsText;
+    private TextMeshPro PickupsText;
+    private TextMeshPro TimeText;
     private bool DeathTextLoaded = false;
 
     public bool nextLevel = false;
@@ -143,15 +145,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(SceneManager.GetActiveScene().name != "Menu" && SceneManager.GetActiveScene().name != "DeathRoom")
+        {
+            TimeInDungeon += Time.deltaTime;
+        }
+
         if(SceneManager.GetActiveScene().name == "DeathRoom" && DeathTextLoaded == false)
         {
-            KillsText = GameObject.Find("KillsValue").GetComponent<Text>();
-            FloorsText = GameObject.Find("FloorsValue").GetComponent<Text>();
-            PickupsText = GameObject.Find("PickupsValue").GetComponent<Text>();
-            TimeText = GameObject.Find("TimeValue").GetComponent<Text>();
-
             LoadDeathRoomText();
-
             DeathTextLoaded = true;
         }
 
@@ -481,9 +482,15 @@ public class PlayerController : MonoBehaviour
 
     public void LoadDeathRoomText()
     {
-        KillsText.text = CurrentKills.ToString();
-        FloorsText.text = UICurrentFloor.ToString();
-        PickupsText.text = CurrentPickups.ToString();
-        TimeText.text = CurrentKills.ToString();
+        KillsText = GameObject.Find("KillsValue").GetComponent<TextMeshPro>();
+        KillsText.SetText(CurrentKills.ToString());
+        FloorsText = GameObject.Find("FloorsValue").GetComponent<TextMeshPro>();
+        FloorsText.SetText(UICurrentFloor.ToString());
+        PickupsText = GameObject.Find("PickupsValue").GetComponent<TextMeshPro>();
+        PickupsText.SetText(CurrentPickups.ToString());
+        TimeText = GameObject.Find("TimeValue").GetComponent<TextMeshPro>();
+        TimeInDungeon = TimeInDungeon / 60;
+
+        TimeText.SetText(TimeInDungeon.ToString("F2") + " Min");
     }
 }

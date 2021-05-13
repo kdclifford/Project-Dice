@@ -133,12 +133,15 @@ public class EnemyController : MonoBehaviour
                 }
 
               //  agent.ResetPath();
-                isDead = true;
+              if(isDead == false)
+              {
+                isDead =  true;
+                PlayerController.instance.increaseKills();
+              }
 
                 animator.SetBool("Death", isDead);
                 animator.SetTrigger("Dead");
 
-                PlayerController.instance.increaseKills();
                 currentState = EAIStates.Nothing;
                 Destroy(GetComponent<Collider>());
                 Destroy(GetComponent<Rigidbody>());
