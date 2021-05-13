@@ -2,6 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemyType
+{
+    Golem = 0,
+    Cactus,
+    PlantMonster,
+    Ghost,
+    Bat,
+    Knight,
+    Skeleton,
+
+
+    AmountOfEnemies,
+}
+
 public class SpawnManager : MonoBehaviour
 {
     private UIManager uIManager;
@@ -16,7 +30,6 @@ public class SpawnManager : MonoBehaviour
     public List<EElementalyType> elementsList;
 
     public static SpawnManager instance;
-
 
     //Checks for an instance of LevelManager in current scene
     void Awake()
