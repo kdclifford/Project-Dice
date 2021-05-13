@@ -98,7 +98,7 @@ public class CollisionResolution : MonoBehaviour
             {
                 if (other.gameObject.tag == "EnemyProjectile")
                 {
-                    uIManager.RemoveHeart();
+                    //uIManager.RemoveHeart();
                     ShowFloatingText(other.gameObject.GetComponent<SpellIndex>().spellIndex);
     
                     if (agentHealth.GetHealth() <= 0)
