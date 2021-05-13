@@ -14,6 +14,7 @@ public class FireLine : SpellBase
         duration = 3;
         damage = 20;
         unlockTier = 2;
+        manaCost = 15;
         castingColour = Color.red;
         element = EElementalyType.Fire;
         castingSound = ESoundClipEnum.flamestrike;

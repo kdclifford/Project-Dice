@@ -16,6 +16,8 @@ public class SwordProjectile : SpellBase
         range = 20;
         duration = 3;
         damage = 15;
+        unlockTier = 2;
+        manaCost = 8;
         castingColour = Color.white;
         element = EElementalyType.Physical;
         castingSound = ESoundClipEnum.DrawnSwordSFX;

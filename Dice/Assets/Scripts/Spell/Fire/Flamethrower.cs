@@ -20,7 +20,7 @@ public class Flamethrower : SpellBase
     public Flamethrower()
     {
         duration = 1;
-        unlockTier = 5;
+        unlockTier = 4;
         damage = 20;
         manaCost = 25;
         castingColour = Color.red;

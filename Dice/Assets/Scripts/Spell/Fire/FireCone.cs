@@ -14,6 +14,7 @@ public class FireCone : SpellBase
         duration = 3;
         damage = 25;
         unlockTier = 3;
+        manaCost = 12;
         castingColour = Color.red;
         element = EElementalyType.Fire;
         castingSound = ESoundClipEnum.FlamingConeSFX;

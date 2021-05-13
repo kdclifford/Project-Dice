@@ -17,6 +17,7 @@ public class Kunai : SpellBase
         duration = 3;
         damage = 17;
         unlockTier = 2;
+        manaCost = 15;
         castingColour = Color.white;
         element = EElementalyType.Physical;
         castingSound = ESoundClipEnum.DrawnSwordSFX;
