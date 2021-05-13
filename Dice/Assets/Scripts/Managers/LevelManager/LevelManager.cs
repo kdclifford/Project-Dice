@@ -78,8 +78,8 @@ public class LevelManager : MonoBehaviour
         fade.SetTrigger("FadeIn");       
          yield return new WaitForSeconds(sceneChangeDelay);
         fade.SetTrigger("FadeOut");
-        SceneManager.LoadScene(LevelToLoad);
         soundManager.GetComponent<Animator>().SetInteger("Fade", 0);
+        SceneManager.LoadScene(LevelToLoad);
        
        // fade = GameObject.FindGameObjectWithTag("SceneFade").GetComponent<Animator>();
     }

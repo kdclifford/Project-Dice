@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using Button.Utils;
 using AnimationFunctions.Utils;
 using PlayerCollisionCheck.Utils;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -84,9 +87,16 @@ public class PlayerController : MonoBehaviour
 
     private int UICurrentFloor = 1;
     private int CurrentKills = 0;
+    private int CurrentPickups = 0;
+    private double TimeInDungeon = 0.0; 
+
+    private TextMeshPro KillsText;
+    private TextMeshPro FloorsText;
+    private TextMeshPro PickupsText;
+    private TextMeshPro TimeText;
+    private bool DeathTextLoaded = false;
 
     public bool nextLevel = false;
-
 
     private GameObject DungeonDoorObj;
     private GameObject DungeonChestObj;
@@ -135,6 +145,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(SceneManager.GetActiveScene().name != "Menu" && SceneManager.GetActiveScene().name != "DeathRoom")
+        {
+            TimeInDungeon += Time.deltaTime;
+        }
+
+        if(SceneManager.GetActiveScene().name == "DeathRoom" && DeathTextLoaded == false)
+        {
+            LoadDeathRoomText();
+            DeathTextLoaded = true;
+        }
+
         if (volumeTriggered == true && volumeButton < 0 && ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.Interact))
         {
             VolumeChange Vol = volumeObj.GetComponent<VolumeChange>();
@@ -243,14 +264,14 @@ public class PlayerController : MonoBehaviour
             playerAnimations.Idle();
         }
 
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            uIManager.ShowEquipPopUp();
-        }
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            uIManager.HideEquipPopUp();
-        }
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
+        //    uIManager.ShowEquipPopUp();
+        //}
+        //if (Input.GetKeyDown(KeyCode.O))
+        //{
+        //    uIManager.HideEquipPopUp();
+        //}
 
         if (currRTFireCooldown >= 0.0f)
         {
@@ -298,6 +319,7 @@ public class PlayerController : MonoBehaviour
 
             if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.LeftEquipt))
             {
+                CurrentPickups++;
                 //Set the spell
                 leftSpell = (int)Collision.gameObject.GetComponent<ProjectileType>().spellIndex;
 
@@ -316,7 +338,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (ButtonMapping.GetButton(gameSettings.controllerType, EButtonActions.RightEquipt))
             {
-
+                CurrentPickups++;
                 rightSpell = (int)Collision.gameObject.GetComponent<ProjectileType>().spellIndex;
 
                 var baseSpell = SpellList.instance.spells[rightSpell];
@@ -340,6 +362,7 @@ public class PlayerController : MonoBehaviour
 
             if (sn.GetHealth() < sn.maxHealth)
             {
+                CurrentPickups++;
                 sn.AddHealth();
                 Destroy(Collision.gameObject);
                 Collision.gameObject.transform.GetChild(1).gameObject.SetActive(false);
@@ -457,5 +480,17 @@ public class PlayerController : MonoBehaviour
         CurrentKills++;
     }
 
-    
+    public void LoadDeathRoomText()
+    {
+        KillsText = GameObject.Find("KillsValue").GetComponent<TextMeshPro>();
+        KillsText.SetText(CurrentKills.ToString());
+        FloorsText = GameObject.Find("FloorsValue").GetComponent<TextMeshPro>();
+        FloorsText.SetText(UICurrentFloor.ToString());
+        PickupsText = GameObject.Find("PickupsValue").GetComponent<TextMeshPro>();
+        PickupsText.SetText(CurrentPickups.ToString());
+        TimeText = GameObject.Find("TimeValue").GetComponent<TextMeshPro>();
+        TimeInDungeon = TimeInDungeon / 60;
+
+        TimeText.SetText(TimeInDungeon.ToString("F2") + " Min");
+    }
 }
