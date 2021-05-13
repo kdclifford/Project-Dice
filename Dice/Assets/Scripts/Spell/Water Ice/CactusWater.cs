@@ -16,9 +16,9 @@ public class CactusWater : SpellBase
         duration = 2;
         castingColour = Color.blue;
         element = EElementalyType.Water;
-        castingSound = ESoundClipEnum.CHANGEME;
+        castingSound = ESoundClipEnum.Bubble;
         spellType = ESpellType.AOE;
-        deathSound = ESoundClipEnum.CHANGEME;
+        deathSound = ESoundClipEnum.Bubble;
         SpellName = "Cact Splat";
         PathProjectile = PathProjectile + element.ToString() + "/";
     }

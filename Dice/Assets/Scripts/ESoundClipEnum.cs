@@ -27,6 +27,13 @@ public enum ESoundClipEnum
 	BowSFX = 21,
 	flamestrike = 22,
 	FlamingConeSFX = 23,
+	SnowConeSFX = 24,
+	BlizzardSFX = 25,
+	ElectircConeSFX = 26,
+	RainSFX = 27,
+	IceDeathSoundSFX = 28,
+	IceCreationSoundFX = 29,
+	BubblePopSFX = 30,
     Size, 
 
 

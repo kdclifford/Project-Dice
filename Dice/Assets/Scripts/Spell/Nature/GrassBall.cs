@@ -20,6 +20,7 @@ public class GrassBall : SpellBase
         castingSound = ESoundClipEnum.GrassOrbSFX;
         spellType = ESpellType.Projectile;
         SpellName = "GrassBall";
+        deathSound = ESoundClipEnum.GrassCrumpleSFX;
         PathProjectile = PathProjectile + element.ToString() + "/";
     }
 

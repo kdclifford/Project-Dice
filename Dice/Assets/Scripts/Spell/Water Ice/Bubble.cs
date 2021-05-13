@@ -23,6 +23,7 @@ public class Bubble : SpellBase
         element = EElementalyType.Water;
         castingSound = ESoundClipEnum.Bubble;
         spellType = ESpellType.Projectile;
+        deathSound = ESoundClipEnum.BubblePopSFX;
         SpellName = "BlubBlub";
         PathProjectile = PathProjectile + element.ToString() + "/";
     }

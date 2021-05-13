@@ -23,9 +23,9 @@ public class SummonSnow : SpellBase
         unlockTier = 3;
         castingColour = Color.blue;
         element = EElementalyType.Water;
-        castingSound = ESoundClipEnum.Bubble;
+        castingSound = ESoundClipEnum.BlizzardSFX;
         spellType = ESpellType.AOE;
-        deathSound = ESoundClipEnum.Bubble;
+        deathSound = ESoundClipEnum.NoSound;
         SpellName = "SnowwyDay";
         PathProjectile = PathProjectile + element.ToString() + "/";
     }

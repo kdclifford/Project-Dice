@@ -1171,7 +1171,7 @@ PrefabInstance:
     - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
         type: 3}
       propertyPath: soundClips.Array.size
-      value: 24
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
         type: 3}
@@ -1305,6 +1305,46 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
         type: 3}
+      propertyPath: soundClips.Array.data[24].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: d0a9074c50d87714bb665f15c8d38973, type: 3}
+    - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: soundClips.Array.data[24].name
+      value: SnowConeSFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: soundClips.Array.data[25].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 004247584f997e84aa0b9eef745ad649, type: 3}
+    - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: soundClips.Array.data[25].name
+      value: BlizzardSFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: soundClips.Array.data[26].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: ec2d9cb2830064a438f0262f981ce244, type: 3}
+    - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: soundClips.Array.data[26].name
+      value: ElectircConeSFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: soundClips.Array.data[27].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 13aa54fb1bdf6c243b4e1a6fb691965b, type: 3}
+    - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: soundClips.Array.data[27].name
+      value: RainSFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
       propertyPath: soundClips.Array.data[11].pitch
       value: 1
       objectReference: {fileID: 0}
@@ -1366,6 +1406,26 @@ PrefabInstance:
     - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
         type: 3}
       propertyPath: soundClips.Array.data[23].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: soundClips.Array.data[24].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: soundClips.Array.data[25].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: soundClips.Array.data[26].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: soundClips.Array.data[27].pitch
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
@@ -1435,6 +1495,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
         type: 3}
+      propertyPath: soundClips.Array.data[24].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: soundClips.Array.data[25].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: soundClips.Array.data[26].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: soundClips.Array.data[27].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
       propertyPath: soundClips.Array.data[17].sound3D
       value: 0
       objectReference: {fileID: 0}
@@ -1456,6 +1536,21 @@ PrefabInstance:
     - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
         type: 3}
       propertyPath: soundClips.Array.data[22].sound3D
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: soundClips.Array.data[23].sound3D
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: soundClips.Array.data[24].sound3D
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781402682303088314, guid: 76d5029045c5e2546886a54ad3ca7b9b,
+        type: 3}
+      propertyPath: soundClips.Array.data[26].sound3D
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8111155080338226962, guid: 76d5029045c5e2546886a54ad3ca7b9b,

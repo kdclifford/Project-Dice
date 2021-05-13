@@ -17,9 +17,9 @@ public class IceSpike : SpellBase
         duration = 3;
         castingColour = Color.white;
         element = EElementalyType.Water;
-        castingSound = ESoundClipEnum.Bubble;
+        castingSound = ESoundClipEnum.IceDeathSoundSFX;
         spellType = ESpellType.Projectile;
-        deathSound = ESoundClipEnum.PuttingOutFireBall;
+        deathSound = ESoundClipEnum.IceDeathSoundSFX;
         SpellName = "IceOwchie";
         PathProjectile = PathProjectile + element.ToString() + "/";
     }
