@@ -16,7 +16,7 @@ public class OrbitPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = PlayerController.instance.gameObject;
         transform.position = player.transform.position + new Vector3(0, orbitHeight, orbitRadius);
         
     }

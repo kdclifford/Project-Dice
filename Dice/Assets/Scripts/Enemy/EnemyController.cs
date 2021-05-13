@@ -51,6 +51,8 @@ public class EnemyController : MonoBehaviour
     Vector3 dest;
     private GameObject lootDrop;
 
+    SpellList spellList;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +64,7 @@ public class EnemyController : MonoBehaviour
         soundManager = SoundManager.instance;
         health = GetComponent<Health>();
         lootDrop = Resources.Load("Mana/ManaPS", typeof(GameObject)) as GameObject;
+        spellList = SpellList.instance;
     }
 
     // Update is called once per frame
@@ -69,7 +72,7 @@ public class EnemyController : MonoBehaviour
     {
         if(target == null)
         {
-            target = GameObject.FindGameObjectWithTag("Player");
+            target = PlayerController.instance.gameObject;
         }
 
         if (target != null)
@@ -91,7 +94,7 @@ public class EnemyController : MonoBehaviour
                         agent.ResetPath();
                     }
                     else if (!CheckLineofSight(target.transform.position) && Vector3.Distance(target.transform.position, transform.position) >=
-                        SpellList.instance.spells[(int)projectile].range/* && target.GetComponent<PlayerAnimations>() != null*/)
+                        spellList.spells[(int)projectile].range/* && target.GetComponent<PlayerAnimations>() != null*/)
                     {
                         if (currentState != EAIStates.MoveTowards)
                         {
@@ -227,7 +230,7 @@ public class EnemyController : MonoBehaviour
     //Spider Attack
     public void Fire()
     {
-        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAnimations>() != null)
+        if (target.GetComponent<PlayerAnimations>() != null)
         {
             SpawnBullet();
             //SpawnBullet(10, 45);
@@ -254,7 +257,7 @@ public class EnemyController : MonoBehaviour
         //firePos += transform.forward;
 
         //playerRot.eulerAngles += 45;
-        SpellList.instance.spells[(int)projectile].CastSpell(firePos, transform.eulerAngles.y, gameObject, "EnemyProjectile");
+        spellList.spells[(int)projectile].CastSpell(firePos, transform.eulerAngles.y, gameObject, "EnemyProjectile");
        
         fireCooldown = fireRate;
     }
@@ -283,7 +286,7 @@ public class EnemyController : MonoBehaviour
     public void LootDrop()
     {
         ParticleSystem.MainModule particle = lootDrop.GetComponent<ParticleSystem>().main;
-        particle.startColor = SpellList.instance.spells[(int)projectile].castingColour;
+        particle.startColor = spellList.spells[(int)projectile].castingColour;
         GameObject loot = MonoBehaviour.Instantiate(lootDrop, transform.position, Quaternion.identity) as GameObject;
        // loot.tag = ManaTag(SpellList.instance.spells[(int)projectile].element);
     }
