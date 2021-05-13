@@ -15,6 +15,8 @@ public class GrassBall : SpellBase
     {
         damage = 15;
         duration = 3;
+        manaCost = 8;
+        unlockTier = 1;
         castingColour = Color.green;
         element = EElementalyType.Nature;
         castingSound = ESoundClipEnum.GrassOrbSFX;

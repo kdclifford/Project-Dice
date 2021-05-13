@@ -22,6 +22,7 @@ public class SummonRain : SpellBase
         duration = 10;
         damage = 20;
         unlockTier = 3;
+        manaCost = 18;
         castingColour = Color.blue;
         element = EElementalyType.Water;
         castingSound = ESoundClipEnum.RainSFX;

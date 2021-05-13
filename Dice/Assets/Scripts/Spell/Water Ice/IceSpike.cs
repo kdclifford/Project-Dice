@@ -15,6 +15,7 @@ public class IceSpike : SpellBase
     {
         range = 14;
         duration = 3;
+        damage = 10;
         castingColour = Color.white;
         element = EElementalyType.Water;
         castingSound = ESoundClipEnum.IceDeathSoundSFX;

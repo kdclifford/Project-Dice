@@ -20,6 +20,7 @@ public class IceLine : SpellBase
         spellType = ESpellType.AOE;
         deathSound = ESoundClipEnum.PuttingOutFireBall;
         SpellName = "ChillyBill";
+        manaCost = 15;
         PathProjectile = PathProjectile + element.ToString() + "/";
     }
 

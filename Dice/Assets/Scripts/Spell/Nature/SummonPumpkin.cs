@@ -21,7 +21,7 @@ public class SummonPumpkin : SpellBase
         range = 3;
         duration = 5;
         damage = 30;
-        unlockTier = 5;
+        unlockTier = 3;
         castingColour = Color.red;
         element = EElementalyType.Nature;
         castingSound = ESoundClipEnum.GrassCrumpleSFX;

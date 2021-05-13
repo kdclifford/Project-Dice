@@ -20,6 +20,9 @@ public class SummonSwamp : SpellBase
     public SummonSwamp()
     {
         duration = 10;
+        unlockTier = 4;
+        damage = 15;
+        manaCost = 11;
         castingColour = Color.green;
         element = EElementalyType.Nature;
         castingSound = ESoundClipEnum.GrassCrumpleSFX;
