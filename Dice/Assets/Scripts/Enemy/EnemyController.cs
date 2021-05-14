@@ -181,11 +181,14 @@ public class EnemyController : MonoBehaviour
                     gotRandomPos = true;
                 }
 
-                if (Physics.Raycast(transform.forward, dest, out hit, 10, layerhit))
+                if (isDead)
                 {
-                    dest = RandomNavSphere(transform.position, 30, layerFLoor);
+                    if (Physics.Raycast(transform.forward, dest, out hit, 10, layerhit))
+                    {
+                        dest = RandomNavSphere(transform.position, 30, layerFLoor);
+                    }
+                    agent.SetDestination(dest);
                 }
-                agent.SetDestination(dest);
 
                 if (Vector3.Distance(transform.position, dest) <= 3)
                 {
@@ -287,7 +290,7 @@ public class EnemyController : MonoBehaviour
     {
         ParticleSystem.MainModule particle = lootDrop.GetComponent<ParticleSystem>().main;
         particle.startColor = spellList.spells[(int)projectile].castingColour;
-        GameObject loot = MonoBehaviour.Instantiate(lootDrop, transform.position, Quaternion.identity) as GameObject;
+        GameObject loot = MonoBehaviour.Instantiate(lootDrop, transform.position + new Vector3(0,1,0), Quaternion.identity) as GameObject;
        // loot.tag = ManaTag(SpellList.instance.spells[(int)projectile].element);
     }
 

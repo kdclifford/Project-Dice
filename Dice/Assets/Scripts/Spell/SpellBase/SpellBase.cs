@@ -71,7 +71,10 @@ public abstract class SpellBase
         //bullet.transform.SetParent(player.transform);
         bullet.tag = tag;
         bullet.AddComponent<SpellIndex>().spellIndex = spell;
-        bullet.GetComponent<ProjectileController>().setTimer(duration);
+        if (bullet.GetComponent<ProjectileController>())
+        {
+            bullet.GetComponent<ProjectileController>().setTimer(duration);
+        }
         SoundManager.instance.Play(castingSound, bullet);
         //bullet.transform.parent = null;
     }
