@@ -23,6 +23,11 @@ public class ScenePortal : MonoBehaviour
 
     public void TeleportToScene()
     {
+        if(PortalToSceneName == "Quit")
+        {
+            Application.Quit();
+        }
+
         levelManager.LoadLevel(PortalToSceneName);
     }
 }
