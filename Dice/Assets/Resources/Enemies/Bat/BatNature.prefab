@@ -44,9 +44,9 @@ GameObject:
   - component: {fileID: 3156492746902857969}
   - component: {fileID: 5331392747034266020}
   - component: {fileID: 1200125069734401579}
-  - component: {fileID: 4435051235691591079}
   - component: {fileID: 8845910384116546158}
   - component: {fileID: 4033327795211862140}
+  - component: {fileID: 4802976100671044483}
   m_Layer: 0
   m_Name: BatNature
   m_TagString: Enemy
@@ -176,19 +176,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!135 &4435051235691591079
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100460}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0.8, z: 0}
 --- !u!195 &8845910384116546158
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -224,6 +211,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agentElement: 5
+--- !u!136 &4802976100671044483
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100460}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.51795596
+  m_Height: 2.0704036
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.23103166, z: -0.017955959}
 --- !u!1 &100558
 GameObject:
   m_ObjectHideFlags: 0
