@@ -52,6 +52,7 @@ public class EnemyController : MonoBehaviour
     private GameObject lootDrop;
 
     SpellList spellList;
+    bool once = false;
 
     // Start is called before the first frame update
     void Start()
@@ -288,10 +289,14 @@ public class EnemyController : MonoBehaviour
 
     public void LootDrop()
     {
-        ParticleSystem.MainModule particle = lootDrop.GetComponent<ParticleSystem>().main;
-        particle.startColor = spellList.spells[(int)projectile].castingColour;
-        GameObject loot = MonoBehaviour.Instantiate(lootDrop, transform.position + new Vector3(0,1,0), Quaternion.identity) as GameObject;
-       // loot.tag = ManaTag(SpellList.instance.spells[(int)projectile].element);
+        if (!once)
+        {
+            ParticleSystem.MainModule particle = lootDrop.GetComponent<ParticleSystem>().main;
+            particle.startColor = spellList.spells[(int)projectile].castingColour;
+            GameObject loot = MonoBehaviour.Instantiate(lootDrop, transform.position + new Vector3(0, 1, 0), Quaternion.identity) as GameObject;
+            // loot.tag = ManaTag(SpellList.instance.spells[(int)projectile].element);
+            once = true;
+        }
     }
 
     public string ManaTag(EElementalyType type)
