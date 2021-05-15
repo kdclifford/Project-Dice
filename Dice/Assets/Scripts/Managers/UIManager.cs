@@ -143,7 +143,7 @@ public class UIManager : MonoBehaviour
     }
 
 
-    public void ApplyNewLeftSpell(Sprite powerUp)
+    public void  ApplyNewLeftSpell(Sprite powerUp)
     {
         LeftUIIcon.sprite = powerUp;
     }

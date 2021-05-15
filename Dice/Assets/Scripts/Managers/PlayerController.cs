@@ -158,11 +158,21 @@ public class PlayerController : MonoBehaviour
         if(SceneManager.GetActiveScene().name != "Menu" && SceneManager.GetActiveScene().name != "DeathRoom")
         {
             TimeInDungeon += Time.deltaTime;
+
         }
 
         if(SceneManager.GetActiveScene().name == "DeathRoom" && DeathTextLoaded == false)
         {
             LoadDeathRoomText();
+            leftSpell = -1;
+            rightSpell = -1;
+
+            Sprite defaultUI = (Sprite)Resources.Load("UIIcons / UISprites / NothingUI");
+            uIManager.ApplyNewLeftSpell(defaultUI);
+            uIManager.ApplyNewRightSpell(defaultUI);
+
+            rightColour = (Material)Resources.Load("Player/Weapon 1");
+            leftColour = (Material)Resources.Load("Player/Weapon 2");
             DeathTextLoaded = true;
         }
 
