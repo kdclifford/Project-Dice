@@ -167,7 +167,7 @@ public class PlayerController : MonoBehaviour
             leftSpell = -1;
             rightSpell = -1;
 
-            Sprite defaultUI = (Sprite)Resources.Load("UIIcons / UISprites / NothingUI");
+            Sprite defaultUI = Resources.Load<Sprite>("UIIcons/UISprites/NothingUI");
             uIManager.ApplyNewLeftSpell(defaultUI);
             uIManager.ApplyNewRightSpell(defaultUI);
 
