@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
     private bool firedLT = false;
     private bool firedRT = false;
 
-    private int UICurrentFloor = 1;
+    public int UICurrentFloor = 1;
     private int CurrentKills = 0;
     private int CurrentPickups = 0;
     private double TimeInDungeon = 0.0; 
@@ -164,8 +164,21 @@ public class PlayerController : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "DeathRoom" && DeathTextLoaded == false)
         {
             LoadDeathRoomText();
+
+
+         
+            uIManager.updateFloor(UICurrentFloor);
+
+            //Health sn = gameObject.GetComponent<Health>();
+            //sn.AddHealth();
+            //sn.AddHealth();
+            //sn.AddHealth();
+            //sn.AddHealth();
+            //sn.isDead = false;
+
             leftSpell = -1;
             rightSpell = -1;
+            
 
             Sprite defaultUI = Resources.Load<Sprite>("UIIcons/UISprites/NothingUI");
             uIManager.ApplyNewLeftSpell(defaultUI);

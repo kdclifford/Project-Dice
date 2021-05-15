@@ -14,7 +14,7 @@ public class Health : MonoBehaviour
     GameObject agentRoot;
 
     private LevelManager levelManager;
-    private bool isDead = false;
+    public bool isDead = false;
 
 
     // Start is called before the first frame update
@@ -37,7 +37,7 @@ public class Health : MonoBehaviour
                 isDead = true;
                 levelManager.LoadLevel("DeathRoom");
                 gameObject.transform.position = new Vector3 (20, 2, 7);
-            currentHealth = 1;
+                currentHealth = 100;
                 gameObject.GetComponent<PlayerController>().enabled = true;
             }
             

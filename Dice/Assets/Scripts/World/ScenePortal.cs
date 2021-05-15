@@ -13,6 +13,7 @@ public class ScenePortal : MonoBehaviour
     void Start()
     {
         levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
+        PlayerController.instance.GetComponent<Health>().isDead = false;
     }
 
     // Update is called once per frame
@@ -27,7 +28,10 @@ public class ScenePortal : MonoBehaviour
         {
             Application.Quit();
         }
-
+        if(PortalToSceneName == "Test PCG")
+        {
+            PlayerController.instance.UICurrentFloor = 1;
+        }
         levelManager.LoadLevel(PortalToSceneName);
     }
 }
