@@ -167,7 +167,7 @@ public class PlayerController : MonoBehaviour
 
 
          
-            uIManager.updateFloor(UICurrentFloor);
+            //uIManager.updateFloor(UICurrentFloor);
 
             //Health sn = gameObject.GetComponent<Health>();
             //sn.AddHealth();

@@ -92,6 +92,7 @@ public class LevelManager : MonoBehaviour
         {
             {
                 SpawnManager.instance.StartSpawn();
+
             }
         }
     }

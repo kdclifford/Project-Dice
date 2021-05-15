@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.SceneManagement;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ScenePortal : MonoBehaviour
 {
@@ -31,6 +28,7 @@ public class ScenePortal : MonoBehaviour
         if(PortalToSceneName == "Test PCG")
         {
             PlayerController.instance.UICurrentFloor = 1;
+            UIManager.instance.updateFloor(PlayerController.instance.UICurrentFloor);
         }
         levelManager.LoadLevel(PortalToSceneName);
     }
